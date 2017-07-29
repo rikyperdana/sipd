@@ -28,6 +28,7 @@ template(name='kel'): .container
 			doc= editData
 		)
 		.right.orange.btn#close Tutup
+	+grafik
 	unless editData
 		table
 			thead
@@ -92,3 +93,9 @@ template(name='login'): .container
 template(name='contohElemen')
 	each val in elemensName
 		a.btn-flat(href='/csv/{{val}}.csv')= val
+
+template(name='loading'): .container
+	.progress.center: .indeterminate
+
+template(name='grafik')
+	+c3(data= grafik id = 'grafik')

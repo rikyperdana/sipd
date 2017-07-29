@@ -80,3 +80,9 @@ if Meteor.isClient
 
 	Template.contohElemen.helpers
 		elemensName: -> elemens
+
+	Template.grafik.helpers
+		grafik: ->
+			barArray = []
+			barArray.push [i.elemen, i.nilai] for i in coll.elemens.find().fetch()
+			data: type: 'bar', columns: barArray

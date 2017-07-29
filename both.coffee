@@ -1,5 +1,6 @@
 Router.configure
 	layoutTemplate: 'layout'
+	loadingTemplate: 'loading'
 
 Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
@@ -17,8 +18,8 @@ coll.elemens.attachSchema new SimpleSchema
 	kab: type: String, autoform: type: 'hidden'
 	kec: type: String, autoform: type: 'hidden'
 	kel: type: String, autoform: type: 'hidden'
-	elemen: type: String, optional: true, autoform: type: 'hidden'
-	indikator: type: String, optional: true, autoform: disabled: true
+	elemen: type: String, autoform: type: 'hidden'
+	indikator: type: String, autoform: disabled: true
 	defenisi: type: String, optional: true, autoform: disabled: true
 	nilai: type: Number, decimal: true, optional: true
 	satuan: type: String, optional: true, autoform: disabled: true
