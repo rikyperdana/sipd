@@ -17,27 +17,39 @@ template(name='home'): .container
 template(name='kel'): .container
 	h4 Data Daerah
 	+selectElemen
-	table
-		thead
-			tr
-				th Indikator
-				th Defenisi
-				th Nilai
-				th Satuan
-				th Setuju
-				th Beda
-				th Justifikasi
-		tbody
-			each datas
+	if editData
+		h5 Update Indikator
+		+quickForm(
+			collection= theColl
+			type = 'update'
+			id = 'updateKel'
+			doc= editData
+		)
+		.right.orange.btn#close Tutup
+	unless editData
+		table
+			thead
 				tr
-					td= indikator
-					td= defenisi
-					td= nilai
-					td= satuan
-					td= setuju
-					td= beda
-					td= justifikasi
-	+importer
+					th Indikator
+					th Defenisi
+					th Nilai
+					th Satuan
+					th Setuju
+					th Beda
+					th Justifikasi
+			tbody
+				each datas
+					tr#row
+						td= indikator
+						td= defenisi
+						td= nilai
+						td= satuan
+						td= setuju
+						td= beda
+						td= justifikasi
+		unless datas
+			+importer
+	.row
 
 template(name='importer')
 	.file-field.input-field

@@ -33,6 +33,14 @@ if Meteor.isClient
 				_.filter source, (i) -> i.elemen is selectElemen
 			else
 				source
+		theColl: -> coll.elemens
+		editData: -> Session.get 'editData'
+
+	Template.kel.events
+		'dblclick #row': (satu, dua) ->
+			Session.set 'editData', this
+		'click #close': ->
+			Session.set 'editData', null
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
