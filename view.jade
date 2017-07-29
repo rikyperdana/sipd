@@ -51,7 +51,9 @@ template(name='kel'): .container
 						td= justifikasi
 		unless datas
 			+importer
-	+contohElemen
+	.btn#showContoh Contoh Elemen
+	if showContoh
+		+contohElemen
 	.row
 
 template(name='importer')

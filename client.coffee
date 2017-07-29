@@ -35,12 +35,15 @@ if Meteor.isClient
 				source
 		theColl: -> coll.elemens
 		editData: -> Session.get 'editData'
+		showContoh: -> Session.get 'showContoh'
 
 	Template.kel.events
 		'dblclick #row': (satu, dua) ->
 			Session.set 'editData', this
 		'click #close': ->
 			Session.set 'editData', null
+		'click #showContoh': ->
+			Session.set 'showContoh', not Session.get 'showContoh'
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
