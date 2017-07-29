@@ -64,3 +64,6 @@ if Meteor.isClient
 					Materialize.toast err.reason, 4000
 				else
 					Router.go '/' + username
+
+	Template.contohElemen.helpers
+		elemensName: -> elemens

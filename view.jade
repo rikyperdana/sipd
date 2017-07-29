@@ -51,6 +51,7 @@ template(name='kel'): .container
 						td= justifikasi
 		unless datas
 			+importer
+	+contohElemen
 	.row
 
 template(name='importer')
@@ -84,3 +85,7 @@ template(name='login'): .container
 		.row
 			.input.field.center
 				input.btn(type='submit' value='Login')
+
+template(name='contohElemen')
+	each val in elemensName
+		a.btn-flat(href='/csv/{{val}}.csv')= val
