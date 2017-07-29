@@ -1,0 +1,58 @@
+template(name='layout')
+	+menu
+	+yield
+
+template(name='menu')
+	.navbar-fixed: nav.blue-grey: .nav-wrapper
+		ul.left
+			li: a Home
+		a.brand-logo.center Bappeda
+		ul.right
+			li: a Login
+			li: a Register
+
+template(name='home'): .container
+	h4 Beranda
+
+template(name='kel'): .container
+	h4 Data Daerah
+	+selectElemen
+	table
+		thead
+			tr
+				th Indikator
+				th Defenisi
+				th Nilai
+				th Satuan
+				th Setuju
+				th Beda
+				th Justifikasi
+		tbody
+			each datas
+				tr
+					td= indikator
+					td= defenisi
+					td= nilai
+					td= satuan
+					td= setuju
+					td= beda
+					td= justifikasi
+	+importer
+
+template(name='importer')
+	.file-field.input-field
+		.btn.left
+			span Impor Data
+			input(type='file' name='uploadCSV')
+		.file-path-wrapper
+			input.file-path.wrapper(type='text')
+
+template(name='selectElemen')
+	.row
+		.input-field.col.m8
+			select
+				option(value='') Pilih Elemen Data
+				each val in elemensName
+					option= val
+		.input-field.col.m4
+			input#search(placeholder='Cari')
