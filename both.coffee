@@ -1,8 +1,9 @@
 Router.configure
 	layoutTemplate: 'layout'
 
-Router.route '/',
-	action: -> this.render 'home'
+Router.route '/', action: -> this.render 'home'
+Router.route '/login', action: -> this.render 'login'
+Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 
 makeKel = (name) ->
 	Router.route '/' + name,

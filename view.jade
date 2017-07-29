@@ -5,11 +5,13 @@ template(name='layout')
 template(name='menu')
 	.navbar-fixed: nav.blue-grey: .nav-wrapper
 		ul.left
-			li: a Home
+			li: a(href='/') Home
 		a.brand-logo.center Bappeda
 		ul.right
-			li: a Login
-			li: a Register
+			unless currentUser
+				li: a(href='/login') Login
+			if currentUser
+				li: a(href='/logout') Logout
 
 template(name='home'): .container
 	h4 Beranda
@@ -68,3 +70,17 @@ template(name='selectElemen')
 					option= val
 		.input-field.col.m4
 			input#search(placeholder='Cari')
+
+template(name='login'): .container
+	h4.center Login Pengguna
+	form#login
+		.row
+			.input-field.col.m6
+				input.validate#username(type='text')
+				label(for='username') Username
+			.input-field.col.m6
+				input.validate#password(type='password')
+				label(for='password') Password
+		.row
+			.input.field.center
+				input.btn(type='submit' value='Login')

@@ -53,3 +53,14 @@ if Meteor.isClient
 			Session.set 'selectElemen', _.kebabCase event.target.value
 		'keyup #search': (event) ->
 			Session.set 'searchTerm', event.target.value.toLowerCase()
+
+	Template.login.events
+		'submit #login': (event) ->
+			event.preventDefault()
+			username = event.target[0].value
+			password = event.target[1].value
+			Meteor.loginWithPassword username, password, (err) ->
+				if err
+					Materialize.toast err.reason, 4000
+				else
+					Router.go '/' + username
