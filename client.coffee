@@ -44,6 +44,16 @@ if Meteor.isClient
 			Session.set 'editData', null
 		'click #showContoh': ->
 			Session.set 'showContoh', not Session.get 'showContoh'
+		'click #emptyElemen': ->
+			route = currentRoute (res) -> res
+			dialog =
+				message: 'Yakin kosongkan elemen?'
+				title: 'Elemen ' + Session.get 'selectElemen'
+				okText: 'Ya'
+				success: true
+				focus: 'cancel'
+			new Confirmation dialog, (ok) ->
+				if ok then Meteor.call 'emptyElemen', route, Session.get 'selectElemen'
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()

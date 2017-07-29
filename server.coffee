@@ -9,3 +9,9 @@ if Meteor.isServer
 	Meteor.methods
 		import: (collName, data) ->
 			coll[collName].insert data
+		emptyElemen: (route, elemen) ->
+			coll.elemens.remove
+				kab: route.split('_')[0]
+				kec: route.split('_')[1]
+				kel: route.split('_')[2]
+				elemen: elemen
