@@ -1,0 +1,167 @@
+elemen,indikator,defenisi,nilai
+Permukiman,1) Perumahan *,,26.5
+Permukiman,1) Jumlah Penduduk(Jiwa),,97.9
+Permukiman,2) Jumlah KK(KK),,37.6
+Permukiman,3) Jumlah Rumah Tangga(RT),,94.1
+Permukiman,4) Jumlah MBR(Jiwa),,74.4
+Permukiman,5) Jumlah Rumah Tangga yang telah menghuni rumah(RT),,70.7
+Permukiman,6) Jumlah KK yang telah menghuni rumah(KK),,70.4
+Permukiman,7) Jumlah Rumah Tangga yang telah memiliki rumah,,2.3
+Permukiman,8) Jumlah KK yang telah memiliki rumah,,24.2
+Permukiman,9) Jumlah Rumah Berdasarkan Status Kepemilikan **,,15.1
+Permukiman,1) Rumah Milik Sendiri (Unit),,20.5
+Permukiman,2) Rumah Sewa (Unit),,98.5
+Permukiman,3) Rumah Kontrak (Unit),,30.1
+Permukiman,4) Rumah Bebas Sewa (Unit),,60.7
+Permukiman,5) Rumah Dinas (Unit),,58
+Permukiman,6) Rumah Orang Tua (Unit),,20.9
+Permukiman,7) Rumah Lainnya(Unit),,60.6
+Permukiman,10) Jumlah Rumah Berdasarkan Tingkat Penghunian Rumah **,,30
+Permukiman,1) Rumah dihuni(Unit),,33.2
+Permukiman,2) Rumah tidak dihuni(Unit),,80.9
+Permukiman,11) Jumlah Rumah Berdasarkan Kelayakan**,,94.6
+Permukiman,1) Rumah Layak Huni **(Unit),,28.4
+Permukiman,1) Pedesaan (Unit),,58.5
+Permukiman,2) Perkotaan (Unit),,5.2
+Permukiman,2) Tidak Layak Huni **(Unit),,25.8
+Permukiman,1) Pedesaan (Unit),,25.9
+Permukiman,2) Perkotaan (Unit),,61.2
+Permukiman,12) Jumlah Rumah Berdasarkan Kondisi Fisik Bangunan **(Unit),,9.4
+Permukiman,1) Jumlah Rumah Bangunan Permanen (Unit),,5.6
+Permukiman,2) Jumlah Rumah Semi Permanen (Unit),,22
+Permukiman,3) Jumlah Rumah Non Permanen (Unit),,52.6
+Permukiman,13) Luas Rumah Per Kapita **(m2),,7.4
+Permukiman,1) Layak Huni **(m2),,56.1
+Permukiman,1) Pedesaan(m2),,98.9
+Permukiman,2) Perkotaan (m2),,5.8
+Permukiman,2) Tidak Layak Huni **(m2),,84.2
+Permukiman,1) Pedesaan (m2),,39.2
+Permukiman,2) Perkotaan (m2),,48.3
+Permukiman,14) Jumlah Rumah Yang Terdampak Bencana dalam 1 Tahun Terakhir **(Unit),,69.4
+Permukiman,1) Rusak Berat(Unit),,57.5
+Permukiman,2) Rusak Sedang(Unit),,44.2
+Permukiman,3) Rusak Ringan(Unit),,5.3
+Permukiman,15) Jumlah Rumah Yang Terdampak Program Pemerintah dalam 1 Tahun Terakhir **(Unit),,50.1
+Permukiman,2) Penyediaan Perumahan*,,95.5
+Permukiman,1) Penyediaan Perumahan oleh Perumnas*,,84
+Permukiman,1) Jumlah Unit (Unit),,34.4
+Permukiman,2) Lokasi(Nama Lokasi (Kelurahan/Desa)),,3.9
+Permukiman,3) Tahun(2010/../2016),,65.1
+Permukiman,"4) Nama Perumahan, Alamat, dan Kontak Person(Perumahan a, b, c)",,65.2
+Permukiman,5) Sasaran pembangunan*,,51
+Permukiman,1) MBR(Unit),,26
+Permukiman,2) Non-MBR(Unit),,17.1
+Permukiman,6) Bentuk Rumah*,,74.4
+Permukiman,1) Rumah Tapak(Unit),,46.8
+Permukiman,2) Rumah Susun(Unit),,29.3
+Permukiman,7) Jenis KPR,,39.4
+Permukiman,2) Penyediaan perumahan melalui APBD *,,88.5
+Permukiman,1) Jumlah Unit (Unit),,53.8
+Permukiman,2) Lokasi(Nama Lokasi (Kelurahan/Desa)),,26.8
+Permukiman,3) Tahun(2010/../2016),,48.9
+Permukiman,4) Anggaran (Rp.),,35.6
+Permukiman,5) Sasaran pembangunan *,,69.5
+Permukiman,1) MBR(Unit),,73.9
+Permukiman,2) Non-MBR(Unit),,96.2
+Permukiman,6) Nomenklatur Pembangunan,,3.5
+Permukiman,7) Bentuk Rumah(Susun/Tapak),,54.5
+Permukiman,1) Rumah Tapak(Unit),,34.2
+Permukiman,2) Rumah Susun(Unit),,73.8
+Permukiman,8) SKPD Pelaksana,,26.2
+Permukiman,3) Penyediaan Perumahan Melalui APBN *,,73.8
+Permukiman,1) Jumlah Unit (Unit),,54.1
+Permukiman,2) Lokasi(Nama Lokasi (Kelurahan/Desa)),,50.8
+Permukiman,3) Tahun(2010/../2016),,77.2
+Permukiman,4) Anggaran (Rp.),,92.8
+Permukiman,5) Sasaran pembangunan *,,1.3
+Permukiman,1) MBR(Unit),,8.9
+Permukiman,2) Non-MBR(Unit),,43.3
+Permukiman,6) Nama Program Pembangunan,,13.1
+Permukiman,7) Bentuk Rumah(Susun/Tapak),,8
+Permukiman,1) Rumah Tapak(Unit),,0.7
+Permukiman,2) Rumah Susun(Unit),,75.5
+Permukiman,8) Kementerian/Lembaga Pelaksana,,89.1
+Permukiman,4) Penyediaan Perumahan Melalui Swasta (Asosiasi/Pengembang) *,,80.6
+Permukiman,1) Jumlah Unit (Unit),,57.5
+Permukiman,2) Lokasi(Nama Lokasi (Kelurahan/Desa)),,67.7
+Permukiman,3) Tahun(2010/../2016),,29
+Permukiman,"4) Nama Perumahan, Alamat, dan Kontak Person",,57.2
+Permukiman,5) Sasaran pembangunan *,,95.2
+Permukiman,1) MBR(Unit),,63.1
+Permukiman,2) Non-MBR(Unit),,0.5
+Permukiman,6) Nama Asosiasi/Pengembang,,91.9
+Permukiman,7) Bentuk Rumah(Susun/Tapak),,48.7
+Permukiman,1) MBR(Unit),,58.3
+Permukiman,2) Non-MBR(Unit),,32.7
+Permukiman,8) Jenis KPR,,48.1
+Permukiman,5) Penyediaan Perumahan Melalui LSM/CSR*,,59.5
+Permukiman,1) Jumlah Unit (Unit),,97.4
+Permukiman,2) Lokasi(Nama Lokasi (Kelurahan/Desa)),,60
+Permukiman,3) Tahun(2010/../2016),,1.3
+Permukiman,4) Nama LSM,,46.9
+Permukiman,5) Sasaran pembangunan(MBR/Non MBR),,93.6
+Permukiman,1) MBR(Unit),,10.2
+Permukiman,2) Non-MBR(Unit),,29.1
+Permukiman,6) Nama Program Pembangunan,,30.7
+Permukiman,7) Bentuk Rumah(Susun/Tapak),,4.2
+Permukiman,6) Penyediaan Perumahan Melalui Swadaya Atau Perorangan*,,12.2
+Permukiman,1) Jumlah Unit (Unit),,75.1
+Permukiman,2) Lokasi(Nama Lokasi (Kecamatan)),,51.8
+Permukiman,3) Tahun(2010/../2016),,22.3
+Permukiman,7) Jumlah Penyaluran KPR(Unit),,41.9
+Permukiman,8) Jumlah Real Estate (Unit),,72.6
+Permukiman,9) Jumlah Rumah Susun (Unit),,75.3
+Permukiman,10) Jumlah Instalasi Dasar*,,29.8
+Permukiman,1) Jumlah Rumah yang telah memiliki instalasi listrik(Unit),,56.1
+Permukiman,2) Jumlah Rumah yang telah memiliki instalasi air minum(Unit),,63.5
+Permukiman,3) Secure Tenure *,,21.9
+Permukiman,1) Jumlah Rumah yang memiliki sertifikat(Unit),,72.6
+Permukiman,2) Jumlah Rumah yang tidak memiliki sertifikat **(Unit),,33.4
+Permukiman,1) Tidak memiliki sertifikat karena lokasi tidak sesuai dengan RTRW(Unit),,51.4
+Permukiman,2) Sudah sesuai RTRW tetapi belum memiliki sertifikat(Unit),,65.4
+Permukiman,3) Jumlah Rumah yang memiliki IMB(Unit),,63.7
+Permukiman,4) Jumlah Rumah yang tidak memiliki IMB(Unit),,84.2
+Permukiman,5) Jumlah Rumah yang berada di kawasan rawan bencana(Unit),,36.4
+Permukiman,4) Kawasan Permukiman *,,58.6
+Permukiman,1) Luas Kawasan Permukiman dalam Rencana Tata Ruang (RTR)(Ha),,84.8
+Permukiman,2) Kesesuaian Kawasan Permukiman dengan RTR*,,44.8
+Permukiman,1) Luas permukiman yang berada pada zona peruntukan perumahan/permukiman sesuai RTR(Ha),,38.1
+Permukiman,2) luas permukiman yang berada pada zona peruntukan perumahan/permukiman tidak sesuai RTR(Ha),,3.7
+Permukiman,3) Luas Permukiman Legal (Memiliki status penguasaan lahan yang jelas),,16.8
+Permukiman,1) Luas Areal (Ha),,53.3
+Permukiman,2) Jumlah Penduduk (Jiwa),,60.5
+Permukiman,3) Jumlah Keluarga (KK),,88.4
+Permukiman,4) Permukiman Ilegal,,85.7
+Permukiman,1) Pemukiman Ilegal Di atas Tanah Milik Negara *,,71
+Permukiman,1) Luas Areal (Ha),,40
+Permukiman,2) Jumlah Penduduk (Jiwa),,24.2
+Permukiman,3) Jumlah Keluarga (KK),,52.1
+Permukiman,2) Pemukiman Ilegal Di atas Kawasan Hijau *,,53.1
+Permukiman,1) Luas Areal (Ha),,83.4
+Permukiman,2) Jumlah Penduduk (Jiwa),,66.8
+Permukiman,3) Jumlah Keluarga (KK),,4.9
+Permukiman,3) Pemukiman Ilegal Di atas Tanah Perorangan *,,13.5
+Permukiman,1) Luas Areal (Ha),,87
+Permukiman,2) Jumlah Penduduk (Jiwa),,45.2
+Permukiman,3) Jumlah Keluarga (KK),,35.8
+Permukiman,5) Pemukiman di bawah SUTET *,,3.8
+Permukiman,1) Luas Areal (Ha),,25.9
+Permukiman,2) Jumlah Penduduk (Jiwa),,4
+Permukiman,3) Jumlah Keluarga (KK),,6.6
+Permukiman,6) Pemukiman di bawah kawasan rawan bencana *,,49.2
+Permukiman,1) Luas Areal (Ha),,52.3
+Permukiman,2) Jumlah Penduduk (Jiwa),,16.1
+Permukiman,3) Jumlah Keluarga (KK),,88
+Permukiman,5) Kawasan Permukiman Kumuh,,65.9
+Permukiman,1) Luas Kawasan Pemukiman Kumuh yang ditetapkan melalui SK Kumuh(Ha),,0.8
+Permukiman,1) Luas Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Tinggi (Ha),,45.8
+Permukiman,2) Luas Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Sedang(Ha),,53.7
+Permukiman,3) Luas Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Rendah(Ha),,54.6
+Permukiman,2) Jumlah Penduduk yang Tinggal di Kawasan Pemukiman Kumuh (Jiwa),,99.9
+Permukiman,1) Jumlah Penduduk di Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Tinggi (Jiwa),,47.7
+Permukiman,2) Jumlah Penduduk di Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Sedang(Jiwa),,12.8
+Permukiman,3) Jumlah Penduduk di Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Rendah(Jiwa),,7.3
+Permukiman,3) Jumlah Keluarga yang Tinggal di Pemukiman Kumuh (KK),,38.9
+Permukiman,1) Jumlah Keluarga di Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Tinggi (KK),,18
+Permukiman,2) Jumlah Keluarga di Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Sedang(KK),,18.3
+Permukiman,3) Jumlah Keluarga di Kawasan Permukiman Kumuh dengan Tingkat Kekumuhan Rendah(KK),,77.9

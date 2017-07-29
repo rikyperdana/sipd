@@ -1,0 +1,333 @@
+elemen,indikator,defenisi,nilai
+Pendidikan,1) Jumlah Sekolah,,41.4
+Pendidikan,1) Taman Kanak-Kanak (TK)(Unit),,28.4
+Pendidikan,1) Negeri(Unit),,37.7
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,16.5
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,31.1
+Pendidikan,2) Swasta(Unit),,28.2
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,47.4
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,24.6
+Pendidikan,2) Sekolah Luar Biasa (SLB)(Unit),,58.7
+Pendidikan,1) Negeri(Unit),,92.8
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,22.6
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,95.7
+Pendidikan,2) Swasta(Unit),,69.8
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,85.4
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,42.4
+Pendidikan,3) Sekolah Dasar (SD)(Unit),,76.7
+Pendidikan,1) Negeri(Unit),,11.4
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,94.1
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,36.1
+Pendidikan,2) Swasta(Unit),,85.7
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,51.7
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,61.9
+Pendidikan,4) Sekolah Lanjut Tingkat Pertama (SMP)(Unit),,76.8
+Pendidikan,1) Negeri(Unit),,23.4
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,70.6
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,80.3
+Pendidikan,2) Swasta(Unit),,24.4
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,91.9
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,76.7
+Pendidikan,5) Sekolah Lanjut Tingkat Atas (SMA)(Unit),,99.8
+Pendidikan,1) Negeri(Unit),,68.7
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,85.6
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,26.8
+Pendidikan,2) Swasta(Unit),,93.6
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,93.1
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,77.3
+Pendidikan,6) Sekolah Lanjut Tingkat Atas (SMK)(Unit),,69.3
+Pendidikan,1) Negeri(Unit),,80.6
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,69.3
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,98.4
+Pendidikan,2) Swasta(Unit),,80.5
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,67.7
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,17.5
+Pendidikan,7) Perguruan Tinggi (PT)(Unit),,88.1
+Pendidikan,1) Negeri(Unit),,97.7
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,52
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,5.9
+Pendidikan,2) Swasta(Unit),,14
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,34.7
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,18.6
+Pendidikan,8) Lembaga Pendidikan Ketrampilan (Unit),,9.5
+Pendidikan,9) Sekolah Menengah Kejuruan (Unit),,92.9
+Pendidikan,10) Akademi atau Program Diploma (Unit),,50.5
+Pendidikan,2) Jumlah Sekolah/Perguruan Agama,,55.3
+Pendidikan,1) Madrasah Ibtidaiyah (MI)(Unit),,37
+Pendidikan,1) Negeri(Unit),,54
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,36.4
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,41.3
+Pendidikan,2) Swasta(Unit),,72.9
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,3.3
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,14.5
+Pendidikan,2) Madrasah Tsanawiyah (MTs)(Unit),,70.2
+Pendidikan,1) Negeri(Unit),,97
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,59.6
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,22.6
+Pendidikan,2) Swasta(Unit),,71.7
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,10.9
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,89.4
+Pendidikan,3) Madrasah Aliyah (MA)(Unit),,4.3
+Pendidikan,1) Negeri(Unit),,12.4
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,2.7
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,15.4
+Pendidikan,2) Swasta(Unit),,34.3
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,35.9
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,48
+Pendidikan,4) P. Tinggi Agama Islam (IAIN/STAIN/UNIV)(Unit),,34
+Pendidikan,1) Negeri(Unit),,3.4
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,24.6
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,60.6
+Pendidikan,2) Swasta(Unit),,75
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,37
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,20.2
+Pendidikan,5) P. Tinggi Agama Kristen/Teologi(Unit),,13.1
+Pendidikan,1) Negeri(Unit),,27.6
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,52.9
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,68
+Pendidikan,2) Swasta(Unit),,11.3
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,71.1
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,83
+Pendidikan,6) P. Tinggi Agama Katolik/Teologi(Unit),,4.9
+Pendidikan,1) Negeri(Unit),,42.5
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,41.7
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,0.8
+Pendidikan,2) Swasta(Unit),,7.5
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,40.2
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,67.7
+Pendidikan,7) P. Tinggi Agama Hindu(Unit),,78.4
+Pendidikan,1) Negeri(Unit),,52.1
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,42.7
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,91.8
+Pendidikan,2) Swasta(Unit),,84.6
+Pendidikan,1) Bangunan Baik (Unit),PERMEN 54,19.1
+Pendidikan,2) Bangunan Tidak Baik (Unit),PERMEN 54,48.4
+Pendidikan,3) Jumlah Kelas,,90.9
+Pendidikan,1) TK dan Sejenisnya (Unit),,66
+Pendidikan,2) SD dan Sejenisnya (Unit),,34.8
+Pendidikan,3) SMP dan Sejenisnya (Unit),,49.2
+Pendidikan,4) SMA dan Sejenisnya (Unit),,23.5
+Pendidikan,5) PT dan Sejenisnya (Unit),,39.2
+Pendidikan,6) Lembaga Pendidikan Ketrampilan (Unit),,52.3
+Pendidikan,7) Sekolah Menengah Kejuruan (SMK) (Unit),,39.5
+Pendidikan,4) Jumlah Siswa / Mahasiswa,,55.6
+Pendidikan,1) Taman Kanak-Kanak (TK)(Orang),,5.4
+Pendidikan,1) Negeri (Orang),PERMEN 54,48.7
+Pendidikan,2) Swasta (Orang),PERMEN 54,57.1
+Pendidikan,2) Taman Penitipan Anak (TPA)(Orang),,26
+Pendidikan,1) Negeri(Orang),PERMEN 54,41.8
+Pendidikan,2) Swasta (Orang),PERMEN 54,65.5
+Pendidikan,3) Sekolah Luar Biasa (SLB)(Orang),,19.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,94.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,52.9
+Pendidikan,4) Sekolah Dasar (SD)(Orang),,31.7
+Pendidikan,1) Negeri (Orang),PERMEN 54,37.3
+Pendidikan,2) Swasta (Orang),PERMEN 54,22.7
+Pendidikan,5) Sekolah Lanjutan Tingkat Pertama (SMP)(Orang),,31
+Pendidikan,1) Negeri (Orang),PERMEN 54,79
+Pendidikan,2) Swasta (Orang),PERMEN 54,31.4
+Pendidikan,6) Sekolah Menengah Atas (SMA)(Orang),,74.6
+Pendidikan,1) Negeri (Orang),PERMEN 54,50
+Pendidikan,2) Swasta (Orang),PERMEN 54,70.6
+Pendidikan,7) Sekolah Menengah Kejuruan (SMK)(Orang),,4.4
+Pendidikan,1) Negeri (Orang),PERMEN 54,66.2
+Pendidikan,2) Swasta (Orang),PERMEN 54,21.8
+Pendidikan,8) Perguruan Tinggi (PT)(Orang),,5.3
+Pendidikan,1) Negeri (Orang),PERMEN 54,94.2
+Pendidikan,2) Swasta (Orang),PERMEN 54,38.3
+Pendidikan,9) Lembaga Pendidikan Ketrampilan (Orang),,93
+Pendidikan,5) Jumlah Guru dengan Kualifikasi S1/D-IV(Orang),,57.6
+Pendidikan,1) Sekolah Dasar (SD) Sederajat (Orang),PERMEN 54,30.9
+Pendidikan,2) Sekolah Lanjutan Tingkat Pertama (SMP) Sederajat (Orang),PERMEN 54,32
+Pendidikan,3) Sekolah Menengah Atas (SMA) Sederajat (Orang),PERMEN 54,69
+Pendidikan,6) Jumlah Guru dan Dosen,,81
+Pendidikan,1) Taman Kanak-Kanak (TK)(Orang),,67.5
+Pendidikan,1) Negeri (Orang),PERMEN 54,20.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,7.3
+Pendidikan,2) Sekolah Luar Biasa (SLB)(Orang),,71
+Pendidikan,1) Negeri (Orang),PERMEN 54,27.1
+Pendidikan,2) Swasta (Orang),PERMEN 54,29.2
+Pendidikan,3) Sekolah Dasar (SD)(Orang),,3.3
+Pendidikan,1) Negeri (Orang),PERMEN 54,1.8
+Pendidikan,2) Swasta (Orang),PERMEN 54,81.9
+Pendidikan,4) Sekolah Lanjutan Tingkat Pertama (SMP)(Orang),,42
+Pendidikan,1) Negeri (Orang),PERMEN 54,21.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,16.4
+Pendidikan,5) Sekolah Menengah Atas (SMA)(Orang),,18.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,41.1
+Pendidikan,2) Swasta (Orang),PERMEN 54,69.1
+Pendidikan,6) Sekolah Menengah Kejuruan (SMK)(Orang),,42.3
+Pendidikan,1) Negeri (Orang),PERMEN 54,12.3
+Pendidikan,2) Swasta (Orang),PERMEN 54,14
+Pendidikan,7) Perguruan Tinggi (PT)(Orang),,94.9
+Pendidikan,1) Negeri (Orang),PERMEN 54,89.3
+Pendidikan,2) Swasta (Orang),PERMEN 54,50.8
+Pendidikan,8) Lembaga Pendidikan Ketrampilan (Orang),,76
+Pendidikan,7) Jumlah Guru Per Kelas,,21.3
+Pendidikan,1) Taman Kanak-Kanak (TK)(Orang),,83.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,82.4
+Pendidikan,2) Swasta (Orang),PERMEN 54,13.2
+Pendidikan,2) Sekolah Luar Biasa (SLB)(Orang),,27.6
+Pendidikan,1) Negeri (Orang),PERMEN 54,83.3
+Pendidikan,2) Swasta (Orang),PERMEN 54,95.1
+Pendidikan,3) Sekolah Dasar (SD)(Orang),,67.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,73.8
+Pendidikan,2) Swasta (Orang),PERMEN 54,96
+Pendidikan,4) Sekolah Lanjutan Tingkat Pertama (SMP)(Orang),,35.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,7
+Pendidikan,2) Swasta (Orang),PERMEN 54,28.5
+Pendidikan,5) Sekolah Menengah Atas (SMA)(Orang),,29.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,66.6
+Pendidikan,2) Swasta (Orang),PERMEN 54,23.4
+Pendidikan,6) Sekolah Menengah Kejuruan (SMK)(Orang),,4.7
+Pendidikan,1) Negeri (Orang),PERMEN 54,80
+Pendidikan,2) Swasta (Orang),PERMEN 54,66.6
+Pendidikan,7) Madrasah Ibtidaiyah (MI)(Orang),,52.1
+Pendidikan,1) Negeri (Orang),PERMEN 54,87.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,88.9
+Pendidikan,8) Madrasah Tsanawiyah (MTs)(Orang),,25.5
+Pendidikan,1) Negeri (Orang),PERMEN 54,31.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,65.1
+Pendidikan,9) Madrasah Aliyah (MA)(Orang),,9
+Pendidikan,1) Negeri (Orang),PERMEN 54,10
+Pendidikan,2) Swasta (Orang),PERMEN 54,41.3
+Pendidikan,8) Jumlah Siswa / Mahasiswa Perguruan Agama,,42.6
+Pendidikan,1) Raudatul Athfal (RA)(Orang),,56
+Pendidikan,1) Negeri (Orang),PERMEN 54,66.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,29.1
+Pendidikan,2) Madrasah Ibtidaiyah (MI)(Orang),,54.3
+Pendidikan,1) Negeri (Orang),PERMEN 54,4
+Pendidikan,2) Swasta (Orang),PERMEN 54,8.8
+Pendidikan,3) Madrasah Tsanawiyah (MTs)(Orang),,1.7
+Pendidikan,1) Negeri (Orang),PERMEN 54,64
+Pendidikan,2) Swasta (Orang),PERMEN 54,58.7
+Pendidikan,4) Madrasah Aliyah (MA)(Orang),,96.9
+Pendidikan,1) Negeri (Orang),PERMEN 54,33.7
+Pendidikan,2) Swasta (Orang),PERMEN 54,11.6
+Pendidikan,5) P. Tinggi Agama Islam (IAIN/STAIN/UNIV)(Orang),,86.6
+Pendidikan,1) Negeri (Orang),PERMEN 54,30.2
+Pendidikan,2) Swasta (Orang),PERMEN 54,92.2
+Pendidikan,6) P. Tinggi Agama Kristen/Teologi(Orang),,90.8
+Pendidikan,1) Negeri (Orang),PERMEN 54,20.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,40
+Pendidikan,7) P. Tinggi Agama Katolik/Teologi(Orang),,60.8
+Pendidikan,1) Negeri (Orang),PERMEN 54,29.6
+Pendidikan,2) Swasta (Orang),PERMEN 54,24.2
+Pendidikan,8) P. Tinggi Agama Hindu(Orang),,91.4
+Pendidikan,1) Negeri (Orang),PERMEN 54,32.1
+Pendidikan,2) Swasta (Orang),PERMEN 54,31.5
+Pendidikan,9) Jumlah Guru dan Dosen Perguruan Agama,,36.3
+Pendidikan,1) Madrasah Ibtidaiyah (MI)(Orang),,13.4
+Pendidikan,1) Negeri (Orang),PERMEN 54,92.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,86.5
+Pendidikan,2) Madrasah Tsanawiyah (MTs)(Orang),,77
+Pendidikan,1) Negeri (Orang),PERMEN 54,78.5
+Pendidikan,2) Swasta (Orang),PERMEN 54,30.2
+Pendidikan,3) Madrasah Aliyah (MA)(Orang),,23.7
+Pendidikan,1) Negeri (Orang),PERMEN 54,63.6
+Pendidikan,2) Swasta (Orang),PERMEN 54,10.3
+Pendidikan,4) P. Tinggi Agama Islam (IAIN/STAIN/UNIV)(Orang),,97.9
+Pendidikan,1) Negeri (Orang),PERMEN 54,15.9
+Pendidikan,2) Swasta (Orang),PERMEN 54,22.3
+Pendidikan,5) P. Tinggi Agama Kristen/Teologi(Orang),,40.2
+Pendidikan,1) Negeri (Orang),PERMEN 54,40.6
+Pendidikan,2) Swasta (Orang),PERMEN 54,32.1
+Pendidikan,6) P. Tinggi Agama Katolik/Teologi(Orang),,67.5
+Pendidikan,1) Negeri (Orang),PERMEN 54,16.9
+Pendidikan,2) Swasta (Orang),PERMEN 54,45.7
+Pendidikan,7) P. Tinggi Agama Budha(Orang),,29.3
+Pendidikan,1) Negeri (Orang),PERMEN 54,20.6
+Pendidikan,2) Swasta (Orang),PERMEN 54,92.4
+Pendidikan,8) P. Tinggi Agama Hindu(Orang),,17.5
+Pendidikan,1) Negeri (Orang),PERMEN 54,37.4
+Pendidikan,2) Swasta (Orang),PERMEN 54,31.7
+Pendidikan,10) Angka Partisipasi Sekolah,,93.5
+Pendidikan,1) 7 - 12 Tahun (%),PERMEN 54,73.9
+Pendidikan,2) 13 - 15 Tahun (%),PERMEN 54,38.7
+Pendidikan,3) 16 - 18 Tahun (%),PERMEN 54,9.8
+Pendidikan,11) Angka Partisipasi Sekolah Usia Di Bawah 7 Tahun,,39.6
+Pendidikan,1) Jenjang Prasekolah (%),,12.7
+Pendidikan,2) Jenjang SD/MI/Sederajat (%),,38
+Pendidikan,12) Angka Partisipasi Kasar,,55.6
+Pendidikan,1) Jenjang SD/MI/Sederajat (%),,94.7
+Pendidikan,2) Jenjang SMP/MTs/Sederajat (%),,51.1
+Pendidikan,13) Angka Partisipasi Murni,,36.6
+Pendidikan,1) Jenjang SD/MI/Paket A (%),,34.3
+Pendidikan,2) Jenjang SMP/MTs/Paket B (%),,34.1
+Pendidikan,3) Jenjang SMA/SMK/MA/Paket C (%),,29.3
+Pendidikan,4) Jenjang Perguruan Tinggi (%),,91.9
+Pendidikan,14) Rata-Rata Lama Sekolah (Tahun),PERMEN 54,20.7
+Pendidikan,15) Angka Putus Sekolah,,60.4
+Pendidikan,1) APS SD/MI(%),,3.9
+Pendidikan,1) Jumlah capaian kinerja APS SD/MI (%),PERMEN 54,40.9
+Pendidikan,2) Jumlah seluruh APS SD/MI (%),PERMEN 54,9.3
+Pendidikan,2) APS SMP/MTS(%),,74.6
+Pendidikan,1) Jumlah capaian kinerja APS SMP/MTS (%),PERMEN 54,24.2
+Pendidikan,2) Jumlah seluruh APS SMP/MTS (%),PERMEN 54,97.7
+Pendidikan,3) APS SMA/SMK/MA(%),,78.8
+Pendidikan,1) Jumlah capaian kinerja APS SMA/SMK/MA (%),PERMEN 54,7
+Pendidikan,2) Jumlah seluruh APS SMA/SMK/MA (%),PERMEN 54,91.6
+Pendidikan,16) Angka Kelulusan(Orang),,26.7
+Pendidikan,1) Jumlah lulusan pada jenjang SD/MI (Orang),PERMEN 54,30.4
+Pendidikan,2) Jumlah lulusan pada jenjang SMP/MTs (Orang),PERMEN 54,96.2
+Pendidikan,3) Jumlah lulusan pada jenjang SMA/SMK/MA (Orang),PERMEN 54,40.1
+Pendidikan,17) Angka Buta Huruf (%),,88.8
+Pendidikan,18) Angka Melek Huruf (%),,55.1
+Pendidikan,19) Jumlah Penduduk Usia 15 Tahun Ke Atas Yang Dapat Membaca dan Menulis (Orang),PERMEN 54,98.2
+Pendidikan,20) Jumlah Capaian Kinerja Penduduk Yang Berusia >15 Tahun Melek Huruf (%),,12.1
+Pendidikan,21) Proporsi Penduduk Usia 15 Tahun Ke Atas Menurut Pendidikan Tertinggi Yang Ditamatkan,,47.5
+Pendidikan,1) TK (Orang),,53.9
+Pendidikan,2) SD (Orang),PERMEN 54,40.5
+Pendidikan,3) SMP (Orang),PERMEN 54,16.8
+Pendidikan,4) SMA (Orang),PERMEN 54,73.3
+Pendidikan,5) PT (Orang),,9.5
+Pendidikan,22) Proporsi Penduduk Yang Tidak Pernah Sekolah(Orang),,95.1
+Pendidikan,1) 6 Tahun (Orang),,1.4
+Pendidikan,2) 7-9 Tahun (Orang),,32.7
+Pendidikan,3) 10 Tahun Ke Atas (Orang),,67.3
+Pendidikan,4) 15 Tahun Ke Atas (Orang),,21.7
+Pendidikan,5) 15-24 Tahun (Orang),,21.5
+Pendidikan,6) 25-44 Tahun (Orang),,54.6
+Pendidikan,7) 45 tahun (Orang),,82.4
+Pendidikan,23) Angka Melanjutkan,,0.7
+Pendidikan,1) Jumlah siswa baru tingkat I pada jenjang SMP/MTs (Orang),PERMEN 54,95.9
+Pendidikan,2) Jumlah siswa baru tingkat I pada jenjang SMA/SMK/MA (Orang),PERMEN 54,17.4
+Pendidikan,3) Jumlah siswa baru tingkat I pada jenjang Perguruan Tinggi (Orang),,1.6
+Pendidikan,24) Jumlah Siswa Miskin(Orang),,67.4
+Pendidikan,1) Jenjang SD/MI/Sederajat (Orang),,95
+Pendidikan,2) Jenjang SMP/MTs/Sederajat (Orang),,27.2
+Pendidikan,3) Jenjang SMA/SMK/MA Sederajat (Orang),,58.6
+Pendidikan,4) Jenjang Perguruan Tinggi (Orang),,74.8
+Pendidikan,25) Jumlah Sekolah Yang Menyediakan Mata Pelajaran Teknologi Informasi dan Komunikasi (Unit),,73.9
+Pendidikan,26) Jumlah Sekolah Yang Memiliki Fasilitas/Laboratorium Komputer dan Internet (Unit),,57.1
+Pendidikan,27) Jumlah Penduduk Berdasarkan kelompok Usia Yang Bersekolah(Orang),,18
+Pendidikan,1) 4 - 6 Tahun (PAUD) (Orang),,90.1
+Pendidikan,2) 7 - 12 Tahun (SD/MI/Sederajat) (Orang),,87.8
+Pendidikan,3) 13 - 15 Tahun (SMP/MTs/Sederajat) (Orang),,73.1
+Pendidikan,4) 16 - 18 Tahun (SMA/SMK/MA Sederajat) (Orang),,81.9
+Pendidikan,28) Kelengkapan pemilikan buku pelajaran oleh siswa,,79.9
+Pendidikan,1) SD/MI/Sederajat (%),,15.1
+Pendidikan,2) SMP/MTs/Sederajat (%),,21.9
+Pendidikan,3) SMA/MA (%),,32.7
+Pendidikan,4) SMK (%),,32.9
+Pendidikan,29) Jumlah lulusan yang melanjutkan ke,,13.4
+Pendidikan,1) SMP/MTs/Sederajat (%),,57.1
+Pendidikan,2) SMA/MA (%),,91.5
+Pendidikan,3) SMK (%),,34.5
+Pendidikan,30) Kualifikasi guru yang sesuai kompetensi yang ditetapkan secara nasional,,36.6
+Pendidikan,1) SD/MI/Sederajat (%),,40.6
+Pendidikan,2) SMP/MTs/Sederajat (%),,80.6
+Pendidikan,3) SMA/MA (%),,95.6
+Pendidikan,4) SMK (%),,82.6
+Pendidikan,31) Pemenuhan jumlah guru yang diperlukan,,28.4
+Pendidikan,1) SD/MI/Sederajat (%),,95.4
+Pendidikan,2) SMP/MTs/Sederajat (%),,56.6
+Pendidikan,3) SMA/MA (%),,5.1
+Pendidikan,4) SMK (%),,22
+Pendidikan,32) Kepemilikan sekolah terhadap tenaga kependidikan non guru,,30.3
+Pendidikan,1) SMP/MTs/Sederajat (%),,25.1
+Pendidikan,2) SMA/MA (%),,26.2
+Pendidikan,3) SMK (%),,84.5
+Pendidikan,33) Jumlah sekolah yang memiliki tenaga kependidikan non guru,,76.6
+Pendidikan,34) Jumlah lulusan SMK melanjutkan ke Perguruan Tinggi yang terakreditasi (siswa),,23.2
+Pendidikan,35) Jumlah lulusan yang diterima di dunia kerja sesuai dengan keahliannya. (siswa),,41.4

@@ -1,0 +1,97 @@
+elemen,indikator,defenisi,nilai
+Lingkungan_Hidup,1) Lingkungan Hidup *,,61.8
+Lingkungan_Hidup,1) Jumlah Kawasan Lindung *,,81.8
+Lingkungan_Hidup,1) Taman Nasional (Buah),,18
+Lingkungan_Hidup,2) Cagar Alam (Buah),,54.1
+Lingkungan_Hidup,3) Hutan Suaka Alam (Buah),,99.9
+Lingkungan_Hidup,4) Hutan Lindung (Buah),,33.3
+Lingkungan_Hidup,5) Cagar Budaya (Buah),,45.8
+Lingkungan_Hidup,6) Taman Hutan Raya (Buah),,36.7
+Lingkungan_Hidup,7) Kebun Raya (Buah),,39.1
+Lingkungan_Hidup,8) Taman Kehati(Buah),,5.6
+Lingkungan_Hidup,2) Pencemaran *(Buah),,48.6
+Lingkungan_Hidup,1) Tanah (Ha),,30.1
+Lingkungan_Hidup,2) Air (Ha),,81.1
+Lingkungan_Hidup,3) Udara (Ha),,78.6
+Lingkungan_Hidup,4) Laut (Ha),,11.7
+Lingkungan_Hidup,3) Plasma Nutfah dilindungi *,,58.6
+Lingkungan_Hidup,1) Hewan (Jenis),,53.2
+Lingkungan_Hidup,2) Tumbuhan (Jenis),,97.9
+Lingkungan_Hidup,4) Plasma Nutfah Terancam Punah *,,39.3
+Lingkungan_Hidup,4) Hewan (Jenis),,70
+Lingkungan_Hidup,2) Tumbuhan (Jenis),,47.2
+Lingkungan_Hidup,5) Plasma Nutfah Endemik *,,39.3
+Lingkungan_Hidup,1) Hewan (Jenis),,82.7
+Lingkungan_Hidup,2) Tumbuhan (Jenis),,60.6
+Lingkungan_Hidup,6) Terumbu Karang *,,45.1
+Lingkungan_Hidup,1) Luas Terumbu Karang (Ha),,41.1
+Lingkungan_Hidup,2) Kondisi Terumbu Karang *,,11.9
+Lingkungan_Hidup,1) Baik Sekali (75-100%) (Ha),,71
+Lingkungan_Hidup,"2) Baik (50-74,9%) (Ha)",,92.4
+Lingkungan_Hidup,"3) Sedang (25-49,5%) (Ha)",,75.7
+Lingkungan_Hidup,"4) Buruk (0-24,9%) (Ha)",,36.2
+Lingkungan_Hidup,7) Hutan Bakau *,,29.9
+Lingkungan_Hidup,1) Luas Hutan Bakau (Ha),,6
+Lingkungan_Hidup,2) Kondisi Hutan Bakau *,,51.8
+Lingkungan_Hidup,1) Baik (Ha),,51
+Lingkungan_Hidup,2) Sedang (Ha),,10.4
+Lingkungan_Hidup,3) Rusak (Ha),,57.3
+Lingkungan_Hidup,8) Hutan Padang Lamun *,,51
+Lingkungan_Hidup,1) Luas Hutan Padang Lamun (Ha),,22.2
+Lingkungan_Hidup,2) Kondisi Hutan Padang Lamun *(Ha),,55.8
+Lingkungan_Hidup,1) Baik (Ha),,21
+Lingkungan_Hidup,2) Sedang (Ha),,21.5
+Lingkungan_Hidup,3) Rusak (Ha),,95.1
+Lingkungan_Hidup,9) Rencana Perlindungan dan Pengelolaan Lingkungan Hidup (RPPLH) *(Nomor Perda),,22.1
+Lingkungan_Hidup,10) Kajian Lingkungan Hidup Strategis,,51.3
+Lingkungan_Hidup,1) RTRW(SK Nomor),,98.9
+Lingkungan_Hidup,2) RPJPD(SK Nomor),,53.2
+Lingkungan_Hidup,3) RPJMD(SK Nomor),,10.6
+Lingkungan_Hidup,11) Jumlah izin lingkungan yang diterbitkan(Buah),,63.2
+Lingkungan_Hidup,12) Jumlah izin lingkungan yang diterbitkan(Dokumen),,81.6
+Lingkungan_Hidup,13) Jumlah penetapan Masyarakat Hukum Adat(Buah),,3.5
+Lingkungan_Hidup,14) Jumlah penetapan Masyarakat Hukum Adat(Kelompok),,98
+Lingkungan_Hidup,"15) Jumlah penyelenggaraan pendidikan, latihan dan penyuluhan lingkungan hidup(Buah)",,24.2
+Lingkungan_Hidup,"16) Jumlah penyelenggaraan pendidikan, latihan dan penyuluhan lingkungan hidup(Kali/Lokasi)",,59.7
+Lingkungan_Hidup,17) Jumlah TPA/TPST Regional (Buah),,82.9
+Lingkungan_Hidup,18) Jumlah Pembinaan dan Pengawasan Limbah Domestik di TPA/TPST Regional (kali),,43.3
+Lingkungan_Hidup,19) Jumlah izin pengelolaan sampah(Buah),,71.2
+Lingkungan_Hidup,20) Jumlah Timbulan Sampah(Buah),,51.5
+Lingkungan_Hidup,2) Kerusakan Lingkungan Hidup *,,11.5
+Lingkungan_Hidup,1) Intrusi Air Laut (Ha),,2.5
+Lingkungan_Hidup,2) Abrasi Pantai (Ha),,8.3
+Lingkungan_Hidup,3) Reklamasi Batu Bara (Ha),,53.1
+Lingkungan_Hidup,4) Erosi (Ha),,41.3
+Lingkungan_Hidup,5) Banjir (Ha),,40.2
+Lingkungan_Hidup,6) Gempa Bumi (Ha),,79.5
+Lingkungan_Hidup,7) Tsunami (Ha),,11.9
+Lingkungan_Hidup,8) Badai (Ha),,61.6
+Lingkungan_Hidup,9) Kawasan Hutan **(Ha),,91.4
+Lingkungan_Hidup,1) Kebakaran Hutan (Ha),,67.7
+Lingkungan_Hidup,2) Deforestasi (Penggundulan Hutan) (Ha),,11.7
+Lingkungan_Hidup,10) Area Penambangan Liar (Ha),,28.8
+Lingkungan_Hidup,11) Kekeringan (Ha),,0.3
+Lingkungan_Hidup,12) Lainnya (Ha),,12.9
+Lingkungan_Hidup,3) Pelestarian Lingkungan Hidup *,,89.2
+Lingkungan_Hidup,1) Peremajaan Terumbu Karang (Ha),,69.4
+Lingkungan_Hidup,2) Penanaman Hutan Bakau (Ha),,62.6
+Lingkungan_Hidup,3) Reboisasi (Ha),,4.6
+Lingkungan_Hidup,4) Penghijauan **(Ha),,85.1
+Lingkungan_Hidup,1) Jumlah Penghijauan Wilayah Rawan Longsor dan Sumber Mata Air (Ha),,20.8
+Lingkungan_Hidup,2) Jumlah Kasus Lingkungan Yang Diselesaikan Pemda (Kasus),,63.6
+Lingkungan_Hidup,3) Jumlah Kasus Lingkungan Yang Ada (Kasus),,55.3
+Lingkungan_Hidup,5) Rehabilitasi Hutan dan Lahan Kritis (Ha),,41.9
+Lingkungan_Hidup,6) Penambangan Liar Yang Ditertibkan (Ha),,21.2
+Lingkungan_Hidup,4) Perubahan Iklim *,,10.7
+Lingkungan_Hidup,1) Rencana Aksi Daerah Penurunan Emisi GRK (Pergub nomor),,12.9
+Lingkungan_Hidup,2) Rencana Aksi Daerah Adaptasi Perubahan Iklim,,15.9
+Lingkungan_Hidup,3) Target Penurunan Emisi GRK sampai dengan tahun 2020(Prosentase %),,23.2
+Lingkungan_Hidup,4) Target Penurunan Emisi GRK sampai dengan tahun 2020(%),,53
+Lingkungan_Hidup,5) Target Penurunan Emisi GRK per tahun(Prosentase %),,70.7
+Lingkungan_Hidup,6) Target Penurunan Emisi GRK per tahun(%),,49.5
+Lingkungan_Hidup,5) Sarana pengendalian Lingkungan Hidup *,,29.7
+Lingkungan_Hidup,1) Laboratorium penelitian lingkungan (Unit),,99
+Lingkungan_Hidup,2) Pengumpul limbah B3(Unit),,31
+Lingkungan_Hidup,3) Penyimpanan sementara limbah B3(Unit),,5.1
+Lingkungan_Hidup,4) Pusat Evakuasi Bencana (Unit),,9.7
+Lingkungan_Hidup,5) Sarana monitoring polusi udara (Unit),,71.7

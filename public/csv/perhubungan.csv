@@ -1,0 +1,129 @@
+elemen,indikator,defenisi,nilai
+Perhubungan,1) Perhubungan *,,17.2
+Perhubungan,1) Transportasi Darat *,,92.7
+Perhubungan,1) Angkutan Darat *,,77.3
+Perhubungan,1) Jumlah Barang yang Terangkut Angkutan Umum (Ton),PERMEN 54,43.5
+Perhubungan,2) Jumlah Angkutan Darat (Unit),PERMEN 54,68.2
+Perhubungan,2) Terminal Penumpang *,,51.3
+Perhubungan,1) Jumlah Terminal Tipe A(Unit),,31.5
+Perhubungan,2) Jumlah Terminal Tipe B (Unit),,76.9
+Perhubungan,3) Jumlah Terminal Tipe C(Unit),,31.1
+Perhubungan,4) Jumlah Penumpang yang Melalui Terminal (Orang),,85.7
+Perhubungan,5) Jumlah Trayek Antar Kota Antar Provinsi(trayek),,51.6
+Perhubungan,6) Jumlah Trayek Antar Kota dalam Provinsi(trayek),,66
+Perhubungan,7) Jumlah Trayek Angkutan Kota(trayek),,34.6
+Perhubungan,8) Jumlah Trayek Angkutan Perdesaan(trayek),,51.5
+Perhubungan,9) Jumlah Trayek Lintas Batas Negara(trayek),,9.7
+Perhubungan,10) Jumlah Penumpang yang Melalui Terminal (Buah),,30
+Perhubungan,11) Jumlah Barang yang Melalui Terminal (Unit),,23
+Perhubungan,12) Jumlah Barang yang Melalui Terminal (Ton),,40.9
+Perhubungan,13) Terminal Darat **(Unit),,31.6
+Perhubungan,1) Jumlah Terminal Terminal Barang (Kali),,9.5
+Perhubungan,2) Jumlah Terminal Penumpang (unit),,23.4
+Perhubungan,3) Jumlah Frekuensi perjalanan angkutan umum(kali),,3.7
+Perhubungan,4) Jumlah Rute perjalanan angkutan umum(kali),,52.6
+Perhubungan,3) Angkutan Tidak Dalam Trayek,,81.4
+Perhubungan,1) Jumlah Angkutan Taxi(Unit),,25.6
+Perhubungan,4) Angkutan Penyeberangan *(Unit),,32.3
+Perhubungan,1) Dermaga (Unit),,44
+Perhubungan,2) Komersil (Unit),,48.4
+Perhubungan,3) Perintis (Unit),,38.7
+Perhubungan,4) Kapal Penyeberangan(Unit),,98.4
+Perhubungan,5) Kendaraan Roda Empat (Unit),,60.5
+Perhubungan,6) Jumlah Penumpang yang Melalui Dermaga (Orang),,56.1
+Perhubungan,7) Jumlah Barang yang Melalui Dermaga (Ton),,8.5
+Perhubungan,5) Jumlah (UPPKB) Jembatan Timbang (Buah),,41.3
+Perhubungan,6) Angkutan Kereta Api *,,52.9
+Perhubungan,1) Jumlah Stasiun Kereta Api (Stasiun),PERMEN 54,37.4
+Perhubungan,2) Jumlah Frekuensi perjalanan angkutan kereta api (Kali),PERMEN 54,64.2
+Perhubungan,3) Jumlah Rute perjalanan angkutan kereta api (Rute),,59.7
+Perhubungan,7) Jumlah rambu-rambu (Unit),PERMEN 54,37.3
+Perhubungan,8) Jumlah rambu-rambu yang seharusnya tersedia (Unit),PERMEN 54,91
+Perhubungan,2) Transportasi Laut *,,73.6
+Perhubungan,1) Jumlah Pelabuhan (Unit),PERMEN 54,27.3
+Perhubungan,2) Jumlah Rute (Unit),,69.4
+Perhubungan,3) Jumlah frekuensi penyebrangan(Unit),,23.2
+Perhubungan,4) Jumlah frekuensi penyebrangan(RIT),,53.5
+Perhubungan,5) Pelabuhan Yang Diusahakan *,,97.4
+Perhubungan,1) Peti Kemas (Unit),,51.5
+Perhubungan,2) Semi Peti Kemas (Unit),,41.1
+Perhubungan,3) Non Peti Kemas (Unit),,28.9
+Perhubungan,6) Pelabuhan Yang Tidak Diusahakan *,,26.1
+Perhubungan,1) Pendaratan Ikan (Unit),,42.9
+Perhubungan,2) Kapal (Unit),,17.1
+Perhubungan,3) Penumpang (Orang),,17.5
+Perhubungan,4) Pelni (Unit),,34.4
+Perhubungan,5) Jumlah (Unit),,19.2
+Perhubungan,6) Kapasitas (Buah),,29.6
+Perhubungan,7) Swasta (Buah),,29.7
+Perhubungan,8) Jumlah (Unit),,8.7
+Perhubungan,3) Transportasi Udara *,,43.7
+Perhubungan,1) Jumlah Bandara Umum*,,60
+Perhubungan,1) Internasional (Unit),,29
+Perhubungan,2) Domestik(Unit),,83.6
+Perhubungan,3) Pengumpul(Unit),,85.2
+Perhubungan,4) Pengumpan(Unit),,42.2
+Perhubungan,5) Jumlah Penumpang yang Melalui Bandara (Unit),,24.4
+Perhubungan,6) Jumlah Barang yang Melalui Bandara (Unit),PERMEN 54,0.4
+Perhubungan,7) Jumlah Frekuensi Penerbangan (Unit),,83.8
+Perhubungan,2) Jumlah Bandara Umum*,,30
+Perhubungan,3) Jumlah Maskapai (Unit),,40.6
+Perhubungan,4) Jumlah Penumpang Angkutan **(Unit),,50.9
+Perhubungan,1) Jumlah Penumpang Bis (Unit),PERMEN 54,68
+Perhubungan,2) Jumlah Penumpang Kereta Api (Unit),PERMEN 54,56.5
+Perhubungan,3) Jumlah Penumpang Kapal Laut (Unit),PERMEN 54,12.7
+Perhubungan,4) Jumlah Penumpang Pesawat Udara (Unit),PERMEN 54,62.2
+Perhubungan,2) Angkutan Umum *,,94.8
+Perhubungan,1) Jumlah Angkutan Umum **(Unit),,37.6
+Perhubungan,1) Mobil Penumpang Umum (Unit),PERMEN 54,11.2
+Perhubungan,2) Mobil Bus (Unit),PERMEN 54,96.7
+Perhubungan,3) Mobil Barang (Unit),PERMEN 54,95.2
+Perhubungan,4) Kereta Gandengan (Unit),PERMEN 54,81.4
+Perhubungan,5) Kereta Tempelan (Unit),PERMEN 54,94.6
+Perhubungan,2) Jumlah Ijin Trayek yang Dikeluarkan **(Unit),,95.9
+Perhubungan,1) Izin Trayek antarkota antarprovinsi (Unit),PERMEN 54,67
+Perhubungan,2) Izin Trayek Perkotaan (Unit),PERMEN 54,57.6
+Perhubungan,3) Izin Trayek Pedesaan (Unit),PERMEN 54,0.2
+Perhubungan,3) Jumlah Uji Kir Angkutan Umum **(Unit),,8.7
+Perhubungan,1) Mobil Penumpang Umum (Unit),PERMEN 54,95.3
+Perhubungan,2) Mobil Bus (Unit),PERMEN 54,81.5
+Perhubungan,3) Mobil Barang (Unit),PERMEN 54,89.8
+Perhubungan,4) Kereta Gandengan (Unit),PERMEN 54,12.7
+Perhubungan,5) Kereta Tempelan (Unit),PERMEN 54,13.5
+Perhubungan,4) Lama Pengujian KIR **(Hari),,84.2
+Perhubungan,1) Mobil Penumpang Umum (Hari),PERMEN 54,1.3
+Perhubungan,2) Mobil Bus (Hari),PERMEN 54,65.3
+Perhubungan,3) Mobil Barang (Hari),PERMEN 54,21.8
+Perhubungan,4) Kereta Gandengan (Hari),PERMEN 54,54.4
+Perhubungan,5) Kereta Tempelan (Hari),PERMEN 54,72.3
+Perhubungan,5) Biaya Pengujian KIR **(Rp),,22.6
+Perhubungan,1) Mobil Penumpang Umum (Rp),PERMEN 54,68.8
+Perhubungan,2) Mobil Bus (Rp),PERMEN 54,93.4
+Perhubungan,3) Mobil Barang (Rp),PERMEN 54,13.2
+Perhubungan,4) Kereta Gandengan (Rp),PERMEN 54,93.8
+Perhubungan,5) Kereta Tempelan (Rp),PERMEN 54,19.6
+Perhubungan,3) Pelayanan Transportasi *,,17.8
+Perhubungan,"1) Fasilitas Pendukung Keselamatan (Pengujian, dll) (Unit)",,18
+Perhubungan,"2) Fasilitas Perlengkapan Jalan (halte, trotoar) **(Unit)",,77.3
+Perhubungan,1) Trotoar (Unit),,15.5
+Perhubungan,2) Jalur Sepeda (Unit),,21.5
+Perhubungan,3) Tempat Penyeberangan Pejalan Kaki (Unit),,24.8
+Perhubungan,4) Halte (Unit),,80.8
+Perhubungan,5) Fasilitas Khusus Penyandang Cacat (Unit),,54.1
+Perhubungan,3) Jaringan Jalan dan Perambuan (Unit),,60.1
+Perhubungan,4) Jaringan Pelayanan Angkutan (Unit),,84.9
+Perhubungan,5) Manajemen Rekayasa (Unit),,67.1
+Perhubungan,6) Pelayanan Angkutan (Unit),,34.5
+Perhubungan,7) Penerangan Jalan Lingkungan (Unit),,33.8
+Perhubungan,4) Jumlah Kendaraan Bermotor **(Unit),,19.6
+Perhubungan,1) Mobil Penumpang (Unit),,46.4
+Perhubungan,2) Bus (Unit),,7.6
+Perhubungan,3) Truk (Unit),,69.8
+Perhubungan,4) Sepeda Motor (Unit),,33.4
+Perhubungan,5) Angkutan Rel(Rp Juta),PERMEN 54,73.7
+Perhubungan,6) Angkutan Jalan Raya(Rp Juta),PERMEN 54,96.5
+Perhubungan,7) Angkutan Laut(Rp Juta),PERMEN 54,3.1
+Perhubungan,"8) Angkutan Sungai, Danau, dan Penyeberangan(Rp Juta)",PERMEN 54,42.5
+Perhubungan,9) Angkutan Udara(Rp Juta),PERMEN 54,61.6
+Perhubungan,10) Jasa Pengangkutan(Rp Juta),PERMEN 54,46.5
+Perhubungan,11) Pengangkutan dan Komunikasi(Rp Juta),PERMEN 54,84.3

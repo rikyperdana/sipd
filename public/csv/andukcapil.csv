@@ -1,0 +1,71 @@
+elemen,indikator,defenisi,nilai
+Andukcapil,1) Kependudukan dan Catatan Sipil *,,94.2
+Andukcapil,1) Jumlah penduduk wajib KTP (Orang),PERMEN 54,20.4
+Andukcapil,2) Jumlah penduduk yang memiliki KTP Berdasarkan Jenis Kelamin **(Orang),PERMEN 54,11
+Andukcapil,1) Laki-Laki (Orang),PERMEN 54,76.3
+Andukcapil,2) Wanita (Orang),PERMEN 54,24.7
+Andukcapil,3) Jumlah Penduduk > 17 yang ber-KTP Berdasarkan Jenis Kelamin **(Orang),PERMEN 54,0.5
+Andukcapil,1) Laki-Laki (Orang),PERMEN 54,67.3
+Andukcapil,2) Wanita (Orang),PERMEN 54,4.8
+Andukcapil,4) Jumlah Penduduk >17 yang telah menikah (Orang),[sudah jelas],72
+Andukcapil,5) Jumlah Penduduk Menurut Jenis Kelamin **(Orang),PERMEN 54,7.5
+Andukcapil,1) Laki-Laki (Orang),PERMEN 54,36.8
+Andukcapil,2) Perempuan (Orang),PERMEN 54,13.7
+Andukcapil,6) Jumlah pasangan nikah berakta nikah (Pasang),PERMEN 54,81.5
+Andukcapil,7) Jumlah keseluruhan pasangan nikah (Pasang),PERMEN 54,53.2
+Andukcapil,8) Jumlah Penduduk yang telah memiliki KK (Orang),[sudah jelas],37.3
+Andukcapil,9) Jumlah Penduduk yang telah memiliki Akta Kelahiran (Orang),PERMEN 54,69.4
+Andukcapil,2) Penduduk Memiliki Lahan **(Penduduk),PERMEN 54,37.6
+Andukcapil,1) Pertanian (Penduduk),PERMEN 54,48.6
+Andukcapil,2) Non Pertanian (Penduduk),PERMEN 54,53.7
+Andukcapil,3) Jumlah Keluarga Berdasarkan Mata Pencaharian **(KK),,6.1
+Andukcapil,1) Pertanian (KK),,16.5
+Andukcapil,2) Non Pertanian (KK),,56.6
+Andukcapil,4) Jumlah Penduduk Menurut Usia **(Orang),[sudah jelas],72.5
+Andukcapil,1) 4 - 6 Tahun (Orang),PERMEN 54,9.6
+Andukcapil,2) 7 - 12 Tahun (Orang),PERMEN 54,76.3
+Andukcapil,3) 13 - 15 Tahun (Orang),PERMEN 54,74.5
+Andukcapil,4) 16 - 18 Tahun (Orang),PERMEN 54,57.5
+Andukcapil,5) 19 - 24 Tahun (Orang),PERMEN 54,70.1
+Andukcapil,6) 25 - 29 Tahun (Orang),PERMEN 54,97.9
+Andukcapil,7) 30 -34 Tahun (Orang),PERMEN 54,63.9
+Andukcapil,8) 35 - 39 Tahun (Orang),PERMEN 54,71.2
+Andukcapil,9) 40 - 44 Tahun (Orang),PERMEN 54,32.3
+Andukcapil,10) 45 - 49 Tahun (Orang),PERMEN 54,11.1
+Andukcapil,11) 50 - 54 Tahun (Orang),PERMEN 54,23.4
+Andukcapil,12) 55 - 59 Tahun (Orang),PERMEN 54,14
+Andukcapil,13) 60 - 64 Tahun (Orang),PERMEN 54,76
+Andukcapil,14) > 65 Tahun (Orang),PERMEN 54,43.6
+Andukcapil,5) Rasio Beban Ketergantungan (Dependency Ratio) (%),,48.8
+Andukcapil,6) Kepadatan Penduduk *,,34.7
+Andukcapil,1) Kawasan Perkotaan (Org/km2),". Kawasan Perkotaan adalah wilayah yang mempunyai kegiatan utama bukan pertanian, dengan susunan fungsi Kawasan sebagai tempat permukiman perkotaan, pemusatan dan distribusi pelayanan jasa pemerintahan, pelayanan sosial, dan kegiatan ekonomi. (PERATURAN PEMERINTAH REPUBLIK INDONESIA NOMOR 34 TAHUN 2009 TENTANG PEDOMAN PENGELOLAAN KAWASAN PERKOTAAN)",83.3
+Andukcapil,2) Kawasan Pedesaan (Org/km2),"Kawasan Pedesaan adalah wilayah yang mempunyai kegiatan utama pertanian, termasuk pengelolaan sumber daya alam, dengan susunan fungsi kawasan sebagai tempat permukiman perdesaan, pelayanan jasa pemerintahan, pelayanan sosial, dan kegiatan ekonomi. (MENTERI DALAM NEGERI REPUBLIK INDONESIA PERATURAN MENTERI DALAM NEGERI NOMOR 51 TAHUN 2007 TENTANG PEMBANGUNAN KAWASAN PERDESAAN BERBASIS MASYARAKAT )",49.6
+Andukcapil,7) X. Pertumbuhan Penduduk *,,26
+Andukcapil,1) 1. Laju Pertumbuhan Alamiah Penduduk (%/Tahun) (%),,95.6
+Andukcapil,2) 2. Jumlah Kematian Bayi (Berumur Kurang 1 tahun) (Jiwa),PERMEN 54,3.8
+Andukcapil,3) Angka Kematian Bayi (IMR) (%),,78.9
+Andukcapil,4) Angka Kematian Ibu (MMR) (Jiwa),,0.8
+Andukcapil,5) Tingkat Migrasi (Masuk/Keluar) *,Keimigrasian adalah hal ihwal lalu lintas orang yang masuk atau keluar Wilayah Indonesia serta pengawasannya dalam rangka menjaga tegaknya kedaulatan negara. (UNDANG-UNDANG REPUBLIK INDONESIA NOMOR 6 TAHUN 2011 TENTANG KEIMIGRASIAN),69.8
+Andukcapil,1) Jumlah Migrasi Masuk (Jiwa),,74.6
+Andukcapil,2) Jumlah Migrasi Keluar (Jiwa),,75.2
+Andukcapil,6) Jumlah Kelahiran Hidup (Jiwa),PERMEN 54,90.9
+Andukcapil,7) Rata-rata Anak Yang Dilahirkan Hidup (Jiwa),,32.3
+Andukcapil,8) Rata-rata Anak Yang Masih Hidup (Jiwa),,4.6
+Andukcapil,8) Rata-Rata Angka Harapan Hidup ***(Tahun),PERMEN 54,99.4
+Andukcapil,1) Laki - Laki (Tahun),PERMEN 54,17.4
+Andukcapil,2) Perempuan (Tahun),PERMEN 54,37.5
+Andukcapil,9) Jumlah Penduduk Berdasarkan Tingkat Pendidikan **(Orang),PERMEN 54,27.4
+Andukcapil,1) Tidak Tamat SD (Orang),PERMEN 54,47.3
+Andukcapil,2) Tamat SD (Orang),PERMEN 54,45
+Andukcapil,3) Tamat SMP (Orang),PERMEN 54,38
+Andukcapil,4) Tamat SMA (Orang),PERMEN 54,74.4
+Andukcapil,5) Diploma (Orang),PERMEN 54,4.4
+Andukcapil,6) Sarjana S1 (Orang),PERMEN 54,83.4
+Andukcapil,7) Sarjana S2 (Orang),PERMEN 54,7.9
+Andukcapil,8) Sarjana S3 (Orang),PERMEN 54,99.1
+Andukcapil,10) Keluarga *,,72.5
+Andukcapil,1) Jumlah Keluarga (KK) (KK),"(PERMEN 54) Kartu Keluarga, selanjutnya disingkat KK, adalah kartu identitas keluarga yang memuat data tentang nama, susunan dan hubungan dalam keluarga, serta identitas anggota keluarga.",34.4
+Andukcapil,2) Jumlah Anak (Anak),PERMEN 54,98.8
+Andukcapil,11) Jumlah Rumah Tangga (RT),PERMEN 54,96.7
+Andukcapil,12) Ukuran Rumah Tangga (Orang/RT) (Orang),,97.5
+Andukcapil,13) Jumlah Rumah Tinggal (Unit),,27.9

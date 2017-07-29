@@ -1,0 +1,228 @@
+elemen,indikator,defenisi,nilai
+Perpustakaan,1) Perpustakaan Provinsi,,39.6
+Perpustakaan,1) Komponen Layanan :,,24.1
+Perpustakaan,1) Rata-rata jam buka perpustakaan per hari(Jam),,29.2
+Perpustakaan,2) Jam buka perpustakaan per minggu(Jam),,76.5
+Perpustakaan,3) Jumlah pengunjung yang datang langsung ke perpustakaan rata-rata per hari satu tahun (Orang),PERMEN 54,30.3
+Perpustakaan,4) Jumlah pemustaka mengunjungi perpustakaan secara online per hari satu tahun(Orang),,43.2
+Perpustakaan,5) Jumlah rata-rata buku yang dipinjam per bulan dalam satu tahun(Judul),,83.2
+Perpustakaan,"6) Jenis promosi yang dilaksanakan (misalnya brosur, lomba, pameran, penyebaran daftar buku terbaru, di",,67.5
+Perpustakaan,"7) Jenis promosi berbasis media elektronik (Radio, TV, Web)(Jenis)",,48.4
+Perpustakaan,8) Jumlah promosi perpustakaan per tahun(Kali),,59.4
+Perpustakaan,9) Jumlah titik layanan perpustakaan keliling per minggu(Titik),,83.7
+Perpustakaan,2) Komponen Kerja Sama,,69.8
+Perpustakaan,"1) Jumlah kerjasama pengembangan perpustakaan (Kerjasama dengan sesama perpustakaan, baik di dalam maup",,57.2
+Perpustakaan,2) Jumlah kerja sama pengembangan perpustakaan dengan perpustakaan dan lembaga lain di tingkat nasional,,6.9
+Perpustakaan,3) Jumlah kerja sama pengembangan perpustakaan dengan perpustakaan dan lembaga lain di tingkat interna,,79.1
+Perpustakaan,4) Jumlah perpustakaan yang memperoleh layanan silang layan (interlibrary loan) dari perpustakaan provi,,23
+Perpustakaan,3) Komponen Koleksi,,1.3
+Perpustakaan,1) Jumlah keseluruhan koleksi buku (cetak)( judul),,11.9
+Perpustakaan,2) Jumlah koleksi anak buku (cetak)( judul),,53
+Perpustakaan,3) Jumlah koleksi Remaja/Dewasa buku (cetak)( judul),,10.3
+Perpustakaan,4) Jumlah koleksi referensi buku (cetak)( judul),,89.1
+Perpustakaan,"5) Jumlah koleksi terbitan pemerintah (BPS, BNI, BUMN)( judul )",,22.7
+Perpustakaan,6) Jumlah koleksi muatan lokal( judul ),,36.3
+Perpustakaan,7) Jumlah koleksi untuk dispabel ( judul ),,96.8
+Perpustakaan,8) Prosentasi koleksi nonfiksi dari koleksi seluruhnya(%),,65.2
+Perpustakaan,9) Surat kabar yang dilanggan(judul ),,80.3
+Perpustakaan,10) Tabloid yang dilanggan(judul ),,18.4
+Perpustakaan,11) Majalah yang dilanggan ( judul ),,18.9
+Perpustakaan,12) Koleksi noncetak / Sumber Daya Elektronik( judul),,76.2
+Perpustakaan,13) Koleksi Alat Permainan Edukatif (APE)( jenis),,61.2
+Perpustakaan,14) Prosentase penambahan koleksi per tahun( %),,84.1
+Perpustakaan,15) Homepage/website perpustakaan(Sudah ada),,40.5
+Perpustakaan,16) Stok Opname ( tahun sekali),,33.8
+Perpustakaan,17) Penyiangan (tahun sekali),,58.5
+Perpustakaan,4) Komponen Sumber Daya Manusia,,76.9
+Perpustakaan,1) Status kepala perpustakaan(pegawai tetap non fungsional),,12.3
+Perpustakaan,2) Jenjang pendidikan kepala perpustakaan (S1 atau D IV sarjana terapan),,27.1
+Perpustakaan,3) Jumlah diklat perpustakaan yang pernah diikuti kepala perpustakaan 3 tahun terakhir ( kali),,21.9
+Perpustakaan,"4) Continuing rofessional development kepala perpustakaan (seminar, pelatihan, lokakarya, bimbingan tek",,13.3
+Perpustakaan,5) Jumlah tenaga perpustakaan,,85.8
+Perpustakaan,1) Jumlah Pustakawan(orang),,58.1
+Perpustakaan,2) Jumlah Tenaga Teknis Perpustakaan(orang),,81
+Perpustakaan,6) Jumlah tenaga perpustakaan yang berlatar belakang pendidikan minimal S2/S1/D3/D2 perpustakaan(orang),,10
+Perpustakaan,7) Jumlah tenaga perpustakaan berstatus pustakawan (fungsional)(orang),,14.6
+Perpustakaan,8) Jumlah tenaga fungsional tertentu bidang lainnya(orang),,3.8
+Perpustakaan,9) Jumlah rata-rata diklat perpustakaan yang diikuti tenaga teknis perpustakaan dalam 3 tahun( kal),,24.9
+Perpustakaan,"10) Jumlah rata-rata continuing professional development tenaga teknis perpustakaan (seminar, pelatihan,",,89.1
+Perpustakaan,"11) Jumlah tenaga perpustakaan sebagai anggota profesi (misalnya forum perpustakaan, asosiasi tenaga per",,12.9
+Perpustakaan,"5) Komponen Gedung/Ruang, Sarana dan Prasarana",,19.5
+Perpustakaan,1) Luas Gedung( m2),,41.3
+Perpustakaan,2) Luas ruang/area referensi( m2),,21.8
+Perpustakaan,3) Luas ruang/area koleksi keliling(m2),,46.5
+Perpustakaan,4) Luas ruang/area remaja/dewasa( m2),,35.5
+Perpustakaan,5) Luas ruang/area anak-anak(m2),,37.8
+Perpustakaan,6) Luas ruang/area multimedia dan T.I. ( m2),,20.2
+Perpustakaan,7) Luas ruang/area berkebutuhan khusus ( m2),,84.2
+Perpustakaan,8) Luas ruang/area pengolahan ( m2),,3.1
+Perpustakaan,9) Luas ruang/area kepala perpustakaan( m2),,28.1
+Perpustakaan,10) Luas ruang/area pembinaan( m2),,38.8
+Perpustakaan,11) (termasuk area konsultasi),,17
+Perpustakaan,12) Luas ruang/area tatu usaha( m2),,63
+Perpustakaan,13) Luas ruang/area serba guna(m2),,18
+Perpustakaan,14) Luas ruang/area mushola(m2),,73.4
+Perpustakaan,15) Luas ruang/area gudang( m2),,29.6
+Perpustakaan,16) Luas ruang/area dapur(m2),,38.5
+Perpustakaan,17) Jumlah toilet yang dimiliki(buah ),,26.1
+Perpustakaan,"18) Jumlah fasilitas berkebutuhan khusus yang dimiliki (toilet, tangga, dll)(buah )",,93.2
+Perpustakaan,19) Luas garasi mobil keliling( m2),,44.3
+Perpustakaan,20) Luas tempat parkir( m2),,65.1
+Perpustakaan,21) Kebersihan gedung dan ruangan (Cukup bersih),,48.9
+Perpustakaan,22) Pencahayaan(Cukup terang),,80.5
+Perpustakaan,23) Sirkulasi udara(Cukup baik ),,11.2
+Perpustakaan,"24) Keamanan(Tersedia sarana Petugas jaga, buku tamu)",,81.1
+Perpustakaan,"25) Lokasi perpustakaan(Pusat kota, strategis dan tersedia akses kendaraan )",,72.8
+Perpustakaan,26) Jumlah rak buku standar yang dimiliki( buah),,22.2
+Perpustakaan,27) Jumlah rak buku anak-anak yang dimiliki ( buah ),,59.8
+Perpustakaan,28) Rak Majalah(buah),,42.5
+Perpustakaan,29) Rak surat kabar( buah),,79.1
+Perpustakaan,30) Rak audio visual( buah),,93.4
+Perpustakaan,31) Lemari/rak katalog( buah),,29.4
+Perpustakaan,32) Rak Display buku baru(buah),,65.3
+Perpustakaan,33) Locker/Rak penitipan( buah),,24.9
+Perpustakaan,34) Papan Pengumuman( buah),,97.8
+Perpustakaan,35) Jumlah tempat penyimpanan berkas (lemari/filing kabinet)(Buah),,6.1
+Perpustakaan,36) Meja Baca ( buah),,88.4
+Perpustakaan,37) Meja baca anak-anak(buah),,65.8
+Perpustakaan,38) Meja Sirkulasi( buah),,50.2
+Perpustakaan,39) Meja kerja petugas(orang),,53.4
+Perpustakaan,40) Kursi staf/petugas(orang),,54.8
+Perpustakaan,41) Kursi baca anak( buah),,0.4
+Perpustakaan,42) Kursi baca ( buah),,21.9
+Perpustakaan,43) Jumlah kursi tamu( set ),,5.2
+Perpustakaan,44) Jumlah mesin /alat potong kertas( buah ),,47.3
+Perpustakaan,45) Jumlah Televisi(buah),,44.1
+Perpustakaan,46) VCD dan DVD Player( buah ),,18.9
+Perpustakaan,47) Komputer untuk petugas perpustakaan(buah),,86.1
+Perpustakaan,48) Komputer untuk pemustaka( buah),,38.1
+Perpustakaan,49) Laptop/Notebook( buah ),,51.4
+Perpustakaan,50) Printer( buah ),,59.2
+Perpustakaan,51) LCD proyektor( buah ),,70.8
+Perpustakaan,52) Kamera ( buah ),,82.6
+Perpustakaan,53) Telepon/Fax( buah ),,2.1
+Perpustakaan,54) Kipas Angin( buah ),,8.1
+Perpustakaan,55) AC( buah ),,80.4
+Perpustakaan,56) Kendaraan bermotor roda dua yang dimiliki( unit ),,11.1
+Perpustakaan,57) Kendaraan bermotor roda empat yang dimiliki( unit),,91.2
+Perpustakaan,6) Komponen Anggaran,,66.5
+Perpustakaan,"1) Jumlah anggaran per tahun (APBN, APBD, dana internasional, bantuan luar negeri, donasi)(Rupiah)",,23.8
+Perpustakaan,"2) Jumlah dana partisipasi masyarakat/sumbangan yang tidak mengikat (dana internasional, bantuan luar n",,13.3
+Perpustakaan,7) Komponen Pembinaan Perpustakaan,,14.5
+Perpustakaan,"1) Peraturan yang dihasilkan (Peraturan Daerah, Peraturan Gubernur, Perka Perpustakaan Provinsi) dalam",,61.6
+Perpustakaan,2) Pedoman Penyelenggaraan Perpustakaan yang dihasilkan dalam tiga tahun terakhir(Buah),,35.9
+Perpustakaan,"3) Rapat koordinasi dan sosialisasi dengan seluruh komponen perpustakaan: pemangku kepentingan, penerbi",,47.5
+Perpustakaan,4) Jumlah perpustakaan yang telah dikunjungi dalam rangka pembinaan perpustakaan dalam satu tahun (Perp,,9.7
+Perpustakaan,"5) Jumlah perpustakaan yang memperoleh bantuan stimulan dari perpustakaan provinsi (bantuan buku, rak,",,1.4
+Perpustakaan,6) Jumlah judul buku yang dimuat dalam Bibliografi Daerah yang telah disusun dan dicetak perpustakaan p,,48.8
+Perpustakaan,7) Jumlah judul buku yang dimuat dalam Katalog Induk Daerah yang telah disusun dan dicetak perpustakaan,,30.7
+Perpustakaan,8) Jumlah kegiatan terkait gerakan pemasyarakatan kegemaran membaca dalam satu tahun (Kali),,31.8
+Perpustakaan,"9) Jumlah Organisasi Asosiasi Profesi (IPI Daerah, Forum Perpustakaan, dll.) yang dibina dan telah terb",,17.4
+Perpustakaan,2) Perpustakaan Kab/Kota,,28.4
+Perpustakaan,1) Komponen Layanan,,31.4
+Perpustakaan,1) Rata-rata jam buka perpustakaan per hari( jam ),,18.5
+Perpustakaan,2) Jam buka perpustakaan per minggu( jam ),,68.9
+Perpustakaan,3) Otomasi perpustakaan(Pencatatan dalam buku induk (inventarisasi)),,80.2
+Perpustakaan,"4) Layanan yang diberikan perpustakaan(layanan baca ditempat, sirkulasi, dan penelusuran informasi. )",,33.4
+Perpustakaan,5) Jumlah rata-rata buku yang dipinjam per bulan dalam satu tahun( judul),,49.3
+Perpustakaan,"6) Jenis promosi yang pernah dilaksanakan (misalnya brosur, lomba, pameran, penyebaran daftar buku terb",,95.9
+Perpustakaan,7) Jumlah promosi perpustakaan per tahun(kali ),,7
+Perpustakaan,8) Jumlah titik layanan perpustakaan keliling per minggu( titik),,87.9
+Perpustakaan,2) Komponen Kerja Sama,,18.1
+Perpustakaan,"1) Jumlah kerja sama pengembangan perpustakaan (Kerjasama dengan sesama perpustakaan, baik di dalam mau",,28.6
+Perpustakaan,3) Komponen Koleksi,,53.2
+Perpustakaan,1) Jumlah keseluruhan koleksi buku (cetak)( judul),PERMEN 54,55.6
+Perpustakaan,2) Jumlah koleksi anak buku (cetak)( judul),,73.5
+Perpustakaan,3) Jumlah koleksi Remaja/Dewasa buku (cetak)( judul),,86.7
+Perpustakaan,4) Jumlah koleksi referensi buku (cetak)(judul),,50.9
+Perpustakaan,5) Jumlah koleksi muatan lokal( judul ),,46.3
+Perpustakaan,6) Prosentasi koleksi nonfiksi dari koleksi seluruhnya( %),,27.3
+Perpustakaan,7) Surat kabar yang dilanggan(judul),,69.2
+Perpustakaan,8) Tabloid yang dilanggan(judul ),,73.1
+Perpustakaan,9) Majalah yang dilanggan ( judul ),,68.5
+Perpustakaan,10) Koleksi noncetak / Sumber Daya Elektronik(judul),,39
+Perpustakaan,11) Koleksi mainan anak(jenis),,49.5
+Perpustakaan,12) Prosentase penambahan koleksi per tahun( %),,47.6
+Perpustakaan,13) Homepage/website perpustakaan(Sudah ada),,57
+Perpustakaan,14) Stok Opname (tahun sekali),,2.3
+Perpustakaan,15) Penyiangan (tahun sekali ),,95.2
+Perpustakaan,4) Komponen Pengorganisasian Bahan Perpustakaan,,7.4
+Perpustakaan,"1) Jumlah alat seleksi bahan perpustakaan (masukan dari pemustaka, timbangan buku, bibliografi, anotasi",,67.6
+Perpustakaan,"2) Pengolahan buku/monografi(Inventarisasi, klasifikasi, pengatalogan (manual), labelling )",,55.2
+Perpustakaan,"3) Kelengkapan buku(kartu katalog, kantong kartu buku, slip tanggal kembali, label buku)",,33.6
+Perpustakaan,5) Komponen Sumber Daya Manusia,,12.5
+Perpustakaan,1) Status kepala perpustakaan(pegawai tetap non fungsional),,69.6
+Perpustakaan,2) Jenjang pendidikan kepala perpustakaan (S2/S1 perpustakaan),,74.8
+Perpustakaan,3) Jumlah diklat perpustakaan yang pernah diikuti kepala perpustakaan (kali),,37.7
+Perpustakaan,"4) Continuing profesional development kepala perpustakaan (seminar, pelatihan, lokakarya, bimbingan tek",,42.7
+Perpustakaan,5) Jumlah tenaga perpustakaan,,61.9
+Perpustakaan,1) Jumlah Pustakawan(orang),,66.4
+Perpustakaan,2) Jumlah Tenaga Teknis Perpustakaan(orang),,25.1
+Perpustakaan,6) Jumlah tenaga perpustakaan yang berlatar belakang pendidikan minimal S2/S1/D3/D2 perpustakaan(orang),,24.1
+Perpustakaan,7) Jumlah tenaga perpustakaan berstatus pustakawan (fungsional)(orang),,73.3
+Perpustakaan,8) Jumlah rata-rata diklat perpustakaan yang diikuti tenaga tetap perpustakaan dalam 3 tahun( kali),,34
+Perpustakaan,"9) Jumlah rata-rata continuing profesional development tenaga tetap perpustakaan (seminar, pelatihan, l",,34.4
+Perpustakaan,"10) Jumlah tenaga perpustakaan sebagai anggota profesi (misalnya forum perpustakaan, asosiasi tenaga per",,57.8
+Perpustakaan,"6) Komponen Gedung/Ruang, Sarana dan Prasarana",,82.7
+Perpustakaan,1) Luas Gedung( m2),,8.1
+Perpustakaan,2) Luas ruang/area referensi( m2),,25.1
+Perpustakaan,3) Luas ruang/area koleksi keliling( m2),,20
+Perpustakaan,4) Luas ruang/area remaja/dewasa( m2),,13.6
+Perpustakaan,5) Luas ruang/area anak-anak( m2),,65.2
+Perpustakaan,6) Luas ruang/area multimedia dan T.I. ( m2),,85.6
+Perpustakaan,7) Luas ruang/area pengolahan ( m2),,67.9
+Perpustakaan,8) Luas ruang/area kepala perpustakaan(m2),,3.2
+Perpustakaan,9) Luas ruang/area pembinaan( m2),,12.1
+Perpustakaan,10) Luas ruang/area tatu usaha( m2),,19.5
+Perpustakaan,11) Luas ruang/area serba guna( m2),,14
+Perpustakaan,12) Luas ruang/area mushola(m2),,37
+Perpustakaan,13) Luas ruang/area gudang( m2),,68.3
+Perpustakaan,14) Luas ruang/area dapur( m2),,64.1
+Perpustakaan,15) Jumlah toilet yang dimiliki(buah ),,81.1
+Perpustakaan,16) Luas garasi mobil keliling( m2),,42.4
+Perpustakaan,17) Luas tempat parkir( m2),,71
+Perpustakaan,18) Kebersihan gedung dan ruangan (Cukup bersih),,62.2
+Perpustakaan,19) Pencahayaan(Cukup terang),,72
+Perpustakaan,20) Sirkulasi udara(Cukup baik),,77.4
+Perpustakaan,"21) Keamanan(Untuk keamanan tersedia sarana Petugas jaga, buku tamu)",,85.4
+Perpustakaan,22) Lokasi perpustakaan(Pusat kota tetapi kurang strategis dan akses kendaraan terbatas),,47.3
+Perpustakaan,23) Jumlah rak buku standar yang dimiliki( buah),,82.6
+Perpustakaan,24) Jumlah rak buku anak-anak yang dimiliki ( buah),,23.2
+Perpustakaan,25) Rak Majalah(buah),,13.1
+Perpustakaan,26) Rak surat kabar( buah),,9.4
+Perpustakaan,27) Rak audio visual(buah),,47.9
+Perpustakaan,28) Lemari/rak katalog(buah),,64.9
+Perpustakaan,29) Rak Display buku baru(buah),,89.3
+Perpustakaan,30) Locker/Rak penitipan(buah),,76.3
+Perpustakaan,31) Papan Pengumuman(buah),,31
+Perpustakaan,32) Jumlah tempat penyimpanan berkas (lemari/filing kabinet)(buah ),,51.7
+Perpustakaan,33) Meja Baca (buah),,18.4
+Perpustakaan,34) Meja baca anak-anak(buah),,37.2
+Perpustakaan,35) Meja Sirkulasi(buah),,6.2
+Perpustakaan,36) Meja kerja petugas(buah),,0.4
+Perpustakaan,37) Meja Mesin tik(buah),,59.6
+Perpustakaan,38) Kursi staf/petugas(buah),,32.1
+Perpustakaan,39) Kursi baca anak(buah),,97.6
+Perpustakaan,40) Kursi baca (buah),,96.7
+Perpustakaan,41) Jumlah kursi tamu(set ),,0.9
+Perpustakaan,42) Jumlah mesin /alat potong kertas(buah ),,3.8
+Perpustakaan,43) Jumlah Televisi(buah),,18.8
+Perpustakaan,44) VCD dan DVD Player(buah ),,16.5
+Perpustakaan,45) Komputer untuk petugas perpustakaan(buah),,40.1
+Perpustakaan,46) Komputer untuk pemustaka(buah),,4.6
+Perpustakaan,47) Laptop/Notebook(buah ),,94.7
+Perpustakaan,48) Printer( buah ),,47.5
+Perpustakaan,49) LCD proyektor(buah ),,13.6
+Perpustakaan,50) Kamera (buah ),,69.9
+Perpustakaan,51) Telepon/Fax(buah ),,70.1
+Perpustakaan,52) Kipas Angin(buah),,75.4
+Perpustakaan,53) AC( buah),,37.5
+Perpustakaan,54) Kendaraan bermotor roda dua yang dimiliki(unit),,57.1
+Perpustakaan,55) Kendaraan bermotor roda empat yang dimiliki(unit),,26.1
+Perpustakaan,7) Komponen Anggaran,,30
+Perpustakaan,1) Jumlah anggaran/tahun(Rupiah),,60.6
+Perpustakaan,2) Jumlah dana partisipasi masyarakat/sumbangan yang tidak mengikat(Rupiah),,88.4
+Perpustakaan,8) Komponen Perawatan Koleksi,,6.1
+Perpustakaan,"1) Pengendalian kondisi ruangan(menjaga temperatur, cahaya dan kelembaban)",,32.9
+Perpustakaan,2) Pembasmian serangga perusak bahan pustaka (fumigasi)(tahun sekali),,67.8
+Perpustakaan,"3) Jumlah perbaikan bahan perpustakaan (menyampul, menjilid) per tahun( eksemplar)",,34

@@ -1,0 +1,134 @@
+elemen,indikator,defenisi,nilai
+Sosial,1) Indeks Pembangunan Manusia (IPM) (Poin),,94.7
+Sosial,2) Jumlah penyandang masalah kesejahteraan sosial khusus didalam panti yang mendapatkan pemenuhan kebut,,72.6
+Sosial,3) Jumlah Penduduk miskin (orang),PERMEN 54,18.7
+Sosial,1) Pedesaan (Orang),PERMEN 54,78.7
+Sosial,2) Perkotaan (Orang),PERMEN 54,74.7
+Sosial,4) Indeks Kedalaman Kemiskinan (P1) *,,30.6
+Sosial,1) Pedesaan (%),,58.7
+Sosial,2) Perkotaan (%),,71.3
+Sosial,5) Indeks Keparahan Kemiskinan (P2) *,,38.5
+Sosial,1) Pedesaan (Orang),,31.2
+Sosial,2) Perkotaan (Orang),,72.2
+Sosial,6) Kemiskinan *,,86.7
+Sosial,1) Garis Kemiskinan *,,42.2
+Sosial,1) Garis Kemiskinan Pedesaan (Rp/Kap/Bln),,91.4
+Sosial,2) Garis Kemiskinan Perkotaan (Rp/Kap/Bln),,46.1
+Sosial,3) Jumlah Keluarga fakir miskin yang mendapatkan bantuan Kelompok Usaha Bersama (KK),,16.8
+Sosial,2) Penduduk Di bawah Garis Kemiskinan (Jiwa),,46.3
+Sosial,3) Beras Untuk Penduduk Miskin *,,68.5
+Sosial,1) KK (Kepala Keluarga) Penerima Raskin (KK),,16.6
+Sosial,2) Persentase RT (Rumah Tangga) Penerima Raskin (%),,72.3
+Sosial,3) Realisasi Beras Raskin (Juta/Ton),,71.3
+Sosial,4) Harga Beras Raskin (Rp/Kg),,90
+Sosial,4) Jumlah RTM peserta PKH,,50.2
+Sosial,7) Keluarga Menurut Tingkat Kesejahteraan **(KK),,58.3
+Sosial,1) Keluarga Prasejahtera (KK),PERMEN 54,67.9
+Sosial,2) Keluarga Sejahtera Tahap 1 (KK),PERMEN 54,16.6
+Sosial,3) Keluarga Sejahtera Tahap 2 (KK),,28
+Sosial,4) Keluarga Sejahtera Tahap 3 (KK),,81.8
+Sosial,5) Keluarga Sejahtera Tahap 3 Plus (KK),,62.6
+Sosial,"8) Jumlah Kegiatan Pembinaan terhadap LSM, Ormas dan OKP **(Kali)",,94.7
+Sosial,1) LSM (Lembaga Swadaya Masyarakat) (Kegiatan),PERMEN 54,92.2
+Sosial,2) Ormas (Organisasi Masyarakat) (Kegiatan),PERMEN 54,16.8
+Sosial,3) OKP (Organisasi Kemasyarakatan Pemuda) (Kegiatan),PERMEN 54,76.7
+Sosial,9) Potensi dan Sumber Kesejahteraan Sosial (PSKS) *,,38.4
+Sosial,1) Karang Taruna (Buah),,92.2
+Sosial,2) Tenaga Kesejahteraan Sosial Masyarakat (TKSM) (Orang),"Tenaga Kesejahteraan Sosial adalah seseorang yang dididik dan dilatih secara profesional untuk melaksanakan tugas-tugas pelayanan dan penanganan masalah sosial dan/atau seseorang yang bekerja, baik di lembaga pemerintah maupun swasta yang ruang lingkup kegiatannya di bidang kesejahteraan sosial. (UNDANG-UNDANG REPUBLIK INDONESIA NOMOR 11 TAHUN 2009 TENTANG KESEJAHTERAAN SOSIAL )",39.6
+Sosial,3) Organisasi Sosial (Buah),,12.4
+Sosial,4) Lembaga swadaya masyarakat (Buah),,64.5
+Sosial,10) Jumlah PMKS **(Buah),"Penyandang Masalah Kesejahteraan Sosial yang selanjutnya disebut PMKS adalah perseorangan, keluarga, kelompok, dan/atau masyarakat yang karena suatu hambatan, kesulitan, atau gangguan, tidak dapat melaksanakan fungsi sosialnya, sehingga tidak dapat terpenuhi kebutuhan hidupnya baik jasmani, rohani, maupun sosial secara memadai dan wajar. PERATURAN MENTERI SOSIAL REPUBLIK INDONESIA NOMOR 08 TAHUN 2012 TENTANG PEDOMAN PENDATAAN DAN PENGELOLAAN DATA PENYANDANG MASALAH KESEJAHTERAAN SOSIAL DAN POTENSI DAN SUMBER KESEJAHTERAAN SOSIAL",13.8
+Sosial,1) PMKS Yang Tertangani (Buah),PERMEN 54,13.2
+Sosial,2) PMKS Yang Seharusnya Menerima Bantuan (Buah),PERMEN 54,32.6
+Sosial,3) PMKS Yang Diberikan Bantuan (Buah),PERMEN 54,90.3
+Sosial,11) Penduduk Penyandang Masalah Sosial *,,1.4
+Sosial,1) Penduduk rawan Sosial dan Sarana *,,47.9
+Sosial,1) Anak Jalanan (Jiwa),,93.7
+Sosial,2) Penderita Sakit Jiwa (Jiwa),,34.7
+Sosial,3) Gepeng (Gembel dan Pengemis) (Jiwa),,79.5
+Sosial,4) Jumlah Penderita HIV/AIDS (Jiwa),,58.4
+Sosial,5) Jumlah Pecandu Narkoba (Jiwa),,0.7
+Sosial,6) Sarana Rehabilitasi Sosial (Jiwa),,89
+Sosial,7) Jumlah Penyandang Masalah Kesejahteraan Sosial yang mendapatkan pelayanan dalam panti (Jiwa),,75.5
+Sosial,8) Fakir Miskin (Jiwa),,75.6
+Sosial,9) Bayi Terlantar (Jiwa),,84.6
+Sosial,10) Anak Terlantar (Jiwa),,92
+Sosial,11) Lanjut Usia Terlantar (Jiwa),,10.4
+Sosial,12) Komunitas Adat Terpencil (Jiwa),,82.2
+Sosial,13) Penyandang Tuna Netra (Jiwa),,51.5
+Sosial,14) Penyandang Tuna Rungu (Jiwa),,87.4
+Sosial,15) Penyandang Tuna Wicara (Jiwa),,92.2
+Sosial,16) Penyandang Tuna Wicara-Rungu (Jiwa),,5.3
+Sosial,17) Penyandang Tuna Daksa (Jiwa),,10.1
+Sosial,18) Penyandang Tuna Grahita (Jiwa),,87.7
+Sosial,19) Penyandang Cacat Jiwa (Jiwa),,85.3
+Sosial,20) Penyandang Cacat Ganda/ Cacat Berat(Jiwa),,45.4
+Sosial,21) Tuna Susila (Jiwa),,69.1
+Sosial,22) Bekas Narapidana (Jiwa),,11.9
+Sosial,23) Pengidap HIV/AIDS (Jiwa),,9.5
+Sosial,24) Korban Penyalahgunaan NAPZA (Jiwa),"Narkotika, Alkohol , Psikotropika dan Zat adiktif lain",99.2
+Sosial,2) Jumlah Panti Asuhan *,,16.3
+Sosial,1) Panti Sosial Asuhan Anak (Buah),"(PERMEN 54) Menurut Depsos RI (2004: 4), Panti Sosial Asuhan anak adalah suatu lembaga usaha kesejahteraan sosial yang mempunyai tanggung jawab untuk memberikan pelayanan kesejahteraan sosial pada anak telantar dengan melaksanakan penyantunan dan pengentasan anak telantar, memberikan pelayanan pengganti orang tua/wali anak dalam memenuhi kebutuhan fisik, mental dan sosial kepada anak asuh sehingga memperoleh kesempatan yang luas,tepat dan memadai bagi pengembangan kepribadianya sesuai dengan yang diharapkan sebagai bagian dari generasi penerus cita- cita bangsa dan sebagai insan yang akan turut serta aktif dalam bidang pembangunan nasional?",58.7
+Sosial,2) Panti Sosial Petirahan Anak (Buah),"(PERMEN 54) Panti sosial yang mempunyai tugas memberikan bimbingan, pelayanan bagi anak yang mengalami hambatan belajar karena menyandang masalah sosial agar potensi dan kapasitas belajarnya pulih kembali dan dapat berkembang secara wajar (Kepmensos No.50/HUK/2004)",25.7
+Sosial,3) Panti Sosial Bina Remaja (Buah),"(PERMEN 54) Panti sosial yang mempunyai tugas memberikan bimbingan, pelayanan dan rehabilitasi bagi anak terlantar putus sekolah agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos No.50/HUK/2004)",93.2
+Sosial,4) Panti Sosial Tresna Wirda (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan bimbingan dan pelayanan bagi lanjut usia terlantar agar dapat hidup secara wajar dalam kehidupan bermasyarakat. (Kepmensos no.50/HUK/2004),84.6
+Sosial,5) Panti Sosial Bina Netra (Buah),"(PERMEN 54) Panti sosial yang mempunyai tugas memberikan bimbingan, pelayanan dan rehabilitasi bagi penyandang cacat netra agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos No.50/HUK/2004)",52.8
+Sosial,6) Panti Sosial Bina Daksa (Buah),"(PERMEN 54) Panti sosial yang mempunyai tugas memberikan bimbingan, pelayanan dan rehabilitasi bagi penyandang cacat tubuh agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos No.50/HUK/2004).",55.5
+Sosial,7) Panti Sosial Bina Grahita (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi para penyandang cacat mental retardasi agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos No.50/HUK/2004),73.8
+Sosial,8) Panti Sosial Bina Laras (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi penyandang cacat mental bekas psikotik agar mampu mandiri dan berperan aktif dalam masyarakat. (Kepmensos No.50/HUK/2004),80.5
+Sosial,9) Panti Sosial Bina Rungu Wicara (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi para penyandang cacat rungu wicara agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos No.50/HUK/2004).,49.2
+Sosial,10) Panti Sosial Bina Pasca Lara Kronis (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi penyandang cacat bekas penyakit kronis agar mampu mandiri dan berperan aktif dalam masyarakat. (Kepmensos No.50/HUK/2004),47.5
+Sosial,11) Panti Sosial Marsudi Putra (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi anak nakal agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos no.50/HUK/2004),19.2
+Sosial,12) Panti Sosial Pamardi Putra (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi eks korban penyalahgunaan NAPZA. (Kepmensos no.50/HUK/2004),69.7
+Sosial,13) Panti Sosial Karya Wanita (Buah),(PERMEN 54) Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi para wanita tuna susila agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos no.50/HUK/2004),61.2
+Sosial,14) Panti Sosial Bina Karya (Buah),"(PERMEN 54)Panti sosial yang mempunyai tugas memberikan pelayanan dan rehabilitasi sosial bagi para gelandangan, pengemis dan orang terlantar agar mampu mandiri dan berperan aktif dalam kehidupan bermasyarakat. (Kepmensos No.50/HUK/2004)",97.9
+Sosial,15) Panti Sosial Rehabilitasi (Buah),PERMEN 54,11.4
+Sosial,3) Pusat Rehabilitasi Narkoba (Buah),,94.9
+Sosial,4) Rumah singgah (Buah),,7.4
+Sosial,12) Jumlah PKK **(Unit),"(PERMEN 54) PKK adalah mitra kerja pemerintah dan organisasi kemasyarakatan lainnya, yang berfungsi sebagai fasilitator, perencana, pelaksana, pengendali dan penggerak pada masing-masing tingkat pemerintahan untuk terlaksananya program Pemberdayaan dan Kesejahteraan Keluarga, termasuk didalamnya sebagai mitra kerja pemerintah dalam bidang administrasi kependudukan.(PERATURAN MENTERI DALAM NEGERI NOMOR 28 TAHUN 2011 TENTANG PEDOMAN PEMBERDAYAAN DAN KESEJAHTERAAN KELUARGA DALAM MEMBANTU MENINGKATKAN DAN MEWUJUDKAN TERTIB ADMINISTRASI KEPENDUDUKAN)",89.1
+Sosial,1) Jumlah Kelompok Binaan PKK (Unit),PERMEN 54,78
+Sosial,2) Jumlah PKK Aktif (Unit),PERMEN 54,85.9
+Sosial,13) Tempat Pemakaman **(M2),,63.5
+Sosial,1) Luas Taman Makam Pahlawan (M2),,64.9
+Sosial,14) Daya Tampung Tempat Pemakaman (Unit),,20.4
+Sosial,1) Taman Makam Pahlawan (Unit),,37.7
+Sosial,15) Jamkesmas/Jamkesda *,,19.2
+Sosial,1) Jumlah KK Penerima Jamkesmas/Jamkesda (KK),,36.6
+Sosial,2) Jumlah Surat Keterangan Miskin (Unit),,28.7
+Sosial,16) Jasa Sosial Kemasyarakatan(Rp Juta),,72.8
+Sosial,17) Masjid(Buah),PERMEN 54,14.1
+Sosial,18) Langgar/Mushola(Buah),,91
+Sosial,19) Gereja Kristen(Buah),,80.8
+Sosial,20) Gereja Katolik/Kapel(Buah),,32.6
+Sosial,21) Pura/Kuil/Sanggah(Buah),,63.3
+Sosial,22) Vihara/Cetya/Klenteng(Buah),,62.6
+Sosial,23) Indeks Gini(Poin),PERMEN 54,38.2
+Sosial,24) Pemerataan Pendapatan Versi Bank Dunia(Poin),PERMEN 54,95.4
+Sosial,25) Indeks Ketimpangan Williamson(Poin),PERMEN 54,40.8
+Sosial,26) Kelompok Binaan LPM(Kelompok),Lembaga Pemberdayaan Masyarakat,90.6
+Sosial,27) Jumlah LPM Berprestasi(Kelompok),,84.5
+Sosial,28) Jumlah Program Pemberdayaan Masyarakat(Progam),,46.1
+Sosial,29) Jumlah Swadaya Masyarakat Mendukung Program Pemberdayaan Masyarakat(Orang),,44.2
+Sosial,30) Jumlah Program Pemberdayaan Masyarakat yang Dikembangkan dan Dipelihara Masyarakat(Program),,14.2
+Sosial,31) LSM Lokal Terdaftar(Buah),,59.6
+Sosial,32) LSM Lokal Tidak Aktif(Buah),,43.4
+Sosial,33) LSM Nasional Terdaftar(Buah),,97.5
+Sosial,34) LSM Nasional Tidak Aktif(Buah),,72
+Sosial,35) LSM Asing/Internasional Terdaftar(Buah),,46.1
+Sosial,36) LSM Asing/Internasional Tidak Aktif(Buah),,75.2
+Sosial,37) Jumlah Kegiatan Pembinaan Politik Daerah(Kegiatan),,40.7
+Sosial,38) Jumlah kasus narkoba(Kasus),,2.8
+Sosial,39) Jumlah kasus pembunuhan(Kasus),,58.8
+Sosial,40) Jumlah kasus seksual(Kasus),,13.3
+Sosial,41) Jumlah kasus penganiayaan(Kasus),,39.3
+Sosial,42) Jumlah kasus pencurian(Kasus),,48.1
+Sosial,43) Jumlah kasus penipuan(Kasus),,4.1
+Sosial,44) Jumlah kasus pemalsuan uang(Kasus),,51.6
+Sosial,45) Jumlah kasus narkoba(Kasus),,9.1
+Sosial,46) Jumlah kasus pembunuhan(Kasus),,19.3
+Sosial,47) Jumlah kasus seksual(Kasus),,39.7
+Sosial,48) Jumlah kasus penganiayaan(Kasus),,34.7
+Sosial,49) Jumlah kasus pencurian(Kasus),,91.8
+Sosial,50) Jumlah kasus penipuan(Kasus),,48.6
+Sosial,51) Jumlah kasus pemalsuan uang(Kasus),,72.8
+Sosial,52) Jasa Sosial Kemasyarakatan(Rp Juta),,79.3

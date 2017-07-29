@@ -1,0 +1,100 @@
+elemen,indikator,defenisi,nilai
+KKUSPM,"1) Keamanan, Ketertiban Masyarakat *",,45.8
+KKUSPM,1) Jumlah Kriminalitas (Kasus),,61.2
+KKUSPM,2) Kasus Pertikaian Antar Warga *,,78.1
+KKUSPM,1) Antar Etnis (Kasus),,14.8
+KKUSPM,2) Antar Wilayah Desa (Kasus),,8.6
+KKUSPM,3) Antar Agama (Kasus),,53
+KKUSPM,4) Antar Simpatisan Parpol (Kasus),,97.7
+KKUSPM,5) Antar Pelajar (Kasus),,50.1
+KKUSPM,3) Unjuk Rasa *,,68
+KKUSPM,1) Bidang Politik (Kasus),,44.4
+KKUSPM,2) Bidang Ekonomi (Kasus),PERMEN 54,65.4
+KKUSPM,3) Bidang lainnya (Kasus),PERMEN 54,49.1
+KKUSPM,4) Jumlah Sengketa Pengusaha dan Pekerja (Kasus),PERMEN 54,66.9
+KKUSPM,5) Jumlah Perselisihan Buruh dan Pengusaha Terhadap Kebijakan Ppemerintah Daerah (Kasus),PERMEN 54,59.9
+KKUSPM,6) Jumlah Penyelesaian Perselisihan Buruh dan Pengusaha dengan Kebijakan Pemda (Kasus),PERMEN 54,45.3
+KKUSPM,7) Kasus Pemogokan Kerja (Kasus),,45.1
+KKUSPM,8) Korban Pertikaian Antar Warga/ Unjuk Rasa *,,49.6
+KKUSPM,1) Korban Meninggal (Jiwa),,34.1
+KKUSPM,2) Korban Luka-Luka (Jiwa),,2.4
+KKUSPM,9) Jumlah Pengungsi Akibat Pertikaian Antar Warga/ Unjuk Rasa (Jiwa),,86.3
+KKUSPM,10) Kerugian Material Akibat Pertikaian Antar Warga/ Unjuk Rasa (Rp),,95
+KKUSPM,11) Aparat dan Sarana Keamanan *,,54
+KKUSPM,1) Jumlah Aparat Keamanan (Polisi) (Orang),,64
+KKUSPM,2) Jumlah Aparat Pamong Praja (Orang),PERMEN 54,44.2
+KKUSPM,3) Jumlah Aparat Linmas (Orang),PERMEN 54,33.7
+KKUSPM,4) Jumlah Pos Keamanan (Polisi) (Unit),,38.9
+KKUSPM,5) Jumlah Polisi Hutan (Orang),,86.8
+KKUSPM,6) Jumlah Mobil Pemadam Kebakaran (Unit),PERMEN 54,34.9
+KKUSPM,7) Jumlah Pos Pemadam Kebakaran (Unit),,71.8
+KKUSPM,8) Jumlah Pos Siskamling (Unit),PERMEN 54,6.1
+KKUSPM,9) 9). Jumlah Patroli Petugas Satpol PP Pemantauan dan Penyelesaian Pelanggaran K3 Dalam 24 J,PERMEN 54,15.1
+KKUSPM,10) 10). Jumlah Petugas Perlindungan Masyarakat (Orang),PERMEN 54,24.4
+KKUSPM,"12) 12. Jumlah Pelanggaran K3 (ketertiban, ketentraman, keindahan) (kasus)",PERMEN 54,83.8
+KKUSPM,"13) 13. Jumlah Penyelesaian Pelanggaran K3 (ketertiban, ketentraman, keindahan) (kasus)",PERMEN 54,91.4
+KKUSPM,14) 14. Jumlah Kejadian Kebakaran (Kasus),PERMEN 54,17.3
+KKUSPM,15) 15. Jumlah Ketepatan Waktu Tindakan Pemadam Kebakaran (Kasus),PERMEN 54,57.7
+KKUSPM,16) 16. Antar Ormas (Kasus),,24.7
+KKUSPM,2) I. Jumlah Pengungsi Akibat *,,47.1
+KKUSPM,1) 1. Banjir (Orang),,30.8
+KKUSPM,2) 2. Gunung Meletus (Orang),,32
+KKUSPM,3) 3. Longsor (Orang),,32.4
+KKUSPM,4) 4. Gempa (Orang),,89.6
+KKUSPM,5) 5. Tsunami (Orang),,80.1
+KKUSPM,6) 6. Kebakaran (Orang),,43.2
+KKUSPM,7) 7. Lainnya (Orang),,88
+KKUSPM,3) II. Jumlah Lokasi Pengungsian (Lokasi),,48.9
+KKUSPM,4) III. Jumlah Pengungsi yang telah kembali ke Lokasi Asal (Jiwa),,13.2
+KKUSPM,5) IV. Jumlah pengungsi yang telah direlokasi (Jiwa),,51.5
+KKUSPM,6) V. Jumlah Korban Bencana Alam **(Jiwa),,41.8
+KKUSPM,1) 1. Meninggal (Jiwa),,62.5
+KKUSPM,2) 2. Hilang (Jiwa),,56.8
+KKUSPM,3) 3. Luka-luka (Jiwa),,69.5
+KKUSPM,7) VI. Jumlah Lokasi Bencana (Lokasi),,90.9
+KKUSPM,8) VII. Jumlah Kecamatan Lokasi Bencana (Kec),,25.7
+KKUSPM,9) VIII. Jumlah Perkiraan Kerugian Akibat Bencana (Rp Juta),,66.2
+KKUSPM,10) IX. Kebutuhan Bantuan *,,98.6
+KKUSPM,1) 1. Dana (Rp Juta),,68.6
+KKUSPM,2) 2. Beras (Ton),,49
+KKUSPM,3) 3. Mie Instan (Kardus),,40.7
+KKUSPM,4) 4. Minyak Goreng (Liter),,7.4
+KKUSPM,5) 5. Obat-obatan (Paket),,83.8
+KKUSPM,6) 6. Pakaian (Paket),,97.1
+KKUSPM,7) 7. Material Bangunan (Paket),,43.4
+KKUSPM,8) 8. Peralatan Tanggap Darurat Bencana (Unit),,20.3
+KKUSPM,9) 9. Air Bersih (Liter),,91.8
+KKUSPM,10) 10. Lainnya (Paket),,60.2
+KKUSPM,11) I. Luas Areal Hutan yang Terbakar (Ha),,83.5
+KKUSPM,12) II. Jumlah Korban Jiwa (Jiwa),,92.3
+KKUSPM,13) III. Jumlah Lokasi Kebakaran Hutan (Lokasi),,36.8
+KKUSPM,14) I. Jumlah Pengungsi Akibat *,,87.5
+KKUSPM,1) 1. Banjir (Orang),,4
+KKUSPM,2) 2. Gunung Meletus (Orang),,85.3
+KKUSPM,3) 3. Longsor (Orang),,93.7
+KKUSPM,4) 4. Gempa (Orang),,52.3
+KKUSPM,5) 5. Tsunami (Orang),,47.9
+KKUSPM,6) 6. Kebakaran (Orang),,7.9
+KKUSPM,7) 7. Lainnya (Orang),,83.2
+KKUSPM,15) II. Jumlah Lokasi Pengungsian (Lokasi),,90.2
+KKUSPM,16) III. Jumlah Pengungsi yang telah kembali ke Lokasi Asal (Jiwa),,19.6
+KKUSPM,17) IV. Jumlah pengungsi yang telah direlokasi (Jiwa),,13.1
+KKUSPM,18) V. Jumlah Korban Bencana Alam **(Jiwa),,79.5
+KKUSPM,1) 1. Meninggal (Jiwa),,18.8
+KKUSPM,2) 2. Hilang (Jiwa),,18.2
+KKUSPM,3) 3. Luka-luka (Jiwa),,89.7
+KKUSPM,19) VI. Jumlah Lokasi Bencana (Lokasi),,90.8
+KKUSPM,20) VII. Jumlah Kecamatan Lokasi Bencana (Kec),,14.6
+KKUSPM,21) VIII. Jumlah Perkiraan Kerugian Akibat Bencana (Rp Juta),,11.1
+KKUSPM,22) IX. Kebutuhan Bantuan *,,15.7
+KKUSPM,1) 1. Dana (Rp Juta),,49.4
+KKUSPM,2) 2. Beras (Ton),,72.2
+KKUSPM,3) 3. Mie Instan (Kardus),,70.7
+KKUSPM,4) 4. Minyak Goreng (Liter),,72.4
+KKUSPM,5) 5. Obat-obatan (Paket),,20.9
+KKUSPM,6) 6. Pakaian (Paket),,15.8
+KKUSPM,7) 7. Material Bangunan (Paket),,7.7
+KKUSPM,8) 8. Peralatan Tanggap Darurat Bencana (Unit),,4.1
+KKUSPM,9) 9. Air Bersih (Liter),,36.8
+KKUSPM,10) 10. Lainnya (Paket),,39.4
+KKUSPM,11) Jumlah Anggaran Penanggulangan Bencana,Total Anggaran untuk Penanggulangan Bencana yang tersebar di seluruh OPD.,4.4

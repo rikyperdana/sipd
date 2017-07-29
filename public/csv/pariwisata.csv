@@ -1,0 +1,50 @@
+elemen,indikator,defenisi,nilai
+Pariwisata,1) Pariwisata *,"Pariwisata adalah berbagai macam kegiatan wisata dan didukung berbagai fasilitas serta layanan yang disediakan oleh masyarakat, pengusaha, Pemerintah, dan Pemerintah Daerah . (UNDANG-UNDANG REPUBLIK INDONESIA NOMOR 10 TAHUN 2009 TENTANG KEPARIWISATAAN )",27.3
+Pariwisata,1) Jumlah Obyek Wisata *,[sudah jelas],90.9
+Pariwisata,1) Alam (Buah),[sudah jelas],85.8
+Pariwisata,2) Buatan (Buah),[sudah jelas],32.7
+Pariwisata,2) Jumlah Hotel *,[sudah jelas],27.9
+Pariwisata,1) Hotel Bintang Lima (Buah),PERMEN 54 [sudah jelas],51.7
+Pariwisata,2) Hotel Bintang Empat (Buah),PERMEN 54 [sudah jelas],81.2
+Pariwisata,3) Hotel Bintang Tiga (Buah),PERMEN 54 [sudah jelas],78.1
+Pariwisata,4) Hotel Bintang Dua (Buah),PERMEN 54 [sudah jelas],54
+Pariwisata,5) Hotel Bintang Satu (Buah),PERMEN 54 [sudah jelas],45.3
+Pariwisata,6) Hotel Non Bintang (Buah),PERMEN 54 [sudah jelas],78.7
+Pariwisata,3) Jenis Objek Wisata *,[sudah jelas],94.8
+Pariwisata,1) Wisata Marina *,[sudah jelas],67.8
+Pariwisata,1) Total Objek Wisata (Buah),[sudah jelas],52.4
+Pariwisata,2) Total Wisatawan Domestik (Jiwa),[sudah jelas],95.3
+Pariwisata,3) Total Wisatawan Mancanegara (Jiwa),[sudah jelas],0.3
+Pariwisata,2) Wisata Tirta *,[sudah jelas],34
+Pariwisata,1) Total Objek Wisata (Buah),[sudah jelas],48.6
+Pariwisata,2) Total Wisatawan Domestik (Jiwa),[sudah jelas],9.3
+Pariwisata,3) Total Wisatawan Mancanegara (Jiwa),[sudah jelas],67.8
+Pariwisata,3) Wisata Sejarah *,[sudah jelas],83.6
+Pariwisata,1) Total Objek Wisata (Buah),[sudah jelas],1.9
+Pariwisata,2) Total Wisatawan Domestik (Jiwa),[sudah jelas],18
+Pariwisata,3) Total Wisatawan Mancanegara (Jiwa),[sudah jelas],77.6
+Pariwisata,4) Suaka Alam *,[sudah jelas],24
+Pariwisata,1) Total Objek Wisata (Buah),[sudah jelas],48.8
+Pariwisata,2) Total Wisatawan Domestik (Jiwa),[sudah jelas],55.6
+Pariwisata,3) Total Wisatawan Mancanegara (Jiwa),[sudah jelas],40.2
+Pariwisata,5) Capaian Kinerja Kunjungan Wisatawan (%),,73.8
+Pariwisata,6) Persentase Penduduk yg Melakukan Perjalanan Wisata (%),,28
+Pariwisata,4) Jumlah Wisatawan *,Wisatawan adalah orang yang melakukan wisata. (UNDANG-UNDANG REPUBLIK INDONESIA NOMOR 10 TAHUN 2009 TENTANG KEPARIWISATAAN ),19.1
+Pariwisata,1) Asing (Mancanegara) (Jiwa),PERMEN 54,11.3
+Pariwisata,2) Domestik (Nasional) (Jiwa),PERMEN 54,56
+Pariwisata,3) Capaian Kinerja Kunjungan Wisatawan (Orang),PERMEN 54,83.6
+Pariwisata,5) Jumlah dan Tingkat Hunian Kamar Penginapan Hotel *,,73.4
+Pariwisata,1) Jumlah Kamar Penginapan Hotel/Penginapan (Unit),,13.7
+Pariwisata,2) Jumlah Rata-rata Penggunaan Kamar Hotel/Penginapan (Hari),,16.9
+Pariwisata,3) Jumlah Kamar Hotel/Penginapan yang Terisi (Unit),,14.9
+Pariwisata,4) Jumlah dan Tingkat Hunian Kamar Penginapan Hotel (Buah),,59.2
+Pariwisata,6) Tempat Hiburan/Rekreasi *,,61
+Pariwisata,1) Gedung Bioskop (Unit),,51.9
+Pariwisata,2) Lainnya (Unit),,1.8
+Pariwisata,7) Jumlah even pariwisata,,51.3
+Pariwisata,2) PDRB Subsektor Pariwisata(Rp Juta),PERMEN 54,91.1
+Pariwisata,3) Jasa Hiburan dan Rekreasi(Rp Juta),PERMEN 54,27.3
+Pariwisata,4) Hotel(Rp Juta),PERMEN 54,89.8
+Pariwisata,5) PDRB Subsektor Pariwisata(Rp Juta),PERMEN 54,23.7
+Pariwisata,6) Restoran(Rp Juta),PERMEN 54,6.3
+Pariwisata,"7) Perdagangan, Hotel dan Restoran(Rp Juta)",PERMEN 54,21.1
