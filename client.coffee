@@ -3,6 +3,19 @@ if Meteor.isClient
 	AutoForm.setDefaultTemplate 'materialize'
 	currentRoute = (cb) -> cb Router.current().route.getName()
 
+	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
+	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
+	Template.registerHelper 'showMap', -> Session.get 'showMap'
+
+	Template.body.events
+		'click #showContoh': ->
+			Session.set 'showContoh', not Session.get 'showContoh'
+		'click #showGraph': ->
+			Session.set 'showGraph', not Session.get 'showGraph'
+		'click #showMap': ->
+			Session.set 'showMap', not Session.get 'showMap'
+
+
 	Template.importer.events
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
@@ -35,21 +48,12 @@ if Meteor.isClient
 				source
 		theColl: -> coll.elemens
 		editData: -> Session.get 'editData'
-		showContoh: -> Session.get 'showContoh'
-		showGraph: -> Session.get 'showGraph'
-		showMap: -> Session.get 'showMap'
 
 	Template.kel.events
 		'dblclick #row': (satu, dua) ->
 			Session.set 'editData', this
 		'click #close': ->
 			Session.set 'editData', null
-		'click #showContoh': ->
-			Session.set 'showContoh', not Session.get 'showContoh'
-		'click #showGraph': ->
-			Session.set 'showGraph', not Session.get 'showGraph'
-		'click #showMap': ->
-			Session.set 'showMap', not Session.get 'showMap'
 		'click #emptyElemen': ->
 			route = currentRoute (res) -> res
 			dialog =
@@ -108,7 +112,7 @@ if Meteor.isClient
 			if kel
 				if _.kebabCase(prop.DESA) is kel then 'purple'
 			else if kec
-				if _.kebabCase(prop.DESA) is kec then 'red'
+				if _.kebabCase(prop.KECAMATAN) is kec then 'orange'
 		getOpac = (prop) ->
 			route = currentRoute (res) -> res
 			kab = route.split('_')[0]
@@ -132,3 +136,14 @@ if Meteor.isClient
 			zoom: 8
 			zoomControl: false
 			layers: [topo, geojson]
+
+	Template.kec.helpers
+		datas: ->
+			list = []
+			for i in coll.elemens.find().fetch()
+				find = _.find list, (j) -> j.indikator is i.indikator
+				if find
+					find.nilai += i.nilai
+				else
+					list.push i
+			list

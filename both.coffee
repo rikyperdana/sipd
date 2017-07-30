@@ -6,12 +6,17 @@ Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 
-makeKel = (name) ->
-	Router.route '/' + name,
-		action: -> this.render 'kel'
-		waitOn: -> Meteor.subscribe 'elemens', name
+makeWil = (route) ->
+	Router.route '/' + route,
+		action: ->
+			if route.split('_').length is 3
+				this.render 'kel'
+			else
+				this.render 'kec'
+		waitOn: -> Meteor.subscribe 'elemens', route
 
-makeKel i for i in kels
+makeWil i for i in kels
+makeWil i for i in kecs
 
 coll.elemens = new Meteor.Collection 'elemens'
 coll.elemens.attachSchema new SimpleSchema
