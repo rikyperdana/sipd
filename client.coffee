@@ -38,7 +38,7 @@ if Meteor.isClient
 						kel: route.split('_')[2]
 						elemen: _.kebabCase data.elemen
 						indikator: data.indikator
-						defenisi: data.indikator
+						defenisi: data.defenisi
 						nilai: data.nilai
 
 	Template.kel.helpers
@@ -145,6 +145,7 @@ if Meteor.isClient
 
 	Template.kec.helpers
 		datas: ->
+			selectElemen = Session.get 'selectElemen'
 			list = []
 			for i in coll.elemens.find().fetch()
 				find = _.find list, (j) -> j.indikator is i.indikator
@@ -152,4 +153,8 @@ if Meteor.isClient
 					find.nilai += i.nilai
 				else
 					list.push i
-			list
+
+			if selectElemen
+				_.filter list, (i) -> i.elemen is selectElemen
+			else
+				list
