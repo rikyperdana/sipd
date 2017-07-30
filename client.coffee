@@ -6,6 +6,12 @@ if Meteor.isClient
 	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
 	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
 	Template.registerHelper 'showMap', -> Session.get 'showMap'
+	Template.registerHelper 'pageTitle', ->
+		route = currentRoute (res) -> res
+		kab = _.startCase route.split('_')[0]
+		kec = _.startCase route.split('_')[1]
+		kel = _.startCase route.split('_')[2]
+		kab: kab, kec: kec, kel: kel
 
 	Template.body.events
 		'click #showContoh': ->

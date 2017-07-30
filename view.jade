@@ -18,6 +18,8 @@ template(name='home'): .container
 
 template(name='kel'): .container
 	h4 Data Kelurahan
+	with pageTitle
+		h5 Kab: {{kab}} / Kec: {{kel}} / Kel: {{kel}}
 	+selectElemen
 	if editData
 		h5 Update Indikator
@@ -111,6 +113,8 @@ template(name='map')
 
 template(name='kec'): .container
 	h4 Data Kecamatan
+	with pageTitle
+		h5 Kab: {{kab}} / Kec: {{kec}}
 	.btn.right#showGraph Grafik
 	.btn.right#showMap Peta
 	.row
