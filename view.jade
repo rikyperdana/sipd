@@ -28,7 +28,13 @@ template(name='kel'): .container
 			doc= editData
 		)
 		.right.orange.btn#close Tutup
-	+grafik
+	.btn.right#showGraph Grafik
+	.btn.right#showMap Peta
+	.row
+	if showGraph
+		+grafik
+	if showMap
+		+map
 	unless editData
 		table
 			thead
@@ -99,3 +105,6 @@ template(name='loading'): .container
 
 template(name='grafik')
 	+c3(data= grafik id = 'grafik')
+
+template(name='map')
+	#map

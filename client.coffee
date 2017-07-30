@@ -36,6 +36,8 @@ if Meteor.isClient
 		theColl: -> coll.elemens
 		editData: -> Session.get 'editData'
 		showContoh: -> Session.get 'showContoh'
+		showGraph: -> Session.get 'showGraph'
+		showMap: -> Session.get 'showMap'
 
 	Template.kel.events
 		'dblclick #row': (satu, dua) ->
@@ -44,6 +46,10 @@ if Meteor.isClient
 			Session.set 'editData', null
 		'click #showContoh': ->
 			Session.set 'showContoh', not Session.get 'showContoh'
+		'click #showGraph': ->
+			Session.set 'showGraph', not Session.get 'showGraph'
+		'click #showMap': ->
+			Session.set 'showMap', not Session.get 'showMap'
 		'click #emptyElemen': ->
 			route = currentRoute (res) -> res
 			dialog =
@@ -86,3 +92,43 @@ if Meteor.isClient
 			barArray = []
 			barArray.push [i.elemen, i.nilai] for i in coll.elemens.find().fetch()
 			data: type: 'bar', columns: barArray
+
+	Template.map.onRendered ->
+		route = currentRoute (res) -> res
+		kab = route.split('_')[0]
+		kec = route.split('_')[1]
+		kel = route.split('_')[2]
+
+
+		getColor = (prop) ->
+			route = currentRoute (res) -> res
+			kab = route.split('_')[0]
+			kec = route.split('_')[1]
+			kel = route.split('_')[2]
+			if kel
+				if _.kebabCase(prop.DESA) is kel then 'purple'
+			else if kec
+				if _.kebabCase(prop.DESA) is kec then 'red'
+		getOpac = (prop) ->
+			route = currentRoute (res) -> res
+			kab = route.split('_')[0]
+			kec = route.split('_')[1]
+			kel = route.split('_')[2]
+			if kel
+				if _.kebabCase(prop.DESA) isnt kel then 0 else 0.7
+			else if kec
+				if _.kebabCase(prop.KECAMATAN) isnt kec then 0 else 0.7
+		style = (feature) ->
+			opacity: 0
+			fillColor: getColor feature.properties
+			fillOpacity: getOpac feature.properties
+
+		topo = L.tileLayer.provider 'OpenTopoMap'
+		geojson = L.geoJson.ajax 'maps/petas.geojson',
+			style: style
+
+		map = L.map 'map',
+			center: [0.5, 101.44]
+			zoom: 8
+			zoomControl: false
+			layers: [topo, geojson]
