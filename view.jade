@@ -24,7 +24,7 @@ template(name='kel'): .container
 	if editData
 		h5 Update Indikator
 		+quickForm(
-			collection= theColl
+			collection= coll.elemens
 			type = 'update'
 			id = 'updateKel'
 			doc= editData
@@ -59,20 +59,18 @@ template(name='kel'): .container
 						td= beda
 						td= justifikasi
 		unless datas
-			+importer
+			.file-field.input-field
+				.btn.left
+					span Impor Data
+					input(type='file' name='uploadCSV')
+				.file-path-wrapper
+					input.file-path.wrapper(type='text')
 	.btn#showContoh Contoh Elemen
 	.btn#emptyElemen Kosongkan Elemen
 	if showContoh
 		+contohElemen
 	.row
 
-template(name='importer')
-	.file-field.input-field
-		.btn.left
-			span Impor Data
-			input(type='file' name='uploadCSV')
-		.file-path-wrapper
-			input.file-path.wrapper(type='text')
 
 template(name='selectElemen')
 	.row
@@ -141,3 +139,42 @@ template(name='kec'): .container
 					td= beda
 					td= setuju
 					td= justifikasi
+
+template(name='infras'): .container
+	h5 Tambahkan Infrastruktur
+	+quickForm(
+		collection= coll.infras
+		type = 'insert'
+		id = 'insertInfras'
+	)
+	table
+		thead
+			tr
+				th Jenis
+				th Nama
+				th Status
+				th Bentuk
+				th Alamat
+				th Kel/Des
+				th Jumlah
+				th Lat
+				th Lng
+		tbody
+			each datas
+				tr
+					td= jenis
+					td= nama
+					td= status
+					td= bentuk
+					td= alamat
+					td= keldes
+					td= jumlah
+					td= latlng.lat
+					td= latlng.lng
+	.btn#empty Kosongkan
+	.file-field.input-field
+		.btn.left
+			span Impor Data
+			input(type='file' name='uploadCSV')
+		.file-path-wrapper
+			input.file-path.wrapper(type='text')
