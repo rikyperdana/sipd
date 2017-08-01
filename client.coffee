@@ -172,7 +172,7 @@ if Meteor.isClient
 			else
 				list
 
-	Template.infras.onRendered ->
+	Template.sekolahs.onRendered ->
 		topo = L.tileLayer.provider 'OpenTopoMap'
 		map = L.map 'map',
 			center: [0.5, 101.44]
@@ -182,11 +182,11 @@ if Meteor.isClient
 			zoomControl: false
 			layers: [topo]
 
-	Template.infras.helpers
-		datas: -> coll.infras.find().fetch()
+	Template.sekolahs.helpers
+		datas: -> coll.sekolahs.find().fetch()
 
-	Template.infras.events
-		'click #empty': -> Meteor.call 'emptyInfras'
+	Template.sekolahs.events
+		'click #empty': -> Meteor.call 'emptySekolahs'
 		'change :file': (event) ->
 			Papa.parse event.target.files[0],
 				header: true
@@ -207,8 +207,8 @@ if Meteor.isClient
 							bentuk: doc.bentuk
 							alamat: doc.alamat
 							keldes: doc.keldes
-							jumlah: doc.siswa
+							siswa: doc.siswa
 						if doc.latlng
 							obj.latlng = doc.latlng
-						Meteor.call 'import', 'infras', obj
+						Meteor.call 'import', 'sekolahs', obj
 					getLatLng record, (res) -> impor res

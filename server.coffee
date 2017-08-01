@@ -11,8 +11,8 @@ if Meteor.isServer
 		else if kab
 			coll.elemens.find kab: kab
 
-	Meteor.publish 'infras', ->
-		coll.infras.find {}
+	Meteor.publish 'sekolahs', ->
+		coll.sekolahs.find {}
 
 	Meteor.methods
 		import: (collName, data) ->
@@ -23,5 +23,5 @@ if Meteor.isServer
 				kec: route.split('_')[1]
 				kel: route.split('_')[2]
 				elemen: elemen
-		emptyInfras: ->
-			coll.infras.remove {}
+		emptySekolahs: ->
+			coll.sekolahs.remove {}

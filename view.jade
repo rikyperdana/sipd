@@ -140,13 +140,13 @@ template(name='kec'): .container
 					td= setuju
 					td= justifikasi
 
-template(name='infras'): .container
-	h5 Tambahkan Infrastruktur
+template(name='sekolahs'): .container
+	h5 Tambahkan Sekolah
 	#map
 	+quickForm(
-		collection= coll.infras
+		collection= coll.sekolahs
 		type = 'insert'
-		id = 'insertInfras'
+		id = 'insertSekolahs'
 	)
 	table
 		thead

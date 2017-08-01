@@ -18,9 +18,9 @@ makeRoute = (route) ->
 makeRoute i for i in kels
 makeRoute i for i in kecs
 
-Router.route '/infras',
-	action: -> this.render 'infras'
-	waitOn: -> Meteor.subscribe 'infras'
+Router.route '/sekolahs',
+	action: -> this.render 'sekolahs'
+	waitOn: -> Meteor.subscribe 'sekolahs'
 
 coll.elemens = new Meteor.Collection 'elemens'
 coll.elemens.attachSchema new SimpleSchema
@@ -40,19 +40,19 @@ coll.elemens.allow
 	update: -> true
 	remove: -> true
 
-coll.infras = new Meteor.Collection 'infras'
-coll.infras.attachSchema new SimpleSchema
+coll.sekolahs = new Meteor.Collection 'sekolahs'
+coll.sekolahs.attachSchema new SimpleSchema
 	jenis: type: String
 	nama: type: String
 	status: type: String
 	bentuk: type: String
 	alamat: type: String
 	keldes: type: String
-	jumlah: type: Number
+	siswa: type: Number
 	latlng: type: Object, optional: true, autoform: type: 'hidden'
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
-coll.infras.allow
+coll.sekolahs.allow
 	insert: -> true
 	update: -> true
 	remove: -> true
