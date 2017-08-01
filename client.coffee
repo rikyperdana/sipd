@@ -108,14 +108,28 @@ if Meteor.isClient
 		kec = route.split('_')[1]
 		kel = route.split('_')[2]
 
+		sumEl = (route, elemen) ->
+			source = coll.elemens.find().fetch()
+			selectElemen = Session.get 'selectElemen'
+			sum = 0
+			filter = _.filter source, (i) ->
+				i.elemen is selectElemen
+			for i in filter
+				sum += i.nilai
+			console.log sum, filter
+			if sum < 10000
+				'red'
+			else
+				'blue'
 
 		getColor = (prop) ->
 			route = currentRoute (res) -> res
+			selectElemen = Session.get 'selectElemen'
 			kab = route.split('_')[0]
 			kec = route.split('_')[1]
 			kel = route.split('_')[2]
 			if kel
-				if _.kebabCase(prop.DESA) is kel then 'purple'
+				if _.kebabCase(prop.DESA) is kel then sumEl route, selectElemen
 			else if kec
 				if _.kebabCase(prop.KECAMATAN) is kec then 'orange'
 		getOpac = (prop) ->
