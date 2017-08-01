@@ -199,3 +199,10 @@ if Meteor.isClient
 						alamat: record.alamat
 						keldes: record.keldes
 						siswa: record.siswa
+		'click #geocode': ->
+			getLatLng = (obj) ->
+				geocode.getLocation obj.alamat, (location) ->
+					obj.latlng = location.results[0].geometry.location
+					Meteor.call 'updateSekolah', obj
+			for i in coll.sekolahs.find().fetch().reverse()
+				unless i.latlng then getLatLng i

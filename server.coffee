@@ -25,3 +25,5 @@ if Meteor.isServer
 				elemen: elemen
 		emptySekolahs: ->
 			coll.sekolahs.remove {}
+		updateSekolah: (obj) ->
+			coll.sekolahs.update obj._id, $set: obj
