@@ -192,23 +192,10 @@ if Meteor.isClient
 				header: true
 				step: (row) ->
 					record = row.data[0]
-					getLatLng = (doc, cb) ->
-						geocode.getLocation doc.alamat, (location) ->
-							if location.results[0]
-								doc.latlng = location.results[0].geometry.location
-								cb doc
-							else
-								cb doc
-					impor = (doc) ->
-						obj =
-							jenis: 'sekolah'
-							nama: doc.nama
-							status: doc.status
-							bentuk: doc.bentuk
-							alamat: doc.alamat
-							keldes: doc.keldes
-							siswa: doc.siswa
-						if doc.latlng
-							obj.latlng = doc.latlng
-						Meteor.call 'import', 'sekolahs', obj
-					getLatLng record, (res) -> impor res
+					Meteor.call 'import', 'sekolahs',
+						nama: record.nama
+						status: record.status
+						bentuk: record.bentuk
+						alamat: record.alamat
+						keldes: record.keldes
+						siswa: record.siswa

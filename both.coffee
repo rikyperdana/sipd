@@ -42,7 +42,6 @@ coll.elemens.allow
 
 coll.sekolahs = new Meteor.Collection 'sekolahs'
 coll.sekolahs.attachSchema new SimpleSchema
-	jenis: type: String
 	nama: type: String
 	status: type: String
 	bentuk: type: String
