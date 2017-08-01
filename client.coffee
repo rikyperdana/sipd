@@ -158,6 +158,16 @@ if Meteor.isClient
 			else
 				list
 
+	Template.infras.onRendered ->
+		topo = L.tileLayer.provider 'OpenTopoMap'
+		map = L.map 'map',
+			center: [0.5, 101.44]
+			zoom: 8
+			minZoom: 8
+			maxZoom: 17
+			zoomControl: false
+			layers: [topo]
+
 	Template.infras.helpers
 		datas: -> coll.infras.find().fetch()
 
@@ -172,7 +182,9 @@ if Meteor.isClient
 						geocode.getLocation doc.alamat, (location) ->
 							if location.results[0]
 								doc.latlng = location.results[0].geometry.location
-							cb doc
+								cb doc
+							else
+								cb doc
 					impor = (doc) ->
 						obj =
 							jenis: 'sekolah'
