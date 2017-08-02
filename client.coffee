@@ -14,6 +14,7 @@ if Meteor.isClient
 		kec = _.startCase route.split('_')[1]
 		kel = _.startCase route.split('_')[2]
 		kab: kab, kec: kec, kel: kel
+	Template.registerHelper 'editData', -> Session.get 'editData'
 
 	Template.body.events
 		'click #showContoh': ->
@@ -24,6 +25,11 @@ if Meteor.isClient
 			Session.set 'showMap', not Session.get 'showMap'
 		'click #showAdd': ->
 			Session.set 'showAdd', not Session.get 'showAdd'
+		'dblclick #row': (event, obj) ->
+			Session.set 'editData', obj
+		'click #close': ->
+			Session.set 'showAdd', false
+			Session.set 'editData', null
 
 	Template.kel.helpers
 		datas: ->
@@ -36,13 +42,8 @@ if Meteor.isClient
 				_.filter source, (i) -> i.elemen is selectElemen
 			else
 				source
-		editData: -> Session.get 'editData'
 
 	Template.kel.events
-		'dblclick #row': (satu, dua) ->
-			Session.set 'editData', this
-		'click #close': ->
-			Session.set 'editData', null
 		'click #emptyElemen': ->
 			route = currentRoute (res) -> res
 			dialog =
@@ -180,14 +181,6 @@ if Meteor.isClient
 			'Jalan': L.tileLayer.provider 'OpenStreetMap.DE'
 		overlays = {}
 
-		map = L.map 'map',
-			center: [0.5, 101.44]
-			zoom: 8
-			minZoom: 8
-			maxZoom: 17
-			zoomControl: false
-			layers: [baseMaps.Topografi]
-
 		makeLayers = (type, color) ->
 			markers = []
 			for i in coll.sekolahs.find().fetch()
@@ -210,6 +203,20 @@ if Meteor.isClient
 		makeLayers 'SMP', 'red'
 		makeLayers 'SMA', 'darkred'
 		makeLayers 'SMK', 'darkgreen'
+
+		map = L.map 'map',
+			center: [0.5, 101.44]
+			zoom: 8
+			minZoom: 8
+			maxZoom: 17
+			zoomControl: false
+			layers: [
+				baseMaps.Topografi
+				overlays.SD
+				overlays.SMP
+				overlays.SMA
+				overlays.SMK
+			]
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map

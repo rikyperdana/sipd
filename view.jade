@@ -153,6 +153,15 @@ template(name='sekolahs')
 				type = 'insert'
 				id = 'insertSekolahs'
 			)
+		if editData
+			h5 Edit Sekolah
+			+quickForm(
+				collection= coll.sekolahs
+				type = 'update'
+				id = 'updateSekolah'
+				doc= editData
+			)
+			.right.orange.btn#close Tutup Edit
 		table
 			thead
 				tr
@@ -166,7 +175,7 @@ template(name='sekolahs')
 					th Lng
 			tbody
 				each datas
-					tr
+					tr#row
 						td= nama
 						td= status
 						td= bentuk
