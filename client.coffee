@@ -175,34 +175,45 @@ if Meteor.isClient
 				list
 
 	Template.sekolahs.onRendered ->
-		L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images/'
-		topo = L.tileLayer.provider 'OpenTopoMap'
+		baseMaps =
+			'Topografi': L.tileLayer.provider 'OpenTopoMap'
+			'Jalan': L.tileLayer.provider 'OpenStreetMap.DE'
+		overlays = {}
+
 		map = L.map 'map',
 			center: [0.5, 101.44]
 			zoom: 8
 			minZoom: 8
 			maxZoom: 17
 			zoomControl: false
-			layers: [topo]
-		markers = []
-		for i in coll.sekolahs.find().fetch()
-			switch i.bentuk
-				when 'SD' then color = 'orange'
-				when 'SMP' then color = 'red'
-				when 'SMA' then color = 'darkred'
-				when 'SMK' then color = 'darkgreen'
-			marker = L.marker i.latlng,
-				icon: L.AwesomeMarkers.icon
-					markerColor: color
-					prefix: 'fa'
-					icon: 'graduation-cap'
-			content = '<b>Nama: </b>' + i.nama + '</br>'
-			content += '<b>Lokasi: </b>' + i.alamat + '</br>'
-			content += '<b>Jumlah: </b>' + i.siswa + '</br>'
-			marker.bindPopup content
-			if i.latlng then markers.push marker
-		titiks = L.layerGroup markers
-		titiks.addTo map
+			layers: [baseMaps.Topografi]
+
+		makeLayers = (type, color) ->
+			markers = []
+			for i in coll.sekolahs.find().fetch()
+				if i.latlng
+					if i.bentuk is type
+						marker = L.marker i.latlng,
+							icon: L.AwesomeMarkers.icon
+								markerColor: color
+								prefix: 'fa'
+								icon: 'graduation-cap'
+						content = '<b>Nama: </b>' + i.nama + '<br/>'
+						content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
+						content += '<b>Alamat: </b>' + i.alamat + ' ' + i.keldes + '<br/>'
+						content += '<b>Siswa: </b>' + i.siswa + ' orang <br/>'
+						marker.bindPopup content
+						markers.push marker
+			overlays[type] = L.layerGroup markers
+
+		makeLayers 'SD', 'orange'
+		makeLayers 'SMP', 'red'
+		makeLayers 'SMA', 'darkred'
+		makeLayers 'SMK', 'darkgreen'
+
+		layersControl = L.control.layers baseMaps, overlays, collapsed: false
+		layersControl.addTo map
+
 
 	Template.sekolahs.helpers
 		datas: -> coll.sekolahs.find().fetch()
