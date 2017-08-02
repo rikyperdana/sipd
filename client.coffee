@@ -7,6 +7,7 @@ if Meteor.isClient
 	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
 	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
 	Template.registerHelper 'showMap', -> Session.get 'showMap'
+	Template.registerHelper 'showAdd', -> Session.get 'showAdd'
 	Template.registerHelper 'pageTitle', ->
 		route = currentRoute (res) -> res
 		kab = _.startCase route.split('_')[0]
@@ -21,7 +22,8 @@ if Meteor.isClient
 			Session.set 'showGraph', not Session.get 'showGraph'
 		'click #showMap': ->
 			Session.set 'showMap', not Session.get 'showMap'
-
+		'click #showAdd': ->
+			Session.set 'showAdd', not Session.get 'showAdd'
 
 	Template.kel.helpers
 		datas: ->
@@ -206,7 +208,15 @@ if Meteor.isClient
 		datas: -> coll.sekolahs.find().fetch()
 
 	Template.sekolahs.events
-		'click #empty': -> Meteor.call 'emptySekolahs'
+		'click #empty': ->
+			dialog =
+				message: 'Yakin Kosongkan Seluruh Sekolah?'
+				title: 'Kosongkan DB Sekolah'
+				okText: 'Ya'
+				focus: 'cancel'
+				success: true
+			new Confirmation dialog, (ok) ->
+				if ok then Meteor.call 'emptySekolahs'
 		'change :file': (event) ->
 			Papa.parse event.target.files[0],
 				header: true
