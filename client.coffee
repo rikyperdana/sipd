@@ -173,6 +173,7 @@ if Meteor.isClient
 				list
 
 	Template.sekolahs.onRendered ->
+		L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images/'
 		topo = L.tileLayer.provider 'OpenTopoMap'
 		map = L.map 'map',
 			center: [0.5, 101.44]
@@ -181,6 +182,20 @@ if Meteor.isClient
 			maxZoom: 17
 			zoomControl: false
 			layers: [topo]
+		markers = []
+		for i in coll.sekolahs.find().fetch()
+			switch i.bentuk
+				when 'SD' then color = 'orange'
+				when 'SMP' then color = 'red'
+				when 'SMA' then color = 'darkred'
+				when 'SMK' then color = 'darkgreen'
+			if i.latlng then markers.push L.marker i.latlng,
+				icon: L.AwesomeMarkers.icon
+					markerColor: color
+					prefix: 'fa'
+					icon: 'graduation-cap'
+		titiks = L.layerGroup markers
+		titiks.addTo map
 
 	Template.sekolahs.helpers
 		datas: -> coll.sekolahs.find().fetch()
@@ -201,7 +216,7 @@ if Meteor.isClient
 						siswa: record.siswa
 		'click #geocode': ->
 			getLatLng = (obj) ->
-				geocode.getLocation obj.alamat, (location) ->
+				geocode.getLocation obj.alamat + ' Riau', (location) ->
 					obj.latlng = location.results[0].geometry.location
 					Meteor.call 'updateSekolah', obj
 			for i in coll.sekolahs.find().fetch().reverse()
