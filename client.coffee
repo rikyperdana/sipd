@@ -181,11 +181,11 @@ if Meteor.isClient
 			'Jalan': L.tileLayer.provider 'OpenStreetMap.DE'
 		overlays = {}
 
-		makeLayers = (type, color) ->
+		makeLayers = (category, type, color) ->
 			markers = []
 			for i in coll.sekolahs.find().fetch()
 				if i.latlng
-					if i.bentuk is type
+					if i[category] is type
 						marker = L.marker i.latlng,
 							icon: L.AwesomeMarkers.icon
 								markerColor: color
@@ -199,10 +199,10 @@ if Meteor.isClient
 						markers.push marker
 			overlays[type] = L.layerGroup markers
 
-		makeLayers 'SD', 'orange'
-		makeLayers 'SMP', 'red'
-		makeLayers 'SMA', 'darkred'
-		makeLayers 'SMK', 'darkgreen'
+		makeLayers 'bentuk', 'SD', 'orange'
+		makeLayers 'bentuk', 'SMP', 'red'
+		makeLayers 'bentuk', 'SMA', 'darkred'
+		makeLayers 'bentuk', 'SMK', 'darkgreen'
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
