@@ -225,6 +225,9 @@ if Meteor.isClient
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
 
+		locate = L.control.locate()
+		locate.addTo map
+
 
 	Template.sekolahs.helpers
 		datas: ->
