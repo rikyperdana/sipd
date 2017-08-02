@@ -141,11 +141,16 @@ template(name='kec'): .container
 					td= justifikasi
 
 template(name='sekolahs')
-	#map
+	unless formMode
+		#map
 	.container
-		.row
-		.right.btn#showAdd + Sekolah
-		.row
+		unless formMode
+			.row
+			.row
+				.col.m8
+					input#search(placeholder='Cari Nama, Alamat, atau Kel/Des')
+				.col.m4
+					.right.btn#showAdd + Sekolah
 		if showAdd
 			h5 Tambahkan Sekolah
 			+quickForm(
@@ -153,6 +158,9 @@ template(name='sekolahs')
 				type = 'insert'
 				id = 'insertSekolahs'
 			)
+			.row
+			.right.orange.btn#close Tutup Tambah
+			.row
 		if editData
 			h5 Edit Sekolah
 			+quickForm(
@@ -161,34 +169,41 @@ template(name='sekolahs')
 				id = 'updateSekolah'
 				doc= editData
 			)
+			+mapSelect
+			.row
 			.right.orange.btn#close Tutup Edit
-		table
-			thead
-				tr
-					th Nama
-					th Status
-					th Bentuk
-					th Alamat
-					th Kel/Des
-					th Siswa
-					th Lat
-					th Lng
-			tbody
-				each datas
-					tr#row
-						td= nama
-						td= status
-						td= bentuk
-						td= alamat
-						td= keldes
-						td= siswa
-						td= latlng.lat
-						td= latlng.lng
-		.btn#empty Kosongkan
-		.btn#geocode Geocode
-		.file-field.input-field
-			.btn.left
-				span Impor Data
-				input(type='file' name='uploadCSV')
-			.file-path-wrapper
-				input.file-path.wrapper(type='text')
+			.row
+		unless formMode
+			table.bordered.striped
+				thead
+					tr
+						th Nama
+						th Status
+						th Bentuk
+						th Alamat
+						th Kel/Des
+						th Siswa
+						th Lat
+						th Lng
+				tbody
+					each datas
+						tr#row
+							td= nama
+							td= status
+							td= bentuk
+							td= alamat
+							td= keldes
+							td= siswa
+							td= latlng.lat
+							td= latlng.lng
+			.btn#empty Kosongkan
+			.btn#geocode Geocode
+			.file-field.input-field
+				.btn.left
+					span Impor Data
+					input(type='file' name='uploadCSV')
+				.file-path-wrapper
+					input.file-path.wrapper(type='text')
+
+template(name='mapSelect')
+	#mapSelect

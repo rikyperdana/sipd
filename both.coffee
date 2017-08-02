@@ -48,7 +48,7 @@ coll.sekolahs.attachSchema new SimpleSchema
 	alamat: type: String
 	keldes: type: String
 	siswa: type: Number
-	latlng: type: Object, optional: true, autoform: type: 'hidden'
+	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
 coll.sekolahs.allow

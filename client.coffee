@@ -8,6 +8,10 @@ if Meteor.isClient
 	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
 	Template.registerHelper 'showMap', -> Session.get 'showMap'
 	Template.registerHelper 'showAdd', -> Session.get 'showAdd'
+	Template.registerHelper 'formMode', ->
+		add = Session.get 'showAdd'
+		edit = Session.get 'editData'
+		true if add or edit
 	Template.registerHelper 'pageTitle', ->
 		route = currentRoute (res) -> res
 		kab = _.startCase route.split('_')[0]
@@ -30,6 +34,8 @@ if Meteor.isClient
 		'click #close': ->
 			Session.set 'showAdd', false
 			Session.set 'editData', null
+		'keyup #search': (event) ->
+			Session.set 'searchTerm', event.target.value.toLowerCase()
 
 	Template.kel.helpers
 		datas: ->
@@ -82,8 +88,6 @@ if Meteor.isClient
 	Template.selectElemen.events
 		'change select': (event) ->
 			Session.set 'selectElemen', _.kebabCase event.target.value
-		'keyup #search': (event) ->
-			Session.set 'searchTerm', event.target.value.toLowerCase()
 
 	Template.login.events
 		'submit #login': (event) ->
@@ -177,26 +181,26 @@ if Meteor.isClient
 
 	Template.sekolahs.onRendered ->
 		baseMaps =
-			'Topografi': L.tileLayer.provider 'OpenTopoMap'
-			'Jalan': L.tileLayer.provider 'OpenStreetMap.DE'
+			Topografi: L.tileLayer.provider 'OpenTopoMap'
+			Jalan: L.tileLayer.provider 'OpenStreetMap.DE'
+			CitraRiau: L.tileLayer.provider 'Esri.WorldImagery'
 		overlays = {}
 
 		makeLayers = (category, type, color) ->
 			markers = []
 			for i in coll.sekolahs.find().fetch()
-				if i.latlng
-					if i[category] is type
-						marker = L.marker i.latlng,
-							icon: L.AwesomeMarkers.icon
-								markerColor: color
-								prefix: 'fa'
-								icon: 'graduation-cap'
-						content = '<b>Nama: </b>' + i.nama + '<br/>'
-						content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
-						content += '<b>Alamat: </b>' + i.alamat + ' ' + i.keldes + '<br/>'
-						content += '<b>Siswa: </b>' + i.siswa + ' orang <br/>'
-						marker.bindPopup content
-						markers.push marker
+				if i.latlng and i[category] is type
+					marker = L.marker i.latlng,
+						icon: L.AwesomeMarkers.icon
+							markerColor: color
+							prefix: 'fa'
+							icon: 'graduation-cap'
+					content = '<b>Nama: </b>' + i.nama + '<br/>'
+					content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
+					content += '<b>Alamat: </b>' + i.alamat + ' ' + i.keldes + '<br/>'
+					content += '<b>Siswa: </b>' + i.siswa + ' orang <br/>'
+					marker.bindPopup content
+					markers.push marker
 			overlays[type] = L.layerGroup markers
 
 		makeLayers 'bentuk', 'SD', 'orange'
@@ -223,8 +227,17 @@ if Meteor.isClient
 
 
 	Template.sekolahs.helpers
-		datas: -> coll.sekolahs.find().fetch()
-
+		datas: ->
+			searchTerm = Session.get 'searchTerm'
+			source = coll.sekolahs.find().fetch()
+			if searchTerm
+				_.filter source, (i) ->
+					asNama = i.nama.toLowerCase().includes searchTerm
+					asAlamat = i.alamat.toLowerCase().includes searchTerm
+					asKeldes = i.keldes.toLowerCase().includes searchTerm
+					true if asNama or asAlamat or asKeldes
+			else
+				source
 	Template.sekolahs.events
 		'click #empty': ->
 			dialog =
@@ -254,3 +267,30 @@ if Meteor.isClient
 					Meteor.call 'updateSekolah', obj
 			for i in coll.sekolahs.find().fetch().reverse()
 				unless i.latlng then getLatLng i
+
+	Template.mapSelect.onRendered ->
+		L.Icon.Default.imagePath = '/packages/bevanhunt_leaflet/images/'
+		lat = $('input[name="latlng.lat"]')
+		lng = $('input[name="latlng.lng"]')
+		baseMaps =
+			Jalan: L.tileLayer.provider 'OpenStreetMap.DE'
+			CitraRiau: L.tileLayer.provider 'Esri.WorldImagery'
+		dataLoc = -> if lat.val() then [lat.val(), lng.val()] else [0.5, 101.44]
+		map = L.map 'mapSelect',
+			zoom: 17
+			maxZoom: 17
+			center: dataLoc()
+			layers: [baseMaps.CitraRiau]
+		currentPos = L.marker [lat.val(), lng.val()]
+		currentPos.bindPopup 'Lokasi Data'
+		currentPos.addTo map
+		map.on 'click', (event) ->
+			marker = L.marker event.latlng
+			marker.bindPopup 'Lokasi Baru'
+			marker.addTo map
+			lat.val event.latlng.lat
+			lng.val event.latlng.lng
+		locate = L.control.locate()
+		locate.addTo map
+		layersControl = L.control.layers baseMaps, {}, collapsed: false
+		layersControl.addTo map

@@ -46,6 +46,7 @@ geojson-utils@1.0.10
 gildaspk:autoform-materialize@0.0.26
 gwendall:body-events@0.1.6
 harrison:papa-parse@1.1.7
+herrhelms:meteor-leaflet-locatecontrol@1.0.1
 hot-code-push@1.0.4
 html-tools@1.0.11
 htmljs@1.0.11
