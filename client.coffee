@@ -189,11 +189,16 @@ if Meteor.isClient
 				when 'SMP' then color = 'red'
 				when 'SMA' then color = 'darkred'
 				when 'SMK' then color = 'darkgreen'
-			if i.latlng then markers.push L.marker i.latlng,
+			marker = L.marker i.latlng,
 				icon: L.AwesomeMarkers.icon
 					markerColor: color
 					prefix: 'fa'
 					icon: 'graduation-cap'
+			content = '<b>Nama: </b>' + i.nama + '</br>'
+			content += '<b>Lokasi: </b>' + i.alamat + '</br>'
+			content += '<b>Jumlah: </b>' + i.siswa + '</br>'
+			marker.bindPopup content
+			if i.latlng then markers.push marker
 		titiks = L.layerGroup markers
 		titiks.addTo map
 
