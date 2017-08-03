@@ -76,7 +76,7 @@ template(name='selectElemen')
 	.row
 		.input-field.col.m8
 			select
-				option(value='') Pilih Elemen Data
+				option(value='') -- Pilih Elemen Data --
 				each val in elemensName
 					option= val
 		.input-field.col.m4
@@ -247,7 +247,7 @@ template(name='mapSelect')
 	#mapSelect
 
 template(name='pagination')
-	ul.pagination
+	ul.pagination.center
 		li: a(href='#'): i.material-icons#prev chevron_left
 		each val in pagins
 			li: a.num(href='#' id='{{val}}')= val

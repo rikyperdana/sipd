@@ -234,6 +234,8 @@ if Meteor.isClient
 		locate = L.control.locate()
 		locate.addTo map
 
+		$('.num#1').parent().addClass 'active'
+
 	Template.sekolahs.onRendered ->
 		Session.set 'limit', 200
 
@@ -281,7 +283,7 @@ if Meteor.isClient
 				geocode.getLocation obj.alamat + ' Riau', (location) ->
 					obj.latlng = location.results[0].geometry.location
 					Meteor.call 'updateSekolah', obj
-			for i in coll.sekolahs.find().fetch().reverse()
+			for i in _.shuffle coll.sekolahs.find().fetch()
 				unless i.latlng then getLatLng i
 
 	Template.mapSelect.onRendered ->
