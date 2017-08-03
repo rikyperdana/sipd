@@ -6,6 +6,8 @@ if Meteor.isClient
 		kab: currentRoute().split('_')[0]
 		kec: currentRoute().split('_')[1]
 		kel: currentRoute().split('_')[2]
+	selectElemen = -> Session.get 'selectElemen'
+	searchTerm = -> Session.get 'searchTerm'
 
 	Template.registerHelper 'coll', -> coll
 	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
@@ -62,13 +64,11 @@ if Meteor.isClient
 
 	Template.kel.helpers
 		datas: ->
-			selectElemen = Session.get 'selectElemen'
-			searchTerm = Session.get 'searchTerm'
 			source = coll.elemens.find().fetch()
 			if searchTerm
-				_.filter source, (i) -> i.indikator.toLowerCase().includes searchTerm
+				_.filter source, (i) -> i.indikator.toLowerCase().includes searchTerm()
 			else if selectElemen
-				_.filter source, (i) -> i.elemen is selectElemen
+				_.filter source, (i) -> i.elemen is selectElemen()
 			else
 				source
 
@@ -76,12 +76,12 @@ if Meteor.isClient
 		'click #emptyElemen': ->
 			dialog =
 				message: 'Yakin kosongkan elemen?'
-				title: 'Elemen ' + Session.get 'selectElemen'
+				title: 'Elemen ' + selectElemen()
 				okText: 'Ya'
 				success: true
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyElemen', currentRoute(), Session.get 'selectElemen'
+				if ok then Meteor.call 'emptyElemen', currentRoute(), selectElemen()
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
@@ -132,9 +132,8 @@ if Meteor.isClient
 
 	Template.map.onRendered ->
 		getColor = (prop) ->
-			selectElemen = Session.get 'selectElemen'
 			filtered = _.filter coll.elemens.find().fetch(), (i) ->
-				elem = i.elemen is selectElemen
+				elem = i.elemen is selectElemen()
 				kab = i.kab is _.kebabCase prop.KABUPATEN
 				kec = i.kec is _.kebabCase prop.KECAMATAN
 				kel = i.kel is _.kebabCase prop.DESA
@@ -145,7 +144,7 @@ if Meteor.isClient
 				count += 1
 			avg = sum / count
 			if avg then console.log
-				elem: selectElemen
+				elem: selectElemen()
 				sum: sum
 				count: count
 				avg: avg
@@ -182,8 +181,6 @@ if Meteor.isClient
 
 	Template.kec.helpers
 		datas: ->
-			selectElemen = Session.get 'selectElemen'
-			searchTerm = Session.get 'searchTerm'
 			list = []
 			for i in coll.elemens.find().fetch()
 				find = _.find list, (j) -> j.indikator is i.indikator
@@ -191,11 +188,10 @@ if Meteor.isClient
 					find.nilai += i.nilai
 				else
 					list.push i
-
-			if searchTerm
-				_.filter list, (i) -> i.indikator.toLowerCase().includes searchTerm
-			else if selectElemen
-				_.filter list, (i) -> i.elemen is selectElemen
+			if searchTerm()
+				_.filter list, (i) -> i.indikator.toLowerCase().includes searchTerm()
+			else if selectElemen()
+				_.filter list, (i) -> i.elemen is selectElemen()
 			else
 				list
 
@@ -253,12 +249,11 @@ if Meteor.isClient
 
 	Template.sekolahs.helpers
 		datas: ->
-			searchTerm = Session.get 'searchTerm'
-			if searchTerm
+			if searchTerm()
 				_.filter coll.sekolahs.find().fetch(), (i) ->
-					asNama = i.nama.toLowerCase().includes searchTerm
-					asAlamat = i.alamat.toLowerCase().includes searchTerm
-					asKeldes = i.keldes.toLowerCase().includes searchTerm
+					asNama = i.nama.toLowerCase().includes searchTerm()
+					asAlamat = i.alamat.toLowerCase().includes searchTerm()
+					asKeldes = i.keldes.toLowerCase().includes searchTerm()
 					true if asNama or asAlamat or asKeldes
 			else
 				pagin = Session.get 'pagin'
