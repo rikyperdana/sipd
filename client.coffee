@@ -8,6 +8,7 @@ if Meteor.isClient
 	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
 	Template.registerHelper 'showMap', -> Session.get 'showMap'
 	Template.registerHelper 'showAdd', -> Session.get 'showAdd'
+	Template.registerHelper 'editData', -> Session.get 'editData'
 	Template.registerHelper 'formMode', ->
 		add = Session.get 'showAdd'
 		edit = Session.get 'editData'
@@ -18,7 +19,14 @@ if Meteor.isClient
 		kec = _.startCase route.split('_')[1]
 		kel = _.startCase route.split('_')[2]
 		kab: kab, kec: kec, kel: kel
-	Template.registerHelper 'editData', -> Session.get 'editData'
+	Template.registerHelper 'pagins', ->
+		limit = Session.get 'limit'
+		route = currentRoute (res) -> res
+		length = coll.sekolahs.find().fetch().length
+		modulo = length % limit
+		range = length - modulo
+		end = range / limit + 1
+		[1..end]
 
 	Template.body.events
 		'click #showContoh': ->
@@ -36,6 +44,19 @@ if Meteor.isClient
 			Session.set 'editData', null
 		'keyup #search': (event) ->
 			Session.set 'searchTerm', event.target.value.toLowerCase()
+		'click .num': (event) ->
+			num = event.currentTarget.innerHTML
+			Session.set 'pagin', num - 1
+			$('.num').parent().removeClass 'active'
+			$('.num#'+num).parent().addClass 'active'
+		'click #prev': ->
+			unless Session.get 'pagin' is 0
+				Session.set 'pagin', -1 + Session.get 'pagin'
+		'click #next': ->
+			Session.set 'pagin', 1 + Session.get 'pagin'
+
+	Template.layout.onRendered ->
+		Session.set 'pagin', 0
 
 	Template.kel.helpers
 		datas: ->
@@ -228,19 +249,26 @@ if Meteor.isClient
 		locate = L.control.locate()
 		locate.addTo map
 
+	Template.sekolahs.onRendered ->
+		Session.set 'limit', 200
 
 	Template.sekolahs.helpers
 		datas: ->
 			searchTerm = Session.get 'searchTerm'
-			source = coll.sekolahs.find().fetch()
 			if searchTerm
-				_.filter source, (i) ->
+				_.filter coll.sekolahs.find().fetch(), (i) ->
 					asNama = i.nama.toLowerCase().includes searchTerm
 					asAlamat = i.alamat.toLowerCase().includes searchTerm
 					asKeldes = i.keldes.toLowerCase().includes searchTerm
 					true if asNama or asAlamat or asKeldes
 			else
-				source
+				pagin = Session.get 'pagin'
+				limit = Session.get 'limit'
+				selector = {}
+				options =
+					limit: limit
+					skip: pagin * limit
+				coll.sekolahs.find(selector, options).fetch()
 	Template.sekolahs.events
 		'click #empty': ->
 			dialog =

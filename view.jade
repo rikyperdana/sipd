@@ -188,6 +188,7 @@ template(name='sekolahs')
 					input#search(placeholder='Cari Nama, Alamat, atau Kel/Des')
 				.col.m4
 					.right.btn#showAdd + Sekolah
+			.row: +pagination
 		if showAdd
 			h5 Tambahkan Sekolah
 			+quickForm(
@@ -244,3 +245,10 @@ template(name='sekolahs')
 
 template(name='mapSelect')
 	#mapSelect
+
+template(name='pagination')
+	ul.pagination
+		li: a(href='#'): i.material-icons#prev chevron_left
+		each val in pagins
+			li: a.num(href='#' id='{{val}}')= val
+		li: a(href='#'): i.material-icons#next chevron_right
