@@ -43,8 +43,9 @@ if Meteor.isClient
 		'click #close': ->
 			Session.set 'showAdd', false
 			Session.set 'editData', null
-		'keyup #search': (event) ->
-			Session.set 'searchTerm', event.target.value.toLowerCase()
+		'keypress #search': (event) ->
+			if event.key is 'Enter'
+				Session.set 'searchTerm', event.target.value.toLowerCase()
 		'click .num': (event) ->
 			num = event.currentTarget.innerHTML
 			Session.set 'pagin', num - 1
