@@ -132,16 +132,20 @@ if Meteor.isClient
 
 	Template.map.onRendered ->
 		getColor = (prop) ->
-			selectElemen = Session.get 'selectElemen'
+
 			avgEl = ->
 				filtered = _.filter coll.elemens.find().fetch(), (i) ->
-					i.elemen is selectElemen
-					i.kel is _.kebabCase prop.DESA
+					elem = i.elemen is Session.get 'selectElemen'
+					kab = i.kab is _.kebabCase prop.KABUPATEN
+					kec = i.kec is _.kebabCase prop.KECAMATAN
+					kel = i.kel is _.kebabCase prop.DESA
+					true if elem and kab and kec and kel
 				sum = 0; count = 0
 				for i in filtered
 					sum += i.nilai
 					count += 1
-				avg = sum / count
+				avg = sum /count
+
 			switch
 				when avgEl() > 100 then 'blue'
 				when avgEl() > 75 then 'green'
@@ -155,7 +159,10 @@ if Meteor.isClient
 			else if wilName().kec
 				if _.kebabCase(prop.KECAMATAN) isnt wilName().kec then 0 else 0.7
 		style = (feature) ->
-			opacity: 0
+			color: 'black'
+			weight: 2
+			dashArray: '3'
+			opacity: getOpac feature.properties
 			fillColor: getColor feature.properties
 			fillOpacity: getOpac feature.properties
 
