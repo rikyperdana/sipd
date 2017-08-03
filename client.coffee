@@ -183,6 +183,7 @@ if Meteor.isClient
 	Template.kec.helpers
 		datas: ->
 			selectElemen = Session.get 'selectElemen'
+			searchTerm = Session.get 'searchTerm'
 			list = []
 			for i in coll.elemens.find().fetch()
 				find = _.find list, (j) -> j.indikator is i.indikator
@@ -191,7 +192,9 @@ if Meteor.isClient
 				else
 					list.push i
 
-			if selectElemen
+			if searchTerm
+				_.filter list, (i) -> i.indikator.toLowerCase().includes searchTerm
+			else if selectElemen
 				_.filter list, (i) -> i.elemen is selectElemen
 			else
 				list
