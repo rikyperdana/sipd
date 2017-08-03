@@ -132,25 +132,29 @@ if Meteor.isClient
 
 	Template.map.onRendered ->
 		getColor = (prop) ->
-
-			avgEl = ->
-				filtered = _.filter coll.elemens.find().fetch(), (i) ->
-					elem = i.elemen is Session.get 'selectElemen'
-					kab = i.kab is _.kebabCase prop.KABUPATEN
-					kec = i.kec is _.kebabCase prop.KECAMATAN
-					kel = i.kel is _.kebabCase prop.DESA
-					true if elem and kab and kec and kel
-				sum = 0; count = 0
-				for i in filtered
-					sum += i.nilai
-					count += 1
-				avg = sum /count
-
-			switch
-				when avgEl() > 100 then 'blue'
-				when avgEl() > 75 then 'green'
-				when avgEl() > 50 then 'orange'
-				when avgEl() > 25 then 'red'
+			selectElemen = Session.get 'selectElemen'
+			filtered = _.filter coll.elemens.find().fetch(), (i) ->
+				elem = i.elemen is selectElemen
+				kab = i.kab is _.kebabCase prop.KABUPATEN
+				kec = i.kec is _.kebabCase prop.KECAMATAN
+				kel = i.kel is _.kebabCase prop.DESA
+				true if elem and kab and kec and kel
+			sum = 0; count = 0
+			for i in filtered
+				sum += i.nilai
+				count += 1
+			avg = sum / count
+			if avg then console.log
+				elem: selectElemen
+				sum: sum
+				count: count
+				avg: avg
+				wil: prop.DESA
+			color = switch
+				when avg > 100 then 'blue'
+				when avg > 75 then 'green'
+				when avg > 50 then 'orange'
+				when avg > 25 then 'red'
 				else 'white'
 
 		getOpac = (prop) ->
