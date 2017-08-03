@@ -1,7 +1,11 @@
 if Meteor.isClient
 
 	AutoForm.setDefaultTemplate 'materialize'
-	currentRoute = (cb) -> cb Router.current().route.getName()
+	currentRoute = -> Router.current().route.getName()
+	wilName = ->
+		kab: currentRoute().split('_')[0]
+		kec: currentRoute().split('_')[1]
+		kel: currentRoute().split('_')[2]
 
 	Template.registerHelper 'coll', -> coll
 	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
@@ -14,14 +18,11 @@ if Meteor.isClient
 		edit = Session.get 'editData'
 		true if add or edit
 	Template.registerHelper 'pageTitle', ->
-		route = currentRoute (res) -> res
-		kab = _.startCase route.split('_')[0]
-		kec = _.startCase route.split('_')[1]
-		kel = _.startCase route.split('_')[2]
-		kab: kab, kec: kec, kel: kel
+		kab: _.startCase wilName().kab
+		kec: _.startCase wilName().kec
+		kel: _.startCase wilName().kel
 	Template.registerHelper 'pagins', ->
 		limit = Session.get 'limit'
-		route = currentRoute (res) -> res
 		length = coll.sekolahs.find().fetch().length
 		modulo = length % limit
 		range = length - modulo
@@ -72,7 +73,6 @@ if Meteor.isClient
 
 	Template.kel.events
 		'click #emptyElemen': ->
-			route = currentRoute (res) -> res
 			dialog =
 				message: 'Yakin kosongkan elemen?'
 				title: 'Elemen ' + Session.get 'selectElemen'
@@ -80,20 +80,19 @@ if Meteor.isClient
 				success: true
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyElemen', route, Session.get 'selectElemen'
+				if ok then Meteor.call 'emptyElemen', currentRoute(), Session.get 'selectElemen'
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
 				step: (result) ->
-					route = currentRoute (res) -> res
 					data = result.data[0]
 					pecah = data.indikator.split ' '
 					buang = _.reject pecah, (i) -> i.includes ')'
 					data.indikator = buang.join ' '
 					Meteor.call 'import', 'elemens',
-						kab: route.split('_')[0]
-						kec: route.split('_')[1]
-						kel: route.split('_')[2]
+						kab: wilName().kab
+						kec: wilName().kec
+						kel: wilName().kel
 						elemen: _.kebabCase data.elemen
 						indikator: data.indikator
 						defenisi: data.defenisi
@@ -131,12 +130,7 @@ if Meteor.isClient
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
-		route = currentRoute (res) -> res
-		kab = route.split('_')[0]
-		kec = route.split('_')[1]
-		kel = route.split('_')[2]
-
-		sumEl = (route, elemen) ->
+		sumEl = ->
 			source = coll.elemens.find().fetch()
 			selectElemen = Session.get 'selectElemen'
 			sum = 0
@@ -144,31 +138,22 @@ if Meteor.isClient
 				i.elemen is selectElemen
 			for i in filter
 				sum += i.nilai
-			console.log sum, filter
 			if sum < 10000
 				'red'
 			else
 				'blue'
 
 		getColor = (prop) ->
-			route = currentRoute (res) -> res
 			selectElemen = Session.get 'selectElemen'
-			kab = route.split('_')[0]
-			kec = route.split('_')[1]
-			kel = route.split('_')[2]
-			if kel
-				if _.kebabCase(prop.DESA) is kel then sumEl route, selectElemen
-			else if kec
-				if _.kebabCase(prop.KECAMATAN) is kec then 'orange'
+			if wilName().kel
+				if _.kebabCase(prop.DESA) is wilName().kel then sumEl()
+			else if wilName().kec
+				if _.kebabCase(prop.KECAMATAN) is wilName().kec then 'orange'
 		getOpac = (prop) ->
-			route = currentRoute (res) -> res
-			kab = route.split('_')[0]
-			kec = route.split('_')[1]
-			kel = route.split('_')[2]
-			if kel
-				if _.kebabCase(prop.DESA) isnt kel then 0 else 0.7
-			else if kec
-				if _.kebabCase(prop.KECAMATAN) isnt kec then 0 else 0.7
+			if wilName().kel
+				if _.kebabCase(prop.DESA) isnt wilName().kel then 0 else 0.7
+			else if wilName().kec
+				if _.kebabCase(prop.KECAMATAN) isnt wilName().kec then 0 else 0.7
 		style = (feature) ->
 			opacity: 0
 			fillColor: getColor feature.properties
