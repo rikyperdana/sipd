@@ -131,25 +131,24 @@ if Meteor.isClient
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
-		sumEl = ->
-			source = coll.elemens.find().fetch()
-			selectElemen = Session.get 'selectElemen'
-			sum = 0
-			filter = _.filter source, (i) ->
-				i.elemen is selectElemen
-			for i in filter
-				sum += i.nilai
-			if sum < 10000
-				'red'
-			else
-				'blue'
-
 		getColor = (prop) ->
 			selectElemen = Session.get 'selectElemen'
-			if wilName().kel
-				if _.kebabCase(prop.DESA) is wilName().kel then sumEl()
-			else if wilName().kec
-				if _.kebabCase(prop.KECAMATAN) is wilName().kec then 'orange'
+			avgEl = ->
+				filtered = _.filter coll.elemens.find().fetch(), (i) ->
+					i.elemen is selectElemen
+					i.kel is _.kebabCase prop.DESA
+				sum = 0; count = 0
+				for i in filtered
+					sum += i.nilai
+					count += 1
+				avg = sum / count
+			switch
+				when avgEl() > 100 then 'blue'
+				when avgEl() > 75 then 'green'
+				when avgEl() > 50 then 'orange'
+				when avgEl() > 25 then 'red'
+				else 'white'
+
 		getOpac = (prop) ->
 			if wilName().kel
 				if _.kebabCase(prop.DESA) isnt wilName().kel then 0 else 0.7
@@ -193,7 +192,7 @@ if Meteor.isClient
 			CitraRiau: L.tileLayer.provider 'Esri.WorldImagery'
 		overlays = {}
 
-		makeLayers = (category, type, color) ->
+		makeLayers = (category, type, color, icon) ->
 			markers = []
 			for i in coll.sekolahs.find().fetch()
 				if i.latlng and i[category] is type
@@ -201,7 +200,7 @@ if Meteor.isClient
 						icon: L.AwesomeMarkers.icon
 							markerColor: color
 							prefix: 'fa'
-							icon: 'graduation-cap'
+							icon: icon
 					content = '<b>Nama: </b>' + i.nama + '<br/>'
 					content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
 					content += '<b>Alamat: </b>' + i.alamat + ' ' + i.keldes + '<br/>'
@@ -210,10 +209,10 @@ if Meteor.isClient
 					markers.push marker
 			overlays[type] = L.layerGroup markers
 
-		makeLayers 'bentuk', 'SD', 'orange'
-		makeLayers 'bentuk', 'SMP', 'red'
-		makeLayers 'bentuk', 'SMA', 'darkred'
-		makeLayers 'bentuk', 'SMK', 'darkgreen'
+		makeLayers 'bentuk', 'SD', 'orange', 'leanpub'
+		makeLayers 'bentuk', 'SMP', 'red', 'graduation-cap'
+		makeLayers 'bentuk', 'SMA', 'darkred', 'university'
+		makeLayers 'bentuk', 'SMK', 'darkgreen', 'cog'
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
@@ -231,10 +230,8 @@ if Meteor.isClient
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
-
 		locate = L.control.locate()
 		locate.addTo map
-
 		$('.num#1').parent().addClass 'active'
 
 	Template.sekolahs.onRendered ->
