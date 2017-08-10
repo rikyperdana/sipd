@@ -65,10 +65,13 @@ if Meteor.isClient
 		datas: ->
 			if selectElemen
 				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen()
-				if sub.ready() then coll.elemens.find().fetch()
 			else
 				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel
-				if sub.ready() then coll.elemens.find().fetch()
+			if sub.ready()
+				if searchTerm()
+					_.filter coll.elemens.find().fetch(), (i) -> i.indikator.toLowerCase().includes searchTerm()
+				else
+					coll.elemens.find().fetch()
 
 	Template.kel.events
 		'click #emptyElemen': ->
