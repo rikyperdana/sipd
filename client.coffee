@@ -128,7 +128,11 @@ if Meteor.isClient
 	Template.grafik.helpers
 		grafik: ->
 			barArray = []
-			barArray.push [i.elemen, i.nilai] for i in coll.elemens.find().fetch()
+			source = coll.elemens.find().fetch()
+			if source.length > 0
+				barArray.push [i.elemen, i.nilai] for i in source
+			else
+				barArray.push [i.elemen, i.nilai] for i in Session.get 'kecDatas'
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
