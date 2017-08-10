@@ -45,9 +45,8 @@ if Meteor.isClient
 		'click #close': ->
 			Session.set 'showAdd', false
 			Session.set 'editData', null
-		'keypress #search': (event) ->
-			if event.key is 'Enter'
-				Session.set 'searchTerm', event.target.value.toLowerCase()
+		'keyup #search': (event) ->
+			Session.set 'searchTerm', event.target.value.toLowerCase()
 		'click .num': (event) ->
 			num = event.currentTarget.innerHTML
 			Session.set 'pagin', num - 1
@@ -64,9 +63,8 @@ if Meteor.isClient
 
 	Template.kel.helpers
 		datas: ->
-			selectElemen = Session.get 'selectElemen'
 			if selectElemen
-				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen
+				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen()
 				if sub.ready() then coll.elemens.find().fetch()
 			else
 				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel
@@ -181,14 +179,16 @@ if Meteor.isClient
 
 	Template.kec.helpers
 		datas: ->
-			selectElemen = Session.get 'selectElemen'
 			if selectElemen
-				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, selectElemen, (err, res) ->
+				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, selectElemen(), (err, res) ->
 					if res then Session.set 'kecDatas', res
 			else
 				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, (err, res) ->
 					if res then Session.set 'kecDatas', res
-			Session.get 'kecDatas'
+			if searchTerm()
+				_.filter Session.get('kecDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
+			else
+				Session.get 'kecDatas'
 
 	Template.sekolahs.onRendered ->
 		baseMaps =
