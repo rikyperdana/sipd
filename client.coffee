@@ -64,13 +64,13 @@ if Meteor.isClient
 
 	Template.kel.helpers
 		datas: ->
-			source = coll.elemens.find().fetch()
-			if searchTerm
-				_.filter source, (i) -> i.indikator.toLowerCase().includes searchTerm()
-			else if selectElemen
-				_.filter source, (i) -> i.elemen is selectElemen()
+			selectElemen = Session.get 'selectElemen'
+			if selectElemen
+				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen
+				if sub.ready() then coll.elemens.find().fetch()
 			else
-				source
+				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel
+				if sub.ready() then coll.elemens.find().fetch()
 
 	Template.kel.events
 		'click #emptyElemen': ->
@@ -181,19 +181,14 @@ if Meteor.isClient
 
 	Template.kec.helpers
 		datas: ->
-			list = []
-			for i in coll.elemens.find().fetch()
-				find = _.find list, (j) -> j.indikator is i.indikator
-				if find
-					find.nilai += i.nilai
-				else
-					list.push i
-			if searchTerm()
-				_.filter list, (i) -> i.indikator.toLowerCase().includes searchTerm()
-			else if selectElemen()
-				_.filter list, (i) -> i.elemen is selectElemen()
+			selectElemen = Session.get 'selectElemen'
+			if selectElemen
+				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, selectElemen, (err, res) ->
+					if res then Session.set 'kecDatas', res
 			else
-				list
+				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, (err, res) ->
+					if res then Session.set 'kecDatas', res
+			Session.get 'kecDatas'
 
 	Template.sekolahs.onRendered ->
 		baseMaps =
