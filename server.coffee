@@ -38,6 +38,13 @@ if Meteor.isServer
 			else
 				list
 
+		Meteor.publish 'wilStat', (wilName, elemen) ->
+			coll.wilStat.find
+				kab: wilName.kab
+				kec: wilName.kec
+				kel: wilName.kel
+				elemen: elemen
+
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
 				i.sum = 0

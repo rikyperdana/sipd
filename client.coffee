@@ -138,6 +138,21 @@ if Meteor.isClient
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
+		sub = Meteor.subscribe 'wilStat', wilName(), selectElemen()
+		getColor = (prop) ->
+			find = _.find coll.wilStat.find().fetch(), (i) ->
+				i.kab is _.kebabCase prop.KABUPATEN
+				i.kec is _.kebabCase prop.KECAMATAN
+				i.kel is _.kebabCase prop.DESA
+				i.elemen is selectElemen()
+			color = switch
+				when find.avg > 100 then 'blue'
+				when find.avg > 75 then 'green'
+				when find.avg > 50 then 'orange'
+				when find.avg > 25 then 'red'
+				else 'white'
+
+		###
 		getColor = (prop) ->
 			filtered = _.filter coll.elemens.find().fetch(), (i) ->
 				elem = i.elemen is selectElemen()
@@ -162,6 +177,7 @@ if Meteor.isClient
 				when avg > 50 then 'orange'
 				when avg > 25 then 'red'
 				else 'white'
+		###
 
 		getOpac = (prop) ->
 			if wilName().kel
