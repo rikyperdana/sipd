@@ -57,6 +57,8 @@ if Meteor.isClient
 				Session.set 'pagin', -1 + Session.get 'pagin'
 		'click #next': ->
 			Session.set 'pagin', 1 + Session.get 'pagin'
+		'click #mapColor': ->
+			Meteor.call 'wilStat'
 
 	Template.layout.onRendered ->
 		Session.set 'pagin', 0

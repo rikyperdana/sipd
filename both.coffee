@@ -55,3 +55,17 @@ coll.sekolahs.allow
 	insert: -> true
 	update: -> true
 	remove: -> true
+
+coll.wilStat = new Meteor.Collection 'wilStat'
+coll.wilStat.attachSchema new SimpleSchema
+	kab: type: String
+	kec: type: String
+	kel: type: String
+	elemen: type: String
+	sum: type: Number, decimal: true
+	count: type: Number
+	avg: type: Number, decimal: true
+coll.wilStat.allow
+	insert: -> true
+	update: -> true
+	remove: -> true
