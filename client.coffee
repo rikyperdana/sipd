@@ -145,12 +145,13 @@ if Meteor.isClient
 				i.kec is _.kebabCase prop.KECAMATAN
 				i.kel is _.kebabCase prop.DESA
 				i.elemen is selectElemen()
-			color = switch
+			if find then switch
 				when find.avg > 100 then 'blue'
 				when find.avg > 75 then 'green'
 				when find.avg > 50 then 'orange'
 				when find.avg > 25 then 'red'
-				else 'white'
+			else
+				'white'
 
 		###
 		getColor = (prop) ->

@@ -39,11 +39,12 @@ if Meteor.isServer
 				list
 
 		Meteor.publish 'wilStat', (wilName, elemen) ->
-			coll.wilStat.find
-				kab: wilName.kab
-				kec: wilName.kec
-				kel: wilName.kel
-				elemen: elemen
+			selector = {}
+			if wilName.kab then selector.kab = wilName.kab
+			if wilName.kec then selector.kec = wilName.kec
+			if wilName.kel then selector.kel = wilName.kel
+			if elemen then selector.elemen = elemen
+			coll.wilStat.find selector
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
