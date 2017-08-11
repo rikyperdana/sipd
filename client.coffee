@@ -141,44 +141,20 @@ if Meteor.isClient
 		sub = Meteor.subscribe 'wilStat', wilName(), selectElemen()
 		getColor = (prop) ->
 			find = _.find coll.wilStat.find().fetch(), (i) ->
-				i.kab is _.kebabCase prop.KABUPATEN
-				i.kec is _.kebabCase prop.KECAMATAN
-				i.kel is _.kebabCase prop.DESA
-				i.elemen is selectElemen()
-			if find then switch
-				when find.avg > 100 then 'blue'
-				when find.avg > 75 then 'green'
-				when find.avg > 50 then 'orange'
-				when find.avg > 25 then 'red'
-			else
-				'white'
-
-		###
-		getColor = (prop) ->
-			filtered = _.filter coll.elemens.find().fetch(), (i) ->
-				elem = i.elemen is selectElemen()
 				kab = i.kab is _.kebabCase prop.KABUPATEN
 				kec = i.kec is _.kebabCase prop.KECAMATAN
 				kel = i.kel is _.kebabCase prop.DESA
-				true if elem and kab and kec and kel
-			sum = 0; count = 0
-			for i in filtered
-				sum += i.nilai
-				count += 1
-			avg = sum / count
-			if avg then console.log
-				elem: selectElemen()
-				sum: sum
-				count: count
-				avg: avg
-				wil: prop.DESA
-			color = switch
-				when avg > 100 then 'blue'
-				when avg > 75 then 'green'
-				when avg > 50 then 'orange'
-				when avg > 25 then 'red'
-				else 'white'
-		###
+				elem = i.elemen is selectElemen()
+				true if kab and kec and kel and elem
+			if find
+				switch
+					when find.avg > 100 then 'blue'
+					when find.avg > 75 then 'green'
+					when find.avg > 50 then 'orange'
+					when find.avg > 25 then 'red'
+					else 'white'
+			else
+				'white'
 
 		getOpac = (prop) ->
 			if wilName().kel
