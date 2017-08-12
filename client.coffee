@@ -173,9 +173,21 @@ if Meteor.isClient
 			fillColor: getColor feature.properties
 			fillOpacity: getOpac feature.properties
 
+		clickFeature = (event) ->
+			map.fitBounds event.target.getBounds()
+
+		onEachFeature = (feature, layer) ->
+			layer.on
+				click: clickFeature
+			content = '<b>Kab: </b>'+feature.properties.KABUPATEN+'<br/>'
+			content += '<b>Kec: </b>'+feature.properties.KECAMATAN+'<br/>'
+			content += '<b>Kel: </b>'+feature.properties.DESA+'<br/>'
+			layer.bindPopup content
+
 		topo = L.tileLayer.provider 'OpenTopoMap'
 		geojson = L.geoJson.ajax 'maps/petas.geojson',
 			style: style
+			onEachFeature: onEachFeature
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
