@@ -17,10 +17,16 @@ template(name='menu')
 template(name='home'): .container
 	h4 Beranda
 
-template(name='kel'): .container
+template(name='wil'): .container
 	h4 Data Kelurahan
 	with pageTitle
-		h5 Kab: {{kab}} / Kec: {{kel}} / Kel: {{kel}}
+		h5
+			if kab
+				span Kab: {{kab}}
+			if kec
+				span / Kec: {{kec}}
+			if kel
+				span / Kel: {{kel}}
 	+selectElemen
 	if editData
 		h5 Update Indikator
@@ -60,7 +66,7 @@ template(name='kel'): .container
 						td= beda
 						td= justifikasi
 		unless datas
-			.file-field.input-field
+			.file-0field.input-field
 				.btn.left
 					span Impor Data
 					input(type='file' name='uploadCSV')
@@ -110,68 +116,6 @@ template(name='grafik')
 template(name='map')
 	#map
 
-template(name='kec'): .container
-	h4 Data Kecamatan
-	with pageTitle
-		h5 Kab: {{kab}} / Kec: {{kec}}
-	+selectElemen
-	.btn.right#showGraph Grafik
-	.btn.right#showMap Peta
-	.row
-	if showGraph
-		+grafik
-	if showMap
-		+map
-	table
-		thead
-			tr
-				th Indikator
-				th Defenisi
-				th Nilai
-				th Beda
-				th Setuju
-				th Justifikasi
-		tbody
-			each datas
-				tr
-					td= indikator
-					td= defenisi
-					td= nilai
-					td= beda
-					td= setuju
-					td= justifikasi
-
-template(name='kab'): .container
-	h4 Data Kabupaten
-	with pageTitle
-		h5 Kab: {{kab}}
-	+selectElemen
-	.btn.right#showGraph Grafik
-	.btn.right#showMap Peta
-	.row
-	if showGraph
-		+grafik
-	if showMap
-		+map
-	table
-		thead
-			tr
-				th Indikator
-				th Defenisi
-				th Nilai
-				th Beda
-				th Setuju
-				th Justifikasi
-		tbody
-			each datas
-				tr
-					td= indikator
-					td= defenisi
-					td= nilai
-					td= beda
-					td= setuju
-					td= justifikasi
-
 template(name='sekolahs')
 	unless formMode
 		#map
@@ -179,42 +123,12 @@ template(name='sekolahs')
 		unless formMode
 			.row
 				h5.center Statistik Sekolah
-				.col.m3
-					.card.red
-						.card-content.white-text
-							.row
-								.col.m9
-									.card-title Jumlah Sekolah
-									span 1500 unit
-								.col.m3
-									i.material-icons.medium.center account_balance
-				.col.m3
-					.card.blue
-						.card-content.white-text
-							.row
-								.col.m9
-									.card-title Rata-rata Siswa
-									span 430 orang
-								.col.m3
-									i.material-icons.medium.center face
-				.col.m3
-					.card.green
-						.card-content.white-text
-							.row
-								.col.m9
-									.card-title Koordinat
-									span 800 sekolah
-								.col.m3
-									i.material-icons.medium.center place
-				.col.m3
-					.card.orange
-						.card-content.white-text
-							.row
-								.col.m9
-									.card-title Kondisi
-									span SD 400, SMP 200, SMA 150
-								.col.m3
-									i.material-icons.medium.center thumbs_up_down
+				each stats
+					.col.m3: .card(class='{{color}}'): .card-content.white-text: .row
+						.col.m9
+							.card-title= title
+							span= content
+						.col.m3: i.material-icons.medium.center= icon
 			.row
 				.col.m8
 					input#search(placeholder='Cari Nama, Alamat, atau Kel/Des, dan tekan Enter')

@@ -5,16 +5,11 @@ Router.configure
 Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
+Router.route '/riau', action: -> this.render 'prov'
 
 makeRoute = (route) ->
 	Router.route '/' + route,
-		action: ->
-			if route.split('_').length is 3
-				this.render 'kel'
-			else if route.split('_').length is 2
-				this.render 'kec'
-			else if route.split('_').length is 1
-				this.render 'kab'
+		action: -> this.render 'wil'
 
 makeRoute i for i in [kels..., kecs..., kabs...]
 

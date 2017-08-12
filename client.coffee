@@ -63,19 +63,43 @@ if Meteor.isClient
 	Template.layout.onRendered ->
 		Session.set 'pagin', 0
 
-	Template.kel.helpers
+	Template.wil.helpers
 		datas: ->
-			if selectElemen
-				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen()
-			else
-				sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel
-			if sub.ready()
-				if searchTerm()
-					_.filter coll.elemens.find().fetch(), (i) -> i.indikator.toLowerCase().includes searchTerm()
+			if wilName().kel
+				if selectElemen
+					sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen()
 				else
-					coll.elemens.find().fetch()
+					sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel
+				if sub.ready()
+					if searchTerm()
+						_.filter coll.elemens.find().fetch(), (i) -> i.indikator.toLowerCase().includes searchTerm()
+					else
+						coll.elemens.find().fetch()
+			else if wilName().kec
+				if selectElemen
+					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
+						if res then Session.set 'kecDatas', res
+				else
+					Meteor.call 'wilSum', wilName(), (err, res) ->
+						if res then Session.set 'kecDatas', res
+				if searchTerm()
+					_.filter Session.get('kecDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
+				else
+					Session.get 'kecDatas'
+			else if wilName().kab
+				if selectElemen
+					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
+						if res then Session.set 'kabDatas', res
+				else
+					Meteor.call 'wilSum', wilName(), (err, res) ->
+						if res then Session.set 'kabDatas', res
+				if searchTerm()
+					_.filter Session.get('kabDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
+				else
+					Session.get 'kabDatas'
 
-	Template.kel.events
+
+	Template.wil.events
 		'click #emptyElemen': ->
 			dialog =
 				message: 'Yakin kosongkan elemen?'
@@ -206,32 +230,6 @@ if Meteor.isClient
 			zoomControl: false
 			layers: [topo, geojson]
 
-	Template.kec.helpers
-		datas: ->
-			if selectElemen
-				Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
-					if res then Session.set 'kecDatas', res
-			else
-				Meteor.call 'wilSum', wilName(), (err, res) ->
-					if res then Session.set 'kecDatas', res
-			if searchTerm()
-				_.filter Session.get('kecDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
-			else
-				Session.get 'kecDatas'
-
-	Template.kab.helpers
-		datas: ->
-			if selectElemen
-				Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
-					if res then Session.set 'kabDatas', res
-			else
-				Meteor.call 'wilSum', wilName(), (err, res) ->
-					if res then Session.set 'kabDatas', res
-			if searchTerm()
-				_.filter Session.get('kabDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
-			else
-				Session.get 'kabDatas'
-
 	Template.sekolahs.onRendered ->
 		baseMaps =
 			Topografi: L.tileLayer.provider 'OpenTopoMap'
@@ -300,6 +298,34 @@ if Meteor.isClient
 					limit: limit
 					skip: pagin * limit
 				coll.sekolahs.find(selector, options).fetch()
+		stats: ->
+			source = coll.sekolahs.find().fetch()
+			jumlahSekolah = -> source.length
+			jumlahSiswa = -> _.sumBy source, (i) -> i.siswa
+			jumlahKoordinat = -> (filtered = _.filter source, (i) -> i.latlng).length
+
+			list = [
+				title: 'Jumlah Sekolah'
+				content: jumlahSekolah() + ' unit'
+				color: 'red'
+				icon: 'account_balance'
+			,
+				title: 'Jumlah Siswa'
+				content: jumlahSiswa() + ' orang'
+				color: 'blue'
+				icon: 'face'
+			,
+				title: 'Koordinat'
+				content: jumlahKoordinat() + ' sekolah'
+				color: 'green'
+				icon: 'place'
+			,
+				title: 'Kondisi'
+				content: 'SD 400, SMP 200, SMA 150'
+				color: 'orange'
+				icon: 'thumbs_up_down'
+			]
+
 	Template.sekolahs.events
 		'click #empty': ->
 			dialog =
