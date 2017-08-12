@@ -133,8 +133,10 @@ if Meteor.isClient
 			source = coll.elemens.find().fetch()
 			if source.length > 0
 				barArray.push [i.elemen, i.nilai] for i in source
-			else
+			else if Session.get 'kecDatas'
 				barArray.push [i.elemen, i.nilai] for i in Session.get 'kecDatas'
+			else if Session.get 'kabDatas'
+				barArray.push [i.elemen, i.nilai] for i in Session.get 'kabDatas'
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
@@ -161,9 +163,11 @@ if Meteor.isClient
 				if _.kebabCase(prop.DESA) isnt wilName().kel then 0 else 0.7
 			else if wilName().kec
 				if _.kebabCase(prop.KECAMATAN) isnt wilName().kec then 0 else 0.7
+			else if wilName().kab
+				if _.kebabCase(prop.KABUPATEN) isnt wilName().kab then 0 else 0.7
 		style = (feature) ->
 			color: 'black'
-			weight: 2
+			weight: 0.5
 			dashArray: '3'
 			opacity: getOpac feature.properties
 			fillColor: getColor feature.properties
