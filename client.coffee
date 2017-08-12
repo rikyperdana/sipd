@@ -179,9 +179,20 @@ if Meteor.isClient
 		onEachFeature = (feature, layer) ->
 			layer.on
 				click: clickFeature
-			content = '<b>Kab: </b>'+feature.properties.KABUPATEN+'<br/>'
-			content += '<b>Kec: </b>'+feature.properties.KECAMATAN+'<br/>'
-			content += '<b>Kel: </b>'+feature.properties.DESA+'<br/>'
+			kab = _.kebabCase feature.properties.KABUPATEN
+			kec = _.kebabCase feature.properties.KECAMATAN
+			kel = _.kebabCase feature.properties.DESA
+			content = '<b>Kab: </b>'+kab+'<br/>'
+			content += '<b>Kec: </b>'+kec+'<br/>'
+			content += '<b>Kel: </b>'+kel+'<br/>'
+			detailRoute = [kab, kec, kel].join '_'
+			content += '<b>Wil: </b><a href="'+detailRoute+'">Detail</a><br/>'
+			find = _.find coll.wilStat.find().fetch(), (i) ->
+				i.kab is kab and i.kec is kec and i.kel is kel and i.elemen is selectElemen()
+			if find
+				content += '<b>Sum: </b>'+find.sum+'<br/>'
+				content += '<b>Count: </b>'+find.count+'<br/>'
+				content += '<b>Average: </b>'+find.avg+'<br/>'
 			layer.bindPopup content
 
 		topo = L.tileLayer.provider 'OpenTopoMap'
