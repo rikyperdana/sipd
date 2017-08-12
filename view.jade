@@ -141,6 +141,37 @@ template(name='kec'): .container
 					td= setuju
 					td= justifikasi
 
+template(name='kab'): .container
+	h4 Data Kabupaten
+	with pageTitle
+		h5 Kab: {{kab}}
+	+selectElemen
+	.btn.right#showGraph Grafik
+	.btn.right#showMap Peta
+	.row
+	if showGraph
+		+grafik
+	if showMap
+		+map
+	table
+		thead
+			tr
+				th Indikator
+				th Defenisi
+				th Nilai
+				th Beda
+				th Setuju
+				th Justifikasi
+		tbody
+			each datas
+				tr
+					td= indikator
+					td= defenisi
+					td= nilai
+					td= beda
+					td= setuju
+					td= justifikasi
+
 template(name='sekolahs')
 	unless formMode
 		#map

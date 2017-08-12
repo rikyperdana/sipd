@@ -24,8 +24,15 @@ if Meteor.isServer
 			coll.sekolahs.remove {}
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
-		wilSum: (kab, kec, kel, elemen) ->
-			source = coll.elemens.find().fetch()
+		wilSum: (wilName, elemen) ->
+			source = _.filter coll.elemens.find().fetch(), (i) ->
+				if wilName.kec
+					kec = i.kec is wilName.kec
+					kab = i.kab is wilName.kab
+					true if kec and kab
+				else if wilName.kab
+					kab = i.kab is wilName.kab
+					true if kab
 			list = []
 			for i in source
 				find = _.find list, (j) -> j.indikator is i.indikator
@@ -37,14 +44,6 @@ if Meteor.isServer
 				_.filter list, (i) -> i.elemen is elemen
 			else
 				list
-
-		Meteor.publish 'wilStat', (wilName, elemen) ->
-			selector = {}
-			if wilName.kab then selector.kab = wilName.kab
-			if wilName.kec then selector.kec = wilName.kec
-			if wilName.kel then selector.kel = wilName.kel
-			if elemen then selector.elemen = elemen
-			coll.wilStat.find selector
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
@@ -72,8 +71,18 @@ if Meteor.isServer
 					kec: i.kec
 					kel: i.kel
 					elemen: i.elemen
-				modifier = $set:	
-					sum: i.sum
-					count: i.count
-					avg: i.avg
+				modifier =
+					$set:	
+						sum: i.sum
+						count: i.count
+						avg: i.avg
 				coll.wilStat.upsert selector, modifier
+
+		Meteor.publish 'wilStat', (wilName, elemen) ->
+			selector = {}
+			if wilName.kab then selector.kab = wilName.kab
+			if wilName.kec then selector.kec = wilName.kec
+			if wilName.kel then selector.kel = wilName.kel
+			if elemen then selector.elemen = elemen
+			coll.wilStat.find selector
+

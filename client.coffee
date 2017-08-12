@@ -152,7 +152,7 @@ if Meteor.isClient
 					when find.avg > 75 then 'green'
 					when find.avg > 50 then 'orange'
 					when find.avg > 25 then 'red'
-					else 'white'
+					else 'grey'
 			else
 				'white'
 
@@ -182,15 +182,28 @@ if Meteor.isClient
 	Template.kec.helpers
 		datas: ->
 			if selectElemen
-				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, selectElemen(), (err, res) ->
+				Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
 					if res then Session.set 'kecDatas', res
 			else
-				Meteor.call 'wilSum', wilName().kab, wilName().kec, wilName().kel, (err, res) ->
+				Meteor.call 'wilSum', wilName(), (err, res) ->
 					if res then Session.set 'kecDatas', res
 			if searchTerm()
 				_.filter Session.get('kecDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
 			else
 				Session.get 'kecDatas'
+
+	Template.kab.helpers
+		datas: ->
+			if selectElemen
+				Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
+					if res then Session.set 'kabDatas', res
+			else
+				Meteor.call 'wilSum', wilName(), (err, res) ->
+					if res then Session.set 'kabDatas', res
+			if searchTerm()
+				_.filter Session.get('kabDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
+			else
+				Session.get 'kabDatas'
 
 	Template.sekolahs.onRendered ->
 		baseMaps =

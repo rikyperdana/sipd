@@ -11,12 +11,12 @@ makeRoute = (route) ->
 		action: ->
 			if route.split('_').length is 3
 				this.render 'kel'
-			else
+			else if route.split('_').length is 2
 				this.render 'kec'
-		waitOn: -> Meteor.subscribe 'elemens', route
+			else if route.split('_').length is 1
+				this.render 'kab'
 
-makeRoute i for i in kels
-makeRoute i for i in kecs
+makeRoute i for i in [kels..., kecs..., kabs...]
 
 Router.route '/sekolahs',
 	action: -> this.render 'sekolahs'
