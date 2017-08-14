@@ -198,3 +198,8 @@ template(name='pagination')
 		each val in pagins
 			li: a.num(href='#' id='{{val}}')= val
 		li: a(href='#'): i.material-icons#next chevron_right
+
+template(name='jalan')
+	+jalanMap
+
+template(name='jalanMap'): #map

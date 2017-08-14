@@ -382,3 +382,48 @@ if Meteor.isClient
 		locate.addTo map
 		layersControl = L.control.layers baseMaps, {}, collapsed: false
 		layersControl.addTo map
+
+	Template.jalanMap.onRendered ->
+		styleProv = (feature) ->
+			color: '#'+Math.random().toString(16).substr(-6)
+			weight: 3
+			dashArray: '3'
+		onEachProv = (feature, layer) ->
+			layer.on
+				click: (event) ->
+					map.fitBounds event.target.getBounds()
+			props = ['NAMA_RUAS', 'KAB_KOTA', 'KEC', 'TP_AWAL', 'TP_AKHIR', 'PJG_SURVEY', 'PJG_RUAS', 'STS_JALAN']
+			content = ''
+			for i in props
+				content += '<b>'+i+': </b>'+feature.properties[i]+'<br/>'
+			layer.bindPopup content
+		jalProv = L.geoJson.ajax 'maps/jalan_prov.geojson', style: styleProv, onEachFeature: onEachProv
+
+		styleNas = (feature) ->
+			color: '#'+Math.random().toString(16).substr(-6)
+			weight: 3
+			dashArray: '3'
+		onEachNas = (feature, layer) ->
+			layer.on
+				click: (event) ->
+					map.fitBounds event.target.getBounds()
+			props = ['STATUS', 'NO', 'NO_RUAS', 'NAMA_RUAS', 'PJG_SURVEY', 'KECAMATAN', 'KELAS_JALA', 'Length']
+			content = ''
+			for i in props
+				content += '<b>'+i+': </b>'+feature.properties[i]+'<br/>'
+			layer.bindPopup content
+		jalNas = L.geoJson.ajax 'maps/jalan_nas.geojson', style: styleNas, onEachFeature: onEachNas
+
+		baseMaps =
+			Citra: L.tileLayer.provider 'Esri.WorldImagery'
+		overlays =
+			'Jalan Provinsi': jalProv
+			'Jalan Nasional': jalNas
+
+		map = L.map 'map',
+			center: [0.5, 101.44]
+			zoom: 8
+			layers: [baseMaps.Citra, jalProv, jalNas]
+
+		layersControl = L.control.layers baseMaps, overlays, collapsed: false
+		layersControl.addTo map
