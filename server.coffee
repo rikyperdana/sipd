@@ -22,6 +22,10 @@ if Meteor.isServer
 				elemen: elemen
 		emptySekolahs: ->
 			coll.sekolahs.remove {}
+		emptyJalProv: ->
+			coll.jalProv.remove {}
+		emptyJalNas: ->
+			coll.jalNas.remove {}
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
 		wilSum: (wilName, elemen) ->
@@ -44,7 +48,6 @@ if Meteor.isServer
 				_.filter list, (i) -> i.elemen is elemen
 			else
 				list
-
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
 				i.sum = 0
@@ -86,3 +89,7 @@ if Meteor.isServer
 			if elemen then selector.elemen = elemen
 			coll.wilStat.find selector
 
+		Meteor.publish 'jalans', ->
+			[
+				coll.jalProv.find {}
+			]

@@ -66,7 +66,7 @@ template(name='wil'): .container
 						td= beda
 						td= justifikasi
 		unless datas
-			.file-0field.input-field
+			.file-field.input-field
 				.btn.left
 					span Impor Data
 					input(type='file' name='uploadCSV')
@@ -200,6 +200,25 @@ template(name='pagination')
 		li: a(href='#'): i.material-icons#next chevron_right
 
 template(name='jalan')
-	+jalanMap
-
-template(name='jalanMap'): #map
+	#map
+	.container
+		h5 Tabel Jalan Prov
+		table
+			thead
+				tr
+					th No Ruas
+					th Nama Ruas
+					th Kab/Kota
+			tbody
+				each jalProv
+					tr
+						td= no_ruas
+						td= nama_ruas
+						td= kab_kota
+		.file-field.input-field
+			.btn.left
+				span Impor Data
+					input#jalProvUpload(type='file' name='uploadCSV')
+			.file-path-wrapper
+				input.file-path.wrapper(type='text')
+		.btn#emptyJalProv Kosongkan Provinsi

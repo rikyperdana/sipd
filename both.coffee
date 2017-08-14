@@ -65,3 +65,33 @@ coll.wilStat.allow
 	insert: -> true
 	update: -> true
 	remove: -> true
+
+coll.jalProv = new Meteor.Collection 'jalProv'
+coll.jalProv.attachSchema new SimpleSchema
+	no_ruas: type: String, optional: true
+	nama_ruas: type: String
+	kab_kota: type: String, optional: true
+	kec: type: String, optional: true
+	tp_awal: type: String, optional: true
+	tp_akhir: type: String, optional: true
+	pjg_survey: type: Number, decimal: true, optional: true
+	sts_jalan: type: String, optional: true
+	no: type: Number, optional: true
+	aadt: type: Number, decimal: true, optional: true
+	lebar: type: Number, decimal: true, optional: true
+	stype: type: String, optional: true
+	iri: type: Number, decimal: true, optional: true
+	sdi: type: Number, decimal: true, optional: true
+	eirr: type: Number, decimal: true, optional: true
+	y2016: type: Object, optional: true
+	'y2016.lp': type: String, optional: true
+	'y2016.cost': type: Number, decimal: true, optional: true
+	'y2016.el': type: Number, decimal: true, optional: true
+	y2017: type: Object, optional: true
+	'y2017.lp': type: String, optional: true
+	'y2017.cost': type: Number, decimal: true, optional: true
+	'y2017.el': type: Number, decimal: true, optional: true
+coll.jalProv.allow
+	insert: -> true
+	update: -> true
+	remove: -> true

@@ -383,7 +383,7 @@ if Meteor.isClient
 		layersControl = L.control.layers baseMaps, {}, collapsed: false
 		layersControl.addTo map
 
-	Template.jalanMap.onRendered ->
+	Template.jalan.onRendered ->
 		styleProv = (feature) ->
 			color: '#'+Math.random().toString(16).substr(-6)
 			weight: 3
@@ -427,3 +427,49 @@ if Meteor.isClient
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
+
+	Template.jalan.helpers
+		jalProv: ->
+			sub = Meteor.subscribe 'jalans'
+			if sub.ready()
+				coll.jalProv.find().fetch()
+
+	Template.jalan.events
+		'change #jalProvUpload': (event, template) ->
+			Papa.parse event.target.files[0],
+				header: true
+				step: (result) ->
+					data = result.data[0]
+					Meteor.call 'import', 'jalProv',
+						no_ruas: data.no_ruas
+						nama_ruas: data.nama_ruas
+						kab_kota: data.kab_kota
+						kec: data.kec
+						tp_awal: data.tp_awal
+						tp_akhir: data.tp_akhir
+						pjg_survey: data.pjg_survey
+						sts_jalan: data.sts_jalan
+						no: data.no
+						aadt: data.aadts
+						lebar: data.lebar
+						stype: data.stype
+						iri: data.iri
+						sdi: data.sdi
+						eirr: data.eirr
+						y2016:
+							lp: data['2016lp']
+							cost: data['2016cost']
+							el: data['2016el']
+						y2017:
+							lp: data['2017lp']
+							cost: data['2017cost']
+							el: data['2017el']
+		'click #emptyJalProv': ->
+			dialog =
+				message: 'Yakin kosongkan Tabel Jalan Provinsi?'
+				title: 'Kosongkan Tabel'
+				okText: 'Ya'
+				success: true
+				focus: 'cancel'
+			new Confirmation dialog, (ok) ->
+				if ok then Meteor.call 'emptyJalProv'
