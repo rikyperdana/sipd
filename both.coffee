@@ -6,7 +6,9 @@ Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 Router.route '/riau', action: -> this.render 'prov'
-Router.route '/jalan', action: -> this.render 'jalan'
+Router.route '/jalan',
+	action: -> this.render 'jalan'
+	waitOn: -> Meteor.subscribe 'jalans'
 
 makeRoute = (route) ->
 	Router.route '/' + route,
@@ -92,6 +94,22 @@ coll.jalProv.attachSchema new SimpleSchema
 	'y2017.cost': type: Number, decimal: true, optional: true
 	'y2017.el': type: Number, decimal: true, optional: true
 coll.jalProv.allow
+	insert: -> true
+	update: -> true
+	remove: -> true
+
+coll.jalNas = new Meteor.Collection 'jalNas'
+coll.jalNas.attachSchema new SimpleSchema
+	status: type: String
+	no: type: Number, optional: true
+	tanggal: type: String, optional: true
+	no_ruas: type: String, optional: true
+	nama_ruas: type: String, optional: true
+	pjg_survey: type: Number, decimal: true, optional: true
+	kecamatan: type: String, optional: true
+	kelas_jala: type: String, optional: true
+	length: type: Number, decimal: true, optional: true
+coll.jalNas.allow
 	insert: -> true
 	update: -> true
 	remove: -> true

@@ -429,10 +429,8 @@ if Meteor.isClient
 		layersControl.addTo map
 
 	Template.jalan.helpers
-		jalProv: ->
-			sub = Meteor.subscribe 'jalans'
-			if sub.ready()
-				coll.jalProv.find().fetch()
+		jalProv: -> coll.jalProv.find().fetch()
+		jalNas: -> coll.jalNas.find().fetch()
 
 	Template.jalan.events
 		'change #jalProvUpload': (event, template) ->
@@ -473,3 +471,28 @@ if Meteor.isClient
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
 				if ok then Meteor.call 'emptyJalProv'
+
+		'change #jalNasUpload': (event, template) ->
+			Papa.parse event.target.files[0],
+				header: true
+				step: (result) ->
+					data = result.data[0]
+					Meteor.call 'import', 'jalNas',
+						status: data.status
+						no: data.no
+						tanggal: data.tanggal
+						no_ruas: data.no_ruas
+						nama_ruas: data.nama_ruas
+						pjg_survey: data.pjg_survey
+						kecamatan: data.kecamatan
+						kelas_jala: data.kelas_jala
+						length: data.length
+		'click #emptyJalNas': ->
+			dialog =
+				message: 'Yakin kosongkan Tabel Jalan Nasional?'
+				title: 'Kosongkan Tabel'
+				okText: 'Ya'
+				success: true
+				focus: 'cancel'
+			new Confirmation dialog, (ok) ->
+				if ok then Meteor.call 'emptyJalNas'

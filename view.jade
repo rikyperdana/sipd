@@ -203,18 +203,54 @@ template(name='jalan')
 	#map
 	.container
 		h5 Tabel Jalan Prov
-		table
+		table.responsive-table
 			thead
 				tr
 					th No Ruas
 					th Nama Ruas
 					th Kab/Kota
+					th Kecamatan
+					th TP Awal
+					th TP Akhir
+					th Pjg Survey
+					th Sts Jalan
+					th No
+					th AADT
+					th Lebar
+					th SType
+					th IRI
+					th SDI
+					th EIRR
+					th 2016 LP
+					th 2016 Cost
+					th 2016 EL
+					th 2017 LP
+					th 2017 Cost
+					th 2017 EL
 			tbody
 				each jalProv
 					tr
 						td= no_ruas
 						td= nama_ruas
 						td= kab_kota
+						td= kec
+						td= tp_awal
+						td= tp_akhir
+						td= pjg_survey
+						td= sts_jalan
+						td= no
+						td= aadt
+						td= lebar
+						td= stype
+						td= iri
+						td= sdi
+						td= eirr
+						td= y2016.lp
+						td= y2016.cost
+						td= y2016.el
+						td= y2017.lp
+						td= y2017.cost
+						td= y2017.el
 		.file-field.input-field
 			.btn.left
 				span Impor Data
@@ -222,3 +258,36 @@ template(name='jalan')
 			.file-path-wrapper
 				input.file-path.wrapper(type='text')
 		.btn#emptyJalProv Kosongkan Provinsi
+
+		h5 Tabel Jalan Nas
+		table.responsive-table
+			thead
+				tr
+					th Status
+					th No
+					th Tanggal
+					th No. Ruas
+					th Nama Ruas
+					th Pjg Survey
+					th Kecamatan
+					th Kelas Jalan
+					th Length
+			tbody
+				each jalNas
+					tr
+						td= status
+						td= no
+						td= tanggal
+						td= no_ruas
+						td= nama_ruas
+						td= pjg_survey
+						td= kecamatan
+						td= kelas_jala
+						td= length
+		.file-field.input-field
+			.btn.left
+				span Impor Data
+					input#jalNasUpload(type='file' name='uploadCSV')
+			.file-path-wrapper
+				input.file-path.wrapper(type='text')
+		.btn#emptyJalNas Kosongkan Provinsi

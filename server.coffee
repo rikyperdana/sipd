@@ -92,4 +92,5 @@ if Meteor.isServer
 		Meteor.publish 'jalans', ->
 			[
 				coll.jalProv.find {}
+				coll.jalNas.find {}
 			]
