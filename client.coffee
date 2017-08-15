@@ -487,6 +487,9 @@ if Meteor.isClient
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
 				if ok then Meteor.call 'emptyJalProv'
+		'click #openJalProv': ->
+			$('#tableJalProv').removeClass 'hide'
+			$('#openJalProv').addClass 'hide'
 
 		'change #jalNasUpload': (event, template) ->
 			Papa.parse event.target.files[0],
@@ -512,3 +515,6 @@ if Meteor.isClient
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
 				if ok then Meteor.call 'emptyJalNas'
+		'click #openJalNas': ->
+			$('#tableJalNas').removeClass 'hide'
+			$('#openJalNas').addClass 'hide'

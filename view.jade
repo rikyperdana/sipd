@@ -203,7 +203,8 @@ template(name='jalan')
 	#map
 	.container
 		h5 Tabel Jalan Prov
-		table.responsive-table
+		span: .btn#openJalProv Buka
+		table.responsive-table.hide#tableJalProv
 			thead
 				tr
 					th No Ruas
@@ -251,16 +252,18 @@ template(name='jalan')
 						td= y2017.lp
 						td= y2017.cost
 						td= y2017.el
-		.file-field.input-field
-			.btn.left
-				span Impor Data
-					input#jalProvUpload(type='file' name='uploadCSV')
-			.file-path-wrapper
-				input.file-path.wrapper(type='text')
-		.btn#emptyJalProv Kosongkan Provinsi
+		unless jalProv
+			.file-field.input-field
+				.btn.left
+					span Impor Data
+						input#jalProvUpload(type='file' name='uploadCSV')
+				.file-path-wrapper
+					input.file-path.wrapper(type='text')
+			.btn#emptyJalProv Kosongkan Provinsi
 
 		h5 Tabel Jalan Nas
-		table.responsive-table
+		span: .btn#openJalNas Buka
+		table.responsive-table.hide#tableJalNas
 			thead
 				tr
 					th Status
@@ -284,10 +287,11 @@ template(name='jalan')
 						td= kecamatan
 						td= kelas_jala
 						td= length
-		.file-field.input-field
-			.btn.left
-				span Impor Data
-					input#jalNasUpload(type='file' name='uploadCSV')
-			.file-path-wrapper
-				input.file-path.wrapper(type='text')
-		.btn#emptyJalNas Kosongkan Provinsi
+		unless jalNas
+			.file-field.input-field
+				.btn.left
+					span Impor Data
+						input#jalNasUpload(type='file' name='uploadCSV')
+				.file-path-wrapper
+					input.file-path.wrapper(type='text')
+			.btn#emptyJalNas Kosongkan Provinsi
