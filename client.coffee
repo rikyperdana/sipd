@@ -390,6 +390,14 @@ if Meteor.isClient
 			dashArray: '3'
 		onEachProv = (feature, layer) ->
 			layer.on
+				mouseover: (event) ->
+					event.target.setStyle
+						weight: 8
+						color: 'white'
+						dashArray: ''
+					event.target.bringToFront()
+				mouseout: (event) ->
+					jalProv.resetStyle event.target
 				click: (event) ->
 					map.fitBounds event.target.getBounds()
 			props = ['NAMA_RUAS', 'KAB_KOTA', 'KEC', 'TP_AWAL', 'TP_AKHIR', 'PJG_SURVEY', 'PJG_RUAS', 'STS_JALAN']
@@ -405,6 +413,14 @@ if Meteor.isClient
 			dashArray: '3'
 		onEachNas = (feature, layer) ->
 			layer.on
+				mouseover: (event) ->
+					event.target.setStyle
+						weight: 8
+						color: 'white'
+						dashArray: ''
+					event.target.bringToFront()
+				mouseout: (event) ->
+					jalNas.resetStyle event.target
 				click: (event) ->
 					map.fitBounds event.target.getBounds()
 			props = ['STATUS', 'NO', 'NO_RUAS', 'NAMA_RUAS', 'PJG_SURVEY', 'KECAMATAN', 'KELAS_JALA', 'Length']
