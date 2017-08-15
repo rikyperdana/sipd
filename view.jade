@@ -16,9 +16,25 @@ template(name='menu')
 
 template(name='home'): .container
 	h4 Beranda
+	.row
+		each cards
+			.col.m4
+				.card
+					.card-image
+						img.activator(src='{{image}}')
+					.card-content
+						span.card-title.activator
+							{{title}}
+							i.material-icons.right= icon
+					.card-reveal
+						span.card-title
+							{{title}}
+							i.material-icons.right close
+						p= desc
+						a.btn(href='/{{route}}') Masuk
 
 template(name='wil'): .container
-	h4 Data Kelurahan
+	h4 Data Wilayah
 	with pageTitle
 		h5
 			if kab

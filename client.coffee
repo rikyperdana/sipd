@@ -63,6 +63,28 @@ if Meteor.isClient
 	Template.layout.onRendered ->
 		Session.set 'pagin', 0
 
+	Template.home.helpers
+		cards: ->
+			[
+				title: 'Database Elemen'
+				icon: 'texture'
+				image: 'http://www.cortell.co.za/wp-content/uploads/2015/03/Cortell-Bus-Perf-Graph.jpg'
+				route: 'kampar'
+				desc: 'Pada halaman berikut anda akan mendapatkan informasi Indikator Kinerja Daerah per wilayah'
+			,
+				title: 'Database Sekolah'
+				icon: 'school'
+				image: 'http://cdn.images.express.co.uk/img/dynamic/1/590x/school-gypsies-436332.jpg'
+				route: '/sekolahs'
+				desc: 'Pada halaman berikut anda akan mendapatkan informasi seluruh Sekolah di Provinsi Riau'
+			,
+				title: 'Database Jalan'
+				icon: 'directions'
+				image: 'http://i.telegraph.co.uk/multimedia/archive/02419/roads_2419537b.jpg'
+				route: 'jalan'
+				desc: 'Pada halaman ini anda akan mendapatkan informasi Jalan Provinsi dan Jalan Nasional'
+			]
+
 	Template.wil.helpers
 		datas: ->
 			if wilName().kel
@@ -432,6 +454,7 @@ if Meteor.isClient
 
 		baseMaps =
 			Citra: L.tileLayer.provider 'Esri.WorldImagery'
+			WMS: L.tileLayer.wms 'https://demo.boundlessgeo.com/geoserver/ows?', layers: 'ne:ne'
 		overlays =
 			'Jalan Provinsi': jalProv
 			'Jalan Nasional': jalNas
