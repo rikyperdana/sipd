@@ -38,11 +38,11 @@ template(name='wil'): .container
 	with pageTitle
 		h5
 			if kab
-				span Kab: {{kab}}
+				span: a(href='/{{kab}}'): Kab: {{kab}}
 			if kec
-				span / Kec: {{kec}}
+				span: a(href='/{{kab}}_{{kec}}'): / Kec: {{kec}}
 			if kel
-				span / Kel: {{kel}}
+				span: a(href='/{{kab}}_{{kec}}_{{kel}}'): / Kel: {{kel}}
 	+selectElemen
 	if editData
 		h5 Update Indikator
