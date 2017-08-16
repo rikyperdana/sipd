@@ -108,6 +108,14 @@ if Meteor.isClient
 					_.filter Session.get('kecDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
 				else
 					Session.get 'kecDatas'
+			else if wilName().kab is 'riau'
+				if selectElemen()
+					Meteor.call 'wilSum', kab:'riau', selectElemen(), (err, res) ->
+						if res then Session.set 'riauDatas', res
+				else
+					Meteor.call 'wilSum', kab:'riau', (err, res) ->
+						if res then Session.set 'riauDatas', res
+				Session.get 'riauDatas'
 			else if wilName().kab
 				if selectElemen
 					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
@@ -209,6 +217,8 @@ if Meteor.isClient
 				if _.kebabCase(prop.DESA) isnt wilName().kel then 0 else 0.7
 			else if wilName().kec
 				if _.kebabCase(prop.KECAMATAN) isnt wilName().kec then 0 else 0.7
+			else if wilName().kab is 'riau'
+				0.7
 			else if wilName().kab
 				if _.kebabCase(prop.KABUPATEN) isnt wilName().kab then 0 else 0.7
 		style = (feature) ->

@@ -34,6 +34,8 @@ if Meteor.isServer
 					kec = i.kec is wilName.kec
 					kab = i.kab is wilName.kab
 					true if kec and kab
+				else if wilName.kab is 'riau'
+					true
 				else if wilName.kab
 					kab = i.kab is wilName.kab
 					true if kab
@@ -83,10 +85,13 @@ if Meteor.isServer
 
 		Meteor.publish 'wilStat', (wilName, elemen) ->
 			selector = {}
-			if wilName.kab then selector.kab = wilName.kab
-			if wilName.kec then selector.kec = wilName.kec
-			if wilName.kel then selector.kel = wilName.kel
-			if elemen then selector.elemen = elemen
+			if wilName.kab is 'riau'
+				selector = {}
+			else
+				if wilName.kab then selector.kab = wilName.kab
+				if wilName.kec then selector.kec = wilName.kec
+				if wilName.kel then selector.kel = wilName.kel
+				if elemen then selector.elemen = elemen
 			coll.wilStat.find selector
 
 		Meteor.publish 'jalans', ->

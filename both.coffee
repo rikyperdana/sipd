@@ -5,7 +5,7 @@ Router.configure
 Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
-Router.route '/riau', action: -> this.render 'prov'
+Router.route '/riau', action: -> this.render 'wil'
 Router.route '/jalan',
 	action: -> this.render 'jalan'
 	waitOn: -> Meteor.subscribe 'jalans'
