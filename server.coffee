@@ -26,6 +26,8 @@ if Meteor.isServer
 			coll.jalProv.remove {}
 		emptyJalNas: ->
 			coll.jalNas.remove {}
+		emptyColl: (name) ->
+			coll[name].remove {}
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
 		wilSum: (wilName, elemen) ->
@@ -99,3 +101,8 @@ if Meteor.isServer
 				coll.jalProv.find {}
 				coll.jalNas.find {}
 			]
+
+		Meteor.publish 'coll', (name, sel, opt) ->
+			selector = {}
+			options = {}
+			coll[name].find selector, options
