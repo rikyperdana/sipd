@@ -66,21 +66,31 @@ template(name='wil'): .container
 				tr
 					th Indikator
 					th Defenisi
-					th Nilai
-					th Satuan
-					th Setuju
-					th Beda
-					th Justifikasi
+					th Tar 2015
+					th Rel 2015
+					th Tar 2016
+					th Rel 2016
+					th Tar 2017
+					th Rel 2017
+					th Tar 2018
+					th Rel 2018
+					th Tar 2019
+					th Rel 2019
 			tbody
 				each datas
 					tr#row
 						td= indikator
 						td= defenisi
-						td= nilai
-						td= satuan
-						td= setuju
-						td= beda
-						td= justifikasi
+						td= y2015.tar
+						td= y2015.rel
+						td= y2016.tar
+						td= y2016.rel
+						td= y2017.tar
+						td= y2017.rel
+						td= y2018.tar
+						td= y2018.rel
+						td= y2019.tar
+						td= y2019.rel
 		unless datas
 			.file-field.input-field
 				.btn.left

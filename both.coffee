@@ -28,11 +28,21 @@ coll.elemens.attachSchema new SimpleSchema
 	elemen: type: String, autoform: type: 'hidden'
 	indikator: type: String, autoform: disabled: true
 	defenisi: type: String, optional: true, autoform: disabled: true
-	nilai: type: Number, decimal: true, optional: true
-	satuan: type: String, optional: true, autoform: disabled: true
-	setuju: type: Boolean, optional: true
-	beda: type: String, optional: true
-	justifikasi: type: String, optional: true
+	y2015: type: Object
+	'y2015.tar': type: Number, decimal: true
+	'y2015.rel': type: Number, decimal: true
+	y2016: type: Object
+	'y2016.tar': type: Number, decimal: true
+	'y2016.rel': type: Number, decimal: true
+	y2017: type: Object
+	'y2017.tar': type: Number, decimal: true
+	'y2017.rel': type: Number, decimal: true
+	y2018: type: Object
+	'y2018.tar': type: Number, decimal: true
+	'y2018.rel': type: Number, decimal: true
+	y2019: type: Object
+	'y2019.tar': type: Number, decimal: true
+	'y2019.rel': type: Number, decimal: true
 coll.elemens.allow
 	insert: -> true
 	update: -> true

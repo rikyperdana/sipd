@@ -154,7 +154,21 @@ if Meteor.isClient
 						elemen: _.kebabCase data.elemen
 						indikator: data.indikator
 						defenisi: data.defenisi
-						nilai: data.nilai
+						y2015:
+							tar: data.tar2015
+							rel: data.rel2015
+						y2016:
+							tar: data.tar2016
+							rel: data.rel2016
+						y2017:
+							tar: data.tar2017
+							rel: data.rel2017
+						y2018:
+							tar: data.tar2018
+							rel: data.rel2018
+						y2019:
+							tar: data.tar2019
+							rel: data.rel2019
 
 
 	Template.selectElemen.onRendered ->
