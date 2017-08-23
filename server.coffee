@@ -1,10 +1,7 @@
 if Meteor.isServer
 
-	Meteor.publish 'elemens', (kab, kec, kel, elemen) ->
-		selector = {}
-		if kab then selector.kab = kab
-		if kec then selector.kec = kec
-		if kel then selector.kel = kel
+	Meteor.publish 'elemens', (wils, elemen) ->
+		selector = kab: wils.kab, kec: wils.kec, kel: wils.kel
 		if elemen then selector.elemen = elemen
 		coll.elemens.find selector
 
@@ -14,12 +11,13 @@ if Meteor.isServer
 	Meteor.methods
 		import: (collName, data) ->
 			coll[collName].insert data
-		emptyElemen: (route, elemen) ->
-			coll.elemens.remove
-				kab: route.split('_')[0]
-				kec: route.split('_')[1]
-				kel: route.split('_')[2]
-				elemen: elemen
+		emptyElemen: (wils, elemen) ->
+			selector = {}
+			if wils.kab then selector.kab = wils.kab else selector.kab = '*'
+			if wils.kec then selector.kec = wils.kec else selector.kec = '*'
+			if wils.kel then selector.kel = wils.kel else selector.kel = '*'
+			selector.elemen = elemen
+			coll.elemens.remove selector
 		emptySekolahs: ->
 			coll.sekolahs.remove {}
 		emptyJalProv: ->
@@ -28,28 +26,36 @@ if Meteor.isServer
 			coll.jalNas.remove {}
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
+
+
 		wilSum: (wilName, elemen) ->
 			source = _.filter coll.elemens.find().fetch(), (i) ->
 				if wilName.kec
+					kab = i.kab is wilName.kab
 					kec = i.kec is wilName.kec
+					kel = i.kel isnt '*'
+					true if kab and kec and kel
+				if wilName.kab
 					kab = i.kab is wilName.kab
-					true if kec and kab
-				else if wilName.kab is 'riau'
-					true
-				else if wilName.kab
-					kab = i.kab is wilName.kab
-					true if kab
+					kec = i.kec isnt '*'
+					kel = i.kel isnt '*'
+					true if kab and kec and kel
 			list = []
 			for i in source
 				find = _.find list, (j) -> j.indikator is i.indikator
 				if find
-					find.nilai += i.nilai
+					find.y2015.rel += i.y2015.rel
+					find.y2016.rel += i.y2016.rel
+					find.y2017.rel += i.y2017.rel
+					find.y2018.rel += i.y2018.rel
+					find.y2019.rel += i.y2019.rel
 				else
 					list.push i
 			if elemen
 				_.filter list, (i) -> i.elemen is elemen
 			else
 				list
+
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
 				i.sum = 0

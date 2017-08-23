@@ -87,46 +87,30 @@ if Meteor.isClient
 
 	Template.wil.helpers
 		datas: ->
-			if wilName().kel
-				if selectElemen
-					sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel, selectElemen()
-				else
-					sub = Meteor.subscribe 'elemens', wilName().kab, wilName().kec, wilName().kel
-				if sub.ready()
-					if searchTerm()
-						_.filter coll.elemens.find().fetch(), (i) -> i.indikator.toLowerCase().includes searchTerm()
-					else
-						coll.elemens.find().fetch()
-			else if wilName().kec
-				if selectElemen
-					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
-						if res then Session.set 'kecDatas', res
-				else
-					Meteor.call 'wilSum', wilName(), (err, res) ->
-						if res then Session.set 'kecDatas', res
-				if searchTerm()
-					_.filter Session.get('kecDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
-				else
-					Session.get 'kecDatas'
+			wils =
+				kab: wilName().kab
+				kec: wilName().kec
+				kel: wilName().kel
+
+			if wilName().kab and wilName().kec and not wilName().kel
+				wils.kel = '*'
 			else if wilName().kab is 'riau'
-				if selectElemen()
-					Meteor.call 'wilSum', kab:'riau', selectElemen(), (err, res) ->
-						if res then Session.set 'riauDatas', res
-				else
-					Meteor.call 'wilSum', kab:'riau', (err, res) ->
-						if res then Session.set 'riauDatas', res
-				Session.get 'riauDatas'
-			else if wilName().kab
-				if selectElemen
+				wils.kab = '*'
+				wils.kec = '*'
+				wils.kel = '*'
+			else if wilName().kab and not wilName.kec and not wilName().kel
+				wils.kec = '*'
+				wils.kel = '*'
+
+			sub = Meteor.subscribe 'elemens', wils, selectElemen()
+			if sub.ready()
+				source = coll.elemens.find().fetch()
+				if source.length < 1 and wilName().kel is '*'
 					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
-						if res then Session.set 'kabDatas', res
+						if res then Session.set 'wilDatas', res
+					Session.get 'wilDatas'
 				else
-					Meteor.call 'wilSum', wilName(), (err, res) ->
-						if res then Session.set 'kabDatas', res
-				if searchTerm()
-					_.filter Session.get('kabDatas'), (i) -> i.indikator.toLowerCase().includes searchTerm()
-				else
-					Session.get 'kabDatas'
+					source
 
 
 	Template.wil.events
@@ -138,7 +122,7 @@ if Meteor.isClient
 				success: true
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyElemen', currentRoute(), selectElemen()
+				if ok then Meteor.call 'emptyElemen', wilName(), selectElemen()
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
@@ -147,10 +131,13 @@ if Meteor.isClient
 					pecah = data.indikator.split ' '
 					buang = _.reject pecah, (i) -> i.includes ')'
 					data.indikator = buang.join ' '
+					kab = -> if wilName().kab then wilName().kab else '*'
+					kec = -> if wilName().kec then wilName().kec else '*'
+					kel = -> if wilName().kel then wilName().kel else '*'
 					Meteor.call 'import', 'elemens',
-						kab: wilName().kab
-						kec: wilName().kec
-						kel: wilName().kel
+						kab: kab()
+						kec: kec()
+						kel: kel()
 						elemen: _.kebabCase data.elemen
 						indikator: data.indikator
 						defenisi: data.defenisi
@@ -169,7 +156,6 @@ if Meteor.isClient
 						y2019:
 							tar: data.tar2019
 							rel: data.rel2019
-
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
