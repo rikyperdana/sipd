@@ -7,7 +7,7 @@ template(name='menu')
 		ul.left
 			li: a(href='/') Home
 			li: a#mapColor(href='#') MapColor
-		a.brand-logo.center Bappeda
+		a.brand-logo.center SiIdamanDara
 		ul.right
 			unless currentUser
 				li: a(href='/login') Login
@@ -34,15 +34,16 @@ template(name='home'): .container
 						a.btn(href='/{{route}}') Masuk
 
 template(name='wil'): .container
-	h4 Data Wilayah
+	h4 Database Peta Elemen
 	with pageTitle
 		h5
+			span: a(href='/riau') Prov: Riau
 			if kab
-				span: a(href='/{{kab}}'): Kab: {{kab}}
+				span: a(href='/{{kab}}') / Kab: {{kab}}
 			if kec
-				span: a(href='/{{kab}}_{{kec}}'): / Kec: {{kec}}
+				span: a(href='/{{kab}}_{{kec}}') / Kec: {{kec}}
 			if kel
-				span: a(href='/{{kab}}_{{kec}}_{{kel}}'): / Kel: {{kel}}
+				span: a(href='/{{kab}}_{{kec}}_{{kel}}') / Kel: {{kel}}
 	+selectElemen
 	if editData
 		h5 Update Indikator
@@ -244,16 +245,6 @@ template(name='jalan')
 					th No
 					th AADT
 					th Lebar
-					th SType
-					th IRI
-					th SDI
-					th EIRR
-					th 2016 LP
-					th 2016 Cost
-					th 2016 EL
-					th 2017 LP
-					th 2017 Cost
-					th 2017 EL
 			tbody
 				each jalProv
 					tr
@@ -268,16 +259,6 @@ template(name='jalan')
 						td= no
 						td= aadt
 						td= lebar
-						td= stype
-						td= iri
-						td= sdi
-						td= eirr
-						td= y2016.lp
-						td= y2016.cost
-						td= y2016.el
-						td= y2017.lp
-						td= y2017.cost
-						td= y2017.el
 		unless jalProv
 			.file-field.input-field
 				.btn.left
@@ -321,3 +302,56 @@ template(name='jalan')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
 			.btn#emptyJalNas Kosongkan Provinsi
+
+template(name='ikd'): .container
+	h5 Indikator Kinerja Daerah
+	.right.btn#showAdd Tambah
+	if showAdd
+		+quickForm(
+			collection= coll.ikd
+			type = 'insert'
+			id = 'insertIkd'
+		)
+	if formMode
+		.right.orange.btn#close Tutup
+	+grafik
+	table
+		thead
+			tr
+				th Misi
+				th Sasaran
+				th Indikator
+				th 2013 Rel
+				th 2014 Tar
+				th 2014 Rel
+				th 2015 Tar
+				th 2015 Rel
+				th 2016 Tar
+				th 2016 Rel
+				th 2017 Tar
+				th 2018 Tar
+				th 2019 Tar
+		tbody
+			each datas
+				tr
+					td= misi
+					td= sasaran
+					td= indikator
+					td= y2013.rel
+					td= y2014.tar
+					td= y2014.rel
+					td= y2015.tar
+					td= y2015.rel
+					td= y2016.tar
+					td= y2016.rel
+					td= y2017.tar
+					td= y2018.tar
+					td= y2019.tar
+
+	.file-field.input-field
+		.btn.left
+			span Impor Data
+				input(type='file' name='uploadCSV')
+		.file-path-wrapper
+			input.file-path.wrapper(type='text')
+	.btn#emptyIkd Kosongkan

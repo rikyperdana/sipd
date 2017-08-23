@@ -191,6 +191,9 @@ if Meteor.isClient
 				barArray.push [i.elemen, i.nilai] for i in Session.get 'kecDatas'
 			else if Session.get 'kabDatas'
 				barArray.push [i.elemen, i.nilai] for i in Session.get 'kabDatas'
+			else if coll.ikd.find().fetch()
+				for i in coll.ikd.find().fetch()
+					barArray.push [i.misi, nilai]
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
@@ -551,3 +554,37 @@ if Meteor.isClient
 		'click #openJalNas': ->
 			$('#tableJalNas').removeClass 'hide'
 			$('#openJalNas').addClass 'hide'
+
+	Template.ikd.helpers
+		datas: -> coll.ikd.find().fetch()
+
+	Template.ikd.events
+		'click #emptyIkd': ->
+			Meteor.call 'emptyColl', 'ikd'
+		'change :file': (event, template) ->
+			Papa.parse event.target.files[0],
+				header: true
+				step: (result) ->
+					data = result.data[0]
+					Meteor.call 'import', 'ikd',
+						misi: data.misi
+						sasaran: data.sasaran
+						indikator: data.indikator
+						y2013:
+							tar: data.tar2013
+							rel: data.rel2013
+						y2014:
+							tar: data.tar2014
+							rel: data.rel2014
+						y2015:
+							tar: data.tar2015
+							rel: data.rel2015
+						y2016:
+							tar: data.tar2016
+							rel: data.rel2016
+						y2017:
+							tar: data.tar2017
+						y2018:
+							tar: data.tar2018
+						y2019:
+							tar: data.tar2019

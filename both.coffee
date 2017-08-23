@@ -10,15 +10,18 @@ Router.route '/jalan',
 	action: -> this.render 'jalan'
 	waitOn: -> Meteor.subscribe 'jalans'
 
-makeRoute = (route) ->
+makeRoute = (name) ->
+	Router.route '/' + name,
+		action: -> this.render name
+		waitOn: -> Meteor.subscribe 'coll', name
+
+makeRoute i for i in ['sekolahs', 'ikd']
+
+makeWil = (route) ->
 	Router.route '/' + route,
 		action: -> this.render 'wil'
 
-makeRoute i for i in [kels..., kecs..., kabs...]
-
-Router.route '/sekolahs',
-	action: -> this.render 'sekolahs'
-	waitOn: -> Meteor.subscribe 'sekolahs'
+makeWil i for i in [kels..., kecs..., kabs...]
 
 coll.elemens = new Meteor.Collection 'elemens'
 coll.elemens.attachSchema new SimpleSchema
@@ -120,6 +123,37 @@ coll.jalNas.attachSchema new SimpleSchema
 	kelas_jala: type: String, optional: true
 	length: type: Number, decimal: true, optional: true
 coll.jalNas.allow
+	insert: -> true
+	update: -> true
+	remove: -> true
+
+coll.ikd = new Meteor.Collection 'ikd'
+coll.ikd.attachSchema new SimpleSchema
+	misi: type: String
+	sasaran: type: String
+	indikator: type: String
+	y2013: type: Object, optional: true
+	'y2013.tar': type: String, optional: true
+	'y2013.rel': type: String, optional: true
+	y2014: type: Object, optional: true
+	'y2014.tar': type: String, optional: true
+	'y2014.rel': type: String, optional: true
+	y2015: type: Object, optional: true
+	'y2015.tar': type: String, optional: true
+	'y2015.rel': type: String, optional: true
+	y2016: type: Object, optional: true
+	'y2016.tar': type: String, optional: true
+	'y2016.rel': type: String, optional: true
+	y2017: type: Object, optional: true
+	'y2017.tar': type: String, optional: true
+	'y2017.rel': type: String, optional: true
+	y2018: type: Object, optional: true
+	'y2018.tar': type: String, optional: true
+	'y2018.rel': type: String, optional: true
+	y2019: type: Object, optional: true
+	'y2019.tar': type: String, optional: true
+	'y2019.rel': type: String, optional: true
+coll.ikd.allow
 	insert: -> true
 	update: -> true
 	remove: -> true
