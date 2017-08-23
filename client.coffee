@@ -105,7 +105,7 @@ if Meteor.isClient
 			sub = Meteor.subscribe 'elemens', wils, selectElemen()
 			if sub.ready()
 				source = coll.elemens.find().fetch()
-				if source.length < 1 and wilName().kel is '*'
+				if wils.kab is '*' or wils.kec is '*' or wils.kel is '*'
 					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
 						if res then Session.set 'wilDatas', res
 					Session.get 'wilDatas'
