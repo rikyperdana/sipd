@@ -6,7 +6,7 @@
 	'pertanian'
 	'perindustrian'
 	'kehutanan'
-	'transmitgrasi'
+	'transmigrasi'
 	'permukiman'
 	'pendidikan'
 	'kkuspm'
