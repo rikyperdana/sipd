@@ -37,7 +37,12 @@ if Meteor.isServer
 					kec = i.kec is wilName.kec
 					kel = i.kel isnt '*'
 					true if kab and kec and kel
-				if wilName.kab
+				else if wilName.kab is 'riau'
+					kab = i.kab isnt '*'
+					kec = i.kec isnt '*'
+					kel = i.kel isnt '*'
+					true if kab and kec and kel
+				else if wilName.kab
 					kab = i.kab is wilName.kab
 					kec = i.kec isnt '*'
 					kel = i.kel isnt '*'

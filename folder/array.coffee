@@ -33,6 +33,26 @@
 	'kearsipan'
 ]
 
+@cards = [
+	title: 'Database Elemen'
+	icon: 'texture'
+	image: 'http://www.cortell.co.za/wp-content/uploads/2015/03/Cortell-Bus-Perf-Graph.jpg'
+	route: 'kampar'
+	desc: 'Pada halaman berikut anda akan mendapatkan informasi Indikator Kinerja Daerah per wilayah'
+,
+	title: 'Database Sekolah'
+	icon: 'school'
+	image: 'http://cdn.images.express.co.uk/img/dynamic/1/590x/school-gypsies-436332.jpg'
+	route: '/sekolahs'
+	desc: 'Pada halaman berikut anda akan mendapatkan informasi seluruh Sekolah di Provinsi Riau'
+,
+	title: 'Database Jalan'
+	icon: 'directions'
+	image: 'http://i.telegraph.co.uk/multimedia/archive/02419/roads_2419537b.jpg'
+	route: 'jalan'
+	desc: 'Pada halaman ini anda akan mendapatkan informasi Jalan Provinsi dan Jalan Nasional'
+]
+
 @wilayahs = [
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Bangkinang"},
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Langgini"},
