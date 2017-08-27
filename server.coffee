@@ -9,6 +9,24 @@ if Meteor.isServer
 		coll.sekolahs.find {}
 
 	Meteor.methods
+		importUrusan: (datas) ->
+			doc = datas[1]
+			if doc.kel isnt '*'
+				coll.elemens.remove kab: doc.kab, kec: doc.kec, kel: '*'
+				coll.elemens.remove kab: doc.kab, kec: '*'
+				for data in datas
+					coll.elemens.insert data
+					selector =
+						kab: data.kab
+						kec: data.kec
+						kel: '*'
+						elemen: data.elemen
+						indikator: data.indikator
+						defenisi: data.defenisi
+						satuan: data.satuan
+						y2015: tar: 0, rel: 0
+					coll.elemens.upsert selector, modifier
+
 		import: (collName, data) ->
 			coll[collName].insert data
 		emptyElemen: (wils, elemen) ->
@@ -28,40 +46,6 @@ if Meteor.isServer
 			coll[name].remove {}
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
-
-
-		wilSum: (wilName, elemen) ->
-			source = _.filter coll.elemens.find().fetch(), (i) ->
-				if wilName.kec
-					kab = i.kab is wilName.kab
-					kec = i.kec is wilName.kec
-					kel = i.kel isnt '*'
-					true if kab and kec and kel
-				else if wilName.kab is 'riau'
-					kab = i.kab isnt '*'
-					kec = i.kec isnt '*'
-					kel = i.kel isnt '*'
-					true if kab and kec and kel
-				else if wilName.kab
-					kab = i.kab is wilName.kab
-					kec = i.kec isnt '*'
-					kel = i.kel isnt '*'
-					true if kab and kec and kel
-			list = []
-			for i in source
-				find = _.find list, (j) -> j.indikator is i.indikator
-				if find
-					find.y2015.rel += i.y2015.rel
-					find.y2016.rel += i.y2016.rel
-					find.y2017.rel += i.y2017.rel
-					find.y2018.rel += i.y2018.rel
-					find.y2019.rel += i.y2019.rel
-				else
-					list.push i
-			if elemen
-				_.filter list, (i) -> i.elemen is elemen
-			else
-				list
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->

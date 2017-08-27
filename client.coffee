@@ -107,15 +107,36 @@ if Meteor.isClient
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
-				step: (result) ->
-					data = result.data[0]
+				complete: (results) ->
+					datas = results.data
+					kab = -> if wilName().kab then wilName().kab else '*'
+					kec = -> if wilName().kec then wilName().kec else '*'
+					kel = -> if wilName().kel then wilName().kel else '*'
+					maped = _.map datas, (i) ->
+						i.elemen = _.kebabCase i.elemen
+						i.kab = kab(); i.kec = kec(); i.kel = kel()
+						i.y2015 = tar: i.tar2015, rel: i.rel2015
+						i.y2016 = tar: i.tar2016, rel: i.rel2016
+						i.y2017 = tar: i.tar2017, rel: i.rel2017
+						i.y2018 = tar: i.tar2018, rel: i.rel2018
+						i.y2019 = tar: i.tar2019, rel: i.rel2019
+						delete i.tar2015; delete i.rel2015
+						delete i.tar2016; delete i.rel2016
+						delete i.tar2017; delete i.rel2017
+						delete i.tar2018; delete i.rel2018
+						delete i.tar2019; delete i.rel2019
+						i
+					Meteor.call 'importUrusan', maped
+
+
+					###
 					pecah = data.indikator.split ' '
 					buang = _.reject pecah, (i) -> i.includes ')'
 					data.indikator = buang.join ' '
 					kab = -> if wilName().kab then wilName().kab else '*'
 					kec = -> if wilName().kec then wilName().kec else '*'
 					kel = -> if wilName().kel then wilName().kel else '*'
-					Meteor.call 'import', 'elemens',
+					Meteor.call 'importUrusan',
 						kab: kab()
 						kec: kec()
 						kel: kel()
@@ -137,7 +158,7 @@ if Meteor.isClient
 						y2019:
 							tar: data.tar2019
 							rel: data.rel2019
-
+					###
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
 
