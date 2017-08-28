@@ -34,9 +34,9 @@ if Meteor.isServer
 			indikators = (elem) -> _.map coll.elemens.find({elemen: elem}).fetch(), (i) ->
 				indikator: i.indikator
 				tar2015: i.y2015.tar
-			sumChild = (kab, kec, elem, ind, year) ->
+			sumKels = (kab, kec, elem, ind, year) ->
 				sum = 0
-				for i in coll.elemens.find({kab: kab, kec: kec, indikator: ind}).fetch()
+				for i in coll.elemens.find({kab: kab, kec: kec, kel: {$ne: '*'}, elemen: elem, indikator: ind}).fetch()
 					sum += i[year].rel
 				sum
 			for i in kecs
@@ -45,17 +45,18 @@ if Meteor.isServer
 				for j in elemens
 					if 0 < _.size indikators j
 						for k in indikators j
-							data =
+							selector =
 								kab: kab
 								kec: kec
 								kel: '*'
 								elemen: j
 								indikator: k.indikator
+							modifier =
 								y2015:
 									tar: k.tar2015
-									rel: sumChild kab, kec, j, k.indikator, 'y2015'
-							if data.y2015.rel > 0
-								console.log data, ++num
+									rel: sumKels kab, kec, j, k.indikator, 'y2015'
+							if modifier.y2015.rel > 0
+								coll.elemens.upsert selector, $set: modifier
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
