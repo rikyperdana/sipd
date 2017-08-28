@@ -10,7 +10,7 @@ if Meteor.isServer
 
 	Meteor.methods
 		import: (collName, data) ->
-			coll[collName].insert data
+			coll[collName].upsert data
 		emptyElemen: (wils, elemen) ->
 			selector = {}
 			if wils.kab then selector.kab = wils.kab else selector.kab = '*'
@@ -30,13 +30,18 @@ if Meteor.isServer
 			coll.sekolahs.update obj._id, $set: obj
 
 		wilSum: ->
-			num = 0
 			indikators = (elem) -> _.map coll.elemens.find({elemen: elem}).fetch(), (i) ->
 				indikator: i.indikator
 				tar2015: i.y2015.tar
-			sumChild = (kab, kec, elem, ind, year) ->
+			sumKel = (elem, ind, year, kab, kec) ->
 				sum = 0
-				for i in coll.elemens.find({kab: kab, kec: kec, indikator: ind}).fetch()
+				selector =
+					elemen: elem
+					indikator: ind
+					kel: $ne: '*'
+				if kab then selector.kab = kab else selector.kab = $ne: '*'
+				if kec then selector.kec = kab else selector.kec = $ne: '*'
+				for i in coll.elemens.find(selector).fetch()
 					sum += i[year].rel
 				sum
 			for i in kecs
@@ -45,17 +50,37 @@ if Meteor.isServer
 				for j in elemens
 					if 0 < _.size indikators j
 						for k in indikators j
-							data =
+							selector =
 								kab: kab
 								kec: kec
 								kel: '*'
 								elemen: j
 								indikator: k.indikator
+							modifier =
 								y2015:
 									tar: k.tar2015
-									rel: sumChild kab, kec, j, k.indikator, 'y2015'
-							if data.y2015.rel > 0
-								console.log data, ++num
+									rel: sumKel j, k.indikator, 'y2015', kab, kec
+							if modifier.y2015.rel > 0
+								coll.elemens.upsert selector, $set: modifier
+			###
+			sumKec = (kab, kec, ) ->
+			for i in kabs
+				for j in elemens
+					if 0 < _.size indikators j
+						for k in indikators j
+							selector =
+								kab: i
+								kec: '*'
+								kel: '*'
+								elemen: j
+								indikator: k.indikator
+							modifier =
+								y2015:
+									tar: k.tar2015
+									rel: null
+							if modifier.y2015.rel > 0
+								coll.elemens.upsert selector, $set: modifier
+			###
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
