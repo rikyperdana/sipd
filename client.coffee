@@ -59,6 +59,7 @@ if Meteor.isClient
 			Session.set 'pagin', 1 + Session.get 'pagin'
 		'click #mapColor': ->
 			Meteor.call 'wilStat'
+		'click #wilSum': -> Meteor.call 'wilSum'
 
 	Template.layout.onRendered ->
 		Session.set 'pagin', 0
@@ -126,39 +127,9 @@ if Meteor.isClient
 						delete i.tar2018; delete i.rel2018
 						delete i.tar2019; delete i.rel2019
 						i
-					Meteor.call 'importUrusan', maped
+					for i in maped
+						Meteor.call 'import', 'elemens', i
 
-
-					###
-					pecah = data.indikator.split ' '
-					buang = _.reject pecah, (i) -> i.includes ')'
-					data.indikator = buang.join ' '
-					kab = -> if wilName().kab then wilName().kab else '*'
-					kec = -> if wilName().kec then wilName().kec else '*'
-					kel = -> if wilName().kel then wilName().kel else '*'
-					Meteor.call 'importUrusan',
-						kab: kab()
-						kec: kec()
-						kel: kel()
-						elemen: _.kebabCase data.elemen
-						indikator: data.indikator
-						defenisi: data.defenisi
-						y2015:
-							tar: data.tar2015
-							rel: data.rel2015
-						y2016:
-							tar: data.tar2016
-							rel: data.rel2016
-						y2017:
-							tar: data.tar2017
-							rel: data.rel2017
-						y2018:
-							tar: data.tar2018
-							rel: data.rel2018
-						y2019:
-							tar: data.tar2019
-							rel: data.rel2019
-					###
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
 

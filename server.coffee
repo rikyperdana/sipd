@@ -9,24 +9,6 @@ if Meteor.isServer
 		coll.sekolahs.find {}
 
 	Meteor.methods
-		importUrusan: (datas) ->
-			doc = datas[1]
-			if doc.kel isnt '*'
-				coll.elemens.remove kab: doc.kab, kec: doc.kec, kel: '*'
-				coll.elemens.remove kab: doc.kab, kec: '*'
-				for data in datas
-					coll.elemens.insert data
-					selector =
-						kab: data.kab
-						kec: data.kec
-						kel: '*'
-						elemen: data.elemen
-						indikator: data.indikator
-						defenisi: data.defenisi
-						satuan: data.satuan
-						y2015: tar: 0, rel: 0
-					coll.elemens.upsert selector, modifier
-
 		import: (collName, data) ->
 			coll[collName].insert data
 		emptyElemen: (wils, elemen) ->
@@ -46,6 +28,34 @@ if Meteor.isServer
 			coll[name].remove {}
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
+
+		wilSum: ->
+			num = 0
+			indikators = (elem) -> _.map coll.elemens.find({elemen: elem}).fetch(), (i) ->
+				indikator: i.indikator
+				tar2015: i.y2015.tar
+			sumChild = (kab, kec, elem, ind, year) ->
+				sum = 0
+				for i in coll.elemens.find({kab: kab, kec: kec, indikator: ind}).fetch()
+					sum += i[year].rel
+				sum
+			for i in kecs
+				kab = i.split('_')[0]
+				kec = i.split('_')[1]
+				for j in elemens
+					if 0 < _.size indikators j
+						for k in indikators j
+							data =
+								kab: kab
+								kec: kec
+								kel: '*'
+								elemen: j
+								indikator: k.indikator
+								y2015:
+									tar: k.tar2015
+									rel: sumChild kab, kec, j, k.indikator, 'y2015'
+							if data.y2015.rel > 0
+								console.log data, ++num
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
