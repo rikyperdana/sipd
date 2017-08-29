@@ -80,6 +80,39 @@ if Meteor.isServer
 			sumit {kab: {$ne: '*'}, kec: '*', kel: '*'}
 
 		wilStat: ->
+			statKecs = []
+			maped = _.map coll.elemens.find({kel:{$ne: '*'}}).fetch(), (i) ->
+				i.y2015.kin = i.y2015.rel / i.y2015.tar
+				i.indikator = 0
+				i.y2015.sumKin = 0
+				i
+			for i in maped
+				findKec = _.find statKecs, (j) ->
+					kab = j.kab is i.kab
+					kec = j.kec is i.kec
+					kel = j.kel is i.kel
+					elem = j.elemen is i.elemen
+					kab and kec and kel and elem
+				if findKec
+					findKec.indikator += 1
+					findKec.y2015.sumKin += i.y2015.kin
+					findKec.y2015.avgKin = findKec.y2015.sumKin / findKec.indikator
+				else
+					statKecs.push i
+			modified = _.map statKecs, (i) ->
+				delete i.y2015.tar
+				delete i.y2015.rel
+				delete i.y2015.kin
+				delete i.defenisi
+				i
+			console.log modified
+
+
+
+
+
+
+			###
 			source = _.map coll.elemens.find().fetch(), (i) ->
 				i.sum = 0
 				i.count = 0
@@ -111,6 +144,7 @@ if Meteor.isServer
 						count: i.count
 						avg: i.avg
 				coll.wilStat.upsert selector, modifier
+			###
 
 		Meteor.publish 'wilStat', (wilName, elemen) ->
 			selector = {}

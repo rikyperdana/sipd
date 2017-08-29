@@ -57,9 +57,8 @@ if Meteor.isClient
 				Session.set 'pagin', -1 + Session.get 'pagin'
 		'click #next': ->
 			Session.set 'pagin', 1 + Session.get 'pagin'
-		'click #mapColor': ->
-			Meteor.call 'wilStat'
 		'click #wilSum': -> Meteor.call 'wilSum'
+		'click #wilStat': -> Meteor.call 'wilStat'
 
 	Template.layout.onRendered ->
 		Session.set 'pagin', 0
@@ -69,7 +68,6 @@ if Meteor.isClient
 
 	Template.wil.helpers
 		datas: ->
-			selector = {}
 			if wilName().kel
 				selector = kab: wilName().kab, kec: wilName().kec, kel: wilName().kel
 			else if wilName().kec
@@ -84,36 +82,6 @@ if Meteor.isClient
 				coll.elemens.find().fetch()
 
 		round: (number) -> Math.round number
-
-
-
-		###
-		datas: ->
-			wils =
-				kab: wilName().kab
-				kec: wilName().kec
-				kel: wilName().kel
-
-			if wilName().kab and wilName().kec and not wilName().kel
-				wils.kel = '*'
-			else if wilName().kab is 'riau'
-				wils.kab = '*'
-				wils.kec = '*'
-				wils.kel = '*'
-			else if wilName().kab and not wilName.kec and not wilName().kel
-				wils.kec = '*'
-				wils.kel = '*'
-
-			sub = Meteor.subscribe 'elemens', wils, selectElemen()
-			if sub.ready()
-				source = coll.elemens.find().fetch()
-				if wils.kab is '*' or wils.kec is '*' or wils.kel is '*'
-					Meteor.call 'wilSum', wilName(), selectElemen(), (err, res) ->
-						if res then Session.set 'wilDatas', res
-					Session.get 'wilDatas'
-				else
-					source
-		###
 
 	Template.wil.events
 		'click #emptyElemen': ->
