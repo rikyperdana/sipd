@@ -113,22 +113,21 @@ if Meteor.isClient
 					kab = -> if wilName().kab then wilName().kab else '*'
 					kec = -> if wilName().kec then wilName().kec else '*'
 					kel = -> if wilName().kel then wilName().kel else '*'
-					maped = _.map datas, (i) ->
-						i.elemen = _.kebabCase i.elemen
-						i.kab = kab(); i.kec = kec(); i.kel = kel()
-						i.y2015 = tar: i.tar2015, rel: i.rel2015
-						i.y2016 = tar: i.tar2016, rel: i.rel2016
-						i.y2017 = tar: i.tar2017, rel: i.rel2017
-						i.y2018 = tar: i.tar2018, rel: i.rel2018
-						i.y2019 = tar: i.tar2019, rel: i.rel2019
-						delete i.tar2015; delete i.rel2015
-						delete i.tar2016; delete i.rel2016
-						delete i.tar2017; delete i.rel2017
-						delete i.tar2018; delete i.rel2018
-						delete i.tar2019; delete i.rel2019
-						i
-					for i in maped
-						Meteor.call 'import', 'elemens', i
+					for i in datas
+						selector =
+							kab: kab()
+							kec: kec()
+							kel: kel()
+							elemen: _.kebabCase i.elemen
+							defenisi: i.defenisi
+							indikator: i.indikator
+						modifier =
+							y2015: tar: i.tar2015, rel: i.rel2015
+							y2016: tar: i.tar2016, rel: i.rel2016
+							y2017: tar: i.tar2017, rel: i.rel2017
+							y2018: tar: i.tar2018, rel: i.rel2018
+							y2019: tar: i.tar2019, rel: i.rel2019
+						Meteor.call 'imporUrusan', selector, modifier
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
