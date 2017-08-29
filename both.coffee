@@ -75,9 +75,21 @@ coll.wilStat.attachSchema new SimpleSchema
 	kel: type: String
 	elemen: type: String
 	indikator: type: Number
-	y2015: type: Object
+	y2015: type: Object, optional: true
 	'y2015.sumKin': type: Number, decimal: true
 	'y2015.avgKin': type: Number, decimal: true
+	y2016: type: Object, optional: true
+	'y2016.sumKin': type: Number, decimal: true
+	'y2016.avgKin': type: Number, decimal: true
+	y2017: type: Object, optional: true
+	'y2017.sumKin': type: Number, decimal: true
+	'y2017.avgKin': type: Number, decimal: true
+	y2018: type: Object, optional: true
+	'y2018.sumKin': type: Number, decimal: true
+	'y2018.avgKin': type: Number, decimal: true
+	y2019: type: Object, optional: true
+	'y2019.sumKin': type: Number, decimal: true
+	'y2019.avgKin': type: Number, decimal: true
 coll.wilStat.allow
 	insert: -> true
 	update: -> true

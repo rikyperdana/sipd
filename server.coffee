@@ -82,9 +82,17 @@ if Meteor.isServer
 		wilStat: ->
 			statKecs = []
 			maped = _.map coll.elemens.find({kel:{$ne: '*'}}).fetch(), (i) ->
-				i.y2015.kin = i.y2015.rel / i.y2015.tar
 				i.indikator = 0
+				i.y2015.kin = i.y2015.rel / i.y2015.tar
 				i.y2015.sumKin = 0
+				i.y2016.kin = i.y2016.rel / i.y2016.tar
+				i.y2016.sumKin = 0
+				i.y2017.kin = i.y2017.rel / i.y2017.tar
+				i.y2017.sumKin = 0
+				i.y2018.kin = i.y2018.rel / i.y2018.tar
+				i.y2018.sumKin = 0
+				i.y2019.kin = i.y2019.rel / i.y2019.tar
+				i.y2019.sumKin = 0
 				i
 			for i in maped
 				findKec = _.find statKecs, (j) ->
@@ -97,54 +105,31 @@ if Meteor.isServer
 					findKec.indikator += 1
 					findKec.y2015.sumKin += i.y2015.kin
 					findKec.y2015.avgKin = findKec.y2015.sumKin / findKec.indikator
+					findKec.y2016.sumKin += i.y2016.kin
+					findKec.y2016.avgKin = findKec.y2016.sumKin / findKec.indikator
+					findKec.y2017.sumKin += i.y2017.kin
+					findKec.y2017.avgKin = findKec.y2017.sumKin / findKec.indikator
+					findKec.y2018.sumKin += i.y2018.kin
+					findKec.y2018.avgKin = findKec.y2018.sumKin / findKec.indikator
+					findKec.y2019.sumKin += i.y2019.kin
+					findKec.y2019.avgKin = findKec.y2019.sumKin / findKec.indikator
 				else
 					statKecs.push i
-			modified = _.map statKecs, (i) ->
-				delete i.y2015.tar
-				delete i.y2015.rel
-				delete i.y2015.kin
-				delete i.defenisi
-				i
-			console.log modified
-
-
-
-
-
-
-			###
-			source = _.map coll.elemens.find().fetch(), (i) ->
-				i.sum = 0
-				i.count = 0
-				i.avg = 0
-				i
-			list = []
-			for i in source
-				find = _.find list, (j) ->
-					kab = j.kab is i.kab
-					kec = j.kec is i.kec
-					kel = j.kel is i.kel
-					elemen = j.elemen is i.elemen
-					true if kab and kec and kel and elemen
-				if find
-					find.count += 1
-					find.sum += i.nilai
-					find.avg = find.sum / find.count
-				else
-					list.push i
-			for i in list
+			for i in statKecs
 				selector =
 					kab: i.kab
 					kec: i.kec
 					kel: i.kel
 					elemen: i.elemen
 				modifier =
-					$set:	
-						sum: i.sum
-						count: i.count
-						avg: i.avg
-				coll.wilStat.upsert selector, modifier
-			###
+					indikator: i.indikator
+					y2015: sumKin: i.y2015.sumKin, avgKin: i.y2015.avgKin
+					y2016: sumKin: i.y2016.sumKin, avgKin: i.y2016.avgKin
+					y2017: sumKin: i.y2017.sumKin, avgKin: i.y2017.avgKin
+					y2018: sumKin: i.y2018.sumKin, avgKin: i.y2018.avgKin
+					y2019: sumKin: i.y2019.sumKin, avgKin: i.y2019.avgKin
+				# console.log selector, modifier
+				coll.wilStat.upsert selector, $set: modifier
 
 		Meteor.publish 'wilStat', (wilName, elemen) ->
 			selector = {}
