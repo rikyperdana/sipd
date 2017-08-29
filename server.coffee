@@ -31,32 +31,81 @@ if Meteor.isServer
 
 		wilSum: ->
 			num = 0
-			indikators = (elem) -> _.map coll.elemens.find({elemen: elem}).fetch(), (i) ->
-				indikator: i.indikator
-				tar2015: i.y2015.tar
-			sumKels = (kab, kec, elem, ind, year) ->
-				sum = 0
-				for i in coll.elemens.find({kab: kab, kec: kec, kel: {$ne: '*'}, elemen: elem, indikator: ind}).fetch()
-					sum += i[year].rel
-				sum
-			for i in kecs
-				kab = i.split('_')[0]
-				kec = i.split('_')[1]
-				for j in elemens
-					if 0 < _.size indikators j
-						for k in indikators j
-							selector =
-								kab: kab
-								kec: kec
-								kel: '*'
-								elemen: j
-								indikator: k.indikator
-							modifier =
-								y2015:
-									tar: k.tar2015
-									rel: sumKels kab, kec, j, k.indikator, 'y2015'
-							if modifier.y2015.rel > 0
-								coll.elemens.upsert selector, $set: modifier
+			aggKec = []
+			for i in coll.elemens.find({kel: {$ne: '*'}}).fetch()
+				findKec = _.find aggKec, (j) ->
+					kab = j.kab is i.kab
+					kec = j.kec is i.kec
+					elemen = j.elemen is i.elemen
+					indikator = j.indikator is i.indikator
+					kab and kec and elemen and indikator
+				if findKec
+					delete findKec._id
+					findKec.kel = '*'
+					findKec.y2015.rel += i.y2015.rel
+				else
+					aggKec.push i
+			for i in aggKec
+				selector =
+					kab: i.kab
+					kec: i.kec
+					kel: '*'
+					elemen: i.elemen
+					indikator: i.indikator
+				modifier =
+					y2015: i.y2015
+				coll.elemens.upsert selector, $set: modifier
+
+
+			aggKab = []
+			for i in coll.elemens.find({kec: {$ne: '*'}, kel: '*'}).fetch()
+				findKab = _.find aggKab, (j) ->
+					kab = j.kab is i.kab
+					elemen = j.elemen is i.elemen
+					indikator = j.indikator is i.indikator
+					kab and elemen and indikator
+				if findKab
+					delete findKab._id
+					findKab.kel = '*'
+					findKab.y2015.rel += i.y2015.rel
+				else
+					aggKab.push i
+			for i in aggKab
+				selector =
+					kab: i.kab
+					kec: '*'
+					kel: '*'
+					elemen: i.elemen
+					indikator: i.indikator
+				modifier =
+					y2015: i.y2015
+				coll.elemens.upsert selector, $set: modifier
+
+
+			aggProv = []
+			for i in coll.elemens.find({kec: {$ne: '*'}, kel: '*'}).fetch()
+				findProv = _.find aggProv, (j) ->
+					elemen = j.elemen is i.elemen
+					indikator = j.indikator is i.indikator
+					elemen and indikator
+				if findKab
+					delete findProv._id
+					findProv.kel = '*'
+					findProv.y2015.rel += i.y2015.rel
+				else
+					aggProv.push i
+			for i in aggProv
+				selector =
+					kab: '*'
+					kec: '*'
+					kel: '*'
+					elemen: i.elemen
+					indikator: i.indikator
+				modifier =
+					y2015: i.y2015
+				coll.elemens.upsert selector, $set: modifier
+
+			
 
 		wilStat: ->
 			source = _.map coll.elemens.find().fetch(), (i) ->
