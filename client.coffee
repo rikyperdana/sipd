@@ -69,6 +69,26 @@ if Meteor.isClient
 
 	Template.wil.helpers
 		datas: ->
+			selector = {}
+			if wilName().kel
+				selector = kab: wilName().kab, kec: wilName().kec, kel: wilName().kel
+			else if wilName().kec
+				selector = kab: wilName().kab, kec: wilName().kec, kel: '*'
+			else if wilName().kab is 'riau'
+				selector = kab: '*'
+			else if wilName().kab
+				selector = kab: wilName().kab, kec: '*', kel: '*'
+			options = {}
+			sub = Meteor.subscribe 'coll', 'elemens', selector, options
+			if sub.ready()
+				coll.elemens.find().fetch()
+
+		round: (number) -> Math.round number
+
+
+
+		###
+		datas: ->
 			wils =
 				kab: wilName().kab
 				kec: wilName().kec
@@ -93,7 +113,7 @@ if Meteor.isClient
 					Session.get 'wilDatas'
 				else
 					source
-
+		###
 
 	Template.wil.events
 		'click #emptyElemen': ->

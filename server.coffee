@@ -51,6 +51,10 @@ if Meteor.isServer
 					if findWil
 						delete findWil._id
 						findWil.y2015.rel += i.y2015.rel
+						findWil.y2016.rel += i.y2016.rel
+						findWil.y2017.rel += i.y2017.rel
+						findWil.y2018.rel += i.y2018.rel
+						findWil.y2019.rel += i.y2019.rel
 					else
 						aggWil.push i
 				# upsert each item to parent
@@ -65,6 +69,10 @@ if Meteor.isServer
 					if isKec then selector.kec = i.kec
 					modifier =
 						y2015: i.y2015
+						y2016: i.y2016
+						y2017: i.y2017
+						y2018: i.y2018
+						y2019: i.y2019
 					coll.elemens.upsert selector, $set: modifier
 
 			sumit {kel: {$ne: '*'}}, true, true
@@ -121,7 +129,5 @@ if Meteor.isServer
 				coll.jalNas.find {}
 			]
 
-		Meteor.publish 'coll', (name, sel, opt) ->
-			selector = {}
-			options = {}
+		Meteor.publish 'coll', (name, selector, options) ->
 			coll[name].find selector, options
