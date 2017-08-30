@@ -80,6 +80,75 @@ if Meteor.isServer
 			sumit {kab: {$ne: '*'}, kec: '*', kel: '*'}
 
 		wilStat: ->
+			state = (selector, years, kab, kec, kel) ->
+				stats = []
+				maped = _.map coll.elemens.find(selector).fetch(), (i) ->
+					i.indikator = 0
+					for j in years
+						i[j].kin = i[j].rel / i[j].tar
+						i[j].sumKin = 0
+					i
+				for i in maped
+					find = _.find stats, (j) ->
+						elem = -> j.elemen is i.elemen
+						kab = -> j.kab is i.kab
+						kec = -> j.kec is i.kec
+						kel = -> j.kel is i.kel
+						if kel
+							elem() and kab() and kec() and kel()
+						else if kec
+							elem() and kab() and kec()
+						else if kab
+							elem() and kab()
+						else
+							elem
+					if find
+						find.indikator += 1
+						for j in years
+							find[j].sumKin += i[j].kin
+							find[j].avgKin = find[j].sumKin / find.indikator
+					else
+						stats.push i
+				for i in stats
+					selector = elemen: i.elemen
+					if kab then selector.kab = i.kab
+					if kec then selector.kec = i.kec
+					if kel then selector.kel = i.kel
+					modifier = indikator: i.indikator
+					for j in years
+						modifier[j] = sumKin: i[j].sumKin, avgKin: i[j].avgKin
+					coll.wilStat.upsert selector, $set: modifier
+
+			years = _.map [2015..2019], (i) -> 'y' + i
+			state {kel: {$ne: '*'}}, years, true, true, true
+			state {kec: {$ne: '*'}, kel: '*'}, years, true, true
+			state {kab: {$ne: '*'}, kec: '*', kel: '*'}, years, true
+			state {kab: '*', kec: '*', kel: '*'}, years
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			###
 			statKecs = []
 			maped = _.map coll.elemens.find({kel:{$ne: '*'}}).fetch(), (i) ->
 				i.indikator = 0
@@ -130,6 +199,7 @@ if Meteor.isServer
 					y2019: sumKin: i.y2019.sumKin, avgKin: i.y2019.avgKin
 				# console.log selector, modifier
 				coll.wilStat.upsert selector, $set: modifier
+			###
 
 		Meteor.publish 'wilStat', (wilName, elemen) ->
 			selector = {}
