@@ -32,6 +32,43 @@ if Meteor.isServer
 			coll.sekolahs.update obj._id, $set: obj
 
 		wilSum: ->
+
+			sumit = (selector, isKab, isKec) ->
+				num = 0
+				source = coll.elemens.find(selector).fetch()
+				uniqBy = _.uniqBy source, (i) ->
+					arr = [i.elemen, i.indikator]
+					if isKab then arr.push i.kab
+					if isKec then arr.push i.kec
+					_.join arr
+				forEach = _.forEach uniqBy, (i) ->
+					sel = {}
+					sel.elemen = i.elemen
+					sel.indikator = i.indikator
+					sel.kel = '*'
+
+					sel.kab = i.kab
+					sel.kec = i.kec
+					
+
+					i.y2015.rel = _.sumBy coll.elemens.find(sel).fetch(), (j) -> j.y2015.rel
+					modifier =
+						y2015: i.y2015
+					coll.elemens.upsert sel, $set: modifier
+					console.log modifier, ++num
+
+			sumit {kel: {$ne: '*'}}, true, true
+			sumit {kec: {$ne: '*'}, kel: '*'}, true
+			sumit {kab: {$ne: '*'}, kec: '*', kel: '*'}
+
+
+
+
+
+
+
+
+			###
 			sumit = (selector, isKab, isKec) ->
 				# container array
 				aggWil = []
@@ -78,6 +115,7 @@ if Meteor.isServer
 			sumit {kel: {$ne: '*'}}, true, true
 			sumit {kec: {$ne: '*'}, kel: '*'}, true
 			sumit {kab: {$ne: '*'}, kec: '*', kel: '*'}
+			###
 
 		wilStat: ->
 			statKecs = []
