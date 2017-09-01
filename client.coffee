@@ -7,14 +7,11 @@ if Meteor.isClient
 		kec: currentRoute().split('_')[1]
 		kel: currentRoute().split('_')[2]
 	selectElemen = -> Session.get 'selectElemen'
+	selectYear = -> Session.get 'selectYear'
 	searchTerm = -> Session.get 'searchTerm'
 
 	Template.registerHelper 'coll', -> coll
 	Template.registerHelper 'switch', (param) -> Session.get param
-	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
-	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
-	Template.registerHelper 'showMap', -> Session.get 'showMap'
-	Template.registerHelper 'showAdd', -> Session.get 'showAdd'
 	Template.registerHelper 'editData', -> Session.get 'editData'
 	Template.registerHelper 'formMode', ->
 		add = Session.get 'showAdd'
@@ -36,14 +33,6 @@ if Meteor.isClient
 		'click #switch': (event) ->
 			param = event.target.attributes.param.nodeValue
 			Session.set param, not Session.get param
-		'click #showContoh': ->
-			Session.set 'showContoh', not Session.get 'showContoh'
-		'click #showGraph': ->
-			Session.set 'showGraph', not Session.get 'showGraph'
-		'click #showMap': ->
-			Session.set 'showMap', not Session.get 'showMap'
-		'click #showAdd': ->
-			Session.set 'showAdd', not Session.get 'showAdd'
 		'dblclick #row': (event, obj) ->
 			Session.set 'editData', obj
 		'click #close': ->
@@ -80,6 +69,8 @@ if Meteor.isClient
 				selector = kab: '*'
 			else if wilName().kab
 				selector = kab: wilName().kab, kec: '*', kel: '*'
+			if selectElemen()
+				selector.elemen = selectElemen()
 			options = {}
 			sub = Meteor.subscribe 'coll', 'elemens', selector, options
 			if sub.ready()
@@ -126,10 +117,13 @@ if Meteor.isClient
 
 	Template.selectElemen.helpers
 		elemensName: -> _.map elemens, (i) -> _.startCase i
+		years: -> _.map [2015..2019], (i) -> 'y' + i
 
 	Template.selectElemen.events
-		'change select': (event) ->
+		'change #elemen': (event) ->
 			Session.set 'selectElemen', _.kebabCase event.target.value
+		'change #year': (event) ->
+			Session.set 'selectYear', event.target.value
 
 	Template.login.events
 		'submit #login': (event) ->
@@ -171,8 +165,8 @@ if Meteor.isClient
 				true if kab and kec and kel and elem
 			if find
 				switch
-					when find.y2015.avgKin > 0.66 then 'green'
-					when find.y2015.avgKin > 0.33 then 'orange'
+					when find[selectYear()].avgKin > 0.66 then 'green'
+					when find[selectYear()].avgKin > 0.33 then 'orange'
 					else 'red'
 			else
 				'white'

@@ -55,12 +55,12 @@ template(name='wil'): .container
 			doc= editData
 		)
 		.right.orange.btn#close Tutup
-	.btn.right#showGraph Grafik
-	.btn.right#showMap Peta
+	.btn.right#switch(param='graph') Grafik
+	.btn.right#switch(param='map') Peta
 	.row
-	if showGraph
+	if switch 'graph'
 		+grafik
-	if showMap
+	if switch 'map'
 		+map
 	unless editData
 		table
@@ -100,22 +100,28 @@ template(name='wil'): .container
 					input(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-	.btn#showContoh(contoh= 'apa aja') Contoh Elemen
+	.btn#switch(param= 'contoh') Contoh Elemen
 	.btn#emptyElemen Kosongkan Elemen
-	if switch 'showContoh'
+	if switch 'contoh'
 		+contohElemen
 	.row
 
 
 template(name='selectElemen')
 	.row
-		.input-field.col.m8
-			select
+		.input-field.col.m6
+			select#elemen
 				option(value='') -- Pilih Elemen Data --
 				each val in elemensName
 					option= val
-		.input-field.col.m4
+		.input-field.col.m3
+			select#year
+				option(value='') -- Pilih Tahun --
+				each val in years
+					option= val
+		.input-field.col.m3
 			input#search(placeholder='Cari')
+
 
 template(name='login'): .container
 	h4.center Login Pengguna
@@ -161,9 +167,9 @@ template(name='sekolahs')
 				.col.m8
 					input#search(placeholder='Cari Nama, Alamat, atau Kel/Des, dan tekan Enter')
 				.col.m4
-					.right.btn#showAdd + Sekolah
+					.right.btn#switch(param='add') + Sekolah
 			.row: +pagination
-		if showAdd
+		if switch 'add'
 			h5 Tambahkan Sekolah
 			+quickForm(
 				collection= coll.sekolahs
