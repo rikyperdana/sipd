@@ -167,11 +167,9 @@ if Meteor.isClient
 				true if kab and kec and kel and elem
 			if find
 				switch
-					when find.avg > 100 then 'blue'
-					when find.avg > 75 then 'green'
-					when find.avg > 50 then 'orange'
-					when find.avg > 25 then 'red'
-					else 'grey'
+					when find.y2015.avgKin > 0.66 then 'green'
+					when find.y2015.avgKin > 0.33 then 'orange'
+					else 'red'
 			else
 				'white'
 

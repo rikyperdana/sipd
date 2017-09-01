@@ -33,89 +33,35 @@ if Meteor.isServer
 
 		wilSum: ->
 
-			sumit = (selector, isKab, isKec) ->
+			years = _.map [2015..2019], (i) -> 'y' + i
+			sumit = (wil, selector) ->
 				num = 0
 				source = coll.elemens.find(selector).fetch()
 				uniqBy = _.uniqBy source, (i) ->
 					arr = [i.elemen, i.indikator]
-					if isKab then arr.push i.kab
-					if isKec then arr.push i.kec
+					if wil is 'kec'
+						arr.push i.kab, i.kec
+					else if wil is 'kab'
+						arr.push i.kab
 					_.join arr
-				forEach = _.forEach uniqBy, (i) ->
-					sel = {}
-					sel.elemen = i.elemen
-					sel.indikator = i.indikator
-					sel.kel = '*'
-
-					sel.kab = i.kab
-					sel.kec = i.kec
-					
-
-					i.y2015.rel = _.sumBy coll.elemens.find(sel).fetch(), (j) -> j.y2015.rel
-					modifier =
-						y2015: i.y2015
-					coll.elemens.upsert sel, $set: modifier
-					console.log modifier, ++num
-
-			sumit {kel: {$ne: '*'}}, true, true
-			sumit {kec: {$ne: '*'}, kel: '*'}, true
-			sumit {kab: {$ne: '*'}, kec: '*', kel: '*'}
-
-
-
-
-
-
-
-
-			###
-			sumit = (selector, isKab, isKec) ->
-				# container array
-				aggWil = []
-				# sum array of childs indikators to obj parent indikator
-				for i in coll.elemens.find(selector).fetch()
-					findWil = _.find aggWil, (j) ->
-						if isKab then kab = j.kab is i.kab
-						if isKec then kec = j.kec is i.kec
-						elemen = j.elemen is i.elemen
-						indikator = j.indikator is i.indikator
-						if isKab and isKec
-							kab and kec and elemen and indikator
-						else if isKab
-							kab and elemen and indikator
-						else
-							elemen and indikator
-					if findWil
-						delete findWil._id
-						findWil.y2015.rel += i.y2015.rel
-						findWil.y2016.rel += i.y2016.rel
-						findWil.y2017.rel += i.y2017.rel
-						findWil.y2018.rel += i.y2018.rel
-						findWil.y2019.rel += i.y2019.rel
+				for i in uniqBy
+					sel = elemen: i.elemen, indikator: i.indikator, kel: '*'
+					if wil is 'kec'
+						sel.kab = i.kab; sel.kec = i.kec
+					else if wil is 'kab'
+						sel.kab = i.kab; sel.kec = '*'
 					else
-						aggWil.push i
-				# upsert each item to parent
-				for i in aggWil
-					selector =
-						kab: '*'
-						kec: '*'
-						kel: '*'
-						elemen: i.elemen
-						indikator: i.indikator
-					if isKab then selector.kab = i.kab
-					if isKec then selector.kec = i.kec
-					modifier =
-						y2015: i.y2015
-						y2016: i.y2016
-						y2017: i.y2017
-						y2018: i.y2018
-						y2019: i.y2019
-					coll.elemens.upsert selector, $set: modifier
+						sel.kab = '*'; sel.kec = '*'
+					modifier = {}
+					for j in years
+						i[j].rel = _.sumBy coll.elemens.find(sel).fetch(), (k) -> k[j].rel
+						modifier[j] = i[j]
+					coll.elemens.upsert sel, $set: modifier
+					console.log sel, modifier, ++num
 
-			sumit {kel: {$ne: '*'}}, true, true
-			sumit {kec: {$ne: '*'}, kel: '*'}, true
-			sumit {kab: {$ne: '*'}, kec: '*', kel: '*'}
-			###
+			sumit 'kec', {kel: {$ne: '*'}}
+			sumit 'kab', {kab: {$ne: '*'}, kel: '*'}
+			sumit 'riau', {kab: '*', kec: '*', kel: '*'}
 
 		wilStat: ->
 			state = (selector, years, kab, kec, kel) ->
