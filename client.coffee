@@ -71,6 +71,8 @@ if Meteor.isClient
 				selector = kab: wilName().kab, kec: '*', kel: '*'
 			if selectElemen()
 				selector.elemen = selectElemen()
+			if searchTerm()
+				selector.indikator = $regex: '.*'+searchTerm()+'.*', $options: '-i'
 			options = {}
 			sub = Meteor.subscribe 'coll', 'elemens', selector, options
 			if sub.ready()
