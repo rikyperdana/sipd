@@ -10,6 +10,7 @@ if Meteor.isClient
 	searchTerm = -> Session.get 'searchTerm'
 
 	Template.registerHelper 'coll', -> coll
+	Template.registerHelper 'switch', (param) -> Session.get param
 	Template.registerHelper 'showContoh', -> Session.get 'showContoh'
 	Template.registerHelper 'showGraph', -> Session.get 'showGraph'
 	Template.registerHelper 'showMap', -> Session.get 'showMap'
@@ -32,6 +33,9 @@ if Meteor.isClient
 		[1..end]
 
 	Template.body.events
+		'click #switch': (event) ->
+			param = event.target.attributes.param.nodeValue
+			Session.set param, not Session.get param
 		'click #showContoh': ->
 			Session.set 'showContoh', not Session.get 'showContoh'
 		'click #showGraph': ->

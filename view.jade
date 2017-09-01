@@ -100,9 +100,9 @@ template(name='wil'): .container
 					input(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-	.btn#showContoh Contoh Elemen
+	.btn#showContoh(contoh= 'apa aja') Contoh Elemen
 	.btn#emptyElemen Kosongkan Elemen
-	if showContoh
+	if switch 'showContoh'
 		+contohElemen
 	.row
 
