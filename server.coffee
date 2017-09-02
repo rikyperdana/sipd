@@ -13,21 +13,8 @@ if Meteor.isServer
 			coll[collName].insert data
 		imporUrusan: (selector, modifier) ->
 			coll.elemens.upsert selector, $set: modifier
-		emptyElemen: (wils, elemen) ->
-			selector = {}
-			if wils.kab then selector.kab = wils.kab else selector.kab = '*'
-			if wils.kec then selector.kec = wils.kec else selector.kec = '*'
-			if wils.kel then selector.kel = wils.kel else selector.kel = '*'
-			selector.elemen = elemen
-			coll.elemens.remove selector
-		emptySekolahs: ->
-			coll.sekolahs.remove {}
-		emptyJalProv: ->
-			coll.jalProv.remove {}
-		emptyJalNas: ->
-			coll.jalNas.remove {}
-		emptyColl: (name) ->
-			coll[name].remove {}
+		empty: (name, selector) ->
+			coll[name].remove selector
 		updateSekolah: (obj) ->
 			coll.sekolahs.update obj._id, $set: obj
 

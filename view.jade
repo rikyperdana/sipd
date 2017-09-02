@@ -101,7 +101,7 @@ template(name='wil'): .container
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
 	.btn#switch(param= 'contoh') Contoh Elemen
-	.btn#emptyElemen Kosongkan Elemen
+	.btn#empty(param='elemens') Kosongkan Elemen
 	if switch 'contoh'
 		+contohElemen
 	.row
@@ -214,7 +214,7 @@ template(name='sekolahs')
 							td= siswa
 							td= latlng.lat
 							td= latlng.lng
-			.btn#empty Kosongkan
+			.btn#empty(param='sekolahs') Kosongkan
 			.btn#geocode Geocode
 			.file-field.input-field
 				.btn.left
@@ -273,7 +273,7 @@ template(name='jalan')
 						input#jalProvUpload(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-			.btn#emptyJalProv Kosongkan Provinsi
+			.btn#empty(param='jalProv') Kosongkan Provinsi
 
 		h5 Tabel Jalan Nas
 		span: .btn#openJalNas Buka
@@ -308,7 +308,7 @@ template(name='jalan')
 						input#jalNasUpload(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-			.btn#emptyJalNas Kosongkan Provinsi
+			.btn#empty(param='jalNas') Kosongkan Provinsi
 
 template(name='ikd'): .container
 	h5 Indikator Kinerja Daerah
@@ -361,4 +361,4 @@ template(name='ikd'): .container
 				input(type='file' name='uploadCSV')
 		.file-path-wrapper
 			input.file-path.wrapper(type='text')
-	.btn#emptyIkd Kosongkan
+	.btn#empty(param='ikd') Kosongkan

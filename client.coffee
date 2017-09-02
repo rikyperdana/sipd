@@ -81,15 +81,22 @@ if Meteor.isClient
 		round: (number) -> Math.round number
 
 	Template.wil.events
-		'click #emptyElemen': ->
+		'click #empty': (event) ->
+			param = event.target.attributes.param.nodeValue
 			dialog =
-				message: 'Yakin kosongkan elemen?'
-				title: 'Elemen ' + selectElemen()
+				message: 'Yakin kosongkan '+param+'?'
+				title: 'Kosongkan ' + _.startCase param
 				okText: 'Ya'
 				success: true
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyElemen', wilName(), selectElemen()
+				selector = {}
+				if param is 'elemens'
+					kab = if wilName().kab then wilName().kab else '*'
+					kec = if wilName().kec then wilName().kec else '*'
+					kel = if wilName().kel then wilName().kel else '*'
+					selector = kab: kab, kec: kec, kel: kel, elemen: selectElemen()
+				if ok then Meteor.call 'empty', param, selector
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
