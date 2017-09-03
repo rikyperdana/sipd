@@ -278,26 +278,16 @@ if Meteor.isClient
 		locate = L.control.locate()
 		locate.addTo map
 		$('.num#1').parent().addClass 'active'
-
-	Template.sekolahs.onRendered ->
 		Session.set 'limit', 200
-
+	
 	Template.sekolahs.helpers
 		datas: ->
-			if searchTerm()
-				_.filter coll.sekolahs.find().fetch(), (i) ->
-					asNama = i.nama.toLowerCase().includes searchTerm()
-					asAlamat = i.alamat.toLowerCase().includes searchTerm()
-					asKeldes = i.keldes.toLowerCase().includes searchTerm()
-					true if asNama or asAlamat or asKeldes
-			else
-				pagin = Session.get 'pagin'
-				limit = Session.get 'limit'
-				selector = {}
-				options =
-					limit: limit
-					skip: pagin * limit
-				coll.sekolahs.find(selector, options).fetch()
+			pagin = Session.get 'pagin'; limit = Session.get 'limit'
+			selector = {}
+			options = limit: limit, skip: pagin * limit
+			sub = Meteor.subscribe 'coll', 'sekolahs', selector, options
+			if sub.ready() then coll.sekolahs.find().fetch()
+
 		stats: ->
 			source = coll.sekolahs.find().fetch()
 			jumlahSekolah = -> source.length

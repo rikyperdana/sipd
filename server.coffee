@@ -5,9 +5,6 @@ if Meteor.isServer
 		if elemen then selector.elemen = elemen
 		coll.elemens.find selector
 
-	Meteor.publish 'sekolahs', ->
-		coll.sekolahs.find {}
-
 	Meteor.methods
 		import: (collName, data) ->
 			coll[collName].insert data

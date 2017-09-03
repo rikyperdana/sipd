@@ -6,22 +6,16 @@ Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 Router.route '/riau', action: -> this.render 'wil'
-Router.route '/jalan',
-	action: -> this.render 'jalan'
-	waitOn: -> Meteor.subscribe 'jalans'
-
-makeRoute = (name) ->
-	Router.route '/' + name,
-		action: -> this.render name
-		waitOn: -> Meteor.subscribe 'coll', name
-
-makeRoute i for i in ['sekolahs', 'ikd']
 
 makeWil = (route) ->
 	Router.route '/' + route,
 		action: -> this.render 'wil'
 
 makeWil i for i in [kels..., kecs..., kabs...]
+
+Router.route '/sekolahs',
+	action: -> this.render 'sekolahs'
+	waitOn: -> Meteor.subscribe 'coll', 'sekolahs', {}, {}
 
 coll.elemens = new Meteor.Collection 'elemens'
 coll.elemens.attachSchema new SimpleSchema
