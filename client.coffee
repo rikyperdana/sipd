@@ -113,12 +113,9 @@ if Meteor.isClient
 							elemen: _.kebabCase i.elemen
 							defenisi: i.defenisi
 							indikator: i.indikator
-						modifier =
-							y2015: tar: i.tar2015, rel: i.rel2015
-							y2016: tar: i.tar2016, rel: i.rel2016
-							y2017: tar: i.tar2017, rel: i.rel2017
-							y2018: tar: i.tar2018, rel: i.rel2018
-							y2019: tar: i.tar2019, rel: i.rel2019
+						modifier = {}
+						for i in [2015..2019]
+							modifier['y'+i] = tar: i['tar'+i], rel: i['rel'+i]
 						Meteor.call 'imporUrusan', selector, modifier
 
 	Template.selectElemen.onRendered ->
@@ -279,7 +276,7 @@ if Meteor.isClient
 		locate.addTo map
 		$('.num#1').parent().addClass 'active'
 		Session.set 'limit', 200
-	
+
 	Template.fasilitas.helpers
 		datas: ->
 			pagin = Session.get 'pagin'; limit = Session.get 'limit'
@@ -324,19 +321,19 @@ if Meteor.isClient
 				focus: 'cancel'
 				success: true
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyfasilitas'
+				selector = kelompok: currentRoute()
+				if ok then Meteor.call 'empty', 'fasilitas', selector
 		'change :file': (event) ->
 			Papa.parse event.target.files[0],
 				header: true
 				step: (row) ->
 					record = row.data[0]
-					Meteor.call 'import', 'fasilitas',
+					objek =
+						kelompok: currentRoute()
 						nama: record.nama
-						status: record.status
-						bentuk: record.bentuk
-						alamat: record.alamat
-						keldes: record.keldes
-						siswa: record.siswa
+					for i in [1..10]
+						objek['data'+i] = record['data'+i]
+					Meteor.call 'import', 'fasilitas', objek
 		'click #geocode': ->
 			getLatLng = (obj) ->
 				geocode.getLocation obj.alamat + ' Riau', (location) ->
@@ -520,25 +517,10 @@ if Meteor.isClient
 				header: true
 				step: (result) ->
 					data = result.data[0]
-					Meteor.call 'import', 'ikd',
+					objek =
 						misi: data.misi
 						sasaran: data.sasaran
 						indikator: data.indikator
-						y2013:
-							tar: data.tar2013
-							rel: data.rel2013
-						y2014:
-							tar: data.tar2014
-							rel: data.rel2014
-						y2015:
-							tar: data.tar2015
-							rel: data.rel2015
-						y2016:
-							tar: data.tar2016
-							rel: data.rel2016
-						y2017:
-							tar: data.tar2017
-						y2018:
-							tar: data.tar2018
-						y2019:
-							tar: data.tar2019
+					for i in [2013..2019]
+						objek['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
+					Meteor.call 'import', 'ikd', objek

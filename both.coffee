@@ -13,9 +13,15 @@ makeWil = (route) ->
 
 makeWil i for i in [kels..., kecs..., kabs...]
 
-Router.route '/fasilitas',
-	action: -> this.render 'fasilitas'
-	waitOn: -> Meteor.subscribe 'coll', 'fasilitas', {}, {}
+makeFasil = (name) ->
+	Router.route '/' + name,
+		action: -> this.render 'fasilitas'
+		waitOn: ->
+			selector = kelompok: name
+			options = {}
+			Meteor.subscribe 'coll', 'fasilitas', selector, options
+
+makeFasil i for i in ['sekolah', 'pariwisata']
 
 years = (start, end) -> _.map [start..end], (i) -> 'y' + i
 
@@ -32,23 +38,6 @@ for i in years 2015, 2019
 	objek[i] = type: Object, optional: true
 	objek[i+'.tar'] = type: Number, decimal: true
 	objek[i+'.rel'] = type: Number, decimal: true
-	###
-	y2015: type: Object, optional: true
-	'y2015.tar': type: Number, decimal: true
-	'y2015.rel': type: Number, decimal: true
-	y2016: type: Object, optional: true
-	'y2016.tar': type: Number, decimal: true
-	'y2016.rel': type: Number, decimal: true
-	y2017: type: Object, optional: true
-	'y2017.tar': type: Number, decimal: true
-	'y2017.rel': type: Number, decimal: true
-	y2018: type: Object, optional: true
-	'y2018.tar': type: Number, decimal: true
-	'y2018.rel': type: Number, decimal: true
-	y2019: type: Object, optional: true
-	'y2019.tar': type: Number, decimal: true
-	'y2019.rel': type: Number, decimal: true
-	###
 coll.elemens.attachSchema new SimpleSchema objek
 coll.elemens.allow
 	insert: -> true
@@ -62,7 +51,7 @@ obj =
 	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
-for i in [1..5]
+for i in [1..10]
 	obj[i] = type: String, optional: true
 coll.fasilitas.attachSchema new SimpleSchema obj
 coll.fasilitas.allow
@@ -81,24 +70,7 @@ for i in years 2015, 2019
 	objek[i] = type: Object, optional: true
 	objek[i+'.sumKin'] = type: Number, decimal: true
 	objek[i+'.avgKin'] = type: Number, decimal: true
-	###
-	y2015: type: Object, optional: true
-	'y2015.sumKin': type: Number, decimal: true
-	'y2015.avgKin': type: Number, decimal: true
-	y2016: type: Object, optional: true
-	'y2016.sumKin': type: Number, decimal: true
-	'y2016.avgKin': type: Number, decimal: true
-	y2017: type: Object, optional: true
-	'y2017.sumKin': type: Number, decimal: true
-	'y2017.avgKin': type: Number, decimal: true
-	y2018: type: Object, optional: true
-	'y2018.sumKin': type: Number, decimal: true
-	'y2018.avgKin': type: Number, decimal: true
-	y2019: type: Object, optional: true
-	'y2019.sumKin': type: Number, decimal: true
-	'y2019.avgKin': type: Number, decimal: true
-	###
-coll.wilStat.attachSchema new SimpleSchema objek
+	coll.wilStat.attachSchema new SimpleSchema objek
 coll.wilStat.allow
 	insert: -> true
 	update: -> true
@@ -159,30 +131,7 @@ for i in years 2013, 2019
 	objek[i] = type: Object, optional: true
 	objek[i+'.tar'] = type: Number, optional: true
 	objek[i+'.rel'] = type: Number, optional: true
-	###
-	y2013: type: Object, optional: true
-	'y2013.tar': type: String, optional: true
-	'y2013.rel': type: String, optional: true
-	y2014: type: Object, optional: true
-	'y2014.tar': type: String, optional: true
-	'y2014.rel': type: String, optional: true
-	y2015: type: Object, optional: true
-	'y2015.tar': type: String, optional: true
-	'y2015.rel': type: String, optional: true
-	y2016: type: Object, optional: true
-	'y2016.tar': type: String, optional: true
-	'y2016.rel': type: String, optional: true
-	y2017: type: Object, optional: true
-	'y2017.tar': type: String, optional: true
-	'y2017.rel': type: String, optional: true
-	y2018: type: Object, optional: true
-	'y2018.tar': type: String, optional: true
-	'y2018.rel': type: String, optional: true
-	y2019: type: Object, optional: true
-	'y2019.tar': type: String, optional: true
-	'y2019.rel': type: String, optional: true
-	###
-coll.ikd.attachSchema new SimpleSchema objek
+	coll.ikd.attachSchema new SimpleSchema objek
 coll.ikd.allow
 	insert: -> true
 	update: -> true
