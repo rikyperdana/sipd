@@ -13,9 +13,9 @@ makeWil = (route) ->
 
 makeWil i for i in [kels..., kecs..., kabs...]
 
-Router.route '/sekolahs',
-	action: -> this.render 'sekolahs'
-	waitOn: -> Meteor.subscribe 'coll', 'sekolahs', {}, {}
+Router.route '/fasilitas',
+	action: -> this.render 'fasilitas'
+	waitOn: -> Meteor.subscribe 'coll', 'fasilitas', {}, {}
 
 coll.elemens = new Meteor.Collection 'elemens'
 coll.elemens.attachSchema new SimpleSchema
@@ -46,18 +46,17 @@ coll.elemens.allow
 	update: -> true
 	remove: -> true
 
-coll.sekolahs = new Meteor.Collection 'sekolahs'
-coll.sekolahs.attachSchema new SimpleSchema
+coll.fasilitas = new Meteor.Collection 'fasilitas'
+obj =
+	kelompok: type: String
 	nama: type: String
-	status: type: String
-	bentuk: type: String
-	alamat: type: String
-	keldes: type: String
-	siswa: type: Number
 	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
-coll.sekolahs.allow
+for i in [1..5]
+	obj[i] = type: String, optional: true
+coll.fasilitas.attachSchema new SimpleSchema obj
+coll.fasilitas.allow
 	insert: -> true
 	update: -> true
 	remove: -> true

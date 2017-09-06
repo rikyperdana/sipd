@@ -150,13 +150,13 @@ template(name='grafik')
 template(name='map')
 	#map
 
-template(name='sekolahs')
+template(name='fasilitas')
 	unless formMode
 		#map
 	.container
 		unless formMode
 			.row
-				h5.center Statistik Sekolah
+				h5.center Statistik Fasilitas
 				each stats
 					.col.m3: .card(class='{{color}}'): .card-content.white-text: .row
 						.col.m9
@@ -167,24 +167,24 @@ template(name='sekolahs')
 				.col.m8
 					input#search(placeholder='Cari Nama, Alamat, atau Kel/Des, dan tekan Enter')
 				.col.m4
-					.right.btn#switch(param='add') + Sekolah
+					.right.btn#switch(param='add') + Fasilitas
 			.row: +pagination
 		if switch 'add'
-			h5 Tambahkan Sekolah
+			h5 Tambahkan Fasilitas
 			+quickForm(
-				collection= coll.sekolahs
+				collection= coll.fasilitas
 				type = 'insert'
-				id = 'insertSekolahs'
+				id = 'insertfasilitas'
 			)
 			.row
 			.right.orange.btn#close Tutup Tambah
 			.row
 		if editData
-			h5 Edit Sekolah
+			h5 Edit Fasilitas
 			+quickForm(
-				collection= coll.sekolahs
+				collection= coll.fasilitas
 				type = 'update'
-				id = 'updateSekolah'
+				id = 'updateFasilitas'
 				doc= editData
 			)
 			+mapSelect
@@ -196,25 +196,25 @@ template(name='sekolahs')
 				thead
 					tr
 						th Nama
-						th Status
-						th Bentuk
-						th Alamat
-						th Kel/Des
-						th Siswa
-						th Lat
-						th Lng
+						th Data1
+						th Data2
+						th Data3
+						th Data4
+						th Data5
+						th LatLng
 				tbody
 					each datas
 						tr#row
 							td= nama
-							td= status
-							td= bentuk
-							td= alamat
-							td= keldes
-							td= siswa
-							td= latlng.lat
-							td= latlng.lng
-			.btn#empty(param='sekolahs') Kosongkan
+							td= data1
+							td= data2
+							td= data3
+							td= data4
+							td= data5
+							td
+								span= latlng.lat
+								span= latlng.lng
+			.btn#empty(param='fasilitas') Kosongkan
 			.btn#geocode Geocode
 			.file-field.input-field
 				.btn.left

@@ -23,7 +23,7 @@ if Meteor.isClient
 		kel: _.startCase wilName().kel
 	Template.registerHelper 'pagins', ->
 		limit = Session.get 'limit'
-		length = coll.sekolahs.find().fetch().length
+		length = coll.fasilitas.find().fetch().length
 		modulo = length % limit
 		range = length - modulo
 		end = range / limit + 1
@@ -230,7 +230,7 @@ if Meteor.isClient
 			zoomControl: false
 			layers: [topo, geojson]
 
-	Template.sekolahs.onRendered ->
+	Template.fasilitas.onRendered ->
 		baseMaps =
 			Topografi: L.tileLayer.provider 'OpenTopoMap'
 			Jalan: L.tileLayer.provider 'OpenStreetMap.DE'
@@ -239,7 +239,7 @@ if Meteor.isClient
 
 		makeLayers = (category, type, color, icon) ->
 			markers = []
-			for i in coll.sekolahs.find().fetch()
+			for i in coll.fasilitas.find().fetch()
 				if i.latlng and i[category] is type
 					marker = L.marker i.latlng,
 						icon: L.AwesomeMarkers.icon
@@ -280,19 +280,18 @@ if Meteor.isClient
 		$('.num#1').parent().addClass 'active'
 		Session.set 'limit', 200
 	
-	Template.sekolahs.helpers
+	Template.fasilitas.helpers
 		datas: ->
 			pagin = Session.get 'pagin'; limit = Session.get 'limit'
 			selector = {}
 			options = limit: limit, skip: pagin * limit
-			sub = Meteor.subscribe 'coll', 'sekolahs', selector, options
-			if sub.ready() then coll.sekolahs.find().fetch()
+			coll.fasilitas.find(selector, options).fetch()
 
 		stats: ->
-			source = coll.sekolahs.find().fetch()
+			source = coll.fasilitas.find().fetch()
 			jumlahSekolah = -> source.length
 			jumlahSiswa = -> _.sumBy source, (i) -> i.siswa
-			jumlahKoordinat = -> (filtered = _.filter source, (i) -> i.latlng).length
+			jumlahKoordinat = -> (_.filter source, (i) -> i.latlng).length
 
 			list = [
 				title: 'Jumlah Sekolah'
@@ -316,7 +315,7 @@ if Meteor.isClient
 				icon: 'thumbs_up_down'
 			]
 
-	Template.sekolahs.events
+	Template.fasilitas.events
 		'click #empty': ->
 			dialog =
 				message: 'Yakin Kosongkan Seluruh Sekolah?'
@@ -325,13 +324,13 @@ if Meteor.isClient
 				focus: 'cancel'
 				success: true
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptySekolahs'
+				if ok then Meteor.call 'emptyfasilitas'
 		'change :file': (event) ->
 			Papa.parse event.target.files[0],
 				header: true
 				step: (row) ->
 					record = row.data[0]
-					Meteor.call 'import', 'sekolahs',
+					Meteor.call 'import', 'fasilitas',
 						nama: record.nama
 						status: record.status
 						bentuk: record.bentuk
@@ -342,8 +341,8 @@ if Meteor.isClient
 			getLatLng = (obj) ->
 				geocode.getLocation obj.alamat + ' Riau', (location) ->
 					obj.latlng = location.results[0].geometry.location
-					Meteor.call 'updateSekolah', obj
-			for i in _.shuffle coll.sekolahs.find().fetch()
+					Meteor.call 'updateFasilitas', obj
+			for i in _.shuffle coll.fasilitas.find().fetch()
 				unless i.latlng then getLatLng i
 
 	Template.mapSelect.onRendered ->

@@ -12,8 +12,8 @@ if Meteor.isServer
 			coll.elemens.upsert selector, $set: modifier
 		empty: (name, selector) ->
 			coll[name].remove selector
-		updateSekolah: (obj) ->
-			coll.sekolahs.update obj._id, $set: obj
+		updateFasilitas: (obj) ->
+			coll.fasilitas.update obj._id, $set: obj
 
 		wilSum: ->
 
