@@ -17,8 +17,10 @@ Router.route '/fasilitas',
 	action: -> this.render 'fasilitas'
 	waitOn: -> Meteor.subscribe 'coll', 'fasilitas', {}, {}
 
+years = (start, end) -> _.map [start..end], (i) -> 'y' + i
+
 coll.elemens = new Meteor.Collection 'elemens'
-coll.elemens.attachSchema new SimpleSchema
+objek =
 	kab: type: String, autoform: type: 'hidden'
 	kec: type: String, autoform: type: 'hidden'
 	kel: type: String, autoform: type: 'hidden'
@@ -26,6 +28,11 @@ coll.elemens.attachSchema new SimpleSchema
 	indikator: type: String, autoform: disabled: true
 	defenisi: type: String, optional: true, autoform: disabled: true
 	satuan: type: String, optional: true
+for i in years 2015, 2019
+	objek[i] = type: Object, optional: true
+	objek[i+'.tar'] = type: Number, decimal: true
+	objek[i+'.rel'] = type: Number, decimal: true
+	###
 	y2015: type: Object, optional: true
 	'y2015.tar': type: Number, decimal: true
 	'y2015.rel': type: Number, decimal: true
@@ -41,6 +48,8 @@ coll.elemens.attachSchema new SimpleSchema
 	y2019: type: Object, optional: true
 	'y2019.tar': type: Number, decimal: true
 	'y2019.rel': type: Number, decimal: true
+	###
+coll.elemens.attachSchema new SimpleSchema objek
 coll.elemens.allow
 	insert: -> true
 	update: -> true
@@ -62,12 +71,17 @@ coll.fasilitas.allow
 	remove: -> true
 
 coll.wilStat = new Meteor.Collection 'wilStat'
-coll.wilStat.attachSchema new SimpleSchema
+objek =
 	kab: type: String
 	kec: type: String
 	kel: type: String
 	elemen: type: String
 	indikator: type: Number
+for i in years 2015, 2019
+	objek[i] = type: Object, optional: true
+	objek[i+'.sumKin'] = type: Number, decimal: true
+	objek[i+'.avgKin'] = type: Number, decimal: true
+	###
 	y2015: type: Object, optional: true
 	'y2015.sumKin': type: Number, decimal: true
 	'y2015.avgKin': type: Number, decimal: true
@@ -83,6 +97,8 @@ coll.wilStat.attachSchema new SimpleSchema
 	y2019: type: Object, optional: true
 	'y2019.sumKin': type: Number, decimal: true
 	'y2019.avgKin': type: Number, decimal: true
+	###
+coll.wilStat.attachSchema new SimpleSchema objek
 coll.wilStat.allow
 	insert: -> true
 	update: -> true
@@ -135,10 +151,15 @@ coll.jalNas.allow
 	remove: -> true
 
 coll.ikd = new Meteor.Collection 'ikd'
-coll.ikd.attachSchema new SimpleSchema
+objek =
 	misi: type: String
 	sasaran: type: String
 	indikator: type: String
+for i in years 2013, 2019
+	objek[i] = type: Object, optional: true
+	objek[i+'.tar'] = type: Number, optional: true
+	objek[i+'.rel'] = type: Number, optional: true
+	###
 	y2013: type: Object, optional: true
 	'y2013.tar': type: String, optional: true
 	'y2013.rel': type: String, optional: true
@@ -160,6 +181,8 @@ coll.ikd.attachSchema new SimpleSchema
 	y2019: type: Object, optional: true
 	'y2019.tar': type: String, optional: true
 	'y2019.rel': type: String, optional: true
+	###
+coll.ikd.attachSchema new SimpleSchema objek
 coll.ikd.allow
 	insert: -> true
 	update: -> true
