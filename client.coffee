@@ -244,17 +244,21 @@ if Meteor.isClient
 							prefix: 'fa'
 							icon: icon
 					content = '<b>Nama: </b>' + i.nama + '<br/>'
-					content += '<b>Bentuk: </b>' + i.data2 + '<br/>'
-					content += '<b>Alamat: </b>' + i.data3 + ' ' + i.data6 + '<br/>'
-					content += '<b>Siswa: </b>' + i.data1 + ' orang <br/>'
+					content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
+					content += '<b>Alamat: </b>' + i.alamat + '<br/>'
+					content += '<b>Siswa: </b>' + i.kondisi + ' orang <br/>'
 					marker.bindPopup content
 					markers.push marker
 			overlays[type] = L.layerGroup markers
 
-		makeLayers 'data2', 'SD', 'orange', 'leanpub'
-		makeLayers 'data2', 'SMP', 'red', 'graduation-cap'
-		makeLayers 'data2', 'SMA', 'darkred', 'university'
-		makeLayers 'data2', 'SMK', 'darkgreen', 'cog'
+		layerSekolah = ->
+			makeLayers 'bentuk', 'SD', 'orange', 'leanpub'
+			makeLayers 'bentuk', 'SMP', 'red', 'graduation-cap'
+			makeLayers 'bentuk', 'SMA', 'darkred', 'university'
+			makeLayers 'bentuk', 'SMK', 'darkgreen', 'cog'
+
+		switch currentRoute()
+			when 'sekolah' then layerSekolah()
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
@@ -280,7 +284,7 @@ if Meteor.isClient
 	Template.fasilitas.helpers
 		colHeadings: ->
 			headings =
-				sekolah: ['Nama', 'Jumlah Siswa', 'Bentuk', 'Alamat', 'NPSN', 'Status', 'Koordinat']
+				sekolah: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Nilai', 'NPSN', 'Status', 'Kel/Des', 'Koordinat']
 			switch currentRoute()
 				when 'sekolah' then headings.sekolah
 		datas: ->
