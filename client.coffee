@@ -234,31 +234,48 @@ if Meteor.isClient
 			CitraRiau: L.tileLayer.provider 'Esri.WorldImagery'
 		overlays = {}
 
-		makeLayers = (category, type, color, icon) ->
+		source = _.map coll.fasilitas.find().fetch(), (i) ->
+			i.kata = switch
+				when i.kondisi > 66 then 'Baik'
+				when i.kondisi > 33 then 'Sedang'
+				when i.kondisi > 1 then 'Buruk'
+				else 'n/a'
+			i.warna = switch
+				when i.kondisi > 66 then 'green'
+				when i.kondisi > 33 then 'orange'
+				when i.kondisi > 1 then 'red'
+				else 'white'
+			i
+
+		makeLayers = (category, type, icon) ->
 			markers = []
-			for i in coll.fasilitas.find().fetch()
+			for i in source
 				if i.latlng and i[category] is type
 					marker = L.marker i.latlng,
 						icon: L.AwesomeMarkers.icon
-							markerColor: color
+							markerColor: i.warna
 							prefix: 'fa'
 							icon: icon
 					content = '<b>Nama: </b>' + i.nama + '<br/>'
 					content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
 					content += '<b>Alamat: </b>' + i.alamat + '<br/>'
-					content += '<b>Siswa: </b>' + i.kondisi + ' orang <br/>'
+					content += '<b>Kondisi: </b>' + i.kata + '<br/>'
 					marker.bindPopup content
 					markers.push marker
 			overlays[type] = L.layerGroup markers
 
 		layerSekolah = ->
-			makeLayers 'bentuk', 'SD', 'orange', 'leanpub'
-			makeLayers 'bentuk', 'SMP', 'red', 'graduation-cap'
-			makeLayers 'bentuk', 'SMA', 'darkred', 'university'
-			makeLayers 'bentuk', 'SMK', 'darkgreen', 'cog'
+			makeLayers 'bentuk', 'SD', 'leanpub'
+			makeLayers 'bentuk', 'SMP', 'graduation-cap'
+			makeLayers 'bentuk', 'SMA', 'university'
+			makeLayers 'bentuk', 'SMK', 'cog'
 
 		switch currentRoute()
 			when 'sekolah' then layerSekolah()
+
+		defaultLayers = [baseMaps.Topografi]
+		for key, val of overlays
+			defaultLayers.push overlays[key]
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
@@ -266,13 +283,7 @@ if Meteor.isClient
 			minZoom: 8
 			maxZoom: 17
 			zoomControl: false
-			layers: [
-				baseMaps.Topografi
-				overlays.SD
-				overlays.SMP
-				overlays.SMA
-				overlays.SMK
-			]
+			layers: defaultLayers
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
