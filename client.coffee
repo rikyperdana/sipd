@@ -38,8 +38,9 @@ if Meteor.isClient
 		'click #close': ->
 			Session.set 'showAdd', false
 			Session.set 'editData', null
-		'keyup #search': (event) ->
-			Session.set 'searchTerm', event.target.value.toLowerCase()
+		'keypress #search': (event) ->
+			if event.key is 'Enter'
+				Session.set 'searchTerm', event.target.value.toLowerCase()
 		'click .num': (event) ->
 			num = event.currentTarget.innerHTML
 			Session.set 'pagin', num - 1
@@ -299,9 +300,13 @@ if Meteor.isClient
 			switch currentRoute()
 				when 'sekolah' then headings.sekolah
 		datas: ->
-			pagin = Session.get 'pagin'; limit = Session.get 'limit'
-			selector = {}
-			options = limit: limit, skip: pagin * limit
+			if searchTerm()
+				selector = nama: $regex: '.*'+searchTerm()+'.*', $options: 'i'
+				options = {}
+			else
+				pagin = Session.get 'pagin'; limit = Session.get 'limit'
+				selector = {}
+				options = limit: limit, skip: pagin * limit
 			coll.fasilitas.find(selector, options).fetch()
 
 		stats: ->
