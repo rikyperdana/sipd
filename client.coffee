@@ -244,17 +244,17 @@ if Meteor.isClient
 							prefix: 'fa'
 							icon: icon
 					content = '<b>Nama: </b>' + i.nama + '<br/>'
-					content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
-					content += '<b>Alamat: </b>' + i.alamat + ' ' + i.keldes + '<br/>'
-					content += '<b>Siswa: </b>' + i.siswa + ' orang <br/>'
+					content += '<b>Bentuk: </b>' + i.data2 + '<br/>'
+					content += '<b>Alamat: </b>' + i.data3 + ' ' + i.data6 + '<br/>'
+					content += '<b>Siswa: </b>' + i.data1 + ' orang <br/>'
 					marker.bindPopup content
 					markers.push marker
 			overlays[type] = L.layerGroup markers
 
-		makeLayers 'bentuk', 'SD', 'orange', 'leanpub'
-		makeLayers 'bentuk', 'SMP', 'red', 'graduation-cap'
-		makeLayers 'bentuk', 'SMA', 'darkred', 'university'
-		makeLayers 'bentuk', 'SMK', 'darkgreen', 'cog'
+		makeLayers 'data2', 'SD', 'orange', 'leanpub'
+		makeLayers 'data2', 'SMP', 'red', 'graduation-cap'
+		makeLayers 'data2', 'SMA', 'darkred', 'university'
+		makeLayers 'data2', 'SMK', 'darkgreen', 'cog'
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
@@ -278,6 +278,11 @@ if Meteor.isClient
 		Session.set 'limit', 200
 
 	Template.fasilitas.helpers
+		colHeadings: ->
+			headings =
+				sekolah: ['Nama', 'Jumlah Siswa', 'Bentuk', 'Alamat', 'NPSN', 'Status', 'Koordinat']
+			switch currentRoute()
+				when 'sekolah' then headings.sekolah
 		datas: ->
 			pagin = Session.get 'pagin'; limit = Session.get 'limit'
 			selector = {}
@@ -328,15 +333,11 @@ if Meteor.isClient
 				header: true
 				step: (row) ->
 					record = row.data[0]
-					objek =
-						kelompok: currentRoute()
-						nama: record.nama
-					for i in [1..10]
-						objek['data'+i] = record['data'+i]
-					Meteor.call 'import', 'fasilitas', objek
+					record.kelompok = currentRoute()
+					Meteor.call 'import', 'fasilitas', record
 		'click #geocode': ->
 			getLatLng = (obj) ->
-				geocode.getLocation obj.alamat + ' Riau', (location) ->
+				geocode.getLocation obj.data3 + ' Riau', (location) ->
 					obj.latlng = location.results[0].geometry.location
 					Meteor.call 'updateFasilitas', obj
 			for i in _.shuffle coll.fasilitas.find().fetch()

@@ -195,22 +195,19 @@ template(name='fasilitas')
 			table.bordered.striped
 				thead
 					tr
-						th Nama
-						th Data1
-						th Data2
-						th Data3
-						th Data4
-						th Data5
-						th LatLng
+						each val in colHeadings
+							th= val
 				tbody
 					each datas
 						tr#row
 							td= nama
+							td= kondisi
+							td= alamat
+							td= bentuk
+							td= nilai
 							td= data1
 							td= data2
 							td= data3
-							td= data4
-							td= data5
 							td
 								span= latlng.lat
 								span= latlng.lng

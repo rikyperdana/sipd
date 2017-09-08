@@ -48,11 +48,15 @@ coll.fasilitas = new Meteor.Collection 'fasilitas'
 obj =
 	kelompok: type: String
 	nama: type: String
+	kondisi: type: Number, decimal: true
+	alamat: type: String
+	bentuk: type: String
+	nilai: type: String
 	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
-for i in [1..10]
-	obj[i] = type: String, optional: true
+for i in [1..5]
+	obj['data'+i] = type: String, optional: true
 coll.fasilitas.attachSchema new SimpleSchema obj
 coll.fasilitas.allow
 	insert: -> true
