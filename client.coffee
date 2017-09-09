@@ -18,10 +18,8 @@ if Meteor.isClient
 		add = Session.get 'showAdd'
 		edit = Session.get 'editData'
 		true if add or edit
-	Template.registerHelper 'pageTitle', ->
-		kab: _.startCase wilName().kab
-		kec: _.startCase wilName().kec
-		kel: _.startCase wilName().kel
+	Template.registerHelper 'wilName', -> wilName()
+	Template.registerHelper 'startCase', (name) -> _.startCase name
 	Template.registerHelper 'pagins', ->
 		limit = Session.get 'limit'
 		length = coll.fasilitas.find().fetch().length
@@ -162,11 +160,21 @@ if Meteor.isClient
 		sub = Meteor.subscribe 'wilStat', wilName(), selectElemen()
 		getColor = (prop) ->
 			find = _.find coll.wilStat.find().fetch(), (i) ->
-				kab = i.kab is _.kebabCase prop.KABUPATEN
-				kec = i.kec is _.kebabCase prop.KECAMATAN
-				kel = i.kel is _.kebabCase prop.DESA
-				elem = i.elemen is selectElemen()
-				true if kab and kec and kel and elem
+				kab = -> i.kab is _.kebabCase prop.KABUPATEN
+				kec = -> i.kec is _.kebabCase prop.KECAMATAN
+				kel = -> i.kel is _.kebabCase prop.DESA
+				allKab = -> i.kab is '*'
+				allKec = -> i.kec is '*'
+				allKel = -> i.kel is '*'
+				elem = -> i.elemen is selectElemen()
+				if wilName().kel
+					true if kab() and kec() and kel() and elem()
+				else if wilName().kec
+					true if kab() and kec() and elem() and allKel()
+				else if wilName().kab is 'riau'
+					true if elem() and allKab() and allKec() and allKel()
+				else if wilName().kab
+					true if kab() and elem() and allKec() and allKel()
 			if find
 				switch
 					when find[selectYear()].avgKin > 0.66 then 'green'
@@ -209,9 +217,9 @@ if Meteor.isClient
 			find = _.find coll.wilStat.find().fetch(), (i) ->
 				i.kab is kab and i.kec is kec and i.kel is kel and i.elemen is selectElemen()
 			if find
-				content += '<b>Sum: </b>'+find.sum+'<br/>'
-				content += '<b>Count: </b>'+find.count+'<br/>'
-				content += '<b>Average: </b>'+find.avg+'<br/>'
+				content += '<b>Sum: </b>'+find[selectYear()].sumKin+'<br/>'
+				content += '<b>Count: </b>'+find.indikator+'<br/>'
+				content += '<b>Average: </b>'+find[selectYear()].avgKin+'<br/>'
 			layer.bindPopup content
 
 		topo = L.tileLayer.provider 'OpenTopoMap'

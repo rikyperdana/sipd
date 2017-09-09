@@ -36,15 +36,15 @@ template(name='home'): .container
 
 template(name='wil'): .container
 	h4 Database Peta Elemen
-	with pageTitle
+	with wilName
 		h5
 			span: a(href='/riau') Prov: Riau
 			if kab
-				span: a(href='/{{kab}}') / Kab: {{kab}}
+				span: a(href='/{{kab}}') / Kab: {{startCase kab}}
 			if kec
-				span: a(href='/{{kab}}_{{kec}}') / Kec: {{kec}}
+				span: a(href='/{{kab}}_{{kec}}') / Kec: {{startCase kec}}
 			if kel
-				span: a(href='/{{kab}}_{{kec}}_{{kel}}') / Kel: {{kel}}
+				span: a(href='/{{kab}}_{{kec}}_{{kel}}') / Kel: {{startCase kel}}
 	+selectElemen
 	if editData
 		h5 Update Indikator
