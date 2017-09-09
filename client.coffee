@@ -356,34 +356,6 @@ if Meteor.isClient
 				icon: 'place'
 			]
 
-			###
-			jumlahSekolah = -> source.length
-			jumlahSiswa = -> _.sumBy source, (i) -> i.siswa
-			jumlahKoordinat = -> (_.filter source, (i) -> i.latlng).length
-
-			list = [
-				title: 'Jumlah Sekolah'
-				content: jumlahSekolah() + ' unit'
-				color: 'red'
-				icon: 'account_balance'
-			,
-				title: 'Jumlah Siswa'
-				content: jumlahSiswa() + ' orang'
-				color: 'blue'
-				icon: 'face'
-			,
-				title: 'Koordinat'
-				content: jumlahKoordinat() + ' sekolah'
-				color: 'green'
-				icon: 'place'
-			,
-				title: 'Kondisi'
-				content: 'SD 400, SMP 200, SMA 150'
-				color: 'orange'
-				icon: 'thumbs_up_down'
-			]
-			###
-
 	Template.fasilitas.events
 		'click #empty': ->
 			dialog =
