@@ -28,18 +28,22 @@ if Meteor.isServer
 						arr.push i.kab
 					_.join arr
 				for i in uniqBy
-					sel = elemen: i.elemen, indikator: i.indikator, kel: '*'
+					selector = elemen: i.elemen, indikator: i.indikator
+					sel = elemen: i.elemen, indikator: i.indikator
 					if wil is 'kec'
-						sel.kab = i.kab; sel.kec = i.kec
+						selector.kab = i.kab; selector.kec = i.kec; selector.kel = '*'
+						sel.kab = i.kab; sel.kec = i.kec; sel.kel = $ne: '*'
 					else if wil is 'kab'
-						sel.kab = i.kab; sel.kec = '*'
+						selector.kab = i.kab; selector.kec = '*'; selector.kel = '*'
+						sel.kab = i.kab; sel.kec = $ne: '*'; sel.kel = '*'
 					else
-						sel.kab = '*'; sel.kec = '*'
+						selector.kab = '*'; selector.kec = '*'; selector.kel = '*'
+						sel.kab = $ne: '*'; sel.kec = '*'; sel.kel = '*'
 					modifier = {}
 					for j in years
 						i[j].rel = _.sumBy coll.elemens.find(sel).fetch(), (k) -> k[j].rel
 						modifier[j] = i[j]
-					coll.elemens.upsert sel, $set: modifier
+					coll.elemens.upsert selector, $set: modifier
 
 			sumit 'kec', {kel: {$ne: '*'}}
 			sumit 'kab', {kab: {$ne: '*'}, kel: '*'}
