@@ -18,7 +18,6 @@ if Meteor.isServer
 		wilSum: ->
 			years = _.map [2015..2019], (i) -> 'y' + i
 			sumit = (wil, selector) ->
-				num = 0
 				source = coll.elemens.find(selector).fetch()
 				uniqBy = _.uniqBy source, (i) ->
 					arr = [i.elemen, i.indikator]
@@ -47,7 +46,7 @@ if Meteor.isServer
 
 			sumit 'kec', {kel: {$ne: '*'}}
 			sumit 'kab', {kab: {$ne: '*'}, kel: '*'}
-			sumit 'riau', {kab: '*', kec: '*', kel: '*'}
+			sumit 'riau', {}
 
 		wilStat: ->
 			state = (selector, years, kab, kec, kel) ->
