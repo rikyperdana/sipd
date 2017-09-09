@@ -315,7 +315,48 @@ if Meteor.isClient
 			coll.fasilitas.find(selector, options).fetch()
 
 		stats: ->
-			source = coll.fasilitas.find().fetch()
+			source = _.map coll.fasilitas.find().fetch(), (i) ->
+				i.kata = switch
+					when i.kondisi > 66 then 'Baik'
+					when i.kondisi > 33 then 'Sedang'
+					when i.kondisi > 1 then 'Buruk'
+					else 'n/a'
+				i
+
+			statJumlah = source.length
+			statKondisi =
+				baik: (_.filter source, (i) -> i.kata is 'Baik').length
+				sedang: (_.filter source, (i) -> i.kata is 'Sedang').length
+				buruk: (_.filter source, (i) -> i.kata is 'Buruk').length
+			statNilai =
+				sum: _.sumBy source, (i) -> parseInt i.nilai
+				avg: (_.sumBy source, (i) -> parseInt i.nilai) / source.length
+				min: (_.minBy source, (i) -> parseInt i.nilai).nilai
+				max: (_.maxBy source, (i) -> parseInt i.nilai).nilai
+			statKoordinat = (_.filter source, (i) -> i.latlng).length
+			list = [
+				title: 'Jumlah ' + currentRoute()
+				content: statJumlah + ' unit'
+				color: 'red'
+				icon: 'account_balance'
+			,
+				title: 'Kondisi ' + currentRoute()
+				content: 'Baik ' + statKondisi.baik + '<br/>Sedang ' + statKondisi.sedang + '<br/>Buruk ' + statKondisi.buruk
+				color: 'blue'
+				icon: 'thumbs_up_down'
+			,
+				title: 'Nilai ' + currentRoute()
+				content: 'Jumlah ' + statNilai.sum + '<br/>Mean ' + Math.round(statNilai.avg) + '<br/>Min ' + statNilai.min + ' Max ' + statNilai.max
+				color: 'orange'
+				icon: 'face'
+			,
+				title: 'Koordinat ' + currentRoute()
+				content: statKoordinat
+				color: 'green'
+				icon: 'place'
+			]
+
+			###
 			jumlahSekolah = -> source.length
 			jumlahSiswa = -> _.sumBy source, (i) -> i.siswa
 			jumlahKoordinat = -> (_.filter source, (i) -> i.latlng).length
@@ -341,6 +382,7 @@ if Meteor.isClient
 				color: 'orange'
 				icon: 'thumbs_up_down'
 			]
+			###
 
 	Template.fasilitas.events
 		'click #empty': ->

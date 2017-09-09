@@ -21,7 +21,7 @@ makeFasil = (name) ->
 			options = {}
 			Meteor.subscribe 'coll', 'fasilitas', selector, options
 
-makeFasil i for i in ['sekolah', 'pariwisata']
+makeFasil i for i in ['sekolah', 'pariwisata', 'kesehatan', 'industri', 'komunikasi', 'sosial', 'perhubungan', 'olahraga', 'kesenian', 'religi']
 
 years = (start, end) -> _.map [start..end], (i) -> 'y' + i
 

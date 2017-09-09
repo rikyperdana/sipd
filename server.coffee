@@ -16,7 +16,6 @@ if Meteor.isServer
 			coll.fasilitas.update obj._id, $set: obj
 
 		wilSum: ->
-
 			years = _.map [2015..2019], (i) -> 'y' + i
 			sumit = (wil, selector) ->
 				num = 0
@@ -41,7 +40,6 @@ if Meteor.isServer
 						i[j].rel = _.sumBy coll.elemens.find(sel).fetch(), (k) -> k[j].rel
 						modifier[j] = i[j]
 					coll.elemens.upsert sel, $set: modifier
-					console.log sel, modifier, ++num
 
 			sumit 'kec', {kel: {$ne: '*'}}
 			sumit 'kab', {kab: {$ne: '*'}, kel: '*'}
