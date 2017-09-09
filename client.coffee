@@ -11,6 +11,7 @@ if Meteor.isClient
 	searchTerm = -> Session.get 'searchTerm'
 
 	Template.registerHelper 'coll', -> coll
+	Template.registerHelper 'currentRoute', -> currentRoute()
 	Template.registerHelper 'switch', (param) -> Session.get param
 	Template.registerHelper 'editData', -> Session.get 'editData'
 	Template.registerHelper 'formMode', ->
@@ -294,11 +295,19 @@ if Meteor.isClient
 		Session.set 'limit', 200
 
 	Template.fasilitas.helpers
-		colHeadings: ->
+		colHeadings: (name) ->
 			headings =
-				sekolah: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Nilai', 'NPSN', 'Status', 'Kel/Des', 'Koordinat']
-			switch currentRoute()
-				when 'sekolah' then headings.sekolah
+				sekolah: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Siswa', 'NPSN', 'Status', 'Kel/Des', 'Koordinat'] # bentuk: sd, smp, sma, smk
+				pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan', 'Koordinat'] # bentuk: alam, buatan
+				kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien', 'Koordinat'] # bentuk: puskesmas, rs
+				industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi', 'Koordinat'] # bentuk: kategori usaha
+				komunikasi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage', 'Koordinat'] # bentuk: seluler, tv, radio
+				sosial: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Penghuni', 'Koordinat'] # bentuk: panti anak, jompo, rehab
+				perhubungan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Trafik', 'Koordinat'] # bentuk: pelabuhan, stasiun, bandara
+				olahraga: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan', 'Koordinat'] # bentuk: venue indoor, venue outdoor
+				kesenian: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan', 'Koordinat'] # bentuk: museum, gedung seni
+				religi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan', 'Koordinat'] # bentuk: masjid, gereja, vihara, pura
+			headings[name]
 		datas: ->
 			if searchTerm()
 				selector = nama: $regex: '.*'+searchTerm()+'.*', $options: 'i'
