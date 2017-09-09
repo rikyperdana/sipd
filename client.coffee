@@ -151,16 +151,11 @@ if Meteor.isClient
 	Template.grafik.helpers
 		grafik: ->
 			barArray = []
-			source = coll.elemens.find().fetch()
-			if source.length > 0
-				barArray.push [i.elemen, i.nilai] for i in source
-			else if Session.get 'kecDatas'
-				barArray.push [i.elemen, i.nilai] for i in Session.get 'kecDatas'
-			else if Session.get 'kabDatas'
-				barArray.push [i.elemen, i.nilai] for i in Session.get 'kabDatas'
-			else if coll.ikd.find().fetch()
-				for i in coll.ikd.find().fetch()
-					barArray.push [i.misi, nilai]
+			for i in coll.elemens.find().fetch()
+				arr = [i.elemen]
+				for j in [2015..2019]
+					arr.push i['y'+j].rel
+				barArray.push arr
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
