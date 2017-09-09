@@ -1,9 +1,7 @@
 if Meteor.isServer
 
-	Meteor.publish 'elemens', (wils, elemen) ->
-		selector = kab: wils.kab, kec: wils.kec, kel: wils.kel
-		if elemen then selector.elemen = elemen
-		coll.elemens.find selector
+	Meteor.publish 'coll', (name, selector, options) ->
+		coll[name].find selector, options
 
 	Meteor.methods
 		import: (collName, data) ->
@@ -93,23 +91,3 @@ if Meteor.isServer
 			state {kec: {$ne: '*'}, kel: '*'}, years, true, true
 			state {kab: {$ne: '*'}, kec: '*', kel: '*'}, years, true
 			state {kab: '*', kec: '*', kel: '*'}, years
-
-		Meteor.publish 'wilStat', (wilName, elemen) ->
-			selector = {}
-			if wilName.kab is 'riau'
-				selector = {}
-			else
-				if wilName.kab then selector.kab = wilName.kab
-				if wilName.kec then selector.kec = wilName.kec
-				if wilName.kel then selector.kel = wilName.kel
-				if elemen then selector.elemen = elemen
-			coll.wilStat.find selector
-
-		Meteor.publish 'jalans', ->
-			[
-				coll.jalProv.find {}
-				coll.jalNas.find {}
-			]
-
-		Meteor.publish 'coll', (name, selector, options) ->
-			coll[name].find selector, options

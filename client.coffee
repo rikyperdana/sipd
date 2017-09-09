@@ -157,7 +157,12 @@ if Meteor.isClient
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
-		sub = Meteor.subscribe 'wilStat', wilName(), selectElemen()
+		selector = elemen: selectElemen()
+		unless wilName().kab is 'riau'
+			if wilName().kab then selector.kab = wilName().kab
+			if wilName().kec then selector.kec = wilName().kec
+			if wilName().kel then selector.kel = wilName().kel
+		sub = Meteor.subscribe 'coll', 'wilStat', selector, {}
 		getColor = (prop) ->
 			find = _.find coll.wilStat.find().fetch(), (i) ->
 				kab = -> i.kab is _.kebabCase prop.KABUPATEN

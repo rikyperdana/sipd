@@ -8,7 +8,10 @@ Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 Router.route '/riau', action: -> this.render 'wil'
 Router.route '/jalan',
 	action: -> this.render 'jalan'
-	waitOn: -> Meteor.subscribe 'jalans'
+	waitOn: -> [
+		Meteor.subscribe 'coll', 'jalProv', {}, {}
+		Meteor.subscribe 'coll', 'jalNas', {}, {}
+	]
 
 makeWil = (route) ->
 	Router.route '/' + route,
