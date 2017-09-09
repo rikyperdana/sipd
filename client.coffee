@@ -108,17 +108,18 @@ if Meteor.isClient
 					kec = -> if wilName().kec then wilName().kec else '*'
 					kel = -> if wilName().kel then wilName().kel else '*'
 					for i in datas
-						selector =
-							kab: kab()
-							kec: kec()
-							kel: kel()
-							elemen: _.kebabCase i.elemen
-							defenisi: i.defenisi
-							indikator: i.indikator
-						modifier = {}
-						for i in [2015..2019]
-							modifier['y'+i] = tar: i['tar'+i], rel: i['rel'+i]
-						Meteor.call 'imporUrusan', selector, modifier
+						if i.indikator
+							selector =
+								kab: kab()
+								kec: kec()
+								kel: kel()
+								elemen: _.kebabCase i.elemen
+								defenisi: i.defenisi
+								indikator: i.indikator
+							modifier = {}
+							for j in [2015..2019]
+								modifier['y'+j] = tar: i['tar'+j], rel: i['rel'+j]
+							Meteor.call 'imporUrusan', selector, modifier
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
