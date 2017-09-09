@@ -4,19 +4,18 @@ if Meteor.isServer
 		coll[name].find selector, options
 
 	Meteor.methods
-		import: (collName, data) ->
-			coll[collName].insert data
-		imporUrusan: (selector, modifier) ->
-			coll.elemens.upsert selector, $set: modifier
+
+		import: (name, selector, modifier) ->
+			coll[name].upsert selector, $set: modifier
 		empty: (name, selector) ->
 			coll[name].remove selector
-		updateFasilitas: (obj) ->
-			coll.fasilitas.update obj._id, $set: obj
+		update: (name, obj) ->
+			coll[name].update obj._id, $set: obj
 
 		wilSum: ->
 			years = _.map [2015..2019], (i) -> 'y' + i
-			sumit = (wil, selector) ->
-				source = coll.elemens.find(selector).fetch()
+			sumit = (wil, filter) ->
+				source = coll.elemens.find(filter).fetch()
 				uniqBy = _.uniqBy source, (i) ->
 					arr = [i.elemen, i.indikator]
 					if wil is 'kec'
@@ -26,19 +25,19 @@ if Meteor.isServer
 					_.join arr
 				for i in uniqBy
 					selector = elemen: i.elemen, indikator: i.indikator
-					sel = elemen: i.elemen, indikator: i.indikator
+					sumer = elemen: i.elemen, indikator: i.indikator
 					if wil is 'kec'
 						selector.kab = i.kab; selector.kec = i.kec; selector.kel = '*'
-						sel.kab = i.kab; sel.kec = i.kec; sel.kel = $ne: '*'
+						sumer.kab = i.kab; sumer.kec = i.kec; sumer.kel = $ne: '*'
 					else if wil is 'kab'
 						selector.kab = i.kab; selector.kec = '*'; selector.kel = '*'
-						sel.kab = i.kab; sel.kec = $ne: '*'; sel.kel = '*'
+						sumer.kab = i.kab; sumer.kec = $ne: '*'; sumer.kel = '*'
 					else
 						selector.kab = '*'; selector.kec = '*'; selector.kel = '*'
-						sel.kab = $ne: '*'; sel.kec = '*'; sel.kel = '*'
+						sumer.kab = $ne: '*'; sumer.kec = '*'; sumer.kel = '*'
 					modifier = {}
 					for j in years
-						i[j].rel = _.sumBy coll.elemens.find(sel).fetch(), (k) -> k[j].rel
+						i[j].rel = _.sumBy coll.elemens.find(sumer).fetch(), (k) -> k[j].rel
 						modifier[j] = i[j]
 					coll.elemens.upsert selector, $set: modifier
 

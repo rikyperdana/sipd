@@ -117,7 +117,7 @@ if Meteor.isClient
 							modifier = {}
 							for j in [2015..2019]
 								modifier['y'+j] = tar: i['tar'+j], rel: i['rel'+j]
-							Meteor.call 'imporUrusan', selector, modifier
+							Meteor.call 'import', 'elemens', selector, modifier
 
 	Template.selectElemen.onRendered ->
 		$('select').material_select()
@@ -386,12 +386,12 @@ if Meteor.isClient
 				step: (row) ->
 					record = row.data[0]
 					record.kelompok = currentRoute()
-					Meteor.call 'import', 'fasilitas', record
+					Meteor.call 'import', 'fasilitas', record.nama, record
 		'click #geocode': ->
 			getLatLng = (obj) ->
 				geocode.getLocation obj.data3 + ' Riau', (location) ->
 					obj.latlng = location.results[0].geometry.location
-					Meteor.call 'updateFasilitas', obj
+					Meteor.call 'update', 'fasilitas', obj
 			for i in _.shuffle coll.fasilitas.find().fetch()
 				unless i.latlng then getLatLng i
 
@@ -494,7 +494,7 @@ if Meteor.isClient
 				header: true
 				step: (result) ->
 					data = result.data[0]
-					Meteor.call 'import', 'jalProv',
+					selector =
 						no_ruas: data.no_ruas
 						nama_ruas: data.nama_ruas
 						kab_kota: data.kab_kota
@@ -510,6 +510,7 @@ if Meteor.isClient
 						iri: data.iri
 						sdi: data.sdi
 						eirr: data.eirr
+					modifier =
 						y2016:
 							lp: data['2016lp']
 							cost: data['2016cost']
@@ -518,6 +519,7 @@ if Meteor.isClient
 							lp: data['2017lp']
 							cost: data['2017cost']
 							el: data['2017el']
+					Meteor.call 'import', 'jalProv', selector, modifier
 		'click #emptyJalProv': ->
 			dialog =
 				message: 'Yakin kosongkan Tabel Jalan Provinsi?'
@@ -536,16 +538,18 @@ if Meteor.isClient
 				header: true
 				step: (result) ->
 					data = result.data[0]
-					Meteor.call 'import', 'jalNas',
+					selector =
 						status: data.status
 						no: data.no
 						tanggal: data.tanggal
 						no_ruas: data.no_ruas
 						nama_ruas: data.nama_ruas
+					modifier =
 						pjg_survey: data.pjg_survey
 						kecamatan: data.kecamatan
 						kelas_jala: data.kelas_jala
 						length: data.length
+					Meteor.call 'import', 'jalNas', selector, modifier
 		'click #emptyJalNas': ->
 			dialog =
 				message: 'Yakin kosongkan Tabel Jalan Nasional?'
