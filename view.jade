@@ -158,7 +158,7 @@ template(name='fasilitas')
 			.row
 				h5.center Statistik Fasilitas
 				each stats
-					.col.m3: .card(class='{{color}}'): .card-content.white-text: .row
+					.col.m6: .card(class='{{color}}'): .card-content.white-text: .row
 						.col.m9
 							.card-title= title
 							span {{{content}}}
@@ -201,16 +201,14 @@ template(name='fasilitas')
 					each datas
 						tr#row
 							td= nama
-							td= kondisi
 							td= alamat
 							td= bentuk
-							td= nilai
+							td= kataKondisi(kondisi)
 							td= data1
 							td= data2
 							td= data3
-							td
-								span= latlng.lat
-								span= latlng.lng
+							td= data4
+							td= data5
 			.btn#empty(param='fasilitas') Kosongkan
 			.btn#geocode Geocode
 			.file-field.input-field

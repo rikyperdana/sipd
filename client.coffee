@@ -246,15 +246,17 @@ if Meteor.isClient
 		overlays = {}
 
 		source = _.map coll.fasilitas.find().fetch(), (i) ->
-			i.kata = switch
-				when i.kondisi > 66 then 'Baik'
-				when i.kondisi > 33 then 'Sedang'
-				when i.kondisi > 1 then 'Buruk'
+			i.kata = switch i.kondisi
+				when 4 then 'Baik'
+				when 3 then 'Rusak Ringan'
+				when 2 then 'Rusak Sedang'
+				when 1 then 'Rusak Berat'
 				else 'n/a'
-			i.warna = switch
-				when i.kondisi > 66 then 'green'
-				when i.kondisi > 33 then 'orange'
-				when i.kondisi > 1 then 'red'
+			i.warna = switch i.kondisi
+				when 4 then 'green'
+				when 3 then 'orange'
+				when 2 then 'red'
+				when 1 then 'darkred'
 				else 'white'
 			i
 
@@ -306,7 +308,7 @@ if Meteor.isClient
 	Template.fasilitas.helpers
 		colHeadings: (name) ->
 			headings =
-				sekolah: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Siswa', 'NPSN', 'Status', 'Kel/Des', 'Koordinat'] # bentuk: sd, smp, sma, smk
+				sekolah: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa']
 				pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan', 'Koordinat'] # bentuk: alam, buatan
 				kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien', 'Koordinat'] # bentuk: puskesmas, rs
 				industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi', 'Koordinat'] # bentuk: kategori usaha
@@ -328,46 +330,37 @@ if Meteor.isClient
 			coll.fasilitas.find(selector, options).fetch()
 
 		stats: ->
-			source = _.map coll.fasilitas.find().fetch(), (i) ->
-				i.kata = switch
-					when i.kondisi > 66 then 'Baik'
-					when i.kondisi > 33 then 'Sedang'
-					when i.kondisi > 1 then 'Buruk'
-					else 'n/a'
-				i
-
-			statJumlah = source.length
-			statKondisi =
-				baik: (_.filter source, (i) -> i.kata is 'Baik').length
-				sedang: (_.filter source, (i) -> i.kata is 'Sedang').length
-				buruk: (_.filter source, (i) -> i.kata is 'Buruk').length
-			statNilai =
-				sum: _.sumBy source, (i) -> parseInt i.nilai
-				avg: (_.sumBy source, (i) -> parseInt i.nilai) / source.length
-				min: (_.minBy source, (i) -> parseInt i.nilai).nilai
-				max: (_.maxBy source, (i) -> parseInt i.nilai).nilai
-			statKoordinat = (_.filter source, (i) -> i.latlng).length
+			source = coll.fasilitas.find().fetch()
+			jumlah = source.length
+			kondisi =
+				baik: (_.filter source, (i) -> i.kondisi is 4).length
+				ringan: (_.filter source, (i) -> i.kondisi is 3).length
+				sedang: (_.filter source, (i) -> i.kondisi is 2).length
+				berat: (_.filter source, (i) -> i.kondisi is 1).length
 			list = [
-				title: 'Jumlah ' + currentRoute()
-				content: statJumlah + ' unit'
+				title: 'Jumlah ' + _.startCase currentRoute()
+				content: jumlah + ' unit'
 				color: 'red'
 				icon: 'account_balance'
 			,
-				title: 'Kondisi ' + currentRoute()
-				content: 'Baik ' + statKondisi.baik + '<br/>Sedang ' + statKondisi.sedang + '<br/>Buruk ' + statKondisi.buruk
+				title: 'Kondisi ' + _.startCase currentRoute()
+				content: '
+					Baik '+kondisi.baik+' unit <br/>
+					Rusak Ringan '+kondisi.ringan+' unit <br/>
+					Rusak Sedang '+kondisi.sedang+' unit <br/>
+					Rusak Berat '+kondisi.berat+' unit <br/>
+				'
 				color: 'blue'
 				icon: 'thumbs_up_down'
-			,
-				title: 'Nilai ' + currentRoute()
-				content: 'Jumlah ' + statNilai.sum + '<br/>Mean ' + Math.round(statNilai.avg) + '<br/>Min ' + statNilai.min + ' Max ' + statNilai.max
-				color: 'orange'
-				icon: 'face'
-			,
-				title: 'Koordinat ' + currentRoute()
-				content: statKoordinat
-				color: 'green'
-				icon: 'place'
 			]
+
+		kataKondisi: (num) ->
+			switch num
+				when 4 then 'Baik'
+				when 3 then 'Rusak Ringan'
+				when 2 then 'Rusak Sedang'
+				when 1 then 'Rusak Berat'
+				else 'n/a'
 
 	Template.fasilitas.events
 		'click #empty': ->
@@ -389,7 +382,7 @@ if Meteor.isClient
 					Meteor.call 'import', 'fasilitas', record.nama, record
 		'click #geocode': ->
 			getLatLng = (obj) ->
-				geocode.getLocation obj.data3 + ' Riau', (location) ->
+				geocode.getLocation obj.alamat + ' Riau', (location) ->
 					obj.latlng = location.results[0].geometry.location
 					Meteor.call 'update', 'fasilitas', obj
 			for i in _.shuffle coll.fasilitas.find().fetch()

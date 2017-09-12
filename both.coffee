@@ -54,10 +54,9 @@ coll.fasilitas = new Meteor.Collection 'fasilitas'
 obj =
 	kelompok: type: String
 	nama: type: String
-	kondisi: type: Number, decimal: true
 	alamat: type: String
 	bentuk: type: String
-	nilai: type: String
+	kondisi: type: Number
 	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
