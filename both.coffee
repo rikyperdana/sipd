@@ -56,7 +56,7 @@ obj =
 	nama: type: String
 	alamat: type: String
 	bentuk: type: String
-	kondisi: type: Number
+	kondisi: type: Number, optional: true, autoform: options: selects.kondisi
 	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true

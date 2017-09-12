@@ -53,6 +53,21 @@
 	desc: 'Pada halaman ini anda akan mendapatkan informasi Jalan Provinsi dan Jalan Nasional'
 ]
 
+@selects =
+	kondisi: [
+		label: 'Baik'
+		value: 4
+	,
+		label: 'Rusak Ringan'
+		value: 3
+	,
+		label: 'Rusak Sedang'
+		value: 2
+	,
+		label: 'Rusak Berat'
+		value: 1
+	]
+
 @wilayahs = [
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Bangkinang"},
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Langgini"},

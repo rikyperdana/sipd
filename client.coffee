@@ -311,15 +311,15 @@ if Meteor.isClient
 		colHeadings: (name) ->
 			headings =
 				sekolah: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa']
-				pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan', 'Koordinat'] # bentuk: alam, buatan
-				kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien', 'Koordinat'] # bentuk: puskesmas, rs
-				industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi', 'Koordinat'] # bentuk: kategori usaha
-				komunikasi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage', 'Koordinat'] # bentuk: seluler, tv, radio
-				sosial: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Penghuni', 'Koordinat'] # bentuk: panti anak, jompo, rehab
-				perhubungan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Trafik', 'Koordinat'] # bentuk: pelabuhan, stasiun, bandara
-				olahraga: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan', 'Koordinat'] # bentuk: venue indoor, venue outdoor
-				kesenian: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan', 'Koordinat'] # bentuk: museum, gedung seni
-				religi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan', 'Koordinat'] # bentuk: masjid, gereja, vihara, pura
+				pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan']
+				kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien']
+				industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi']
+				komunikasi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage']
+				sosial: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Penghuni']
+				perhubungan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Trafik']
+				olahraga: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+				kesenian: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+				religi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
 			headings[name]
 		datas: ->
 			if searchTerm()
@@ -339,6 +339,7 @@ if Meteor.isClient
 				ringan: (_.filter source, (i) -> i.kondisi is 3).length
 				sedang: (_.filter source, (i) -> i.kondisi is 2).length
 				berat: (_.filter source, (i) -> i.kondisi is 1).length
+			titik = (_.filter source, (i) -> i.latlng).length
 			list = [
 				title: 'Jumlah ' + _.startCase currentRoute()
 				content: jumlah + ' unit'
@@ -354,6 +355,11 @@ if Meteor.isClient
 				'
 				color: 'blue'
 				icon: 'thumbs_up_down'
+			,
+				title: 'Jumlah Koordinat'
+				content: titik + ' titik'
+				color: 'green'
+				icon: 'place'
 			]
 
 		kataKondisi: (num) ->
