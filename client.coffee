@@ -116,7 +116,9 @@ if Meteor.isClient
 								indikator: i.indikator
 							modifier = {}
 							for j in [2015..2019]
-								modifier['y'+j] = tar: i['tar'+j], rel: i['rel'+j]
+								modifier['y'+j] =
+									tar: parseInt i['tar'+j]
+									rel: parseInt i['rel'+j]
 							Meteor.call 'import', 'elemens', selector, modifier
 
 	Template.selectElemen.onRendered ->
