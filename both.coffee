@@ -6,6 +6,9 @@ Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 Router.route '/riau', action: -> this.render 'wil'
+Router.route '/ikd',
+	action: -> this.render 'ikd'
+	waitOn: -> Meteor.subscribe 'coll', 'ikd', {}, {}
 Router.route '/jalan',
 	action: -> this.render 'jalan'
 	waitOn: -> [
@@ -56,7 +59,7 @@ obj =
 	nama: type: String
 	alamat: type: String
 	bentuk: type: String
-	kondisi: type: Number, optional: true, autoform: options: selects.kondisi
+	kondisi: type: Number, decimal: true, optional: true, autoform: options: selects.kondisi
 	latlng: type: Object, optional: true
 	'latlng.lat': type: Number, decimal: true
 	'latlng.lng': type: Number, decimal: true
@@ -133,13 +136,12 @@ coll.jalNas.allow
 
 coll.ikd = new Meteor.Collection 'ikd'
 objek =
-	misi: type: String
 	sasaran: type: String
 	indikator: type: String
 for i in years 2013, 2019
 	objek[i] = type: Object, optional: true
-	objek[i+'.tar'] = type: Number, optional: true
-	objek[i+'.rel'] = type: Number, optional: true
+	objek[i+'.tar'] = type: String, optional: true
+	objek[i+'.rel'] = type: String, optional: true
 	coll.ikd.attachSchema new SimpleSchema objek
 coll.ikd.allow
 	insert: -> true

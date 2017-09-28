@@ -151,11 +151,18 @@ if Meteor.isClient
 	Template.grafik.helpers
 		grafik: ->
 			barArray = []
-			for i in coll.elemens.find().fetch()
-				arr = [i.elemen]
-				for j in [2015..2019]
-					arr.push i['y'+j].rel
-				barArray.push arr
+			if currentRoute() is 'ikd'
+				for i in coll.ikd.find().fetch()
+					arr = [i.sasaran]
+					for j in [2013..2016]
+						arr.push parseInt i['y'+j].rel
+					barArray.push arr
+			else
+				for i in coll.elemens.find().fetch()
+					arr = [i.elemen]
+					for j in [2015..2019]
+						arr.push i['y'+j].rel
+					barArray.push arr
 			data: type: 'bar', columns: barArray
 
 	Template.map.onRendered ->
@@ -575,10 +582,11 @@ if Meteor.isClient
 				header: true
 				step: (result) ->
 					data = result.data[0]
-					objek =
-						misi: data.misi
+					selector =
 						sasaran: data.sasaran
 						indikator: data.indikator
+					modifier = {}
 					for i in [2013..2019]
-						objek['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
-					Meteor.call 'import', 'ikd', objek
+						modifier['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
+					# console.log selector, modifier
+					Meteor.call 'import', 'ikd', selector, modifier
