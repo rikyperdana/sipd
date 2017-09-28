@@ -291,9 +291,29 @@ if Meteor.isClient
 			makeLayers 'bentuk', 'SMP', 'graduation-cap'
 			makeLayers 'bentuk', 'SMA', 'university'
 			makeLayers 'bentuk', 'SMK', 'cog'
+		layerPariwisata = ->
+			makeLayers 'bentuk', 'Buatan', 'leanpub'
+			makeLayers 'bentuk', 'Alam', 'leanpub'
+		layerKesehatan = ->
+			makeLayers 'bentuk', 'rs', 'leanpub'
+		layerSosial = ->
+			makeLayers 'bentuk', 'panti anak', 'leanpub'
+		layerPerhubungan = ->
+			makeLayers 'bentuk', 'Bandara', 'leanpub'
+			makeLayers 'bentuk', 'Pelabuhan', 'leanpub'
+		layerReligi = ->
+			makeLayers 'bentuk', 'mesjid', 'leanpub'
+			makeLayers 'bentuk', 'gereja', 'leanpub'
+			makeLayers 'bentuk', 'vihara', 'leanpub'
+			makeLayers 'bentuk', 'klenteng', 'leanpub'
 
 		switch currentRoute()
 			when 'sekolah' then layerSekolah()
+			when 'pariwisata' then layerPariwisata()
+			when 'kesehatan' then layerKesehatan()
+			when 'sosial' then layerSosial()
+			when 'perhubungan' then layerPerhubungan()
+			when 'religi' then layerReligi()
 
 		defaultLayers = [baseMaps.Topografi]
 		for key, val of overlays
