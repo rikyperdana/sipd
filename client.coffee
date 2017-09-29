@@ -286,34 +286,9 @@ if Meteor.isClient
 					markers.push marker
 			overlays[type] = L.layerGroup markers
 
-		layerSekolah = ->
-			makeLayers 'bentuk', 'SD', 'leanpub'
-			makeLayers 'bentuk', 'SMP', 'graduation-cap'
-			makeLayers 'bentuk', 'SMA', 'university'
-			makeLayers 'bentuk', 'SMK', 'cog'
-		layerPariwisata = ->
-			makeLayers 'bentuk', 'Buatan', 'leanpub'
-			makeLayers 'bentuk', 'Alam', 'leanpub'
-		layerKesehatan = ->
-			makeLayers 'bentuk', 'rs', 'leanpub'
-		layerSosial = ->
-			makeLayers 'bentuk', 'panti anak', 'leanpub'
-		layerPerhubungan = ->
-			makeLayers 'bentuk', 'Bandara', 'leanpub'
-			makeLayers 'bentuk', 'Pelabuhan', 'leanpub'
-		layerReligi = ->
-			makeLayers 'bentuk', 'mesjid', 'leanpub'
-			makeLayers 'bentuk', 'gereja', 'leanpub'
-			makeLayers 'bentuk', 'vihara', 'leanpub'
-			makeLayers 'bentuk', 'klenteng', 'leanpub'
-
-		switch currentRoute()
-			when 'sekolah' then layerSekolah()
-			when 'pariwisata' then layerPariwisata()
-			when 'kesehatan' then layerKesehatan()
-			when 'sosial' then layerSosial()
-			when 'perhubungan' then layerPerhubungan()
-			when 'religi' then layerReligi()
+		uniqs = _.uniqBy coll.fasilitas.find().fetch()
+		bentuks = _.map uniqs, (i) -> i.bentuk
+		makeLayers 'bentuk', i, 'leanpub' for i in bentuks
 
 		defaultLayers = [baseMaps.Topografi]
 		for key, val of overlays

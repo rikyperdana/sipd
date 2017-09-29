@@ -54,7 +54,6 @@ if Meteor.isServer
 						i[j].kin = i[j].rel / i[j].tar
 						i[j].sumKin = 0
 					i
-				console.log maped
 				for i in maped
 					find = _.find stats, (j) ->
 						elem = -> j.elemen is i.elemen
@@ -84,8 +83,7 @@ if Meteor.isServer
 					modifier = indikator: i.indikator
 					for j in years
 						modifier[j] = sumKin: i[j].sumKin, avgKin: i[j].avgKin
-					console.log selector, modifier
-					# coll.wilStat.upsert selector, $set: modifier
+					coll.wilStat.upsert selector, $set: modifier
 
 			years = _.map [2015..2019], (i) -> 'y' + i
 			state {kel: {$ne: '*'}}, years, true, true, true
