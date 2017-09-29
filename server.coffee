@@ -32,7 +32,7 @@ if Meteor.isServer
 					else if wil is 'kab'
 						selector.kab = i.kab; selector.kec = '*'; selector.kel = '*'
 						sumer.kab = i.kab; sumer.kec = $ne: '*'; sumer.kel = '*'
-					else
+					else if wil is 'riau'
 						selector.kab = '*'; selector.kec = '*'; selector.kel = '*'
 						sumer.kab = $ne: '*'; sumer.kec = '*'; sumer.kel = '*'
 					modifier = {}
@@ -41,9 +41,9 @@ if Meteor.isServer
 						modifier[j] = i[j]
 					coll.elemens.upsert selector, $set: modifier
 
-			sumit 'kec', {kel: {$ne: '*'}}
-			sumit 'kab', {kab: {$ne: '*'}, kel: '*'}
-			sumit 'riau', {}
+			sumit 'kec',  {kab:{$ne:'*'}, kec:{$ne:'*'}, kel:{$ne:'*'}}
+			sumit 'kab',  {kab:{$ne:'*'}, kec:{$ne:'*'}, kel:'*'      }
+			sumit 'riau', {kab:{$ne:'*'}, kec:'*'      , kel:'*'      }
 
 		wilStat: ->
 			state = (selector, years, kab, kec, kel) ->
@@ -54,6 +54,7 @@ if Meteor.isServer
 						i[j].kin = i[j].rel / i[j].tar
 						i[j].sumKin = 0
 					i
+				console.log maped
 				for i in maped
 					find = _.find stats, (j) ->
 						elem = -> j.elemen is i.elemen
@@ -83,7 +84,8 @@ if Meteor.isServer
 					modifier = indikator: i.indikator
 					for j in years
 						modifier[j] = sumKin: i[j].sumKin, avgKin: i[j].avgKin
-					coll.wilStat.upsert selector, $set: modifier
+					console.log selector, modifier
+					# coll.wilStat.upsert selector, $set: modifier
 
 			years = _.map [2015..2019], (i) -> 'y' + i
 			state {kel: {$ne: '*'}}, years, true, true, true
