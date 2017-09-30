@@ -269,7 +269,7 @@ if Meteor.isClient
 				else 'white'
 			i
 
-		makeLayers = (category, type, icon) ->
+		makeLayers = (category, type, label, icon) ->
 			markers = []
 			for i in source
 				if i.latlng and i[category] is type
@@ -284,11 +284,12 @@ if Meteor.isClient
 					content += '<b>Kondisi: </b>' + i.kata + '<br/>'
 					marker.bindPopup content
 					markers.push marker
-			overlays[type] = L.layerGroup markers
+			overlays[label] = L.layerGroup markers
 
 		uniqs = _.uniqBy coll.fasilitas.find().fetch()
-		bentuks = _.map uniqs, (i) -> i.bentuk
-		makeLayers 'bentuk', i, 'leanpub' for i in bentuks
+		makeLayers 'bentuk', i.bentuk, i.bentuk, '' for i in uniqs
+		kondisis = 1: 'Rusak Berat', 2: 'Rusak Sedang', 3: 'Rusak Ringan', 4: 'Baik'
+		makeLayers 'kondisi', parseInt(val), name, '' for val, name of kondisis
 
 		defaultLayers = [baseMaps.Topografi]
 		for key, val of overlays
