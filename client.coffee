@@ -408,6 +408,7 @@ if Meteor.isClient
 		dataLoc = -> if lat.val() then [lat.val(), lng.val()] else [0.5, 101.44]
 		map = L.map 'mapSelect',
 			zoom: 17
+			zoomControl: false
 			maxZoom: 17
 			center: dataLoc()
 			layers: [baseMaps.CitraRiau]
@@ -482,6 +483,7 @@ if Meteor.isClient
 		map = L.map 'map',
 			center: [0.5, 101.44]
 			zoom: 8
+			zoomControl: false
 			layers: [baseMaps.Citra, jalProv, jalNas]
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false

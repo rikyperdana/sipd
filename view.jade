@@ -5,9 +5,7 @@ template(name='layout')
 template(name='menu')
 	.navbar-fixed: nav.blue-grey: .nav-wrapper
 		ul.left#topLeft
-			li: a(href='/') Home
-			li: a#wilSum(href='#') wilSum
-			li: a#wilStat(href='#') wilStat
+			li: a(href='/'): i.material-icons home
 		a.brand-logo.center SiIdamanDara
 		ul.right
 			unless currentUser
@@ -15,21 +13,33 @@ template(name='menu')
 			if currentUser
 				li: a(href='/logout') Logout
 	ul.fixed.side-nav.grey.lighten-2.z-depth-5
-		li.grey.darken-2: a: b.white-text Menu Admin
+		li.grey.darken-2: a.collapsible-header
+			b.white-text Admin Menu
+			i.material-icons.right.white-text person
 		li: ul.collapsible: li
-			.collapsible-header Daftar Kabupaten
+			.collapsible-header
+				span Kabupaten
+				i.material-icons.right.green-text map
 			each val in kabs
 				a.collapsible-body(href=val)= startCase(val)
 		li: ul.collapsible: li
-			.collapsible-header Daftar Urusan
+			.collapsible-header
+				span Urusan
+				i.material-icons.right.red-text view_list
 			each val in elemens
 				a.collapsible-body(href='riau')= startCase(val)
 		li: ul.collapsible: li
-			.collapsible-header Daftar Fasilitas
+			.collapsible-header
+				span Fasilitas
+				i.material-icons.right.orange-text place
 			each val in fasilitas
 				a.collapsible-body(href=val)= startCase(val)
-		li: a(href='jalan') Data Jalan
-		li: a(href='ikd') Data IKD
+		li: a.collapsible-header(href='jalan')
+			span Jalan
+			i.material-icons.right.purple-text directions
+		li: a.collapsible-header(href='ikd')
+			span IKD
+			i.material-icons.right.blue-text poll
 
 template(name='home'): .container
 	.row
@@ -383,3 +393,9 @@ template(name='ikd'): .container
 		.file-path-wrapper
 			input.file-path.wrapper(type='text')
 	.btn#empty(param='ikd') Kosongkan
+	#modal1.modal.bottom-sheet
+		.modal-content
+			h4 Modal Header
+			p sedikit teks
+		.modal-footer
+			.modal-action.modal-close.btn
