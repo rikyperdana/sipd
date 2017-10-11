@@ -289,7 +289,7 @@ if Meteor.isClient
 					markers.push marker
 			overlays[label] = L.layerGroup markers
 
-		uniqs = _.uniqBy coll.fasilitas.find().fetch()
+		uniqs = _.uniqBy coll.fasilitas.find().fetch(), 'bentuk'
 		makeLayers 'bentuk', i.bentuk, i.bentuk, '' for i in uniqs
 		kondisis = 1: 'Rusak Berat', 2: 'Rusak Sedang', 3: 'Rusak Ringan', 4: 'Baik'
 		makeLayers 'kondisi', parseInt(val), name, '' for val, name of kondisis

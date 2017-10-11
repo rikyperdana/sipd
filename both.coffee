@@ -71,19 +71,6 @@ coll.fasilitas.allow
 	update: -> true
 	remove: -> true
 
-@headings =
-	sekolah: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa', 'Jumlah Guru', 'Jumlah Kelas']
-	pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan']
-	kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien', 'Jumlah Dokter', 'Jumlah Kapasitas']
-	industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi']
-	komunikasi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage']
-	sosial: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Penghuni']
-	perhubungan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Trafik']
-	olahraga: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-	kesenian: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-	religi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-
-
 coll.wilStat = new Meteor.Collection 'wilStat'
 objek =
 	kab: type: String
