@@ -282,6 +282,9 @@ if Meteor.isClient
 					content += '<b>Bentuk: </b>' + i.bentuk + '<br/>'
 					content += '<b>Alamat: </b>' + i.alamat + '<br/>'
 					content += '<b>Kondisi: </b>' + i.kata + '<br/>'
+					for j in [1..5]
+						if i['data'+j]
+							content += '<b>'+headings[currentRoute()][j+3]+': </b>'+i['data'+j]+'<br/>'
 					marker.bindPopup content
 					markers.push marker
 			overlays[label] = L.layerGroup markers
@@ -311,19 +314,7 @@ if Meteor.isClient
 		Session.set 'limit', 200
 
 	Template.fasilitas.helpers
-		colHeadings: (name) ->
-			headings =
-				sekolah: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa']
-				pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan']
-				kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien']
-				industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi']
-				komunikasi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage']
-				sosial: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Penghuni']
-				perhubungan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Trafik']
-				olahraga: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-				kesenian: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-				religi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-			headings[name]
+		colHeadings: (name) -> headings[name]
 		datas: ->
 			if searchTerm()
 				selector = nama: $regex: '.*'+searchTerm()+'.*', $options: 'i'
