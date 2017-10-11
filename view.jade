@@ -4,7 +4,7 @@ template(name='layout')
 
 template(name='menu')
 	.navbar-fixed: nav.blue-grey: .nav-wrapper
-		ul.left
+		ul.left#topLeft
 			li: a(href='/') Home
 			li: a#wilSum(href='#') wilSum
 			li: a#wilStat(href='#') wilStat
@@ -14,9 +14,35 @@ template(name='menu')
 				li: a(href='/login') Login
 			if currentUser
 				li: a(href='/logout') Logout
+	ul.fixed.side-nav.grey.lighten-2.z-depth-5
+		li.grey.darken-2: a: b.white-text Menu Admin
+		li: ul.collapsible: li
+			.collapsible-header Daftar Kabupaten
+			each val in kabs
+				a.collapsible-body(href=val)= startCase(val)
+		li: ul.collapsible: li
+			.collapsible-header Daftar Urusan
+			each val in elemens
+				a.collapsible-body(href='riau')= startCase(val)
+		li: ul.collapsible: li
+			.collapsible-header Daftar Fasilitas
+			each val in fasilitas
+				a.collapsible-body(href=val)= startCase(val)
+		li: a(href='jalan') Data Jalan
+		li: a(href='ikd') Data IKD
 
 template(name='home'): .container
-	h4 Beranda
+	.row
+		h5.center Aplikasi Perencanaan Riau
+		#mapHome
+	.row
+		.divider
+		.col.m6
+			h5 Grafik Riau 2016
+			+c3(data= grafik1 id= 'grafik1')
+		.col.m6
+			h5 Grafik Riau 2017
+			+c3(data= grafik2 id= 'grafik2')
 	.row
 		each cards
 			.col.m4
