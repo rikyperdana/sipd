@@ -6,8 +6,6 @@ template(name='menu')
 	.navbar-fixed: nav.blue-grey: .nav-wrapper
 		ul.left
 			li: a(href='/') Home
-			li: a#wilSum(href='#') wilSum
-			li: a#wilStat(href='#') wilStat
 		a.brand-logo.center SiIdamanDara
 		ul.right
 			unless currentUser
@@ -63,7 +61,7 @@ template(name='wil'): .container
 	if switch 'map'
 		+map
 	unless editData
-		table
+		table.bordered.striped
 			thead
 				tr
 					th Indikator
@@ -231,48 +229,9 @@ template(name='pagination')
 template(name='jalan')
 	#map
 	.container
-		h5 Tabel Jalan Prov
-		span: .btn#openJalProv Buka
-		table.responsive-table.hide#tableJalProv
-			thead
-				tr
-					th No Ruas
-					th Nama Ruas
-					th Kab/Kota
-					th Kecamatan
-					th TP Awal
-					th TP Akhir
-					th Pjg Survey
-					th Sts Jalan
-					th No
-					th AADT
-					th Lebar
-			tbody
-				each jalProv
-					tr
-						td= no_ruas
-						td= nama_ruas
-						td= kab_kota
-						td= kec
-						td= tp_awal
-						td= tp_akhir
-						td= pjg_survey
-						td= sts_jalan
-						td= no
-						td= aadt
-						td= lebar
-		unless jalProv
-			.file-field.input-field
-				.btn.left
-					span Impor Data
-						input#jalProvUpload(type='file' name='uploadCSV')
-				.file-path-wrapper
-					input.file-path.wrapper(type='text')
-			.btn#empty(param='jalProv') Kosongkan Provinsi
-
-		h5 Tabel Jalan Nas
-		span: .btn#openJalNas Buka
-		table.responsive-table.hide#tableJalNas
+		h5 Tabel Jalan
+		span: .btn#openJal Buka
+		table.responsive-table.hide#tableJal
 			thead
 				tr
 					th Status
@@ -285,7 +244,7 @@ template(name='jalan')
 					th Kelas Jalan
 					th Length
 			tbody
-				each jalNas
+				each jalan
 					tr
 						td= status
 						td= no
@@ -296,31 +255,30 @@ template(name='jalan')
 						td= kecamatan
 						td= kelas_jala
 						td= length
-		unless jalNas
+		unless jalan
 			.file-field.input-field
 				.btn.left
 					span Impor Data
-						input#jalNasUpload(type='file' name='uploadCSV')
+						input#jalanUpload(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-			.btn#empty(param='jalNas') Kosongkan Provinsi
+			.btn#empty(param='jalan') Kosongkan Tabel
 
-template(name='ikd'): .container
-	h5 Indikator Kinerja Daerah
+template(name='ind'): .container
+	h5= title
 	.right.btn#showAdd Tambah
 	if showAdd
 		+quickForm(
-			collection= coll.ikd
+			collection= coll.ind
 			type = 'insert'
-			id = 'insertIkd'
+			id = 'insertind'
 		)
 	if formMode
 		.right.orange.btn#close Tutup
 	+grafik
-	table
+	table.bordered.striped
 		thead
 			tr
-				th Misi
 				th Sasaran
 				th Indikator
 				th 2013 Rel
@@ -336,7 +294,6 @@ template(name='ikd'): .container
 		tbody
 			each datas
 				tr
-					td= misi
 					td= sasaran
 					td= indikator
 					td= y2013.rel
@@ -356,4 +313,4 @@ template(name='ikd'): .container
 				input(type='file' name='uploadCSV')
 		.file-path-wrapper
 			input.file-path.wrapper(type='text')
-	.btn#empty(param='ikd') Kosongkan
+	.btn#empty(param='ind') Kosongkan

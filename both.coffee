@@ -6,20 +6,20 @@ Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
 Router.route '/riau', action: -> this.render 'wil'
-Router.route '/ikd',
-	action: -> this.render 'ikd'
-	waitOn: -> Meteor.subscribe 'coll', 'ikd', {}, {}
+
+makeInd = (name) ->
+	Router.route '/' + name,
+		action: -> this.render 'ind'
+		waitOn: -> Meteor.subscribe 'coll', 'ind', {}, {}
+makeInd i.name for i in inds
+
 Router.route '/jalan',
 	action: -> this.render 'jalan'
-	waitOn: -> [
-		Meteor.subscribe 'coll', 'jalProv', {}, {}
-		Meteor.subscribe 'coll', 'jalNas', {}, {}
-	]
+	waitOn: -> Meteor.subscribe 'coll', 'jalan', {}, {}
 
 makeWil = (route) ->
 	Router.route '/' + route,
 		action: -> this.render 'wil'
-
 makeWil i for i in [kels..., kecs..., kabs...]
 
 makeFasil = (name) ->
@@ -29,8 +29,7 @@ makeFasil = (name) ->
 			selector = kelompok: name
 			options = {}
 			Meteor.subscribe 'coll', 'fasilitas', selector, options
-
-makeFasil i for i in ['sekolah', 'pariwisata', 'kesehatan', 'industri', 'komunikasi', 'sosial', 'perhubungan', 'olahraga', 'kesenian', 'religi']
+makeFasil key for key, val of headings
 
 years = (start, end) -> _.map [start..end], (i) -> 'y' + i
 
@@ -88,38 +87,8 @@ coll.wilStat.allow
 	update: -> true
 	remove: -> true
 
-coll.jalProv = new Meteor.Collection 'jalProv'
-coll.jalProv.attachSchema new SimpleSchema
-	no_ruas: type: String, optional: true
-	nama_ruas: type: String
-	kab_kota: type: String, optional: true
-	kec: type: String, optional: true
-	tp_awal: type: String, optional: true
-	tp_akhir: type: String, optional: true
-	pjg_survey: type: Number, decimal: true, optional: true
-	sts_jalan: type: String, optional: true
-	no: type: Number, optional: true
-	aadt: type: Number, decimal: true, optional: true
-	lebar: type: Number, decimal: true, optional: true
-	stype: type: String, optional: true
-	iri: type: Number, decimal: true, optional: true
-	sdi: type: Number, decimal: true, optional: true
-	eirr: type: Number, decimal: true, optional: true
-	y2016: type: Object, optional: true
-	'y2016.lp': type: String, optional: true
-	'y2016.cost': type: Number, decimal: true, optional: true
-	'y2016.el': type: Number, decimal: true, optional: true
-	y2017: type: Object, optional: true
-	'y2017.lp': type: String, optional: true
-	'y2017.cost': type: Number, decimal: true, optional: true
-	'y2017.el': type: Number, decimal: true, optional: true
-coll.jalProv.allow
-	insert: -> true
-	update: -> true
-	remove: -> true
-
-coll.jalNas = new Meteor.Collection 'jalNas'
-coll.jalNas.attachSchema new SimpleSchema
+coll.jalan = new Meteor.Collection 'jalan'
+coll.jalan.attachSchema new SimpleSchema
 	status: type: String
 	no: type: Number, optional: true
 	tanggal: type: String, optional: true
@@ -129,21 +98,22 @@ coll.jalNas.attachSchema new SimpleSchema
 	kecamatan: type: String, optional: true
 	kelas_jala: type: String, optional: true
 	length: type: Number, decimal: true, optional: true
-coll.jalNas.allow
+coll.jalan.allow
 	insert: -> true
 	update: -> true
 	remove: -> true
 
-coll.ikd = new Meteor.Collection 'ikd'
+coll.ind = new Meteor.Collection 'ind'
 objek =
+	grup: type: String
 	sasaran: type: String
 	indikator: type: String
 for i in years 2013, 2019
 	objek[i] = type: Object, optional: true
 	objek[i+'.tar'] = type: String, optional: true
 	objek[i+'.rel'] = type: String, optional: true
-	coll.ikd.attachSchema new SimpleSchema objek
-coll.ikd.allow
+	coll.ind.attachSchema new SimpleSchema objek
+coll.ind.allow
 	insert: -> true
 	update: -> true
 	remove: -> true

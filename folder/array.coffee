@@ -80,6 +80,33 @@
 		value: 1
 	]
 
+@fasils = [
+	sekolah: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa', 'Jumlah Guru', 'Jumlah Kelas']
+	pariwisata: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Kunjungan']
+	kesehatan: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Pasien', 'Jumlah Dokter', 'Jumlah Ruang']
+	industri: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Produksi']
+	komunikasi: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Luas Coverage']
+	sosial: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Penghuni']
+	perhubungan: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Trafik']
+	olahraga: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Kegiatan']
+	kesenian: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Kegiatan']
+	religi: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Kegiatan']
+]
+
+@inds = [
+	name: 'ikd'
+	full: 'Indikator Kinerja Daerah'
+,
+	name: 'isd'
+	full: 'Indikator Sasaran Daerah'
+,
+	name: 'targ'
+	full: 'Target Kab / Kota'
+,
+	name: 'makro'
+	full: 'Data Makro'
+]
+
 @wilayahs = [
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Bangkinang"},
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Langgini"},

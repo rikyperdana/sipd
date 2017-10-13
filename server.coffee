@@ -7,6 +7,7 @@ if Meteor.isServer
 
 		import: (name, selector, modifier) ->
 			coll[name].upsert selector, $set: modifier
+			_.map ['wilSum', 'wilStat'], (i) -> Meteor.call i
 		empty: (name, selector) ->
 			coll[name].remove selector
 		update: (name, obj) ->
