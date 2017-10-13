@@ -148,8 +148,10 @@ if Meteor.isClient
 	Template.grafik.helpers
 		grafik: ->
 			barArray = []
-			if currentRoute() is 'ikd'
-				for i in coll.ikd.find().fetch()
+			find = _.find inds, (i) -> i.name is currentRoute()
+			if find
+				selector = grup: currentRoute()
+				for i in coll.ind.find(selector).fetch()
 					arr = [i.sasaran]
 					for j in [2013..2016]
 						arr.push parseInt i['y'+j].rel
@@ -416,34 +418,11 @@ if Meteor.isClient
 		layersControl.addTo map
 
 	Template.jalan.onRendered ->
-		styleProv = (feature) ->
+		style = (feature) ->
 			color: '#'+Math.random().toString(16).substr(-6)
 			weight: 3
 			dashArray: '3'
-		onEachProv = (feature, layer) ->
-			layer.on
-				mouseover: (event) ->
-					event.target.setStyle
-						weight: 8
-						color: 'white'
-						dashArray: ''
-					event.target.bringToFront()
-				mouseout: (event) ->
-					jalProv.resetStyle event.target
-				click: (event) ->
-					map.fitBounds event.target.getBounds()
-			props = ['NAMA_RUAS', 'KAB_KOTA', 'KEC', 'TP_AWAL', 'TP_AKHIR', 'PJG_SURVEY', 'PJG_RUAS', 'STS_JALAN']
-			content = ''
-			for i in props
-				content += '<b>'+i+': </b>'+feature.properties[i]+'<br/>'
-			layer.bindPopup content
-		jalProv = L.geoJson.ajax 'maps/jalan_prov.geojson', style: styleProv, onEachFeature: onEachProv
-
-		styleNas = (feature) ->
-			color: '#'+Math.random().toString(16).substr(-6)
-			weight: 3
-			dashArray: '3'
-		onEachNas = (feature, layer) ->
+		onEachFeature = (feature, layer) ->
 			layer.on
 				mouseover: (event) ->
 					event.target.setStyle
@@ -460,27 +439,28 @@ if Meteor.isClient
 			for i in props
 				content += '<b>'+i+': </b>'+feature.properties[i]+'<br/>'
 			layer.bindPopup content
-		jalNas = L.geoJson.ajax 'maps/jalan_nas.geojson', style: styleNas, onEachFeature: onEachNas
+
+		layers = _.map ['prov', 'nas'], (i) ->
+			L.geoJson.ajax 'maps/jalan_'+i+'.geojson', style: style, onEachFeature: onEachFeature
 
 		baseMaps =
 			Citra: L.tileLayer.provider 'Esri.WorldImagery'
 			WMS: L.tileLayer.wms 'https://demo.boundlessgeo.com/geoserver/ows?', layers: 'ne:ne'
 		overlays =
-			'Jalan Provinsi': jalProv
-			'Jalan Nasional': jalNas
+			'Jalan Provinsi': layers[0]
+			'Jalan Nasional': layers[1]
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
 			zoom: 8
 			zoomControl: false
-			layers: [baseMaps.Citra, jalProv, jalNas]
+			layers: [baseMaps.Citra, layers...]
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
 
 	Template.jalan.helpers
-		jalProv: -> coll.jalProv.find().fetch()
-		jalNas: -> coll.jalNas.find().fetch()
+		jalan: -> coll.jalan.find().fetch()
 
 	Template.jalan.events
 		'change #jalProvUpload': (event, template) ->
@@ -557,12 +537,17 @@ if Meteor.isClient
 			$('#tableJalNas').removeClass 'hide'
 			$('#openJalNas').addClass 'hide'
 
-	Template.ikd.helpers
-		datas: -> coll.ikd.find().fetch()
+	Template.ind.helpers
+		datas: ->
+			selector = grup: currentRoute()
+			coll.ind.find(selector).fetch()
+		title: ->
+			find = _.find inds, (i) -> i.name is currentRoute()
+			find.full
 
-	Template.ikd.events
-		'click #emptyIkd': ->
-			Meteor.call 'emptyColl', 'ikd'
+	Template.ind.events
+		'click #emptyind': ->
+			Meteor.call 'emptyColl', 'ind'
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
@@ -574,4 +559,4 @@ if Meteor.isClient
 					modifier = {}
 					for i in [2013..2019]
 						modifier['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
-					Meteor.call 'import', 'ikd', selector, modifier
+					Meteor.call 'import', 'ind', selector, _.assign modifier, grup: currentRoute()

@@ -4,71 +4,17 @@ template(name='layout')
 
 template(name='menu')
 	.navbar-fixed: nav.blue-grey: .nav-wrapper
-		ul.left#topLeft
-			li: a(href='/'): i.material-icons home
+		ul.left
+			li: a(href='/') Home
 		a.brand-logo.center SiIdamanDara
 		ul.right
 			unless currentUser
 				li: a(href='/login') Login
 			if currentUser
 				li: a(href='/logout') Logout
-	ul.fixed.side-nav.grey.lighten-2.z-depth-5
-		li.grey.darken-2: a.collapsible-header
-			b.white-text Admin Menu
-			i.material-icons.right.white-text person
-		li: ul.collapsible: li
-			.collapsible-header
-				span Kabupaten
-				i.material-icons.right.green-text map
-			each val in kabs
-				a.collapsible-body(href=val)= startCase(val)
-		li: ul.collapsible: li
-			.collapsible-header
-				span Urusan
-				i.material-icons.right.red-text view_list
-			each val in elemens
-				a.collapsible-body(href='riau')= startCase(val)
-		li: ul.collapsible: li
-			.collapsible-header
-				span Fasilitas
-				i.material-icons.right.orange-text place
-			each val in fasilitas
-				a.collapsible-body(href=val)= startCase(val)
-		li: a.collapsible-header(href='jalan')
-			span Jalan
-			i.material-icons.right.purple-text directions
-		li: a.collapsible-header(href='ikd')
-			span IKD
-			i.material-icons.right.blue-text poll
 
 template(name='home'): .container
-	.row
-		h5.center Aplikasi Perencanaan Riau
-		#mapHome
-	.row
-		.divider
-		.col.m6
-			h5 Grafik Riau 2016
-			+c3(data= grafik1 id= 'grafik1')
-		.col.m6
-			h5 Grafik Riau 2017
-			+c3(data= grafik2 id= 'grafik2')
-	.row
-		each cards
-			.col.m4
-				.card
-					.card-image
-						img.activator(src='{{image}}')
-					.card-content
-						span.card-title.activator
-							{{title}}
-							i.material-icons.right= icon
-					.card-reveal
-						span.card-title
-							{{title}}
-							i.material-icons.right close
-						p= desc
-						a.btn(href='/{{route}}') Masuk
+	h5 Kosong dulu
 
 template(name='wil'): .container
 	h4 Database Peta Elemen
@@ -99,7 +45,7 @@ template(name='wil'): .container
 	if switch 'map'
 		+map
 	unless editData
-		table
+		table.bordered.striped
 			thead
 				tr
 					th Indikator
@@ -267,48 +213,9 @@ template(name='pagination')
 template(name='jalan')
 	#map
 	.container
-		h5 Tabel Jalan Prov
-		span: .btn#openJalProv Buka
-		table.responsive-table.hide#tableJalProv
-			thead
-				tr
-					th No Ruas
-					th Nama Ruas
-					th Kab/Kota
-					th Kecamatan
-					th TP Awal
-					th TP Akhir
-					th Pjg Survey
-					th Sts Jalan
-					th No
-					th AADT
-					th Lebar
-			tbody
-				each jalProv
-					tr
-						td= no_ruas
-						td= nama_ruas
-						td= kab_kota
-						td= kec
-						td= tp_awal
-						td= tp_akhir
-						td= pjg_survey
-						td= sts_jalan
-						td= no
-						td= aadt
-						td= lebar
-		unless jalProv
-			.file-field.input-field
-				.btn.left
-					span Impor Data
-						input#jalProvUpload(type='file' name='uploadCSV')
-				.file-path-wrapper
-					input.file-path.wrapper(type='text')
-			.btn#empty(param='jalProv') Kosongkan Provinsi
-
-		h5 Tabel Jalan Nas
-		span: .btn#openJalNas Buka
-		table.responsive-table.hide#tableJalNas
+		h5 Tabel Jalan
+		span: .btn#openJal Buka
+		table.responsive-table.hide#tableJal
 			thead
 				tr
 					th Status
@@ -321,7 +228,7 @@ template(name='jalan')
 					th Kelas Jalan
 					th Length
 			tbody
-				each jalNas
+				each jalan
 					tr
 						td= status
 						td= no
@@ -332,31 +239,30 @@ template(name='jalan')
 						td= kecamatan
 						td= kelas_jala
 						td= length
-		unless jalNas
+		unless jalan
 			.file-field.input-field
 				.btn.left
 					span Impor Data
-						input#jalNasUpload(type='file' name='uploadCSV')
+						input#jalanUpload(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-			.btn#empty(param='jalNas') Kosongkan Provinsi
+			.btn#empty(param='jalan') Kosongkan Tabel
 
-template(name='ikd'): .container
-	h5 Indikator Kinerja Daerah
+template(name='ind'): .container
+	h5= title
 	.right.btn#showAdd Tambah
 	if showAdd
 		+quickForm(
-			collection= coll.ikd
+			collection= coll.ind
 			type = 'insert'
-			id = 'insertIkd'
+			id = 'insertind'
 		)
 	if formMode
 		.right.orange.btn#close Tutup
 	+grafik
-	table
+	table.bordered.striped
 		thead
 			tr
-				th Misi
 				th Sasaran
 				th Indikator
 				th 2013 Rel
@@ -372,7 +278,6 @@ template(name='ikd'): .container
 		tbody
 			each datas
 				tr
-					td= misi
 					td= sasaran
 					td= indikator
 					td= y2013.rel
@@ -392,10 +297,4 @@ template(name='ikd'): .container
 				input(type='file' name='uploadCSV')
 		.file-path-wrapper
 			input.file-path.wrapper(type='text')
-	.btn#empty(param='ikd') Kosongkan
-	#modal1.modal.bottom-sheet
-		.modal-content
-			h4 Modal Header
-			p sedikit teks
-		.modal-footer
-			.modal-action.modal-close.btn
+	.btn#empty(param='ind') Kosongkan
