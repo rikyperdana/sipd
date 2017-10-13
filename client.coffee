@@ -28,6 +28,14 @@ if Meteor.isClient
 		end = range / limit + 1
 		[1..end]
 
+	Template.menu.onRendered ->
+		$('.collapsible').collapsible()
+
+	Template.menu.helpers
+		elemens: -> elemens
+		kabs: -> kabs
+		fasilitas: -> _.keys headings
+
 	Template.body.events
 		'click #switch': (event) ->
 			param = event.target.attributes.param.nodeValue
@@ -310,7 +318,7 @@ if Meteor.isClient
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
-		locate = L.control.locate()
+		locate = L.control.locate position: 'bottomright'
 		locate.addTo map
 		$('.num#1').parent().addClass 'active'
 		Session.set 'limit', 200
@@ -402,6 +410,7 @@ if Meteor.isClient
 		dataLoc = -> if lat.val() then [lat.val(), lng.val()] else [0.5, 101.44]
 		map = L.map 'mapSelect',
 			zoom: 17
+			zoomControl: false
 			maxZoom: 17
 			center: dataLoc()
 			layers: [baseMaps.CitraRiau]
@@ -455,6 +464,7 @@ if Meteor.isClient
 		map = L.map 'map',
 			center: [0.5, 101.44]
 			zoom: 8
+			zoomControl: false
 			layers: [baseMaps.Citra, layers...]
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
@@ -561,3 +571,34 @@ if Meteor.isClient
 					for i in [2013..2019]
 						modifier['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
 					Meteor.call 'import', 'ind', selector, _.assign modifier, grup: currentRoute()
+
+	Template.home.onRendered ->
+		tile = L.tileLayer.provider 'OpenTopoMap'
+		geojson = L.geoJson.ajax 'maps/riau.geojson', style:
+			fillColor: 'green'
+			weight: 2
+			opacity: 1
+			color: 'white'
+			dashArray: 3
+			fillOpacity: 0.7
+		map = L.map 'mapHome',
+			center: [0.5, 101.44]
+			zoom: 6
+			zoomControl: false
+			layers: [tile, geojson]
+	
+	Template.home.helpers
+		grafik1: -> data:
+			type: 'spline'
+			columns: [
+				['Kesehatan', 82, 90, 99, 53, 61, 80, 91, 68, 87, 78]
+				['Pendidikan', 98, 53, 53, 58, 92, 85, 97, 62, 72, 55]
+				['Permukiman', 68, 70, 89, 54, 94, 68, 61, 96, 83, 89]
+			]
+		grafik2: -> data:
+			type: 'bar'
+			columns: [
+				['Kesehatan', 81, 86, 87, 54, 82, 89, 80, 55, 97, 65]
+				['Pendidikan', 62, 98, 66, 89, 89, 54, 63, 64, 61, 91]
+				['Permukiman', 64, 61, 85, 58, 88, 63, 88, 84, 85, 74]
+			]

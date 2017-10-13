@@ -14,23 +14,7 @@ template(name='menu')
 				li: a(href='/logout') Logout
 
 template(name='home'): .container
-	h4 Beranda
-	.row
-		each cards
-			.col.m4
-				.card
-					.card-image
-						img.activator(src='{{image}}')
-					.card-content
-						span.card-title.activator
-							{{title}}
-							i.material-icons.right= icon
-					.card-reveal
-						span.card-title
-							{{title}}
-							i.material-icons.right close
-						p= desc
-						a.btn(href='/{{route}}') Masuk
+	h5 Kosong dulu
 
 template(name='wil'): .container
 	h4 Database Peta Elemen
@@ -314,3 +298,9 @@ template(name='ind'): .container
 		.file-path-wrapper
 			input.file-path.wrapper(type='text')
 	.btn#empty(param='ind') Kosongkan
+	#modal1.modal.bottom-sheet
+		.modal-content
+			h4 Modal Header
+			p sedikit teks
+		.modal-footer
+			.modal-action.modal-close.btn

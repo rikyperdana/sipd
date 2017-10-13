@@ -41,7 +41,7 @@ email@1.2.3
 es5-shim@4.6.15
 fastclick@1.0.13
 fortawesome:fontawesome@4.7.0
-fourseven:scss@3.13.0
+fourseven:scss@4.5.4
 geojson-utils@1.0.10
 gildaspk:autoform-materialize@0.0.26
 gwendall:body-events@0.1.6
@@ -67,7 +67,7 @@ livedata@1.0.18
 localstorage@1.1.1
 logging@1.1.17
 matdutour:popup-confirm@0.2.2
-materialize:materialize@0.99.0
+materialize:materialize@0.97.6
 mdg:validation-error@0.2.0
 meteor@1.7.0
 meteor-base@1.1.0
