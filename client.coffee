@@ -56,6 +56,32 @@ if Meteor.isClient
 	Template.layout.onRendered ->
 		Session.set 'pagin', 0
 
+	Template.home.onRendered ->
+		$('.parallax').parallax()
+
+	Template.home.helpers
+		blocks: -> [
+			name: 'Indikator'
+			color: 'blue'
+			icon: 'poll'
+			list: _.map inds, (i) -> i.full
+		,
+			name: 'Urusan'
+			color: 'orange'
+			icon: 'view_list'
+			list: elemens[0..3]
+		,
+			name: 'Kabupaten'
+			color: 'green'
+			icon: 'map'
+			list: kabs[0..3]
+		,
+			name: 'Fasilitas'
+			color: 'pink'
+			icon: 'place'
+			list: _.keys(headings)[0..3]
+		]
+
 	Template.wil.helpers
 		datas: ->
 			if wilName().kel
@@ -431,7 +457,7 @@ if Meteor.isClient
 						dashArray: ''
 					event.target.bringToFront()
 				mouseout: (event) ->
-					jalNas.resetStyle event.target
+					jalan.resetStyle event.target
 				click: (event) ->
 					map.fitBounds event.target.getBounds()
 			props = ['STATUS', 'NO', 'NO_RUAS', 'NAMA_RUAS', 'PJG_SURVEY', 'KECAMATAN', 'KELAS_JALA', 'Length']
@@ -463,79 +489,35 @@ if Meteor.isClient
 		jalan: -> coll.jalan.find().fetch()
 
 	Template.jalan.events
-		'change #jalProvUpload': (event, template) ->
-			Papa.parse event.target.files[0],
-				header: true
-				step: (result) ->
-					data = result.data[0]
-					selector =
-						no_ruas: data.no_ruas
-						nama_ruas: data.nama_ruas
-						kab_kota: data.kab_kota
-						kec: data.kec
-						tp_awal: data.tp_awal
-						tp_akhir: data.tp_akhir
-						pjg_survey: data.pjg_survey
-						sts_jalan: data.sts_jalan
-						no: data.no
-						aadt: data.aadts
-						lebar: data.lebar
-						stype: data.stype
-						iri: data.iri
-						sdi: data.sdi
-						eirr: data.eirr
-					modifier =
-						y2016:
-							lp: data['2016lp']
-							cost: data['2016cost']
-							el: data['2016el']
-						y2017:
-							lp: data['2017lp']
-							cost: data['2017cost']
-							el: data['2017el']
-					Meteor.call 'import', 'jalProv', selector, modifier
-		'click #emptyJalProv': ->
-			dialog =
-				message: 'Yakin kosongkan Tabel Jalan Provinsi?'
-				title: 'Kosongkan Tabel'
-				okText: 'Ya'
-				success: true
-				focus: 'cancel'
-			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyJalProv'
-		'click #openJalProv': ->
-			$('#tableJalProv').removeClass 'hide'
-			$('#openJalProv').addClass 'hide'
-
-		'change #jalNasUpload': (event, template) ->
+		'change #upload': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
 				step: (result) ->
 					data = result.data[0]
 					selector =
 						status: data.status
-						no: data.no
-						tanggal: data.tanggal
-						no_ruas: data.no_ruas
 						nama_ruas: data.nama_ruas
 					modifier =
+						no: parseInt data.no
+						no_ruas: data.no_ruas
+						tanggal: data.tanggal
 						pjg_survey: data.pjg_survey
 						kecamatan: data.kecamatan
 						kelas_jala: data.kelas_jala
 						length: data.length
-					Meteor.call 'import', 'jalNas', selector, modifier
-		'click #emptyJalNas': ->
+					Meteor.call 'import', 'jalan', selector, modifier
+		'click #empty': ->
 			dialog =
-				message: 'Yakin kosongkan Tabel Jalan Nasional?'
+				message: 'Yakin kosongkan Tabel Jalan?'
 				title: 'Kosongkan Tabel'
 				okText: 'Ya'
 				success: true
 				focus: 'cancel'
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'emptyJalNas'
-		'click #openJalNas': ->
-			$('#tableJalNas').removeClass 'hide'
-			$('#openJalNas').addClass 'hide'
+				if ok then Meteor.call 'empty', 'jalan', {}
+		'click #openjalan': ->
+			$('#tablejalan').removeClass 'hide'
+			$('#openjalan').addClass 'hide'
 
 	Template.ind.helpers
 		datas: ->

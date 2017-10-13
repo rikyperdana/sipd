@@ -4,8 +4,7 @@ template(name='layout')
 
 template(name='menu')
 	.navbar-fixed: nav.blue-grey: .nav-wrapper
-		ul.left
-			li: a(href='/') Home
+		ul.left: li: a(href='/'): i.material-icons home
 		a.brand-logo.center SiIdamanDara
 		ul.right
 			unless currentUser
@@ -13,8 +12,19 @@ template(name='menu')
 			if currentUser
 				li: a(href='/logout') Logout
 
-template(name='home'): .container
-	h5 Kosong dulu
+template(name='home')
+	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
+	.section.white: .row
+		each val in blocks
+			.col.m3: .card.lighten-1(class='{{val.color}}'): .card-content
+				.center: i.large.material-icons.white-text= val.icon
+				.card-title.white-text.center: h4= val.name
+				ul.center
+					each item in val.list
+						li.btn.waves-effect(class='{{val.color}}')= item
+						.space
+	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
+			
 
 template(name='wil'): .container
 	h4 Database Peta Elemen
@@ -214,8 +224,7 @@ template(name='jalan')
 	#map
 	.container
 		h5 Tabel Jalan
-		span: .btn#openJal Buka
-		table.responsive-table.hide#tableJal
+		table.bordered.responsive-table
 			thead
 				tr
 					th Status
@@ -243,10 +252,10 @@ template(name='jalan')
 			.file-field.input-field
 				.btn.left
 					span Impor Data
-						input#jalanUpload(type='file' name='uploadCSV')
+						input#upload(type='file' name='uploadCSV')
 				.file-path-wrapper
 					input.file-path.wrapper(type='text')
-			.btn#empty(param='jalan') Kosongkan Tabel
+		.btn#empty(param='jalan') Kosongkan Tabel
 
 template(name='ind'): .container
 	h5= title
