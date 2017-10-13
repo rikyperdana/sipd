@@ -3,25 +3,36 @@ template(name='layout')
 	+yield
 
 template(name='menu')
-	.navbar-fixed: nav.blue-grey: .nav-wrapper
+	.navbar-fixed: nav.green: .nav-wrapper
 		ul.left: li: a(href='/'): i.material-icons home
-		a.brand-logo.center SiIdamanDara
+		a.brand-logo.center Si Idaman Dara
 		ul.right
 			unless currentUser
-				li: a(href='/login') Login
+				li: a(href='/login'): i.material-icons exit_to_app
 			if currentUser
 				li: a(href='/logout') Logout
 
 template(name='home')
 	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
-	.section.white: .row
+	.section.white.z-depth-2: .row
+		.slider: ul.slides
+			li
+				img(src='https://lorempixel.com/580/250/nature/1')
+				.caption.center-align
+					h3 Slide pertama
+					h5.light.grey-text.text-lighten-3 Ini adalah contoh paragraf untuk keterangan pada slide 1
+			li
+				img(src='https://lorempixel.com/580/250/nature/2')
+				.caption.center-align
+					h3 Slide kedua
+					h5.light.grey-text.text-lighten-3 Ini adalah contoh paragraf untuk keterangan pada slide 2
 		each val in blocks
-			.col.m3: .card.lighten-1(class='{{val.color}}'): .card-content
+			.col.m3: .card.z-depth-1.lighten-1(class='{{val.color}}'): .card-content
 				.center: i.large.material-icons.white-text= val.icon
 				.card-title.white-text.center: h4= val.name
 				ul.center
 					each item in val.list
-						li.btn.waves-effect(class='{{val.color}}')= item
+						li: a.btn.waves-effect(class='{{val.color}}' href= item)= item
 						.space
 	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
 			

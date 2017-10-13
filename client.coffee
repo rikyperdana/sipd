@@ -58,29 +58,10 @@ if Meteor.isClient
 
 	Template.home.onRendered ->
 		$('.parallax').parallax()
+		$('.slider').slider()
 
 	Template.home.helpers
-		blocks: -> [
-			name: 'Indikator'
-			color: 'blue'
-			icon: 'poll'
-			list: _.map inds, (i) -> i.full
-		,
-			name: 'Urusan'
-			color: 'orange'
-			icon: 'view_list'
-			list: elemens[0..3]
-		,
-			name: 'Kabupaten'
-			color: 'green'
-			icon: 'map'
-			list: kabs[0..3]
-		,
-			name: 'Fasilitas'
-			color: 'pink'
-			icon: 'place'
-			list: _.keys(headings)[0..3]
-		]
+		blocks: -> blocks
 
 	Template.wil.helpers
 		datas: ->

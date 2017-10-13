@@ -1776,3 +1776,25 @@ makeWil i for i in wilayahs
 @kabs = _.uniq kabs
 @kecs = _.uniq kecs
 @kels = _.uniq kels
+
+@blocks = [
+	name: 'Indikator'
+	color: 'blue'
+	icon: 'poll'
+	list: _.map inds, (i) -> i.full
+,
+	name: 'Urusan'
+	color: 'orange'
+	icon: 'view_list'
+	list: elemens[0..3]
+,
+	name: 'Kabupaten'
+	color: 'green'
+	icon: 'map'
+	list: kabs[0..3]
+,
+	name: 'Fasilitas'
+	color: 'pink'
+	icon: 'place'
+	list: _.keys(headings)[0..3]
+]
