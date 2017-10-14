@@ -12,6 +12,7 @@ if Meteor.isClient
 
 	Template.registerHelper 'coll', -> coll
 	Template.registerHelper 'currentRoute', -> currentRoute()
+	Template.registerHelper 'routeIs', (name) -> currentRoute() is name
 	Template.registerHelper 'switch', (param) -> Session.get param
 	Template.registerHelper 'editData', -> Session.get 'editData'
 	Template.registerHelper 'formMode', ->
@@ -27,6 +28,15 @@ if Meteor.isClient
 		range = length - modulo
 		end = range / limit + 1
 		[1..end]
+
+	Template.menu.onRendered ->
+		$('.collapsible').collapsible()
+	
+	Template.menu.helpers
+		elemens: -> elemens
+		kabs: -> kabs
+		fasilitas: -> _.keys(headings)
+		inds: -> inds
 
 	Template.body.events
 		'click #switch': (event) ->
@@ -58,7 +68,7 @@ if Meteor.isClient
 
 	Template.home.onRendered ->
 		$('.parallax').parallax()
-		$('.slider').slider()
+		$('.slider').slider height: 300
 
 	Template.home.helpers
 		blocks: -> blocks
@@ -137,6 +147,9 @@ if Meteor.isClient
 			Session.set 'selectElemen', _.kebabCase event.target.value
 		'change #year': (event) ->
 			Session.set 'selectYear', event.target.value
+
+	Template.login.onRendered ->
+		$('.parallax').parallax height: '150px'
 
 	Template.login.events
 		'submit #login': (event) ->

@@ -12,6 +12,26 @@ template(name='menu')
 				li: a(href='/login'): i.material-icons exit_to_app
 			if currentUser
 				li: a(href='/logout') Logout
+	if currentRoute
+		ul.fixed.side-nav.grey.lighten-2.z-depth-5
+			li.grey.darken-2: a(href='/'): b.white-text Menu Admin
+			li: ul.collapsible: li
+				.collapsible-header Kabupaten
+				each val in kabs
+					a.collapsible-body(href= val)= startCase(val)
+			li: ul.collapsible: li
+				.collapsible-header Urusan
+				each val in elemens
+					a.collapsible-body(href='riau')= startCase(val)
+			li: ul.collapsible: li
+				.collapsible-header Fasilitas
+				each val in fasilitas
+					a.collapsible-body(href= val)= startCase(val)
+			li: a(href='jalan') Data Jalan
+			li: ul.collapsible: li
+				.collapsible-header Indikator
+				each val in inds
+					a.collapsible-body(href= val.name)= startCase(val.full)
 
 template(name='home')
 	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
@@ -29,8 +49,8 @@ template(name='home')
 					h5.light.grey-text.text-lighten-3 Ini adalah contoh paragraf untuk keterangan pada slide 2
 		each val in blocks
 			.col.m3: .card.z-depth-1.lighten-1(class='{{val.color}}'): .card-content
-				.center: i.large.material-icons.white-text= val.icon
-				.card-title.white-text.center: h4= val.name
+				.center: a(href='/'): i.large.material-icons.white-text= val.icon
+				.card-title.center: a.white-text(href='/'): h4= val.name
 	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
 			
 
@@ -124,18 +144,20 @@ template(name='selectElemen')
 
 
 template(name='login'): .container
-	h4.center Login Pengguna
-	form#login
-		.row
-			.input-field.col.m6
+	br
+	br
+	.card.grey.lighten-3: .card-content
+		h4.center Login Pengguna
+		form#login
+			.input-field
 				input.validate#username(type='text')
 				label(for='username') Username
-			.input-field.col.m6
+			.input-field
 				input.validate#password(type='password')
 				label(for='password') Password
-		.row
-			.input.field.center
-				input.btn(type='submit' value='Login')
+			.row
+				.input.field.center
+					input.btn(type='submit' value='Login')
 
 template(name='contohElemen')
 	each val in elemensName
@@ -267,8 +289,8 @@ template(name='jalan')
 
 template(name='ind'): .container
 	h5= title
-	.right.btn#showAdd Tambah
-	if showAdd
+	.right.btn#switch(param='add') Tambah
+	if switch 'add'
 		+quickForm(
 			collection= coll.ind
 			type = 'insert'
