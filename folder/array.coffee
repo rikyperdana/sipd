@@ -101,10 +101,10 @@
 	full: 'Indikator Sasaran Daerah'
 ,
 	name: 'targ'
-	full: 'Target Kab / Kota'
+	full: 'Indikator Makro Kab / Kota'
 ,
 	name: 'makro'
-	full: 'Data Makro'
+	full: 'Indikator Makro Provinsi'
 ]
 
 @wilayahs = [

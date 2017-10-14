@@ -5,7 +5,8 @@ template(name='layout')
 template(name='menu')
 	.navbar-fixed: nav.green: .nav-wrapper
 		ul.left: li: a(href='/'): i.material-icons home
-		a.brand-logo.center Si Idaman Dara
+		a.brand-logo.center.hide-on-small-only Sistem Informasi Database Pembangunan Daerah
+		a.brand-logo.center.hide-on-med-and-up Si Idaman Dara
 		ul.right
 			unless currentUser
 				li: a(href='/login'): i.material-icons exit_to_app
@@ -30,10 +31,6 @@ template(name='home')
 			.col.m3: .card.z-depth-1.lighten-1(class='{{val.color}}'): .card-content
 				.center: i.large.material-icons.white-text= val.icon
 				.card-title.white-text.center: h4= val.name
-				ul.center
-					each item in val.list
-						li: a.btn.waves-effect(class='{{val.color}}' href= item)= item
-						.space
 	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
 			
 
@@ -280,36 +277,58 @@ template(name='ind'): .container
 	if formMode
 		.right.orange.btn#close Tutup
 	+grafik
-	table.bordered.striped
+	br
+	br
+	h5 Data Tabel
+	table.bordered
+		thead
+			tr
+				td: div
+				td: div
+				th.center.grey.lighten-2(colspan='2') 2013
+				th.center(colspan='2') 2014
+				th.center.grey.lighten-2(colspan='2') 2015
+				th.center(colspan='2') 2016
+				th.center.grey.lighten-2(colspan='2') 2017
+				th.center(colspan='2') 2018
+				th.center.grey.lighten-2(colspan='2') 2019
 		thead
 			tr
 				th Sasaran
 				th Indikator
-				th 2013 Rel
-				th 2014 Tar
-				th 2014 Rel
-				th 2015 Tar
-				th 2015 Rel
-				th 2016 Tar
-				th 2016 Rel
-				th 2017 Tar
-				th 2018 Tar
-				th 2019 Tar
+				th Targ
+				th Real
+				th Targ
+				th Real
+				th Targ
+				th Real
+				th Targ
+				th Real
+				th Targ
+				th Real
+				th Targ
+				th Real
+				th Targ
+				th Real
 		tbody
 			each datas
 				tr
 					td= sasaran
 					td= indikator
 					td= y2013.rel
+					td.grey.lighten-3= y2013.rel
 					td= y2014.tar
-					td= y2014.rel
+					td.grey.lighten-3= y2014.rel
 					td= y2015.tar
-					td= y2015.rel
+					td.grey.lighten-3= y2015.rel
 					td= y2016.tar
-					td= y2016.rel
+					td.grey.lighten-3= y2016.rel
 					td= y2017.tar
+					td.grey.lighten-3 -
 					td= y2018.tar
+					td.grey.lighten-3 -
 					td= y2019.tar
+					td.grey.lighten-3 -
 
 	.file-field.input-field
 		.btn.left
