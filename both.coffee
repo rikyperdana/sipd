@@ -4,7 +4,7 @@ Router.configure
 
 Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
-Router.route '/logout', action: -> [Meteor.logout(), Router.go '/']
+Router.route '/logout', action: -> [Meteor.logout(), Router.go '/login']
 Router.route '/riau', action: -> this.render 'wil'
 
 makeInd = (name) ->

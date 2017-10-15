@@ -1792,7 +1792,7 @@ makeWil i for i in wilayahs
 	list: elemens[0..3]
 ,
 	name: 'Kabupaten'
-	link: 'pekanbaru'
+	link: 'kota-pekanbaru'
 	color: 'green'
 	icon: 'map'
 	list: kabs[0..3]

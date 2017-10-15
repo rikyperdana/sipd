@@ -11,11 +11,11 @@ template(name='menu')
 			unless currentUser
 				li: a(href='/login'): i.material-icons exit_to_app
 			if currentUser
-				li: a(href='/logout') Logout
+				li: a(href='/logout'): i.material-icons close
 	if currentUser
 		if currentRoute
 			ul.fixed.side-nav.grey.lighten-2.z-depth-5
-				li.grey.darken-2: a(href='/'): b.white-text Menu Admin
+				li.grey.darken-2: a.center(href='/'): b.white-text: i.material-icons.small#topLeft home
 				if routeIn kabs
 					each val in kabs
 						li: a(href= val)= startCase(val)
