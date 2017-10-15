@@ -15,6 +15,7 @@ if Meteor.isClient
 	Template.registerHelper 'routeIs', (name) -> currentRoute() is name
 	Template.registerHelper 'switch', (param) -> Session.get param
 	Template.registerHelper 'editData', -> Session.get 'editData'
+	Template.registerHelper 'stringify', (obj) -> JSON.stringify obj
 	Template.registerHelper 'formMode', ->
 		add = Session.get 'showAdd'
 		edit = Session.get 'editData'
@@ -520,10 +521,15 @@ if Meteor.isClient
 		title: ->
 			find = _.find inds, (i) -> i.name is currentRoute()
 			find.full
+		list: ->
+			switch currentRoute()
+				when 'isd' then ['fokus', 'indikator']
+				when 'ikd' then ['aspek', 'fokus', 'bidang', 'indikator', 'sub']
+				when 'targ' then ['indikator', 'sub']
+				when 'makro' then ['indikator', 'sub']
+		years: -> [2013..2019]
 
 	Template.ind.events
-		'click #emptyind': ->
-			Meteor.call 'emptyColl', 'ind'
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true

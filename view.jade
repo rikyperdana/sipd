@@ -34,7 +34,7 @@ template(name='menu')
 					a.collapsible-body(href= val.name)= startCase(val.full)
 
 template(name='home')
-	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
+	.parallax-container: .parallax: img(src='/imgs/front.jpg')
 	.section.white.z-depth-2: .row
 		.slider: ul.slides
 			li
@@ -51,7 +51,7 @@ template(name='home')
 			.col.m3: .card.z-depth-1.lighten-1(class='{{val.color}}'): .card-content
 				.center: a(href='/'): i.large.material-icons.white-text= val.icon
 				.card-title.center: a.white-text(href='/'): h4= val.name
-	.parallax-container: .parallax: img(src='http://www.indonesia-tourism.com/riau/images/gallery/pekanbaru-city-riau-2.jpg')
+	.parallax-container: .parallax: img(src='/imgs/front.jpg')
 			
 
 template(name='wil'): .container
@@ -302,41 +302,36 @@ template(name='ind'): .container
 	br
 	br
 	h5 Data Tabel
+
 	table.bordered
 		thead
 			tr
-				td: div
-				td: div
-				th.center.grey.lighten-2(colspan='2') 2013
-				th.center(colspan='2') 2014
-				th.center.grey.lighten-2(colspan='2') 2015
-				th.center(colspan='2') 2016
-				th.center.grey.lighten-2(colspan='2') 2017
-				th.center(colspan='2') 2018
-				th.center.grey.lighten-2(colspan='2') 2019
+				each val in list
+					td: div
+				each val in years
+					th.center.grey.lighten-2(colspan='2')= val
 		thead
 			tr
-				th Sasaran
-				th Indikator
-				th Targ
-				th Real
-				th Targ
-				th Real
-				th Targ
-				th Real
-				th Targ
-				th Real
-				th Targ
-				th Real
-				th Targ
-				th Real
-				th Targ
-				th Real
+				each val in list
+					th= startCase(val)
+				each val in years
+					th Targ
+					th Real
 		tbody
 			each datas
 				tr
-					td= sasaran
-					td= indikator
+					if fokus
+						td= fokus
+					if aspek
+						td= aspek
+					if bidang
+						td= bidang
+					if sasaran
+						td= sasaran
+					if indikator
+						td= indikator
+					if sub
+						td= sub
 					td= y2013.rel
 					td.grey.lighten-3= y2013.rel
 					td= y2014.tar

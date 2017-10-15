@@ -106,8 +106,9 @@ coll.jalan.allow
 coll.ind = new Meteor.Collection 'ind'
 objek =
 	grup: type: String
-	sasaran: type: String
-	indikator: type: String
+	sasaran: type: String, optional: true
+	indikator: type: String, optional: true
+	sub: type: String, optional: true
 for i in years 2013, 2019
 	objek[i] = type: Object, optional: true
 	objek[i+'.tar'] = type: String, optional: true
