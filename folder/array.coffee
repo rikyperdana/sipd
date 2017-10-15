@@ -106,6 +106,7 @@
 	name: 'makro'
 	full: 'Indikator Makro Provinsi'
 ]
+@indsname = _.map inds, (i) -> i.name
 
 @wilayahs = [
   {"KABUPATEN":"KAMPAR", "KECAMATAN":"Bangkinang", "DESA":"Bangkinang"},
@@ -1779,21 +1780,25 @@ makeWil i for i in wilayahs
 
 @blocks = [
 	name: 'Indikator'
+	link: 'ikd'
 	color: 'blue'
 	icon: 'poll'
 	list: _.map inds, (i) -> i.full
 ,
 	name: 'Urusan'
+	link: 'riau'
 	color: 'orange'
 	icon: 'view_list'
 	list: elemens[0..3]
 ,
 	name: 'Kabupaten'
+	link: 'pekanbaru'
 	color: 'green'
 	icon: 'map'
 	list: kabs[0..3]
 ,
 	name: 'Fasilitas'
+	link: 'pariwisata'
 	color: 'pink'
 	icon: 'place'
 	list: _.keys(headings)[0..3]

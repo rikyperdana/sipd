@@ -12,26 +12,22 @@ template(name='menu')
 				li: a(href='/login'): i.material-icons exit_to_app
 			if currentUser
 				li: a(href='/logout') Logout
-	if currentRoute
-		ul.fixed.side-nav.grey.lighten-2.z-depth-5
-			li.grey.darken-2: a(href='/'): b.white-text Menu Admin
-			li: ul.collapsible: li
-				.collapsible-header Kabupaten
-				each val in kabs
-					a.collapsible-body(href= val)= startCase(val)
-			li: ul.collapsible: li
-				.collapsible-header Urusan
-				each val in elemens
-					a.collapsible-body(href='riau')= startCase(val)
-			li: ul.collapsible: li
-				.collapsible-header Fasilitas
-				each val in fasilitas
-					a.collapsible-body(href= val)= startCase(val)
-			li: a(href='jalan') Data Jalan
-			li: ul.collapsible: li
-				.collapsible-header Indikator
-				each val in inds
-					a.collapsible-body(href= val.name)= startCase(val.full)
+	if currentUser
+		if currentRoute
+			ul.fixed.side-nav.grey.lighten-2.z-depth-5
+				li.grey.darken-2: a(href='/'): b.white-text Menu Admin
+				if routeIn kabs
+					each val in kabs
+						li: a(href= val)= startCase(val)
+				if routeIs 'riau'
+					each val in elemens
+						li: a(href='riau')= startCase(val)
+				if routeIn indsname
+					each val in inds
+						li: a(href= val.name)= startCase(val.full)
+				if routeIn fasilitas
+					each val in fasilitas
+						li: a(href= val)= startCase(val)
 
 template(name='home')
 	.parallax-container: .parallax: img(src='/imgs/front.jpg')
@@ -49,8 +45,8 @@ template(name='home')
 					h5.light.grey-text.text-lighten-3 Ini adalah contoh paragraf untuk keterangan pada slide 2
 		each val in blocks
 			.col.m3: .card.z-depth-1.lighten-1(class='{{val.color}}'): .card-content
-				.center: a(href='/'): i.large.material-icons.white-text= val.icon
-				.card-title.center: a.white-text(href='/'): h4= val.name
+				.center: a(href= val.link): i.large.material-icons.white-text= val.icon
+				.card-title.center: a.white-text(href= val.link): h4= val.name
 	.parallax-container: .parallax: img(src='/imgs/front.jpg')
 			
 
@@ -143,21 +139,29 @@ template(name='selectElemen')
 			input#search(placeholder='Cari')
 
 
-template(name='login'): .container
-	br
-	br
-	.card.grey.lighten-3: .card-content
-		h4.center Login Pengguna
-		form#login
-			.input-field
-				input.validate#username(type='text')
-				label(for='username') Username
-			.input-field
-				input.validate#password(type='password')
-				label(for='password') Password
-			.row
-				.input.field.center
-					input.btn(type='submit' value='Login')
+template(name='login')
+	.fullscreen.slider#bground: ul.slides: li
+		img(src='/imgs/login.png')
+		.caption.center-align
+			br
+			br
+			br
+			h3 Login Admin
+			h5.light.grey-text.text-lighten-3 Silahkan masukkan username dan password
+			.card.grey.lighten-3: .card-content
+				form#login
+					.row
+						.col.m6
+							.input-field
+								input.validate#username(type='text')
+								label(for='username') Username
+						.col.m6
+							.input-field
+								input.validate#password(type='password')
+								label(for='password') Password
+					.row
+						.input.field.center
+							input.btn(type='submit' value='Login')
 
 template(name='contohElemen')
 	each val in elemensName
@@ -298,7 +302,6 @@ template(name='ind'): .container
 		)
 	if formMode
 		.right.orange.btn#close Tutup
-	+grafik
 	br
 	br
 	h5 Data Tabel

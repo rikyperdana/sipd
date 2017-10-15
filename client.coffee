@@ -34,10 +34,12 @@ if Meteor.isClient
 		$('.collapsible').collapsible()
 	
 	Template.menu.helpers
+		routeIn: (arr) -> _.find arr, (i) -> i is currentRoute()
 		elemens: -> elemens
 		kabs: -> kabs
 		fasilitas: -> _.keys(headings)
 		inds: -> inds
+		indsname: -> indsname
 
 	Template.body.events
 		'click #switch': (event) ->
@@ -150,7 +152,7 @@ if Meteor.isClient
 			Session.set 'selectYear', event.target.value
 
 	Template.login.onRendered ->
-		$('.parallax').parallax height: '150px'
+		$('.slider').slider()
 
 	Template.login.events
 		'submit #login': (event) ->
@@ -161,7 +163,7 @@ if Meteor.isClient
 				if err
 					Materialize.toast err.reason, 4000
 				else
-					Router.go '/' + username
+					Router.go '/'
 
 	Template.contohElemen.helpers
 		elemensName: -> elemens
