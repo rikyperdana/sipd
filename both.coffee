@@ -10,7 +10,9 @@ Router.route '/riau', action: -> this.render 'wil'
 makeInd = (name) ->
 	Router.route '/' + name,
 		action: -> this.render 'ind'
-		waitOn: -> Meteor.subscribe 'coll', 'ind', {}, {}
+		waitOn: -> if Meteor.isClient
+			selector = grup: Router.current().route.getName()
+			Meteor.subscribe 'coll', 'ind', selector, {}
 makeInd i.name for i in inds
 
 Router.route '/jalan',
@@ -105,8 +107,10 @@ coll.jalan.allow
 
 coll.ind = new Meteor.Collection 'ind'
 objek =
-	grup: type: String
-	sasaran: type: String, optional: true
+	grup: type: String, optional: true
+	aspek: type: String, optional: true
+	fokus: type: String, optional: true
+	bidang: type: String, optional: true
 	indikator: type: String, optional: true
 	sub: type: String, optional: true
 for i in years 2013, 2019

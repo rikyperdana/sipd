@@ -173,12 +173,14 @@ if Meteor.isClient
 			barArray = []
 			find = _.find inds, (i) -> i.name is currentRoute()
 			if find
-				selector = grup: currentRoute()
-				for i in coll.ind.find(selector).fetch()
-					arr = [i.sasaran]
-					for j in [2013..2016]
-						arr.push parseInt i['y'+j].rel
-					barArray.push arr
+				rowGraph = Session.get 'rowGraph'
+				tars = ['Target']
+				rels = ['Realisasi']
+				for i in [2013..2019]
+					tars.push parseInt rowGraph['y'+i].tar
+					rels.push parseInt rowGraph['y'+i].rel
+				barArray.push tars
+				barArray.push rels
 			else
 				for i in coll.elemens.find().fetch()
 					arr = [i.elemen]
@@ -532,14 +534,26 @@ if Meteor.isClient
 		years: -> [2013..2019]
 
 	Template.ind.events
+		'click #rowGraph': ->
+			Session.set 'rowGraph', this
+		'click #empty': (event) ->
+			param = event.target.attributes.param.nodeValue
+			dialog =
+				message: 'Anda yakin hapus data?'
+				title: 'Konfirmasi Hapus'
+			new Confirmation dialog, (ok) ->
+				if ok then Meteor.call 'empty', 'ind', grup: currentRoute()
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
 				step: (result) ->
 					data = result.data[0]
 					selector =
-						sasaran: data.sasaran
+						aspek: data.aspek
+						fokus: data.fokus
+						bidang: data.bidang
 						indikator: data.indikator
+						sub: data.sub
 					modifier = {}
 					for i in [2013..2019]
 						modifier['y'+i] = tar: data['tar'+i], rel: data['rel'+i]

@@ -291,64 +291,134 @@ template(name='jalan')
 					input.file-path.wrapper(type='text')
 		.btn#empty(param='jalan') Kosongkan Tabel
 
-template(name='ind'): .container
-	h5= title
-	.right.btn#switch(param='add') Tambah
-	if switch 'add'
-		+quickForm(
-			collection= coll.ind
-			type = 'insert'
-			id = 'insertind'
-		)
-	if formMode
-		.right.orange.btn#close Tutup
-	br
-	br
-	h5 Data Tabel
-
-	table.bordered
+template(name='ind')
+	.container
+		h5= title
+		.right.btn#switch(param='add') Tambah
+		if switch 'add'
+			+quickForm(
+				collection= coll.ind
+				type = 'insert'
+				id = 'insertind'
+			)
+		if formMode
+			.right.orange.btn#close Tutup
+		if switch 'rowGraph'
+			+grafik
+		br
+		br
+	#nocontainer: table.bordered.scroll
 		thead
 			tr
-				each val in list
-					td: div
-				each val in years
-					th.center.grey.lighten-2(colspan='2')= val
-		thead
-			tr
-				each val in list
-					th= startCase(val)
-				each val in years
-					th Targ
-					th Real
+				td
+					tr
+						each val in list
+							th= startCase(val)
+				td
+					tr
+						each val in years
+							th.center.grey.lighten-2(colspan='2')= val
+					tr
+						each val in years
+							th Targ
+							th Real
 		tbody
 			each datas
-				tr
-					if fokus
-						td= fokus
-					if aspek
-						td= aspek
-					if bidang
-						td= bidang
-					if sasaran
-						td= sasaran
-					if indikator
-						td= indikator
-					if sub
-						td= sub
-					td= y2013.rel
-					td.grey.lighten-3= y2013.rel
-					td= y2014.tar
-					td.grey.lighten-3= y2014.rel
-					td= y2015.tar
-					td.grey.lighten-3= y2015.rel
-					td= y2016.tar
-					td.grey.lighten-3= y2016.rel
-					td= y2017.tar
-					td.grey.lighten-3 -
-					td= y2018.tar
-					td.grey.lighten-3 -
-					td= y2019.tar
-					td.grey.lighten-3 -
+				tr#rowGraph
+					td
+						tr
+							if aspek
+								td= aspek
+							else
+								td n/a
+							if fokus
+								td= fokus
+							else
+								td n/a
+							if bidang
+								td= bidang
+							else
+								td n/a
+							if indikator
+								td= indikator
+							else
+								td n/a
+							if sub
+								td= sub
+							else
+								td n/a
+					td
+						tr
+							td.cyan.lighten-4
+								if y2013.tar
+									span= y2013.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2013.rel
+									span= y2013.rel
+								else
+									span n/a
+							td.cyan.lighten-4
+								if y2014.tar
+									span= y2014.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2014.rel
+									span= y2014.rel
+								else
+									span n/a
+							td.cyan.lighten-4
+								if y2015.tar
+									span= y2015.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2015.rel
+									span= y2015.rel
+								else
+									span n/a
+							td.cyan.lighten-4
+								if y2016.tar
+									span= y2016.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2016.rel
+									span= y2016.rel
+								else
+									span n/a
+							td.cyan.lighten-4
+								if y2017.tar
+									span= y2017.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2017.rel
+									span= y2017.rel
+								else
+									span n/a
+							td.cyan.lighten-4
+								if y2018.tar
+									span= y2018.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2018.rel
+									span= y2018.rel
+								else
+									span n/a
+							td.cyan.lighten-4
+								if y2019.tar
+									span= y2019.tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if y2019.rel
+									span= y2019.rel
+								else
+									span n/a
 
 	.file-field.input-field
 		.btn.left
