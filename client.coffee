@@ -93,22 +93,13 @@ if Meteor.isClient
 	Template.grafik.helpers
 		grafik: ->
 			barArray = []
-			find = _.find inds, (i) -> i.name is currentRoute()
-			if find
-				rowGraph = Session.get 'rowGraph'
-				tars = ['Target']
-				rels = ['Realisasi']
-				for i in [2013..2019]
-					tars.push parseInt rowGraph['y'+i].tar
-					rels.push parseInt rowGraph['y'+i].rel
-				barArray.push tars
-				barArray.push rels
-			else
-				for i in coll.elemens.find().fetch()
-					arr = [i.elemen]
-					for j in [2015..2019]
-						arr.push i['y'+j].rel
-					barArray.push arr
+			rowGraph = Session.get 'rowGraph'
+			tars = ['Target']
+			rels = ['Realisasi']
+			for i in [2013..2019]
+				tars.push parseInt rowGraph['y'+i].tar
+				rels.push parseInt rowGraph['y'+i].rel
+			barArray.push tars, rels
 			data: type: 'bar', columns: barArray
 
 	Template.fasilitas.onRendered ->

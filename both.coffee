@@ -6,22 +6,17 @@ Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/login']
 
-makeInd = (name) ->
+makeInd = (name, sel) ->
 	Router.route '/' + name,
 		action: -> this.render 'ind'
 		waitOn: -> if Meteor.isClient
-			cur = Router.current().route.getName()
-			Meteor.subscribe 'coll', 'ind', {grup: cur}, {}
-makeInd i.name for i in inds
+			Meteor.subscribe 'coll', 'ind', {grup: sel}, {}
+makeInd i.name, i.name for i in inds
+makeInd i, 'targ' for i in kabs
 
 Router.route '/jalan',
 	action: -> this.render 'jalan'
 	waitOn: -> Meteor.subscribe 'coll', 'jalan', {}, {}
-
-makeWil = (route) ->
-	Router.route '/' + route,
-		action: -> this.render 'ind'
-makeWil i for i in kabs
 
 makeFasil = (name) ->
 	Router.route '/' + name,

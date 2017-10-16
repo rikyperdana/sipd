@@ -101,9 +101,6 @@
 	name: 'isd'
 	full: 'Indikator Sasaran Daerah'
 ,
-	name: 'targ'
-	full: 'Indikator Makro Kab / Kota'
-,
 	name: 'makro'
 	full: 'Indikator Makro Provinsi'
 ]

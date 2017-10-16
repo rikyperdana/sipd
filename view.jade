@@ -201,7 +201,6 @@ template(name='jalan')
 template(name='ind')
 	.container
 		h5= title
-		.right.btn#switch(param='add') Tambah
 		if switch 'add'
 			+quickForm(
 				collection= coll.ind
@@ -214,113 +213,111 @@ template(name='ind')
 			+grafik
 		br
 		br
-	#nocontainer: table.bordered.scroll
-		thead
-			tr
-				td
+	#nocontainer: table.bordered.striped
+		thead: tr
+			each val in list
+				th.blue-grey.lighten-3= startCase(val)
+			each val in years
+				td.grey.lighten-2
+					tr: th.center(colspan='2')= val
 					tr
-						each val in list
-							th= startCase(val)
-				td
-					tr
-						each val in years
-							th.center.grey.lighten-2(colspan='2')= val
-					tr
-						each val in years
-							th Targ
-							th Real
+						th Targ
+						th Real
 		tbody
 			each datas
 				tr#rowGraph
-					td
-						tr
-							if routeIs 'isd'
-								td= fokus
-								td= indikator
-							if routeIs 'ikd'
-								td= aspek
-								td= fokus
-								td= bidang
-								td= indikator
-								td= sub
-							if routeIn kabs
-								td= indikator
-								td= sub
-							if routeIs 'makro'
-								td= indikator
-								td= sub
-					td
-						tr
-							td.cyan.lighten-4
-								if y2013.tar
-									span= y2013.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2013.rel
-									span= y2013.rel
-								else
-									span n/a
-							td.cyan.lighten-4
-								if y2014.tar
-									span= y2014.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2014.rel
-									span= y2014.rel
-								else
-									span n/a
-							td.cyan.lighten-4
-								if y2015.tar
-									span= y2015.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2015.rel
-									span= y2015.rel
-								else
-									span n/a
-							td.cyan.lighten-4
-								if y2016.tar
-									span= y2016.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2016.rel
-									span= y2016.rel
-								else
-									span n/a
-							td.cyan.lighten-4
-								if y2017.tar
-									span= y2017.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2017.rel
-									span= y2017.rel
-								else
-									span n/a
-							td.cyan.lighten-4
-								if y2018.tar
-									span= y2018.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2018.rel
-									span= y2018.rel
-								else
-									span n/a
-							td.cyan.lighten-4
-								if y2019.tar
-									span= y2019.tar
-								else
-									span n/a
-							td.orange.lighten-4
-								if y2019.rel
-									span= y2019.rel
-								else
-									span n/a
+					if routeIs 'isd'
+						td: tr: td= fokus
+						td: tr: td= indikator
+					if routeIs 'ikd'
+						td: tr: td= aspek
+						td: tr: td= fokus
+						td: tr: td= bidang
+						td: tr: td= indikator
+						td: tr: td= sub
+					if routeIn kabs
+						td: tr: td= indikator
+						td: tr: td= sub
+					if routeIs 'makro'
+						td: tr: td= indikator
+						td: tr: td= sub
+					td: tr
+						td.cyan.lighten-4
+							if y2013.tar
+								span= y2013.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2013.rel
+								span= y2013.rel
+							else
+								span n/a
+					td: tr
+						td.cyan.lighten-4
+							if y2014.tar
+								span= y2014.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2014.rel
+								span= y2014.rel
+							else
+								span n/a
+					td: tr
+						td.cyan.lighten-4
+							if y2015.tar
+								span= y2015.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2015.rel
+								span= y2015.rel
+							else
+								span n/a
+					td: tr
+						td.cyan.lighten-4
+							if y2016.tar
+								span= y2016.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2016.rel
+								span= y2016.rel
+							else
+								span n/a
+					td: tr
+						td.cyan.lighten-4
+							if y2017.tar
+								span= y2017.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2017.rel
+								span= y2017.rel
+							else
+								span n/a
+					td: tr
+						td.cyan.lighten-4
+							if y2018.tar
+								span= y2018.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2018.rel
+								span= y2018.rel
+							else
+								span n/a
+					td: tr
+						td.cyan.lighten-4
+							if y2019.tar
+								span= y2019.tar
+							else
+								span n/a
+						td.orange.lighten-4
+							if y2019.rel
+								span= y2019.rel
+							else
+								span n/a
 
 	.container: .file-field.input-field
 		.btn.left
