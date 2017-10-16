@@ -327,26 +327,21 @@ template(name='ind')
 				tr#rowGraph
 					td
 						tr
-							if aspek
-								td= aspek
-							else
-								td n/a
-							if fokus
+							if routeIs 'isd'
 								td= fokus
-							else
-								td n/a
-							if bidang
-								td= bidang
-							else
-								td n/a
-							if indikator
 								td= indikator
-							else
-								td n/a
-							if sub
+							if routeIs 'ikd'
+								td= aspek
+								td= fokus
+								td= bidang
+								td= indikator
 								td= sub
-							else
-								td n/a
+							if routeIs 'targ'
+								td= indikator
+								td= sub
+							if routeIs 'makro'
+								td= indikator
+								td= sub
 					td
 						tr
 							td.cyan.lighten-4
