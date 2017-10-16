@@ -13,6 +13,7 @@ if Meteor.isClient
 	Template.registerHelper 'coll', -> coll
 	Template.registerHelper 'currentRoute', -> currentRoute()
 	Template.registerHelper 'routeIs', (name) -> currentRoute() is name
+	Template.registerHelper 'routeIn', (arr) -> _.find arr, (i) -> i is currentRoute()
 	Template.registerHelper 'switch', (param) -> Session.get param
 	Template.registerHelper 'editData', -> Session.get 'editData'
 	Template.registerHelper 'stringify', (obj) -> JSON.stringify obj
@@ -34,7 +35,6 @@ if Meteor.isClient
 		$('.collapsible').collapsible()
 	
 	Template.menu.helpers
-		routeIn: (arr) -> _.find arr, (i) -> i is currentRoute()
 		elemens: -> elemens
 		kabs: -> kabs
 		fasilitas: -> _.keys(headings)
@@ -76,81 +76,6 @@ if Meteor.isClient
 	Template.home.helpers
 		blocks: -> blocks
 
-	Template.wil.helpers
-		datas: ->
-			if wilName().kel
-				selector = kab: wilName().kab, kec: wilName().kec, kel: wilName().kel
-			else if wilName().kec
-				selector = kab: wilName().kab, kec: wilName().kec, kel: '*'
-			else if wilName().kab is 'riau'
-				selector = kab: '*'
-			else if wilName().kab
-				selector = kab: wilName().kab, kec: '*', kel: '*'
-			if selectElemen()
-				selector.elemen = selectElemen()
-			if searchTerm()
-				selector.indikator = $regex: '.*'+searchTerm()+'.*', $options: '-i'
-			options = {}
-			sub = Meteor.subscribe 'coll', 'elemens', selector, options
-			if sub.ready()
-				coll.elemens.find().fetch()
-
-		round: (number) -> Math.round number
-
-	Template.wil.events
-		'click #empty': (event) ->
-			param = event.target.attributes.param.nodeValue
-			dialog =
-				message: 'Yakin kosongkan '+param+'?'
-				title: 'Kosongkan ' + _.startCase param
-				okText: 'Ya'
-				success: true
-				focus: 'cancel'
-			new Confirmation dialog, (ok) ->
-				selector = {}
-				if param is 'elemens'
-					kab = if wilName().kab then wilName().kab else '*'
-					kec = if wilName().kec then wilName().kec else '*'
-					kel = if wilName().kel then wilName().kel else '*'
-					selector = kab: kab, kec: kec, kel: kel, elemen: selectElemen()
-				if ok then Meteor.call 'empty', param, selector
-		'change :file': (event, template) ->
-			Papa.parse event.target.files[0],
-				header: true
-				complete: (results) ->
-					datas = results.data
-					kab = -> if wilName().kab then wilName().kab else '*'
-					kec = -> if wilName().kec then wilName().kec else '*'
-					kel = -> if wilName().kel then wilName().kel else '*'
-					for i in datas
-						if i.indikator
-							selector =
-								kab: kab()
-								kec: kec()
-								kel: kel()
-								elemen: _.kebabCase i.elemen
-								defenisi: i.defenisi
-								indikator: i.indikator
-							modifier = {}
-							for j in [2015..2019]
-								modifier['y'+j] =
-									tar: parseInt i['tar'+j]
-									rel: parseInt i['rel'+j]
-							Meteor.call 'import', 'elemens', selector, modifier
-
-	Template.selectElemen.onRendered ->
-		$('select').material_select()
-
-	Template.selectElemen.helpers
-		elemensName: -> _.map elemens, (i) -> _.startCase i
-		years: -> _.map [2015..2019], (i) -> 'y' + i
-
-	Template.selectElemen.events
-		'change #elemen': (event) ->
-			Session.set 'selectElemen', _.kebabCase event.target.value
-		'change #year': (event) ->
-			Session.set 'selectYear', event.target.value
-
 	Template.login.onRendered ->
 		$('.slider').slider()
 
@@ -164,9 +89,6 @@ if Meteor.isClient
 					Materialize.toast err.reason, 4000
 				else
 					Router.go '/'
-
-	Template.contohElemen.helpers
-		elemensName: -> elemens
 
 	Template.grafik.helpers
 		grafik: ->
@@ -188,88 +110,6 @@ if Meteor.isClient
 						arr.push i['y'+j].rel
 					barArray.push arr
 			data: type: 'bar', columns: barArray
-
-	Template.map.onRendered ->
-		selector = elemen: selectElemen()
-		unless wilName().kab is 'riau'
-			if wilName().kab then selector.kab = wilName().kab
-			if wilName().kec then selector.kec = wilName().kec
-			if wilName().kel then selector.kel = wilName().kel
-		sub = Meteor.subscribe 'coll', 'wilStat', selector, {}
-		getColor = (prop) ->
-			find = _.find coll.wilStat.find().fetch(), (i) ->
-				kab = -> i.kab is _.kebabCase prop.KABUPATEN
-				kec = -> i.kec is _.kebabCase prop.KECAMATAN
-				kel = -> i.kel is _.kebabCase prop.DESA
-				allKab = -> i.kab is '*'
-				allKec = -> i.kec is '*'
-				allKel = -> i.kel is '*'
-				elem = -> i.elemen is selectElemen()
-				if wilName().kel
-					true if kab() and kec() and kel() and elem()
-				else if wilName().kec
-					true if kab() and kec() and elem() and allKel()
-				else if wilName().kab is 'riau'
-					true if elem() and allKab() and allKec() and allKel()
-				else if wilName().kab
-					true if kab() and elem() and allKec() and allKel()
-			if find
-				switch
-					when find[selectYear()].avgKin > 0.66 then 'green'
-					when find[selectYear()].avgKin > 0.33 then 'orange'
-					else 'red'
-			else
-				'white'
-
-		getOpac = (prop) ->
-			if wilName().kel
-				if _.kebabCase(prop.DESA) isnt wilName().kel then 0 else 0.7
-			else if wilName().kec
-				if _.kebabCase(prop.KECAMATAN) isnt wilName().kec then 0 else 0.7
-			else if wilName().kab is 'riau'
-				0.7
-			else if wilName().kab
-				if _.kebabCase(prop.KABUPATEN) isnt wilName().kab then 0 else 0.7
-		style = (feature) ->
-			color: 'black'
-			weight: 0.5
-			dashArray: '3'
-			opacity: getOpac feature.properties
-			fillColor: getColor feature.properties
-			fillOpacity: getOpac feature.properties
-
-		clickFeature = (event) ->
-			map.fitBounds event.target.getBounds()
-
-		onEachFeature = (feature, layer) ->
-			layer.on
-				click: clickFeature
-			kab = _.kebabCase feature.properties.KABUPATEN
-			kec = _.kebabCase feature.properties.KECAMATAN
-			kel = _.kebabCase feature.properties.DESA
-			content = '<b>Kab: </b>'+kab+'<br/>'
-			content += '<b>Kec: </b>'+kec+'<br/>'
-			content += '<b>Kel: </b>'+kel+'<br/>'
-			detailRoute = [kab, kec, kel].join '_'
-			content += '<b>Wil: </b><a href="'+detailRoute+'">Detail</a><br/>'
-			find = _.find coll.wilStat.find().fetch(), (i) ->
-				i.kab is kab and i.kec is kec and i.kel is kel and i.elemen is selectElemen()
-			if find
-				content += '<b>Sum: </b>'+find[selectYear()].sumKin+'<br/>'
-				content += '<b>Count: </b>'+find.indikator+'<br/>'
-				content += '<b>Average: </b>'+find[selectYear()].avgKin+'<br/>'
-			layer.bindPopup content
-
-		topo = L.tileLayer.provider 'OpenTopoMap'
-		geojson = L.geoJson.ajax 'maps/petas.geojson',
-			style: style
-			onEachFeature: onEachFeature
-
-		map = L.map 'map',
-			center: [0.5, 101.44]
-			zoom: 8
-			zoomControl: false
-			layers: [topo, geojson]
 
 	Template.fasilitas.onRendered ->
 		baseMaps =
@@ -519,17 +359,20 @@ if Meteor.isClient
 			$('#openjalan').addClass 'hide'
 
 	Template.ind.helpers
+		kabs: -> kabs
 		datas: ->
-			selector = grup: currentRoute()
-			coll.ind.find(selector).fetch()
+			find = _.find kabs, (i) -> i is currentRoute()
+			grup = if find then 'targ' else currentRoute()
+			coll.ind.find({grup: grup}).fetch()
 		title: ->
 			find = _.find inds, (i) -> i.name is currentRoute()
 			find.full
 		list: ->
+			find = _.find kabs, (i) -> i is currentRoute()
 			switch currentRoute()
 				when 'isd' then ['fokus', 'indikator']
 				when 'ikd' then ['aspek', 'fokus', 'bidang', 'indikator', 'sub']
-				when 'targ' then ['indikator', 'sub']
+				when find then ['indikator', 'sub']
 				when 'makro' then ['indikator', 'sub']
 		years: -> [2013..2019]
 
@@ -557,4 +400,7 @@ if Meteor.isClient
 					modifier = {}
 					for i in [2013..2019]
 						modifier['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
-					Meteor.call 'import', 'ind', selector, _.assign modifier, grup: currentRoute()
+					grup = ->
+						find = _.find kabs, (i) -> i is currentRoute()
+						if find then 'targ' else currentRoute()
+					Meteor.call 'import', 'ind', selector, _.assign modifier, grup: grup()

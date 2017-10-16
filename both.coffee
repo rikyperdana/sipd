@@ -5,14 +5,13 @@ Router.configure
 Router.route '/', action: -> this.render 'home'
 Router.route '/login', action: -> this.render 'login'
 Router.route '/logout', action: -> [Meteor.logout(), Router.go '/login']
-Router.route '/riau', action: -> this.render 'wil'
 
 makeInd = (name) ->
 	Router.route '/' + name,
 		action: -> this.render 'ind'
 		waitOn: -> if Meteor.isClient
-			selector = grup: Router.current().route.getName()
-			Meteor.subscribe 'coll', 'ind', selector, {}
+			cur = Router.current().route.getName()
+			Meteor.subscribe 'coll', 'ind', {grup: cur}, {}
 makeInd i.name for i in inds
 
 Router.route '/jalan',
@@ -21,8 +20,8 @@ Router.route '/jalan',
 
 makeWil = (route) ->
 	Router.route '/' + route,
-		action: -> this.render 'wil'
-makeWil i for i in [kels..., kecs..., kabs...]
+		action: -> this.render 'ind'
+makeWil i for i in kabs
 
 makeFasil = (name) ->
 	Router.route '/' + name,
@@ -34,25 +33,6 @@ makeFasil = (name) ->
 makeFasil key for key, val of headings
 
 years = (start, end) -> _.map [start..end], (i) -> 'y' + i
-
-coll.elemens = new Meteor.Collection 'elemens'
-objek =
-	kab: type: String, autoform: type: 'hidden'
-	kec: type: String, autoform: type: 'hidden'
-	kel: type: String, autoform: type: 'hidden'
-	elemen: type: String, autoform: type: 'hidden'
-	indikator: type: String, autoform: disabled: true
-	defenisi: type: String, optional: true, autoform: disabled: true
-	satuan: type: String, optional: true
-for i in years 2015, 2019
-	objek[i] = type: Object, optional: true
-	objek[i+'.tar'] = type: Number, decimal: true
-	objek[i+'.rel'] = type: Number, decimal: true
-coll.elemens.attachSchema new SimpleSchema objek
-coll.elemens.allow
-	insert: -> true
-	update: -> true
-	remove: -> true
 
 coll.fasilitas = new Meteor.Collection 'fasilitas'
 obj =
@@ -68,23 +48,6 @@ for i in [1..5]
 	obj['data'+i] = type: String, optional: true
 coll.fasilitas.attachSchema new SimpleSchema obj
 coll.fasilitas.allow
-	insert: -> true
-	update: -> true
-	remove: -> true
-
-coll.wilStat = new Meteor.Collection 'wilStat'
-objek =
-	kab: type: String
-	kec: type: String
-	kel: type: String
-	elemen: type: String
-	indikator: type: Number
-for i in years 2015, 2019
-	objek[i] = type: Object, optional: true
-	objek[i+'.sumKin'] = type: Number, decimal: true
-	objek[i+'.avgKin'] = type: Number, decimal: true
-	coll.wilStat.attachSchema new SimpleSchema objek
-coll.wilStat.allow
 	insert: -> true
 	update: -> true
 	remove: -> true

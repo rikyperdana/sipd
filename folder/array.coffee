@@ -54,16 +54,17 @@
 ]
 
 @headings =
-	sekolah: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa', 'Jumlah Guru', 'Jumlah Kelas']
+	pendidikan: ['Nama', 'Alamat', 'Bentuk', 'Kondisi', 'Jumlah Siswa', 'Jumlah Guru', 'Jumlah Kelas']
 	pariwisata: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kunjungan']
 	kesehatan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Pasien', 'Jumlah Dokter', 'Jumlah Kapasitas']
 	industri: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Produksi']
-	komunikasi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage']
+	kominfo: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Luas Coverage']
 	sosial: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Penghuni']
 	perhubungan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Trafik']
-	olahraga: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-	kesenian: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-	religi: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+	pora: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+	kebudayaan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+	agama: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+	'pekerjaan-umum': ['Nama', 'Kondisi', 'Alamat', 'Bentuk']
 
 @selects =
 	kondisi: [
@@ -1785,21 +1786,15 @@ makeWil i for i in wilayahs
 	icon: 'poll'
 	list: _.map inds, (i) -> i.full
 ,
-	name: 'Urusan'
-	link: 'riau'
-	color: 'orange'
-	icon: 'view_list'
-	list: elemens[0..3]
-,
 	name: 'Kabupaten'
 	link: 'kota-pekanbaru'
 	color: 'green'
 	icon: 'map'
 	list: kabs[0..3]
 ,
-	name: 'Fasilitas'
+	name: 'Urusan'
 	link: 'pariwisata'
 	color: 'pink'
-	icon: 'place'
+	icon: 'view_list'
 	list: _.keys(headings)[0..3]
 ]
