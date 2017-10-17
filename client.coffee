@@ -353,8 +353,9 @@ if Meteor.isClient
 		kabs: -> kabs
 		datas: ->
 			find = _.find kabs, (i) -> i is currentRoute()
-			grup = if find then 'targ' else currentRoute()
-			coll.ind.find({grup: grup}).fetch()
+			selector = grup: if find then 'targ' else currentRoute()
+			if find then selector.sub = _.startCase Session.get 'selKab'
+			coll.ind.find(selector).fetch()
 		title: ->
 			find = _.find inds, (i) -> i.name is currentRoute()
 			find.full
@@ -376,7 +377,9 @@ if Meteor.isClient
 				message: 'Anda yakin hapus data?'
 				title: 'Konfirmasi Hapus'
 			new Confirmation dialog, (ok) ->
-				if ok then Meteor.call 'empty', 'ind', grup: currentRoute()
+				find = _.find kabs, (i) -> i is currentRoute()
+				grup = if find then 'targ' else currentRoute()
+				if ok then Meteor.call 'empty', 'ind', grup: grup
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true

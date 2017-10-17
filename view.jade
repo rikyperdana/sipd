@@ -4,7 +4,8 @@ template(name='layout')
 
 template(name='menu')
 	.navbar-fixed: nav.green: .nav-wrapper
-		ul.left: li: a(href='/'): i.material-icons home
+		if currentUser
+			ul.left: li: a(href='/'): i.material-icons home
 		a.brand-logo.center.hide-on-small-only Sistem Informasi Database Pembangunan Daerah
 		a.brand-logo.center.hide-on-med-and-up Si Idaman Dara
 		ul.right
@@ -34,15 +35,16 @@ template(name='home')
 	.section.white.z-depth-2: .row
 		.slider: ul.slides
 			li
-				img(src='https://lorempixel.com/580/250/nature/1')
+				img(src='http://3.bp.blogspot.com/-fQ0LMSSY3kM/TXURMQuq02I/AAAAAAAAAEc/6p16-2cjY7o/s1600/a.jpg')
 				.caption.center-align
-					h3 Slide pertama
-					h5.light.grey-text.text-lighten-3 Ini adalah contoh paragraf untuk keterangan pada slide 1
+					h3 Selamat Datang
+					h5.light.grey-text.text-lighten-3 Pada halaman ini Anda dapat membuka menu Indikator, Kabupaten, dan Urusan
 			li
-				img(src='https://lorempixel.com/580/250/nature/2')
+				img(src='https://4.bp.blogspot.com/-BwZm6h0Kpss/VzBPAA-kJVI/AAAAAAAACm0/aBFNVQNY7jUR58iyQYhG6aVVWNamVXCfACLcB/w1200-h630-p-k-no-nu/motif%2Bornament%2Bmelayu.jpg')
 				.caption.center-align
-					h3 Slide kedua
-					h5.light.grey-text.text-lighten-3 Ini adalah contoh paragraf untuk keterangan pada slide 2
+					h3 Panduan Guna
+					h5.light.grey-text.text-lighten-3 Panduan penggunaan bagi umum dapat dibaca pada tautan berikut
+					h5.light.grey-text.text-lighten-3 Panduan penggunaan bagi admin dapat dibaca pada tautan berikut
 		each val in blocks
 			.col.m4: .card.z-depth-1.lighten-1(class='{{val.color}}'): .card-content
 				.center: a(href= val.link): i.large.material-icons.white-text= val.icon
@@ -51,7 +53,7 @@ template(name='home')
 			
 
 template(name='login')
-	.fullscreen.slider#bground: ul.slides: li
+	.fullscreen.slider: ul.slides: li
 		img(src='/imgs/login.png')
 		.caption.center-align
 			br
@@ -213,7 +215,7 @@ template(name='ind')
 			+grafik
 		br
 		br
-	#nocontainer: table.bordered.striped
+	#nocontainer: table.bordered.striped.scroll
 		thead: tr
 			each val in list
 				th.blue-grey.lighten-3= startCase(val)

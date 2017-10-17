@@ -8,7 +8,12 @@ Router.route '/logout', action: -> [Meteor.logout(), Router.go '/login']
 
 makeInd = (name, sel) ->
 	Router.route '/' + name,
-		action: -> this.render 'ind'
+		action: ->
+			this.render 'ind'
+			if Meteor.isClient
+				cur = Router.current().route.getName()
+				find = _.find kabs, (i) -> i is cur
+				if find then Session.set 'selKab', cur
 		waitOn: -> if Meteor.isClient
 			Meteor.subscribe 'coll', 'ind', {grup: sel}, {}
 makeInd i.name, i.name for i in inds
