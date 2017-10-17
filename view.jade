@@ -29,6 +29,9 @@ template(name='menu')
 				if routeIn fasilitas
 					each val in fasilitas
 						li: a(href= val)= startCase(val)
+					li: a(href='jalan') Pekerjaan Umum
+				if routeIs 'jalan'
+					li: a(href='/') Kembali
 
 template(name='home')
 	.parallax-container: .parallax: img(src='/imgs/front.jpg')

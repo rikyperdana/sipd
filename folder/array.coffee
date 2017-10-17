@@ -64,7 +64,6 @@
 	pora: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
 	kebudayaan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
 	agama: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
-	'pekerjaan-umum': ['Nama', 'Kondisi', 'Alamat', 'Bentuk']
 
 @selects =
 	kondisi: [

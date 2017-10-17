@@ -94,13 +94,22 @@ if Meteor.isClient
 		grafik: ->
 			barArray = []
 			rowGraph = Session.get 'rowGraph'
+			xAxis = ['x']
 			tars = ['Target']
 			rels = ['Realisasi']
 			for i in [2013..2019]
+				xAxis.push i.toString()+'-01-01'
 				tars.push parseInt rowGraph['y'+i].tar
 				rels.push parseInt rowGraph['y'+i].rel
-			barArray.push tars, rels
-			data: type: 'bar', columns: barArray
+			barArray.push xAxis, tars, rels
+			doc =
+				data:
+					x: 'x'
+					type: 'bar'
+					columns: barArray
+				axis: x:
+					type: 'timeseries'
+					tick: format: '%Y'
 
 	Template.fasilitas.onRendered ->
 		baseMaps =
@@ -287,7 +296,8 @@ if Meteor.isClient
 						dashArray: ''
 					event.target.bringToFront()
 				mouseout: (event) ->
-					jalan.resetStyle event.target
+					jalNas.resetStyle event.target
+					jalProv.resetStyle event.target
 				click: (event) ->
 					map.fitBounds event.target.getBounds()
 			props = ['STATUS', 'NO', 'NO_RUAS', 'NAMA_RUAS', 'PJG_SURVEY', 'KECAMATAN', 'KELAS_JALA', 'Length']
@@ -296,21 +306,21 @@ if Meteor.isClient
 				content += '<b>'+i+': </b>'+feature.properties[i]+'<br/>'
 			layer.bindPopup content
 
-		layers = _.map ['prov', 'nas'], (i) ->
-			L.geoJson.ajax 'maps/jalan_'+i+'.geojson', style: style, onEachFeature: onEachFeature
+		jalNas = L.geoJson.ajax 'maps/jalan_nas.geojson', style: style, onEachFeature: onEachFeature
+		jalProv = L.geoJson.ajax 'maps/jalan_prov.geojson', style: style, onEachFeature: onEachFeature
 
 		baseMaps =
 			Citra: L.tileLayer.provider 'Esri.WorldImagery'
 			WMS: L.tileLayer.wms 'https://demo.boundlessgeo.com/geoserver/ows?', layers: 'ne:ne'
 		overlays =
-			'Jalan Provinsi': layers[0]
-			'Jalan Nasional': layers[1]
+			'Jalan Provinsi': jalProv
+			'Jalan Nasional': jalNas
 
 		map = L.map 'map',
 			center: [0.5, 101.44]
 			zoom: 8
 			zoomControl: false
-			layers: [baseMaps.Citra, layers...]
+			layers: [baseMaps.Citra, jalNas, jalProv]
 
 		layersControl = L.control.layers baseMaps, overlays, collapsed: false
 		layersControl.addTo map
