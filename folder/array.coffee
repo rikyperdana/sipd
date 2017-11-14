@@ -1,3 +1,5 @@
+@_ = lodash
+
 @elemens = [
 	'kelautan-perikanan'
 	'esdm'
@@ -64,6 +66,9 @@
 	pora: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
 	kebudayaan: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
 	agama: ['Nama', 'Kondisi', 'Alamat', 'Bentuk', 'Jumlah Kegiatan']
+
+@tems =
+	pertanian: ['padi_sawah', 'jagung', 'kacang_kedelai', 'kacang_tanah', 'kacang_hijau', 'ubi_jalar', 'ubi_kayu']
 
 @selects =
 	kondisi: [

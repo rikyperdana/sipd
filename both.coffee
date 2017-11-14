@@ -11,6 +11,7 @@ makeInd = (name, sel) ->
 		action: ->
 			this.render 'ind'
 			if Meteor.isClient
+				Session.set 'rowGraph', null
 				cur = Router.current().route.getName()
 				find = _.find kabs, (i) -> i is cur
 				if find then Session.set 'selKab', cur
@@ -18,6 +19,13 @@ makeInd = (name, sel) ->
 			Meteor.subscribe 'coll', 'ind', {grup: sel}, {}
 makeInd i.name, i.name for i in inds
 makeInd i, 'targ' for i in kabs
+
+makeTem = (grup, item) ->
+	Router.route '/' + grup + '/' + item,
+		action: ->
+			this.render 'tem'
+		waitOn: -> Meteor.subscribe 'coll', 'tem', {}, {}
+makeTem key, i for i in val for key, val of tems
 
 Router.route '/jalan',
 	action: -> this.render 'jalan'
@@ -76,12 +84,25 @@ objek =
 	bidang: type: String, optional: true
 	indikator: type: String, optional: true
 	sub: type: String, optional: true
-for i in years 2013, 2019
+for i in years 2010, 2019
 	objek[i] = type: Object, optional: true
 	objek[i+'.tar'] = type: String, optional: true
 	objek[i+'.rel'] = type: String, optional: true
 	coll.ind.attachSchema new SimpleSchema objek
 coll.ind.allow
+	insert: -> true
+	update: -> true
+	remove: -> true
+
+coll.tem = new Meteor.Collection 'tem'
+objek =
+	kab: type: String
+	grup: type: String
+	item: type: String
+for i in [2014..2019]
+	objek['y' + i] = type: Number, decimal: true
+coll.tem.attachSchema new SimpleSchema objek
+coll.tem.allow
 	insert: -> true
 	update: -> true
 	remove: -> true

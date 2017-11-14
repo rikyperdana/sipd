@@ -9,6 +9,9 @@ if Meteor.isClient
 	selectElemen = -> Session.get 'selectElemen'
 	selectYear = -> Session.get 'selectYear'
 	searchTerm = -> Session.get 'searchTerm'
+	range = -> switch currentRoute()
+		when 'makro' then [2010..2016]
+		else [2014..2019]
 
 	Template.registerHelper 'coll', -> coll
 	Template.registerHelper 'currentRoute', -> currentRoute()
@@ -97,7 +100,7 @@ if Meteor.isClient
 			xAxis = ['x']
 			tars = ['Target']
 			rels = ['Realisasi']
-			for i in [2013..2019]
+			for i in range()
 				xAxis.push i.toString()+'-01-01'
 				tars.push parseInt rowGraph['y'+i].tar
 				rels.push parseInt rowGraph['y'+i].rel
@@ -376,7 +379,7 @@ if Meteor.isClient
 				when 'ikd' then ['aspek', 'fokus', 'bidang', 'indikator', 'sub']
 				when find then ['indikator', 'sub']
 				when 'makro' then ['indikator', 'sub']
-		years: -> [2013..2019]
+		years: -> range()
 
 	Template.ind.events
 		'click #rowGraph': ->
@@ -402,9 +405,51 @@ if Meteor.isClient
 						indikator: data.indikator
 						sub: data.sub
 					modifier = {}
-					for i in [2013..2019]
+					for i in range()
 						modifier['y'+i] = tar: data['tar'+i], rel: data['rel'+i]
 					grup = ->
 						find = _.find kabs, (i) -> i is currentRoute()
 						if find then 'targ' else currentRoute()
 					Meteor.call 'import', 'ind', selector, _.assign modifier, grup: grup()
+
+	Template.tem.helpers
+		datas: ->
+			splited = currentRoute().split('.')
+			find = (name) -> _.find coll.tem.find().fetch(), (i) ->
+				a = -> i.kab is name
+				b = -> i.grup is splited[0]
+				c = -> i.item is splited[1]
+				a() and b() and c()
+			prov = find 'riau'; nas = find 'nasional'
+			kabs = _.filter coll.tem.find().fetch(), (i) ->
+				a = -> i.grup is splited[0]
+				b = -> i.item is splited[1]
+				c = -> i.kab isnt 'riau'
+				d = -> i.kab isnt 'nasional'
+				a() and b() and c() and d()
+			_.map kabs, (i) ->
+				for j in [2014..2019]
+					if nas['y'+j] > i['y'+j] < prov['y'+j]
+						i['col'+j] = 'red'
+					else if nas['y'+j] > i['y'+j] > prov['y'+j]
+						i['col'+j] = 'orange'
+					else if nas['y'+j] < i['y'+j] < prov['y'+j]
+						i['col'+j] = 'green'
+					else if nas['y'+j] < i['y'+j] > prov['y'+j]
+						i['col'+j] = 'blue'
+				i
+
+	Template.tem.events
+		'change :file': (event, template) ->
+			Papa.parse event.target.files[0],
+				header: true
+				step: (result) ->
+					data = result.data[0]
+					selector =
+						kab: data.kab
+						grup: data.grup
+						item: data.item
+					modifier = {}
+					for i in [2014..2019]
+						modifier['y' + i] = parseFloat data['y' + i]
+					Meteor.call 'import', 'tem', selector, modifier

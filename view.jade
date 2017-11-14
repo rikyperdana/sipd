@@ -246,83 +246,91 @@ template(name='ind')
 					if routeIs 'makro'
 						td: tr: td= indikator
 						td: tr: td= sub
-					td: tr
-						td.cyan.lighten-4
-							if y2013.tar
-								span= y2013.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2013.rel
-								span= y2013.rel
-							else
-								span n/a
-					td: tr
-						td.cyan.lighten-4
-							if y2014.tar
-								span= y2014.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2014.rel
-								span= y2014.rel
-							else
-								span n/a
-					td: tr
-						td.cyan.lighten-4
-							if y2015.tar
-								span= y2015.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2015.rel
-								span= y2015.rel
-							else
-								span n/a
-					td: tr
-						td.cyan.lighten-4
-							if y2016.tar
-								span= y2016.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2016.rel
-								span= y2016.rel
-							else
-								span n/a
-					td: tr
-						td.cyan.lighten-4
-							if y2017.tar
-								span= y2017.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2017.rel
-								span= y2017.rel
-							else
-								span n/a
-					td: tr
-						td.cyan.lighten-4
-							if y2018.tar
-								span= y2018.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2018.rel
-								span= y2018.rel
-							else
-								span n/a
-					td: tr
-						td.cyan.lighten-4
-							if y2019.tar
-								span= y2019.tar
-							else
-								span n/a
-						td.orange.lighten-4
-							if y2019.rel
-								span= y2019.rel
-							else
-								span n/a
+
+					with y2013
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
+					with y2014
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
+					with y2015
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
+					with y2016
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
+					with y2017
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
+					with y2018
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
+					with y2019
+						td: tr
+							td.cyan.lighten-4
+								if tar
+									span= tar
+								else
+									span n/a
+							td.orange.lighten-4
+								if rel
+									span= rel
+								else
+									span n/a
 
 	.container: .file-field.input-field
 		.btn.left
@@ -331,3 +339,34 @@ template(name='ind')
 		.file-path-wrapper
 			input.file-path.wrapper(type='text')
 	.container: .btn#empty(param='ind') Kosongkan
+
+template(name='tem'): .container
+	h5 Tematik
+	table
+			tr
+				td Kab
+				td Grup
+				td Item
+				td 2014
+				td 2015
+				td 2016
+				td 2017
+				td 2018
+				td 2019
+			each datas
+				tr
+					td= kab
+					td= grup
+					td= item
+					td(class= col2014)= y2014
+					td(class= col2015)= y2015
+					td(class= col2016)= y2016
+					td(class= col2017)= y2017
+					td(class= col2018)= y2018
+					td(class= col2019)= y2019
+	.file-field.input-field
+		.btn.left
+			span Impor Data
+			input(type='file' name='uploadCSV')
+		.file-path-wrapper
+			input.file-path.wrapper(type='text')
