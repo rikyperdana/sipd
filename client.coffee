@@ -412,6 +412,27 @@ if Meteor.isClient
 						if find then 'targ' else currentRoute()
 					Meteor.call 'import', 'ind', selector, _.assign modifier, grup: grup()
 
+	Template.tem.onRendered ->
+		state = (wil) ->
+			mapColor = Session.get 'mapColor'
+			find = _.find mapColor, (i) -> i.kab is wil
+			year = 2014
+			if find
+				if find['col' + year]
+					find['col' + year]
+				else
+					'white'
+		style = (feature) ->
+			fillColor: state feature.properties.wil
+			fillOpacity: 1
+			opacity: 0
+		topo = L.tileLayer.provider 'OpenTopoMap'
+		riau = L.geoJson.ajax '/maps/riau.geojson', style: style
+		map = L.map 'map',
+			center: [0.5, 102]
+			zoom: 8
+			layers: [topo, riau]
+
 	Template.tem.helpers
 		datas: ->
 			splited = currentRoute().split('.')
@@ -427,7 +448,7 @@ if Meteor.isClient
 				c = -> i.kab isnt 'riau'
 				d = -> i.kab isnt 'nasional'
 				a() and b() and c() and d()
-			_.map kabs, (i) ->
+			list = _.map kabs, (i) ->
 				for j in [2014..2019]
 					if nas['y'+j] > i['y'+j] < prov['y'+j]
 						i['col'+j] = 'red'
@@ -438,8 +459,12 @@ if Meteor.isClient
 					else if nas['y'+j] < i['y'+j] > prov['y'+j]
 						i['col'+j] = 'blue'
 				i
+			Session.set 'mapColor', list
+			list
 
 	Template.tem.events
+		'click #col': (event) ->
+			Session.set 'selYear', parseInt event.target.textContent
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
