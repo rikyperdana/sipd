@@ -416,7 +416,8 @@ if Meteor.isClient
 		state = (wil) ->
 			mapColor = Session.get 'mapColor'
 			find = _.find mapColor, (i) -> i.kab is wil
-			year = 2014
+			selYear = Router.current().params.year
+			year = selYear or 2014
 			if find
 				if find['col' + year]
 					find['col' + year]
@@ -435,20 +436,16 @@ if Meteor.isClient
 
 	Template.tem.helpers
 		datas: ->
-			splited = currentRoute().split('.')
 			find = (name) -> _.find coll.tem.find().fetch(), (i) ->
-				a = -> i.kab is name
-				b = -> i.grup is splited[0]
-				c = -> i.item is splited[1]
-				a() and b() and c()
+				i.kab is name
 			prov = find 'riau'; nas = find 'nasional'
+			
 			kabs = _.filter coll.tem.find().fetch(), (i) ->
-				a = -> i.grup is splited[0]
-				b = -> i.item is splited[1]
-				c = -> i.kab isnt 'riau'
-				d = -> i.kab isnt 'nasional'
-				a() and b() and c() and d()
-			list = _.map kabs, (i) ->
+				a = -> i.kab isnt 'riau'
+				b = -> i.kab isnt 'nasional'
+				a() and b()
+
+			all = _.map kabs, (i) ->
 				for j in [2014..2019]
 					if nas['y'+j] > i['y'+j] < prov['y'+j]
 						i['col'+j] = 'red'
@@ -459,8 +456,10 @@ if Meteor.isClient
 					else if nas['y'+j] < i['y'+j] > prov['y'+j]
 						i['col'+j] = 'blue'
 				i
-			Session.set 'mapColor', list
-			list
+			Session.set 'mapColor', all
+			all.push prov, nas
+			all
+				
 
 	Template.tem.events
 		'click #col': (event) ->

@@ -20,12 +20,11 @@ makeInd = (name, sel) ->
 makeInd i.name, i.name for i in inds
 makeInd i, 'targ' for i in kabs
 
-makeTem = (grup, item) ->
-	Router.route '/' + grup + '/' + item,
-		action: ->
-			this.render 'tem'
-		waitOn: -> Meteor.subscribe 'coll', 'tem', {}, {}
-makeTem key, i for i in val for key, val of tems
+Router.route '/tem/:grup/:item/:year?',
+	action: -> this.render 'tem'
+	waitOn: ->
+		selector = grup: this.params.grup, item: this.params.item
+		Meteor.subscribe 'coll', 'tem', selector, {}
 
 Router.route '/jalan',
 	action: -> this.render 'jalan'
