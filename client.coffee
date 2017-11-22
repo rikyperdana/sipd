@@ -429,6 +429,7 @@ if Meteor.isClient
 		topo = L.tileLayer.provider 'OpenTopoMap'
 		riau = L.geoJson.ajax '/maps/riau.geojson', style: style
 		map = L.map 'map',
+			color: 'white'
 			center: [0.5, 102]
 			zoom: 8
 			layers: [topo, riau]
