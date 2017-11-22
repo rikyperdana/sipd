@@ -32,6 +32,11 @@ template(name='menu')
 					li: a(href='jalan') Pekerjaan Umum
 				if routeIs 'jalan'
 					li: a(href='/') Kembali
+				each val in tems
+					li: ul.collapsible: li
+						.collapsible-header= startCase(val.grup)
+						each item in val.items
+							a.collapsible-body(href='/tem/{{val.grup}}/{{item}}/2010')= startCase(shorten(item))
 
 template(name='home')
 	.parallax-container: .parallax: img(src='/imgs/front.jpg')
@@ -357,9 +362,9 @@ template(name='tem'): .container
 				td#col 2016
 			each datas
 				tr
-					td= kab
-					td= grup
-					td= item
+					td= startCase(kab)
+					td= startCase(grup)
+					td= startCase(item)
 					td(class= col2010)= y2010
 					td(class= col2011)= y2011
 					td(class= col2012)= y2012

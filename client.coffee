@@ -36,14 +36,20 @@ if Meteor.isClient
 		[1..end]
 
 	Template.menu.onRendered ->
-		$('.collapsible').collapsible()
+		a = -> $('.collapsible').collapsible()
+		setTimeout a, 1000
+	
+	tems = new ReactiveVar []
+	Meteor.call 'tems', (err, res) -> if res then tems.set res
 	
 	Template.menu.helpers
 		elemens: -> elemens
 		kabs: -> kabs
-		fasilitas: -> _.keys(headings)
+		fasilitas: -> _.keys headings
 		inds: -> inds
 		indsname: -> indsname
+		tems: -> tems.get()
+		shorten: (val) -> val[0..20]
 
 	Template.body.events
 		'click #switch': (event) ->
