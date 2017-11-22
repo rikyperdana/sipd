@@ -2,6 +2,7 @@ if Meteor.isClient
 
 	AutoForm.setDefaultTemplate 'materialize'
 	currentRoute = -> Router.current().route.getName()
+	currentPar = -> Router.current().params
 	wilName = ->
 		kab: currentRoute().split('_')[0]
 		kec: currentRoute().split('_')[1]
@@ -417,7 +418,7 @@ if Meteor.isClient
 			mapColor = Session.get 'mapColor'
 			find = _.find mapColor, (i) -> i.kab is wil
 			selYear = Router.current().params.year
-			year = selYear or 2014
+			year = selYear or 2010
 			if find
 				if find['col' + year]
 					find['col' + year]
@@ -426,9 +427,24 @@ if Meteor.isClient
 		style = (feature) ->
 			fillColor: state feature.properties.wil
 			fillOpacity: 1
-			opacity: 0
+			opacity: 1
+			color: 'white'
+			weight: 2
+		onEachFeature = (feature, layer) ->
+			content = ''
+			content += '<b>Kabupaten : </b>'+feature.properties.KABUPATEN+'<br/>'
+			kab = coll.tem.findOne kab: feature.properties.wil
+			prov = coll.tem.findOne kab: 'riau'
+			nas = coll.tem.findOne kab: 'nasional'
+			content += '<b>Nilai Kab Kota : </b>'+kab['y'+currentPar().year]+'</br>'
+			content += '<b>Nilai Provinsi : </b>'+prov['y'+currentPar().year]+'<br/>'
+			content += '<b>Nilai Nasional : </b>'+nas['y'+currentPar().year]+'<br/>'
+			layer.bindPopup content
+		riau = L.geoJson.ajax '/maps/riau.geojson',
+			style: style
+			onEachFeature: onEachFeature
+
 		topo = L.tileLayer.provider 'OpenTopoMap'
-		riau = L.geoJson.ajax '/maps/riau.geojson', style: style
 		map = L.map 'map',
 			color: 'white'
 			center: [0.5, 102]
@@ -447,7 +463,7 @@ if Meteor.isClient
 				a() and b()
 
 			all = _.map kabs, (i) ->
-				for j in [2014..2019]
+				for j in [2010..2016]
 					if nas['y'+j] > i['y'+j] < prov['y'+j]
 						i['col'+j] = 'red'
 					else if nas['y'+j] > i['y'+j] > prov['y'+j]

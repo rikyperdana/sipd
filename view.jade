@@ -348,23 +348,25 @@ template(name='tem'): .container
 				td Kab
 				td Grup
 				td Item
+				td#col 2010
+				td#col 2011
+				td#col 2012
+				td#col 2013
 				td#col 2014
 				td#col 2015
 				td#col 2016
-				td#col 2017
-				td#col 2018
-				td#col 2019
 			each datas
 				tr
 					td= kab
 					td= grup
 					td= item
+					td(class= col2010)= y2010
+					td(class= col2011)= y2011
+					td(class= col2012)= y2012
+					td(class= col2013)= y2013
 					td(class= col2014)= y2014
 					td(class= col2015)= y2015
 					td(class= col2016)= y2016
-					td(class= col2017)= y2017
-					td(class= col2018)= y2018
-					td(class= col2019)= y2019
 	.file-field.input-field
 		.btn.left
 			span Impor Data
