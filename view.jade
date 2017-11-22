@@ -36,7 +36,7 @@ template(name='menu')
 					li: ul.collapsible: li
 						.collapsible-header= startCase(val.grup)
 						each item in val.items
-							a.collapsible-body(href='/tem/{{val.grup}}/{{item}}/2010')= startCase(shorten(item))
+							a.collapsible-body(href='/tem/{{val.grup}}/{{item}}/')= startCase(shorten(item))
 
 template(name='home')
 	.parallax-container: .parallax: img(src='/imgs/front.jpg')

@@ -486,7 +486,8 @@ if Meteor.isClient
 
 	Template.tem.events
 		'click #col': (event) ->
-			Session.set 'selYear', parseInt event.target.textContent
+			Router.go '/tem/' + currentPar().grup + '/' + currentPar().item + '/' + event.target.innerText
+			document.location.reload()
 		'change :file': (event, template) ->
 			Papa.parse event.target.files[0],
 				header: true
