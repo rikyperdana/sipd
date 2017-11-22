@@ -98,8 +98,8 @@ objek =
 	kab: type: String
 	grup: type: String
 	item: type: String
-for i in [2014..2019]
-	objek['y' + i] = type: Number, decimal: true
+for i in [2010..2016]
+	objek['y' + i] = type: Number, decimal: true, optional: true
 coll.tem.attachSchema new SimpleSchema objek
 coll.tem.allow
 	insert: -> true

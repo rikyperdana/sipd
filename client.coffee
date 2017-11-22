@@ -475,6 +475,7 @@ if Meteor.isClient
 						grup: data.grup
 						item: data.item
 					modifier = {}
-					for i in [2014..2019]
-						modifier['y' + i] = parseFloat data['y' + i]
+					for i in [2010..2016]
+						if data['y'+i]
+							modifier['y' + i] = parseFloat data['y' + i]
 					Meteor.call 'import', 'tem', selector, modifier
